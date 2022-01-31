@@ -93,6 +93,7 @@ local.properties
 
 
 
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
@@ -101,4 +102,12 @@ replay_pid*
 MANIFEST.MF
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java
+=======
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+.project
+.classpath
+MANIFEST.MF
+
 /build/
