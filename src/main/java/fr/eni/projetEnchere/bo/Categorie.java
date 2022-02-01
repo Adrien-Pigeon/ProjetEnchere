@@ -12,7 +12,7 @@ public class Categorie {
 	}
 	
 	public Categorie(String libelle) {				
-		this.libelle = libelle;
+		this.setLibelle(libelle);
 	}
 
 	public int getNoCategorie() {

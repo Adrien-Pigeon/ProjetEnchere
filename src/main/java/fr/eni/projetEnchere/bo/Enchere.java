@@ -25,10 +25,10 @@ public class Enchere {
 	 */
 	public Enchere(Date dateEnchere, int montantEnchere, Utilisateur utilisateur, ArticleVendu article) {
 		super();
-		this.dateEnchere = dateEnchere;
-		this.montantEnchere = montantEnchere;
-		this.utilisateur = utilisateur;
-		this.article = article;
+		this.setDateEnchere(dateEnchere);
+		this.setMontantEnchere(montantEnchere);
+		this.setUtilisateur(utilisateur);
+		this.setArticle(article);
 	}
 
 	//assesseurs et mutateurs 
