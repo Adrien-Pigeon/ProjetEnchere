@@ -17,6 +17,7 @@ public class ArticleVendu {
 	public ArticleVendu() {
 		super();
 	}
+	
 
 	
 

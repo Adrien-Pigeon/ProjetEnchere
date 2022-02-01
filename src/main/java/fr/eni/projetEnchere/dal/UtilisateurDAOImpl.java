@@ -8,12 +8,16 @@ import java.sql.SQLException;
 
 import fr.eni.projetEnchere.bo.Utilisateur;
 
- 
+
+
+
+
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 	private final static String INSERT_USER = "INSERT INTO users (prenom,nom,username,password) VALUES(?,?,?,?)"; 
 	private final static String SELECT_LOGIN = "SELECT * FROM users WHERE username = ? AND password = ?";
 	
+	@Override
 	public void insert(Utilisateur user) {
 		try {
 			Connection cnx = ConnectionProvider.getConnection();
@@ -30,7 +34,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			e.printStackTrace();
 		}
 	}
-
+	@Override
 	public boolean selectByLogin(Utilisateur user) {
 		try {
 			Connection cnx = ConnectionProvider.getConnection();

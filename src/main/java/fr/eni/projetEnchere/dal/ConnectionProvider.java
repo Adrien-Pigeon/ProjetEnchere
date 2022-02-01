@@ -26,6 +26,7 @@ public class ConnectionProvider {
 
 	}
 	
+	
 	public static Connection getConnection() throws SQLException {
 		// obtenir la cnx		
 		return dataSource.getConnection();

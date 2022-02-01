@@ -8,6 +8,7 @@ import fr.eni.projetEnchere.dal.UtilisateurDAO;
 public class UtilisateurManager {
 	
 	
+	
 
 	private static UtilisateurManager instance;
 	
