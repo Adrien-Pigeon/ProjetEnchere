@@ -44,7 +44,11 @@ import fr.eni.projetEnchere.helpers.HashPassword;
 			if(um.login(user)) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
+<<<<<<< HEAD
 			response.sendRedirect(request.getContextPath()+"/WEB-INF/jsp/Acceuil.jsp");
+=======
+				response.sendRedirect(request.getContextPath()+"/WEB-INF/jsp/Accueil.jsp");
+>>>>>>> branch 'main' of https://github.com/OnlyDukeTV/ProjetEnchere.git
 			}else {
 				request.setAttribute("error", "azerty");
 				request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
