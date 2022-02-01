@@ -10,7 +10,7 @@ public class ArticleVendu {
 	private Date dateDebutEncheres,dateFinEncheres;
 	private int prixInitial,prixVente;
 	
-	private List<Categorie> categorie;
+	private Categorie categorie;
 	private Utilisateur utilisateur;
 	
 	
@@ -21,7 +21,7 @@ public class ArticleVendu {
 	
 
 	public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, List<Categorie> categorie, Utilisateur utilisateur) {
+			Date dateFinEncheres, Categorie categorie, Utilisateur utilisateur) {
 		super();
 	
 		this.nomArticle = nomArticle;
