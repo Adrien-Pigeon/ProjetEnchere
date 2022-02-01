@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="<%=request.getContextPath() %>/Acceuil" method="post">
 
 </body>
 </html>
