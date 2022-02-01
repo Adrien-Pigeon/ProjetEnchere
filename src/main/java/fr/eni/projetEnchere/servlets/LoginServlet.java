@@ -42,7 +42,7 @@ import fr.eni.projetEnchere.helpers.HashPassword;
 			if(um.login(user)) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
-				response.sendRedirect(request.getContextPath()+"/mon-compte");
+				response.sendRedirect(request.getContextPath()+"/WEB-INF/jsp/Acceuil.jsp");
 			}else {
 				request.setAttribute("error", "azerty");
 				request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);

@@ -1,102 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Connexion</title>
+<title>Page de Connection</title>
 <style>
-*
-{
-	margin: 0; padding: 0;
-	font-family: sans-serif;
-	box-sizing: border-box;
-	outline: none;
-}
+
 
 body
 {
 	width: 100%;
 	height: 100vh;
-	background: #16b;
-	display: flex;
+	background: silver;
 	justify-content: center;
 	align-items: center;
 }
+h1{
+	text-align: left;	
+	display:  inline;
+	}
 
-form
-{
-	width: 400px;
-	background: #fff;
-	padding: 30px;
-	border-radius: 10px;
-	box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-}
-form .row
-{
-	position: relative;
-	margin: 20px 0;
-}
-form input
-{
-	width: 100%;
-	padding: 15px;
-	border: 1px solid #777;
-	border-radius: 5px;
-	padding-right: 110px;
-}
-form input[type="submit"]
-{
-	background: #16b;
-	color: #fff;
-	font-size: 18px;
-	border: none;
-	cursor: pointer;
-	padding-right: 0px;
-}
-form .row span,
-form .row img
-{
-	position: absolute;
-	top: 50%;
-	right: 10px;
-	color: #555;
-	transform: translateY(-50%);
-}
-form .row img
-{
-	width: 40px;
-	height: 40px;
-	cursor: pointer;
-}
-form h1
-{
-	color: #16b;
-	position: relative;
-}
-form h1:before
-{
-	content: '';
-	position: absolute;
-	width: 40px;
-	height: 4px;
-	bottom: 2px;
-	background: #16b;
-}
 </style>
+
+
+
 </head>
 <body>
+<h1>ENI-Enchères</h1>
 	<form action="<%=request.getContextPath() %>/login" method="post">
-		<h1>Login</h1>
+		
+  		
+	
 		<div class="row">
-			<input type="text" name="username" placeholder="username">
 			<span>username</span>
+			<input type="text" name="username" placeholder="username">			
 		</div>
+			
 		<div class="row">
-			<input type="password" name="password" class="senha" placeholder="123456">
-			<img src="https://icon-library.com/images/icon-eyes/icon-eyes-12.jpg" class="btn">
+		<span>password</span>
+		<input type="password" name="password" class="senha" placeholder="123456">		
+		</div>		
+			
+		
+		<div class="row">
+		<input name = "connexion" type="submit" value="Connexion">
+			<div class="row">
+			<a href=" ">Mot de passe oublié</a>
+			<input type="checkbox" id="scales" name="scales">
+	  		<label for="scales">Se souvenir de moi</label>	
+	  		
+	  		</div>
 		</div>
-		<input type="submit" value="Connexion">
+		
+		<div>
+		<input type="button" value="Créer un compte">
+		</div>
 	</form>
     <script>
         const senha = document.querySelector('.senha');
