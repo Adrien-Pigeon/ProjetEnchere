@@ -40,6 +40,7 @@
                     <input type="text" id="name" name="user_name">
                 </div>
             </form>
+            
 
             </div>
             <div class="Formulaire2"> 
