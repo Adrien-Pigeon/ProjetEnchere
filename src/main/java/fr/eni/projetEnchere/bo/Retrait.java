@@ -49,6 +49,16 @@ public class Retrait {
 	}
 
 
+	public ArticleVendu getArticle() {
+		return article;
+	}
+
+
+	public void setArticle(ArticleVendu article) {
+		this.article = article;
+	}
+
+
 
 	
 }

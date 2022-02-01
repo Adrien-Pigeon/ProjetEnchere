@@ -29,8 +29,8 @@ public class ArticleVendu {
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		
-		this.categorie = categorie;
-		this.utilisateur = utilisateur;
+		this.setCategorie(categorie);
+		this.setUtilisateur(utilisateur);
 	}
 
 
@@ -89,6 +89,30 @@ public class ArticleVendu {
 
 	public void setPrixVente(int prixVente) {
 		this.prixVente = prixVente;
+	}
+
+
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	
