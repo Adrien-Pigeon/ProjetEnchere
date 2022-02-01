@@ -25,18 +25,18 @@ public class Utilisateur {
 	//Constructeur Surcharg� de Utilisateur
 	public Utilisateur(int noUtilisateur, String nom, String prenom, String email, String telephone, String rue,
 			String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
-		super();
-		this.noUtilisateur = noUtilisateur;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.motDePasse = motDePasse;
-		this.credit = credit;
-		this.administrateur = administrateur;
+		
+		this.setNoUtilisateur(noUtilisateur);
+		this.setNom(nom);
+		this.setPrenom(prenom);
+		this.setEmail(email);
+		this.setTelephone(telephone);
+		this.setRue(rue);
+		this.setCodePostal(codePostal);
+		this.setVille(ville);
+		this.setMotDePasse(motDePasse);
+		this.setCredit(credit);
+		this.setAdministrateur(administrateur);
 	}
 
 	// Accesseurs et Mutateurs

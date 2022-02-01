@@ -24,11 +24,10 @@ public class ArticleVendu {
 			Date dateFinEncheres, Categorie categorie, Utilisateur utilisateur) {
 		super();
 	
-		this.nomArticle = nomArticle;
-		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
-		
+		this.setNomArticle(nomArticle);
+		this.setDescription(description);
+		this.setDateDebutEncheres(dateDebutEncheres);
+		this.setDateFinEncheres(dateFinEncheres);
 		this.setCategorie(categorie);
 		this.setUtilisateur(utilisateur);
 	}
