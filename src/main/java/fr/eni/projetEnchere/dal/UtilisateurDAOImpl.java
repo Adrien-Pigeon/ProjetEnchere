@@ -18,7 +18,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	Connection cnx = null;
 	PreparedStatement stmt =null;
 	ResultSet rs=null;
-	Utilisateur user = null;
+	Utilisateur user = null; 
+	
 	
 	
 	@Override

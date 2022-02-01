@@ -29,6 +29,7 @@ import fr.eni.projetEnchere.helpers.HashPassword;
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 		}
 
+		
 		/**
 		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 		 */

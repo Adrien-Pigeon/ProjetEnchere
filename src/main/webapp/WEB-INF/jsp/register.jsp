@@ -18,6 +18,7 @@
               <form action="<%=request.getContextPath()%>/register" method="post" >
                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                   <input type="text" name="username" placeholder="Username" required />
+          
                 </div>
                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
                   <input type="password" name="password" placeholder="Password" required />

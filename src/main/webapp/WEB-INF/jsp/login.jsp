@@ -30,6 +30,7 @@ h1{
 <h1>ENI-Enchères</h1>
 	<form action="<%=request.getContextPath() %>/login" method="post">
 		
+		
   		
 	
 		<div class="row">
