@@ -4,19 +4,32 @@ import java.util.List;
 
 public class Utilisateur {
 	
+	// Attributs privé
+	
 	private int noUtilisateur;
 	private String nom,prenom,email,telephone,rue,codePostal,ville,motDePasse;
 	private int credit;
 	private boolean administrateur;
 	
+	// List
 	private List<Enchere> encheres;
 	private List<ArticleVendu> achete;
 	private List<ArticleVendu> vend;
 	
+	private String username;
 	
 	
+	//Constructeur par defaut
 	public Utilisateur() {
-		super();
+	
+	}
+	//Constructeur Surchargï¿½ de Utilisateur
+	public Utilisateur(String nom , String prenom , String username,String password ) {
+	
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = username;
+		this.motDePasse=password;
 	}
 	//Constructeur Surchargï¿½ de Utilisateur
 	public Utilisateur(int noUtilisateur, String nom, String prenom, String email, String telephone, String rue,
@@ -35,6 +48,8 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
+	// Accesseurs et Mutateurs
+	
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
@@ -102,6 +117,9 @@ public class Utilisateur {
 	public String getMotDePasse() {
 		return motDePasse;
 	}
+	public String getUsername() {
+		return username;
+	}
 
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
@@ -141,5 +159,10 @@ public class Utilisateur {
 	public void setVend(List<ArticleVendu> vend) {
 		this.vend = vend;
 	}
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return getMotDePasse();
+	}
+
 	
 }
