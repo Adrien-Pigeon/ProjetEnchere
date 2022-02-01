@@ -15,6 +15,7 @@ import fr.eni.projetEnchere.bo.Utilisateur;
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 
+	
 	private final static String INSERT_USER = "INSERT INTO UTILISATEURS (prenom,nom,email,password) VALUES(?,?,?,?)"; 
 	private final static String SELECT_LOGIN = "SELECT * FROM UTILISATEURS WHERE username = ? AND password = ?";
 
