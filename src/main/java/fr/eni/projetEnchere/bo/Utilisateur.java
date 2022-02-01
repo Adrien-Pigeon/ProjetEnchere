@@ -16,20 +16,11 @@ public class Utilisateur {
 	private List<ArticleVendu> achete;
 	private List<ArticleVendu> vend;
 	
-	private String username;
 	
 	
 	//Constructeur par defaut
 	public Utilisateur() {
 	
-	}
-	//Constructeur Surcharg� de Utilisateur
-	public Utilisateur(String nom , String prenom , String username,String password ) {
-	
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = username;
-		this.motDePasse=password;
 	}
 	//Constructeur Surcharg� de Utilisateur
 	public Utilisateur(int noUtilisateur, String nom, String prenom, String email, String telephone, String rue,
