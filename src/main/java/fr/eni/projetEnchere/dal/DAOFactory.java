@@ -6,5 +6,8 @@ public class DAOFactory {
 	public static UtilisateurDAO getUtilisateurDAO(){
 		return new UtilisateurDAOImpl();
 	}
+	public static EnchereDAO getEnchereDAO() {
+		return new EnchereDAOImpl();
+	}
 }
  
