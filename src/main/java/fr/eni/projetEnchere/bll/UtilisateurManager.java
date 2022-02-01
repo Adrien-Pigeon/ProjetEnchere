@@ -10,7 +10,10 @@ public class UtilisateurManager {
 
 	private static UtilisateurManager instance;
 	
-	private UtilisateurManager() { }
+	private UtilisateurManager() { 
+		
+		
+	}
 	
 	public static UtilisateurManager getInstance() {
 		if(instance==null) {
