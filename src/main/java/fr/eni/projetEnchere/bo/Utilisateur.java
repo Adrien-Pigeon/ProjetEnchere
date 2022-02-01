@@ -1,5 +1,7 @@
 package fr.eni.projetEnchere.bo;
 
+import java.util.List;
+
 public class Utilisateur {
 	
 	private int noUtilisateur;
@@ -7,12 +9,16 @@ public class Utilisateur {
 	private int credit;
 	private boolean administrateur;
 	
+	private List<Enchere> encheres;
+	private List<ArticleVendu> achete;
+	private List<ArticleVendu> vend;
+	
 	
 	
 	public Utilisateur() {
 		super();
 	}
-
+	//Constructeur Surcharg� de Utilisateur
 	public Utilisateur(int noUtilisateur, String nom, String prenom, String email, String telephone, String rue,
 			String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 		super();
@@ -115,6 +121,24 @@ public class Utilisateur {
 
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
+	}
+	public List<Enchere> getEncheres() {
+		return encheres;
+	}
+	public void setEncheres(List<Enchere> encheres) {
+		this.encheres = encheres;
+	}
+	public List<ArticleVendu> getAchete() {
+		return achete;
+	}
+	public void setAchete(List<ArticleVendu> achete) {
+		this.achete = achete;
+	}
+	public List<ArticleVendu> getVend() {
+		return vend;
+	}
+	public void setVend(List<ArticleVendu> vend) {
+		this.vend = vend;
 	}
 	
 }
