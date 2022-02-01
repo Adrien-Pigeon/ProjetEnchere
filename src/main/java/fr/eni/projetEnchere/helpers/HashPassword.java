@@ -8,7 +8,7 @@ public class HashPassword {
 		String generatedPassword = null;
 	    try 
 	    {
-	      // Create MessageDigest instance for MD5
+ 	      // Create MessageDigest instance for MD5
 	      MessageDigest md = MessageDigest.getInstance("MD5");
 
 	      // Add password bytes to digest

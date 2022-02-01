@@ -27,7 +27,7 @@ import fr.eni.projetEnchere.bo.Utilisateur;
 			HttpSession session = request.getSession();
 			boolean isConnected = true;
 			if(session!=null) {			
-				Utilisateur user = (Utilisateur) session.getAttribute("user");
+	 			Utilisateur user = (Utilisateur) session.getAttribute("user");
 				if(user==null) {
 					isConnected = false;
 				}else {				

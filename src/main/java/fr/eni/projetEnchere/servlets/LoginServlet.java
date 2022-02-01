@@ -23,7 +23,7 @@ import fr.eni.projetEnchere.helpers.HashPassword;
 	       
 
 		/**
-		 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 		 */
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);

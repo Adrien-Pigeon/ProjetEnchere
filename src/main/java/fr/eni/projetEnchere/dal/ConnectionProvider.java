@@ -15,7 +15,7 @@ public class ConnectionProvider {
 
 	static {// init		
 		// chargement de context
-		Context context;
+	 	Context context;
 		try {
 			context = new InitialContext();
 			// creation de pool

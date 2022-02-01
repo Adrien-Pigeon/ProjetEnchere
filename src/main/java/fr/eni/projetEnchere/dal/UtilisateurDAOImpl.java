@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import fr.eni.projetEnchere.bo.Utilisateur;
 
-
+ 
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 	private final static String INSERT_USER = "INSERT INTO users (prenom,nom,username,password) VALUES(?,?,?,?)"; 
