@@ -18,7 +18,7 @@
         </div>
 
         <div class="Formulaire">
-            <form action="/ma-page-de-traitement" method="post">
+            <form action="/Accueil" method="post">
                 <div>
                     <label for="name">Pseudo:</label>
                     <input type="text" id="name" name="user_name">
@@ -44,7 +44,7 @@
 
             </div>
             <div class="Formulaire2"> 
-                <form action="/ma-page-de-traitement" method="post">
+                <form action="/" method="post">
                 <div>
                     <label for="name">Nom:</label>
                     <input type="text" id="name" name="user_name">
