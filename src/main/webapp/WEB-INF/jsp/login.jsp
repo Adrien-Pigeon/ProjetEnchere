@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -27,7 +27,7 @@ h1{
 
 </head>
 <body>
-<h1>ENI-Enchères</h1>
+<h1>ENI-EnchÃ¨res</h1>
 	<form action="<%=request.getContextPath() %>/login" method="post">
 		
 		
@@ -47,7 +47,7 @@ h1{
 		<div class="row">
 		<input name = "connexion" type="submit" value="Connexion">
 			<div class="row">
-			<a href=" ">Mot de passe oublié</a>
+			<a href="<%=request.getContextPath() %>/MotDePasse">Mot de passe oubliÃ©</a>
 			<input type="checkbox" id="scales" name="scales">
 	  		<label for="scales">Se souvenir de moi</label>	
 	  		
@@ -56,7 +56,7 @@ h1{
 	</form>	
 	<form method="get" action="<%=request.getContextPath()%>/CreerCompte">	
 		<div>
-		<input type="submit" value="Créer un compte">
+		<input type="submit" value="Crï¿½er un compte">
 		</div>
 	</form>
     <script>
