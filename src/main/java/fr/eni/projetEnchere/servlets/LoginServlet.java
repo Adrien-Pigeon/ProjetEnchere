@@ -38,12 +38,13 @@ import fr.eni.projetEnchere.helpers.HashPassword;
 			String username = (String) request.getParameter("username");
 			String password = (String) request.getParameter("password");
 			Utilisateur user= new Utilisateur();
-			user.setEmail(username);
+			//user.setEmail(username);
+			user.setPseudo(username);
 			user.setMotDePasse(HashPassword.hashpassword(password));
 			UtilisateurManager um = UtilisateurManager.getInstance();
 			if(um.login(user)) {
 				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
+				session.setAttribute("user", um);
 
 				response.sendRedirect(request.getContextPath()+"/WEB-INF/jsp/Accueil.jsp");
 			}else {
