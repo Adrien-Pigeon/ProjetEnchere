@@ -12,7 +12,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	private final static String INSERT_USER = "INSERT INTO dbo.UTILISATEURS (prenom,nom,pseudo,email,mot_de_passe,telephone,"
 			+ "ville,rue,code_postal,credit,admministrateur) VALUES(?,?,?,?)";
-	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE email = ? OR pseudo = ?  AND mot_de_passe = ?";
+	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?  AND mot_de_passe = ?";
+	private final static String SELET_BY_ID = "SELECT * FROM dbo.UTILISATEURS WHERE no_article = ?;";
 
 	Connection cnx = null;
 	PreparedStatement stmt = null;
@@ -60,16 +61,54 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	 * Methode permettant de selectionner un utilisateur par ses identifiants
 	 */
 	@Override
-	public boolean selectByLogin(Utilisateur user) throws DalException {
+	public Utilisateur selectByLogin(Utilisateur user) throws DalException {
+		Connection cnx = null;
+		PreparedStatement stmt = null;
+		Utilisateur u = null;
+
 		try {
-			Connection cnx = ConnectionProvider.getConnection();
-			PreparedStatement stmt = cnx.prepareStatement(SELECT_LOGIN);
+			cnx = ConnectionProvider.getConnection();
+			stmt = cnx.prepareStatement(SELECT_LOGIN);
 			stmt.setString(1, user.getPseudo());
-			stmt.setString(2, user.getEmail());
-			stmt.setString(3, user.getPassword());
+			stmt.setString(2, user.getPassword());
 
 			ResultSet result = stmt.executeQuery();
 			if (result.next()) {
+
+				u = new Utilisateur();
+				u.setNom(result.getString("nom"));
+				u.setPrenom(result.getString("prenom"));
+				u.setPseudo(result.getString("pseudo"));
+				u.setMotDePasse(null);
+				
+
+			}
+
+		} catch (SQLException e) {
+			throw new DalException("Probleme sur la couche Dal", e);
+		} finally {
+			try {
+				stmt.close();
+				cnx.close();
+			} catch (SQLException e) {
+				throw new DalException("Probleme de déconnexion", e);
+			}
+		}
+		return u;
+	}
+
+	@Override
+	public Utilisateur selectById(int noArticle) throws DalException {
+		Connection cnx = null;
+		PreparedStatement stmt = null;
+		Utilisateur user = null;
+		try {
+			cnx = ConnectionProvider.getConnection();
+			stmt = cnx.prepareStatement(SELET_BY_ID);
+			stmt.setInt(1, noArticle);
+			ResultSet result = stmt.executeQuery();
+			if (rs.next()) {
+				user = new Utilisateur();
 				user.setNoUtilisateur(result.getInt("id"));
 				user.setNom(result.getString("nom"));
 				user.setPrenom(result.getString("prenom"));
@@ -81,9 +120,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				user.setCodePostal(result.getString("codePostal"));
 				user.setCredit(result.getInt("credit"));
 				user.setAdministrateur(result.getBoolean("prenom"));
-
 			}
-			
 		} catch (SQLException e) {
 			throw new DalException("Probleme sur la couche Dal", e);
 		} finally {
@@ -94,13 +131,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				throw new DalException("Probleme de déconnexion", e);
 			}
 		}
-		return true;
-	}
-
-	@Override
-	public Utilisateur selectById(int noArticle) throws DalException {
-		
-		return null;
+		return user;
 	}
 
 }

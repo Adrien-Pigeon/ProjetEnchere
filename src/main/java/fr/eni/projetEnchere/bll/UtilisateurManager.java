@@ -86,14 +86,9 @@ public class UtilisateurManager {
 		
 	}
 	
-	public boolean login(Utilisateur user) throws BllException {
+	public Utilisateur login(Utilisateur user) throws BllException, DalException {
 		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
-		boolean OK = false;
-		try {
-			 OK =  ud.selectByLogin(user);
-		} catch (DalException e) {
-			throw new BllException("Probleme sur la methode logins()");
-		}return OK;
+		return ud.selectByLogin(user);
 	}
 	
 }
