@@ -61,7 +61,11 @@ h1{
 	</form>	
 	<form method="get" action="<%=request.getContextPath()%>/CreerCompte">	
 		<div>
+<<<<<<< HEAD
 		<input type="submit" value="Creer un compte">
+=======
+		<input type="submit" value="Créer un compte">
+>>>>>>> branch 'main' of https://github.com/OnlyDukeTV/ProjetEnchere.git
 		</div>
 	</form>
     <script>
