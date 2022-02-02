@@ -18,7 +18,6 @@
 	</div>
 </div>
 
-
 <form action="<%= request.getContextPath()%>/Accueil" method="get">
 <div class="row text-center">
 	<div class="col-lg-6 pad">
