@@ -40,7 +40,7 @@ public class UtilisateurManager {
 		if (u == null) {
 			throw new BllException("Utilisateur null");
 		}
-
+ 
 		if (u.getPseudo() == null || u.getPseudo().trim().length() == 0) {
 			sb.append("Le pseudo est obligatoire.\n");
 			valide = false;
