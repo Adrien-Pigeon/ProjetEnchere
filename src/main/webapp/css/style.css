@@ -12,6 +12,8 @@ body {
   height: 0;
 }
 
+
+
 .form_wrapper {
   background: #fff;
   width: 400px;
@@ -404,4 +406,29 @@ body {
   .remember_me {
     padding-bottom: 20px;
   }
+}
+/*Profil.jsp*/
+.Titre{
+    display: flex;
+    justify-content: center;
+}
+.Formulaire{
+    display: inline-block;
+    align-items: center;
+    margin-left: 20%;
+    
+}
+.Formulaire2{
+    display: inline-block;
+    align-items: center;
+    margin-left: 25%;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    height: 1000%;
+    width: auto;
+    margin: 30px 20px;
+    
 }

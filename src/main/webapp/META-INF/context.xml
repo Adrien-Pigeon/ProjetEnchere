@@ -10,7 +10,9 @@
             
             driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
             
-            url="jdbc:sqlserver://localhost;databasename=ENCHERES"
+           url="jdbc:sqlserver://localhost;databasename=ENCHERES"
+
+
             maxTotal="8"
             maxIdle="4"
             maxWaitMillis="10000"

@@ -12,6 +12,8 @@ import fr.eni.projetEnchere.bo.Utilisateur;
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 	
+	
+	
 	private final static String INSERT_USER = "INSERT INTO dbo.UTILISATEURS (prenom,nom,email,mot_de_passe) VALUES(?,?,?,?)"; 
 	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE email = ?   AND mot_de_passe = ?";
 	private final static String RECHERCHER = " SELECT * FROM dbo.UTILISATEURS WHERE email = ? OR pseudo = ? AND mot_de_passe = ?";
@@ -59,5 +61,25 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		}
 		return false;
 	}
-
+	
+	@Override
+	public boolean rechercher(Utilisateur user) {
+		try {
+			Connection cnx = ConnectionProvider.getConnection();
+			PreparedStatement stmt = cnx.prepareStatement(RECHERCHER);
+			stmt.setString(1, user.getUsername());
+			stmt.setString(2, user.getPassword());
+			ResultSet result =  stmt.executeQuery();
+			if(result.next()) {
+				user.setNoUtilisateur(result.getInt("id"));
+				user.setNom(result.getString("nom"));
+				user.setPrenom(result.getString("prenom"));
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
