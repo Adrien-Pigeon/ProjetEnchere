@@ -62,7 +62,7 @@ public class UtilisateurManager {
 			sb.append("Le code postal est obligatoire.\n");
 			valide = false;
 		}
-
+ 
 		if (u.getPrenom() == null || u.getPrenom().trim().length() == 0) {
 			sb.append("Le prenom est obligatoire.\n");
 			valide = false;
