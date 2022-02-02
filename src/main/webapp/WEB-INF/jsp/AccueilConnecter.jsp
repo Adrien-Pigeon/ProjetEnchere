@@ -21,7 +21,7 @@
 <form action="<%= request.getContextPath()%>/AccueilConnecter" method="get">
 <div >
 	<div >
-	
+	 
 		<label for="sfiltres">Filtres:</label>
 		<div class="input-group">
 			<span class="input-group-addon" id="basic-addon1"><span

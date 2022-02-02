@@ -16,6 +16,7 @@
 	<div class="Titre">
 		<h2>Mon Profil</h2>
 	</div>
+	
 
 	<div class="Formulaire">
 		<form action="<%=request.getContextPath()%>/modifierProfil" method="post">
