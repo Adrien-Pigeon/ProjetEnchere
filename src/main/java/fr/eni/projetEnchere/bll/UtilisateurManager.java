@@ -23,7 +23,7 @@ public class UtilisateurManager {
 
 	public void addUser(Utilisateur user) throws BllException {
 		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
- 
+
 		try {
 //verifier l'objet utilisateur
 			verifierUser(user);
@@ -33,14 +33,14 @@ public class UtilisateurManager {
 			throw new BllException("Probleme sur la methode addUser()");
 		}
 	}
- 
+
 	public static void verifierUser(Utilisateur u) throws BllException {
 		boolean valide = true;
 		StringBuffer sb = new StringBuffer();
 		if (u == null) {
 			throw new BllException("Utilisateur null");
 		}
- 
+
 		if (u.getPseudo() == null || u.getPseudo().trim().length() == 0) {
 			sb.append("Le pseudo est obligatoire.\n");
 			valide = false;
@@ -82,6 +82,15 @@ public class UtilisateurManager {
 
 	}
 
-	
+	public boolean login(Utilisateur user) throws BllException {
+		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
+		boolean OK = false;
+		try {
+			OK = ud.selectByLogin(user);
+		} catch (DalException e) {
+			throw new BllException("Probleme sur la methode logins()");
+		}
+		return OK;
+	}
 
 }
