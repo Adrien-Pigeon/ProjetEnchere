@@ -57,7 +57,7 @@ public class RetraitManager {
 		if (r == null) {
 			throw new BllException("Retrait null");
 		}
-		// Les attributs des articles sont obligatoires
+		// Les attributs des retraits sont obligatoires
 		if (r.getVille() == null || r.getVille().trim().length() == 0) {
 			sb.append("La ville de retrait est obligatoire.\n");
 			valide = false;

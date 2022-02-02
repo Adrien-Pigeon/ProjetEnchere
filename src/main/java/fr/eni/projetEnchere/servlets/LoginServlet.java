@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.projetEnchere.bll.UtilisateurManager;
+import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.Utilisateur;
+import fr.eni.projetEnchere.dal.Exception.DalException;
 import fr.eni.projetEnchere.helpers.HashPassword;
 
 /**
@@ -39,22 +41,29 @@ public class LoginServlet extends HttpServlet {
 		String password = (String) request.getParameter("password");
 		Utilisateur user = new Utilisateur();
 		// user.setEmail(email) ou setPseudo(username);
-		if (username.contains("@")) {
-			user.setEmail(username);
-		} else {
-			user.setPseudo(username);
-		}
+		
+		user.setPseudo(username);
+		
 		user.setMotDePasse(HashPassword.hashpassword(password));
 		UtilisateurManager um = UtilisateurManager.getInstance();
-		if (um.login(user)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", um);
-
-			response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/AccueilConnecter.jsp");
-		} else {
-			request.setAttribute("error", "azerty");
-			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+		try {
+			user = um.login(user);
+		} catch (BllException | DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		
+			if (user != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", um);
+
+				response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/AccueilConnecter.jsp");
+			}else {
+				request.setAttribute("error", "azerty");
+				request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+			}
+		
 	}
 
 }
