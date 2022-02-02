@@ -9,5 +9,8 @@ public class DAOFactory {
 	public static EnchereDAO getEnchereDAO() {
 		return new EnchereDAOImpl();
 	}
+	public static RetraitDAO getRetraitDAO(){
+		return new RetraitDAOImpl();
+	}
 }
  
