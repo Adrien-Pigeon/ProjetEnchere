@@ -20,7 +20,7 @@
 	<div class="Formulaire">
 		<form action="<%=request.getContextPath()%>/CreerCompte" method="post">
 			<div>
-				<label for="name">Pseudo:</label> 
+				<label for="name">Pseud0:</label> 
 				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
