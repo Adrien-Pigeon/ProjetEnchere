@@ -35,7 +35,7 @@ h1{
 	
 		<div class="row">
 			<span>username</span>
-			<input type="text" name="username" placeholder="username">			
+			<input type="text" name="pseudo" placeholder="username">			
 		</div>
 			
 		<div class="row">

@@ -19,49 +19,23 @@
  
 	<div class="Formulaire">
 		<form action="<%=request.getContextPath()%>/mon-compte" method="post">
-			<div>
-				<label for="name">Pseud0:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			<div>
-				<label for="name">Nom:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			<div>
-				<label for="name">Prenom:</label> 
-				<input type="text" id="mail"name="user_mail" required>
-			</div>
-			
-		
-			
-			<div>
-				<label for="mail">Email:</label> 
-				<input type="email" id="name"name="user_name" required>
-			</div>
-			<div>
-				<label for="msg">Telephone:</label>
-				<input type="text" id="msg" name="user_message"  >
-			</div>
-			
-			<div>
-				<label for="name">Rue:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			<div>
-				<label for="name">Ville:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			<div>
-			
-				<label for="name">Code postal:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			
-			<div>
-				<label for="name">Mot de passe:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			
+			<div class="col-lg-6">
+
+			Pseudo :<input type="text" name="spseudo" class="form-control input-md"><br> 
+			Prenom :<input type="text" name="sprenom"  class="form-control input-md"><br>
+			Telephone :<input type="text" name="stelephone"  class="form-control input-md"><br> 
+			Code postal :<input type="text" name="scodePostal" class="form-control input-md"><br>
+			Mot de passe actuel :<input type="password" name="smotDePasseActuel"  placeholder="Mot de passe actuel" class="form-control input-md"><br> 
+			Nouveau mot de passe :<input type="password" name="snouveauMotDePasse"  placeholder="Nouveau mot de passe" class="form-control input-md"><br>
+		</div>
+			<div class="col-lg-6">
+			Nom :<input type="text" name="snom"   class="form-control input-md"><br>
+			Email :<input type="text" name="semail"  class="form-control input-md"><br> 
+			Rue :<input type="text" name="srue"  class="form-control input-md"><br>
+			Ville :<input type="text" name="sville" class="form-control input-md"><br> 
+			Confirmation :<input type="password" name="sconfirmation" placeholder="Confirmation du nouveau mot de passe" class="form-control input-md"><br>
+			Credit : <p>  </p><br>
+		</div>
 			<div class="button">
 				<button action=<%=request.getContextPath()%>/mon-profil" type="submit" name="valider">Modifier</button>
 			</div>
@@ -74,6 +48,35 @@
 
 	
 
+<div class="row">
+
+	<form action="<%=request.getContextPath()%>/GestionModificationProfil"
+		method="post">
+		
+		
+			
+				
+		<div class = "row">
+		<div class ="col-md-12">
+		
+		</div>
+	</div>	
+		<button type="submit" class=" col-lg-6 btn btn-default">
+			<p>Enregistrer</p>
+		</button>
+	</form>
+	
+	
+	
+	<form action="<%=request.getContextPath()%>/SuppressionUtilisateur" method="post">
+		<button type="submit" class=" col-lg-6 btn btn-default">
+			<p>Supprimer mon compte</p>
+		</button>
+	</form>
+	
+</div>
+</body>
+</html>
 
 
 
