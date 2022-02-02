@@ -13,17 +13,20 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private final static String INSERT_USER = "INSERT INTO dbo.UTILISATEURS (prenom,nom,pseudo,email,mot_de_passe,telephone,"
 			+ "ville,rue,code_postal,credit,admministrateur) VALUES(?,?,?,?)";
 	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE email = ? OR pseudo = ?  AND mot_de_passe = ?";
-	
+
 	Connection cnx = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	Utilisateur user = null;
 
+	/**
+	 * Methode permettant d'ajouter un utilisateur à la base de donnée
+	 */
 	@Override
-	public void insert(Utilisateur user) throws DalException{
+	public void insert(Utilisateur user) throws DalException {
 		try {
 			Connection cnx = ConnectionProvider.getConnection();
-			PreparedStatement stmt = cnx.prepareStatement(INSERT_USER);
+			PreparedStatement stmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, user.getPrenom());
 			stmt.setString(2, user.getNom());
 			stmt.setString(3, user.getPseudo());
@@ -36,10 +39,14 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			stmt.setInt(10, user.getCredit());
 			stmt.setBoolean(11, user.isAdministrateur());
 			stmt.executeUpdate();
-			
+			ResultSet rs = stmt.getGeneratedKeys();
+			if (rs.next()) {
+				user.setNoUtilisateur(rs.getInt(1));
+			}
+
 		} catch (SQLException e) {
 			throw new DalException("Probleme sur la couche Dal", e);
-		}finally {
+		} finally {
 			try {
 				stmt.close();
 				cnx.close();
@@ -49,15 +56,18 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		}
 	}
 
+	/**
+	 * Methode permettant de selectionner un utilisateur par ses identifiants
+	 */
 	@Override
-	public boolean selectByLogin(Utilisateur user) throws DalException{
+	public boolean selectByLogin(Utilisateur user) throws DalException {
 		try {
 			Connection cnx = ConnectionProvider.getConnection();
 			PreparedStatement stmt = cnx.prepareStatement(SELECT_LOGIN);
 			stmt.setString(1, user.getPseudo());
 			stmt.setString(2, user.getEmail());
 			stmt.setString(3, user.getPassword());
-			
+
 			ResultSet result = stmt.executeQuery();
 			if (result.next()) {
 				user.setNoUtilisateur(result.getInt("id"));
@@ -71,21 +81,19 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				user.setCodePostal(result.getString("codePostal"));
 				user.setCredit(result.getInt("credit"));
 				user.setAdministrateur(result.getBoolean("prenom"));
-				
-				
+
 			}
 		} catch (SQLException e) {
 			throw new DalException("Probleme sur la couche Dal", e);
-		}finally {
+		} finally {
 			try {
 				stmt.close();
 				cnx.close();
 			} catch (SQLException e) {
 				throw new DalException("Probleme de déconnexion", e);
 			}
-		}return true;
+		}
+		return true;
 	}
 
-	
-	
 }
