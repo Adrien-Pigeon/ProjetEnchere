@@ -18,52 +18,51 @@
 	</div>
 
 	<div class="Formulaire">
-		<form action="/Accueil" method="post">
+		<form action="<%=request.getContextPath()%>/CreerCompte" method="post">
 			<div>
-				<label for="name">Pseudo:</label> <input type="text" id="name"
-					name="user_name">
+				<label for="name">Pseudo:</label> 
+				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
-				<label for="mail">Prenom:</label> <input type="email" id="mail"
-					name="user_mail">
+				<label for="name">Nom:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			<div>
+				<label for="mail">Prenom:</label> 
+				<input type="email" id="mail"name="user_mail" required>
+			</div>
+			
+		
+			
+			<div>
+				<label for="name">Email:</label> 
+				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
 				<label for="msg">Telephone:</label>
-				<textarea id="msg" name="user_message"></textarea>
+				<input type="text" id="msg" name="user_message"  >
+			</div>
+			
+			<div>
+				<label for="name">Rue:</label> 
+				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
-				<label for="name">Code postal:</label> <input type="text" id="name"
-					name="user_name">
+				<label for="name">Ville:</label> 
+				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
-				<label for="name">Mot de passe:</label> <input type="text" id="name"
-					name="user_name">
+				<label for="name">Code postal:</label> 
+				<input type="text" id="name"name="user_name" required>
 			</div>
-		</form>
-
-
-	</div>
-	<div class="Formulaire2">
-		<form action="<%=request.getContextPath()%>/CreerCompte" method="post">
+			
 			<div>
-				<label for="name">Nom:</label> <input type="text" id="name"
-					name="user_name">
+				<label for="name">Mot de passe:</label> 
+				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
-				<label for="name">Email:</label> <input type="text" id="name"
-					name="user_name">
-			</div>
-			<div>
-				<label for="name">Rue:</label> <input type="text" id="name"
-					name="user_name">
-			</div>
-			<div>
-				<label for="name">Ville:</label> <input type="text" id="name"
-					name="user_name">
-			</div>
-			<div>
-				<label for="name">Confirmation:</label> <input type="text" id="name"
-					name="user_name">
+				<label for="name">Confirmation:</label> 
+				<input type="text" id="name"name="user_name"required>
 			</div>
 			<div class="button">
 				<button type="submit" name="valider">Créer</button>
