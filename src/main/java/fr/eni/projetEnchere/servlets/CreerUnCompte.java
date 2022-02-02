@@ -33,6 +33,8 @@ public class CreerUnCompte extends HttpServlet {
 		String nom=request.getParameter("nom");
 		String password=HashPassword.hashpassword(request.getParameter("password"));
 		
+		
+		
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		um.addUser(prenom, nom, username, password);
 		response.sendRedirect(request.getContextPath()+"/login");

@@ -52,6 +52,7 @@
 				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
+			
 				<label for="name">Code postal:</label> 
 				<input type="text" id="name"name="user_name" required>
 			</div>
