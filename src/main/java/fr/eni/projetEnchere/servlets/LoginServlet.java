@@ -44,7 +44,7 @@ import fr.eni.projetEnchere.helpers.HashPassword;
 			UtilisateurManager um = UtilisateurManager.getInstance();
 			if(um.login(user)) {
 				HttpSession session = request.getSession();
-				session.setAttribute("user", um);
+			 	session.setAttribute("user", um);
 
 				response.sendRedirect(request.getContextPath()+"/WEB-INF/jsp/Accueil.jsp");
 			}else {
