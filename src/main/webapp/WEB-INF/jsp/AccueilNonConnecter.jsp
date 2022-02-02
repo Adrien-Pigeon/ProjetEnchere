@@ -6,59 +6,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div class="row">
-	<div class="col-lg-12 text-right">
-		<a href="<%=request.getContextPath()%>/login">S'inscrire-se Connecter</a>
-		
-	</div>
+<div class="row" align="right" >	
+		<a href="<%=request.getContextPath()%>/login">Inscription - Se Connecter</a>	
 </div>
-<div class="row">
-	<div class="col-lg-12">
-		<h3 class="text-center">Liste des enchères</h3>
-	</div>
+
+<div class="row">	
+		<h3 align="center">Liste des enchères</h3>
 </div>
 
 
-<form action="<%= request.getContextPath()%>/AccueilNonConnecter" method="get">
-<div class="row text-center">
-	<div class="col-lg-6 pad">
+<form action="<%= request.getContextPath()%>/AccueilConnecter" method="get">
+<div >
+	<div >
 	
-		<label class="col-md-4 control-label" for="sfiltres">Filtres:</label>
+		<label for="sfiltres">Filtres:</label>
 		<div class="input-group">
 			<span class="input-group-addon" id="basic-addon1"><span
 				class="glyphicon glyphicon-search"></span></span> <input type="text" name ="srecherche"
 				class="form-control" placeholder="Le nom de l'article contient">
 		</div>
 
-			<label class="col-md-4 control-label" for="scategorie">Catégories:</label>
+			<label for="scategorie">Catégories:</label>
 			
-			<div class="col-md-4">
-				<select id="scategorie" name="scategorie" class="form-control">
+			<div >
+				<select id="scategorie" name="scategorie" >
 				<option value ="0">-Choisir Catégorie-</option>
 				
 				</select>
 			</div>
 
 	</div>
-	<div class="col-lg-6">
-
+	<div >
 		<button type="submit" class="btn btn-default" name = "search">Rechercher</button>
-
 	</div>
 </form>
 </div>
 
-
-<div class="row">
-
-
-	<div class="col-lg-5 article">
-		<div class="col-lg-3 image">
-		
-
-
-
-
-</div>
 </body>
 </html>

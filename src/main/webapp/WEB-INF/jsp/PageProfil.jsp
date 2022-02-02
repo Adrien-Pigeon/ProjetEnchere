@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="Formulaire">
-		<form action="<%=request.getContextPath()%>/CreerCompte" method="post">
+		<form action="<%=request.getContextPath()%>/modifierProfil" method="post">
 			<div>
 				<label for="name">Pseud0:</label> 
 				<input type="text" id="name"name="user_name" required>
@@ -61,18 +61,10 @@
 				<label for="name">Mot de passe:</label> 
 				<input type="text" id="name"name="user_name" required>
 			</div>
-			<div>
-				<label for="name">Confirmation:</label> 
-				<input type="text" id="name"name="user_name"required>
-			</div>
-			<div class="button">
-				<button action= "<%=request.getContextPath()%>/AccueilConnecter" type="submit" name="valider">Créer</button>
-			</div>
-
+			
+			
 		</form>
-		<div class="button">
-				<a href="<%=request.getContextPath()%>/AccueilNonConnecter"><button  name="annuler">Annuler</button></a>
-			</div>
+		
 
 	</div>
 
