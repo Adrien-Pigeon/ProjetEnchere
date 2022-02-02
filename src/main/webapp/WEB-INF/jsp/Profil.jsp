@@ -28,15 +28,15 @@
 				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
-				<label for="mail">Prenom:</label> 
-				<input type="email" id="mail"name="user_mail" required>
+				<label for="name">Prenom:</label> 
+				<input type="text" id="mail"name="user_mail" required>
 			</div>
 			
 		
 			
 			<div>
-				<label for="name">Email:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<label for="mail">Email:</label> 
+				<input type="email" id="name"name="user_name" required>
 			</div>
 			<div>
 				<label for="msg">Telephone:</label>
