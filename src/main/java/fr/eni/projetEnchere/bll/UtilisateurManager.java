@@ -33,7 +33,7 @@ public class UtilisateurManager {
 			throw new BllException("Probleme sur la methode addUser()");
 		}
 	}
-
+ 
 	public static void verifierUser(Utilisateur u) throws BllException {
 		boolean valide = true;
 		StringBuffer sb = new StringBuffer();
