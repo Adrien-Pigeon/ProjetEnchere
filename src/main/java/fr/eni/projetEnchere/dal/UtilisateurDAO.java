@@ -6,6 +6,7 @@ public interface UtilisateurDAO {
 	
 	public void insert(Utilisateur user);
 	public boolean selectByLogin(Utilisateur user);
+	boolean rechercher(Utilisateur user);
 
 }
  

@@ -53,9 +53,10 @@ h1{
 	  		
 	  		</div>
 		</div>
-		
+	</form>	
+	<form method="get" action="<%=request.getContextPath()%>/CreerCompte">	
 		<div>
-		<input type="button" value="Créer un compte">
+		<input type="submit" value="Créer un compte">
 		</div>
 	</form>
     <script>
