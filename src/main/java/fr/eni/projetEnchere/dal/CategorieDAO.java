@@ -9,8 +9,7 @@ import fr.eni.projetEnchere.bo.Categorie;
 public interface CategorieDAO {
 
 	public List<ArticleVendu> selectAll();	
-	public void insert(Categorie categorie);
-	void insert(ArticleVendu articles);
+	
 	
 	
 }
