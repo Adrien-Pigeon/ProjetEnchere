@@ -97,4 +97,10 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		return true;
 	}
 
+	@Override
+	public Utilisateur selectById(int noArticle) throws DalException {
+		
+		return null;
+	}
+
 }
