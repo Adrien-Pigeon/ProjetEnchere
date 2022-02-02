@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class mot_de_pass_oublie
  */
 @WebServlet("/MotDePasse")
-public class mot_de_pass_oublie extends HttpServlet {
+public class Mot_de_passe_oublie_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public mot_de_pass_oublie() {
+    public Mot_de_passe_oublie_servlet() {
         super();
         // TODO Auto-generated constructor stub
     }

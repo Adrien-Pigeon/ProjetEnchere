@@ -15,7 +15,7 @@ import fr.eni.projetEnchere.helpers.HashPassword;
  * Servlet implementation class CreerUnCompte
  */
 @WebServlet("/CreerCompte")
-public class CreerUnCompte extends HttpServlet {
+public class CreerUnCompteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**

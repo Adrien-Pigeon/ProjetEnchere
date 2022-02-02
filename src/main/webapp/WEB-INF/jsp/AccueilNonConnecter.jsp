@@ -8,7 +8,7 @@
 
 <div class="row">
 	<div class="col-lg-12 text-right">
-		<a href="<%=request.getContextPath()%>/login">S'inscrire - Se connecter</a>
+		<a href="<%=request.getContextPath()%>/login">S'inscrire-se Connecter</a>
 		
 	</div>
 </div>
@@ -19,7 +19,7 @@
 </div>
 
 
-<form action="<%= request.getContextPath()%>/AccueilConnecter" method="get">
+<form action="<%= request.getContextPath()%>/AccueilNonConnecter" method="get">
 <div class="row text-center">
 	<div class="col-lg-6 pad">
 	
