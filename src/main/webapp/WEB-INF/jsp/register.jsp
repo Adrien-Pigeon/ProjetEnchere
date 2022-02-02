@@ -1,47 +1,86 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="./css/style.css">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="Style.css">
+<title>A WEB PAGE</title>
 </head>
 <body>
-    <div class="form_wrapper">
-        <div class="form_container">
-          <div class="title_container">
-            <h2>Responsive Registration Form</h2>
-          </div>
-          <div class="row clearfix">
-            <div class="">
-              <form action="<%=request.getContextPath()%>/register" method="post" >
-                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                  <input type="text" name="username" placeholder="Username" required />
-          
-                </div>
-                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                  <input type="password" name="password" placeholder="Password" required />
-                </div>
-                <div class="row clearfix">
-                  <div class="col_half">
-                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                      <input type="text" name="prenom" placeholder="First Name" />
-                    </div>
-                  </div>
-                  <div class="col_half">
-                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                      <input type="text" name="nom" placeholder="Last Name" required />
-                    </div>
-                  </div>
-                </div>
+	<div>
+		<h1>ENI-Enchères</h1>
+	</div>
+	<div class="Titre">
+		<h2>Mon Profil</h2>
+	</div>
 
-                <input class="button" type="submit" value="Register" />
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+	<div class="Formulaire">
+		<form action="<%=request.getContextPath()%>/CreerCompte" method="post">
+			<div>
+				<label for="name">Pseud0:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			<div>
+				<label for="name">Nom:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			<div>
+				<label for="name">Prenom:</label> 
+				<input type="text" id="mail"name="user_mail" required>
+			</div>
+			
+		
+			
+			<div>
+				<label for="mail">Email:</label> 
+				<input type="email" id="name"name="user_name" required>
+			</div>
+			<div>
+				<label for="msg">Telephone:</label>
+				<input type="text" id="msg" name="user_message"  >
+			</div>
+			
+			<div>
+				<label for="name">Rue:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			<div>
+				<label for="name">Ville:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			<div>
+			
+				<label for="name">Code postal:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			
+			<div>
+				<label for="name">Mot de passe:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			<div>
+				<label for="name">Confirmation:</label> 
+				<input type="text" id="name"name="user_name"required>
+			</div>
+			<div class="button">
+				<button type="submit" name="valider">Créer</button>
+			</div>
+
+		</form>
+		<div class="button">
+				<a href="<%=request.getContextPath()%>/Encheres"><button  name="annuler">Annuler</button></a>
+			</div>
+
+	</div>
+
+
+	
+
+
+
+
 </body>
 </html>
