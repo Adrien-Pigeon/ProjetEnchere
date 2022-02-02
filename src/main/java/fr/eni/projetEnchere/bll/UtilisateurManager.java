@@ -81,25 +81,14 @@ public class UtilisateurManager {
 		}
 
 	}
-<<<<<<< HEAD
 
-	public boolean login(Utilisateur user) throws BllException {
-=======
+
 	
 	public Utilisateur login(Utilisateur user) throws BllException, DalException {
->>>>>>> branch 'main' of https://github.com/OnlyDukeTV/ProjetEnchere.git
+
 		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
-<<<<<<< HEAD
-		boolean OK = false;
-		try {
-			OK = ud.selectByLogin(user);
-		} catch (DalException e) {
-			throw new BllException("Probleme sur la methode logins()");
-		}
-		return OK;
-=======
 		return ud.selectByLogin(user);
->>>>>>> branch 'main' of https://github.com/OnlyDukeTV/ProjetEnchere.git
+
 	}
 
 }

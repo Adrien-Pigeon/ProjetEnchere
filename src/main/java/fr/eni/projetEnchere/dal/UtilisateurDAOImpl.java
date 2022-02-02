@@ -21,7 +21,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	Utilisateur user = null;
 
 	/**
-	 * Methode permettant d'ajouter un utilisateur à la base de donnée
+	 * Methode permettant d'ajouter un utilisateur ï¿½ la base de donnï¿½e
 	 */
 	@Override
 	public void insert(Utilisateur user) throws DalException {
@@ -52,7 +52,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				stmt.close();
 				cnx.close();
 			} catch (SQLException e) {
-				throw new DalException("Probleme de déconnexion", e);
+				throw new DalException("Probleme de dï¿½connexion", e);
 			}
 		}
 	}
@@ -91,7 +91,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				stmt.close();
 				cnx.close();
 			} catch (SQLException e) {
-				throw new DalException("Probleme de déconnexion", e);
+				throw new DalException("Probleme de dï¿½connexion", e);
 			}
 		}
 		return u;
@@ -128,14 +128,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				stmt.close();
 				cnx.close();
 			} catch (SQLException e) {
-				throw new DalException("Probleme de déconnexion", e);
+				throw new DalException("Probleme de dï¿½connexion", e);
 			}
 		}
-<<<<<<< HEAD
-		return true;
-=======
 		return user;
->>>>>>> branch 'main' of https://github.com/OnlyDukeTV/ProjetEnchere.git
+
 	}
 
 }

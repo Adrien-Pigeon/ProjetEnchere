@@ -21,52 +21,52 @@
 		<form action="<%=request.getContextPath()%>/CreerCompte" method="post">
 			<div>
 				<label for="name">Pseudo:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="pseudo" required>
 			</div>
 			<div>
 				<label for="name">Nom:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="nom" required>
 			</div>
 			<div>
 				<label for="name">Prenom:</label> 
-				<input type="text" id="mail"name="user_mail" required>
+				<input type="text" id="mail"name="prenom" required>
 			</div>
 			
 		
 			
 			<div>
 				<label for="mail">Email:</label> 
-				<input type="email" id="name"name="user_name" required>
+				<input type="email" id="name"name="email" required>
 			</div>
 			<div>
 				<label for="msg">Telephone:</label>
-				<input type="text" id="msg" name="user_message"  >
+				<input type="text" id="msg" name="telephone"  >
 			</div>
 			
 			<div>
 				<label for="name">Rue:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="rue" required>
 			</div>
 			<div>
 				<label for="name">Ville:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="ville" required>
 			</div>
 			<div>
 			
 				<label for="name">Code postal:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="codePostal" required>
 			</div>
 			
 			<div>
 				<label for="name">Mot de passe:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="password" required>
 			</div>
 			<div>
 				<label for="name">Confirmation:</label> 
-				<input type="text" id="name"name="user_name"required>
+				<input type="text" id="name"name="password_conf"required>
 			</div>
 			<div class="button">
-				<input type="submit" name="valider">Créer>
+				<button type="submit" name="valider">Créer</button>
 			</div>
 
 		</form>
