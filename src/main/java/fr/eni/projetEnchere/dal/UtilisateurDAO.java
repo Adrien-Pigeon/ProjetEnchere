@@ -7,7 +7,7 @@ public interface UtilisateurDAO {
 	
 	public void insert(Utilisateur user) throws DalException;
 	public boolean selectByLogin(Utilisateur user) throws DalException;
-	boolean rechercher(Utilisateur user) throws DalException;
+	
 
 }
  
