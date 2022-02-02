@@ -13,13 +13,17 @@
 
     <body>
         <div>Mot de passe oublié</div>
-        <form method="post">
+        
+        <form method="get" action="<%=request.getContextPath()%>/login">	
+        
+		<div>
+		 <input type="email" placeholder="Adresse mail" name="mail" value="" >
 
+            <button type="submit" name="oublie">Envoyer</button>           
+          
            
-
-            <input type="email" placeholder="Adresse mail" name="mail" value="" required>
-
-            <button type="submit" name="oublie">Envoyer</button>
-        </form>
+		<input type="submit" value="Annuler">
+		</div>
+	</form>
     </body>
 </html>
