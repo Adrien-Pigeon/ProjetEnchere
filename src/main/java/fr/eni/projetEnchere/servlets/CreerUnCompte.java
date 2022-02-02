@@ -18,6 +18,7 @@ public class CreerUnCompte extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Profil.jsp").forward(request, response);
 	}
 
