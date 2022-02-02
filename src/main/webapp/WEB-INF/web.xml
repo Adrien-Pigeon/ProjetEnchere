@@ -3,7 +3,7 @@
   <display-name>ProjetEnchere</display-name>
   <servlet>
     <servlet-name>Encheres</servlet-name>
-    <jsp-file>/WEB-INF/jsp/Accueil.jsp</jsp-file>
+    <jsp-file>/WEB-INF/jsp/AccueilNonConnecter.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Encheres</servlet-name>

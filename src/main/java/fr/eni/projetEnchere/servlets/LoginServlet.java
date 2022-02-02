@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", um);
 
-			response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/Accueil.jsp");
+			response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/AccueilConnecter.jsp");
 		} else {
 			request.setAttribute("error", "azerty");
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
