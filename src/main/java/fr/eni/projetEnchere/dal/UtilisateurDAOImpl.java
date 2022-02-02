@@ -83,6 +83,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				user.setAdministrateur(result.getBoolean("prenom"));
 
 			}
+			
 		} catch (SQLException e) {
 			throw new DalException("Probleme sur la couche Dal", e);
 		} finally {
