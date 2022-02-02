@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projetEnchere.bll.UtilisateurManager;
+import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.helpers.HashPassword;
 
 /**
@@ -32,11 +33,21 @@ public class CreerUnCompte extends HttpServlet {
 		String prenom=request.getParameter("prenom");
 		String nom=request.getParameter("nom");
 		String password=HashPassword.hashpassword(request.getParameter("password"));
+		String email = request.getParameter("email");
+		String ville = request.getParameter("ville");
+		String rue = request.getParameter("rue");
+		String codePostal = request.getParameter("codePostal");
+		String telephone = request.getParameter("telephone");
+		Boolean administrateur = false;
+		int credit = 150;
+		
+		Utilisateur utilisateur = new Utilisateur(username,nom,prenom,email,telephone, rue ,codePostal,ville,password,
+				credit,administrateur);
 		
 		
 		
 		UtilisateurManager um = UtilisateurManager.getInstance();
-		um.addUser(prenom, nom, username, password);
+		um.addUser(utilisateur);
 		response.sendRedirect(request.getContextPath()+"/login");
 	}
 

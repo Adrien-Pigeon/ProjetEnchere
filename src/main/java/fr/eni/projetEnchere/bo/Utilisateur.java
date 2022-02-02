@@ -3,56 +3,78 @@ package fr.eni.projetEnchere.bo;
 import java.util.List;
 
 public class Utilisateur {
-	
+
 	// Attributs privé
-	
+
 	private int noUtilisateur;
-	private String nom,prenom,email,telephone,rue,codePostal,ville,motDePasse;
+	private String nom, prenom, email, telephone, rue, codePostal, ville, motDePasse;
 	private int credit;
 	private boolean administrateur;
-	
+
 	// List
 	private List<Enchere> encheres;
 	private List<ArticleVendu> achete;
 	private List<ArticleVendu> vend;
-	
-	private String username;
-	
-	
-	//Constructeur par defaut
+
+	private String pseudo;
+
+	// Constructeur par defaut
 	public Utilisateur() {
-	
+
 	}
-	//Constructeur Surchargï¿½ de Utilisateur
-	public Utilisateur(String nom , String prenom , String username,String password ) {
-	
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = username;
-		this.motDePasse=password;
+
+
+	// Constructeur Surchargï¿½ de Utilisateur
+	public Utilisateur(String Pseudo,String nom, String prenom, String email, String telephone, String rue, String codePostal,
+			String ville, String motDePasse, int credit, boolean administrateur) {
+		super();
+		this.setPseudo(Pseudo);
+		this.setNom(nom);
+		this.setPrenom(prenom);
+		this.setEmail(email);
+		this.setTelephone(telephone);
+		this.setRue(rue);
+		this.setCodePostal(codePostal);
+		this.setVille(ville);
+		this.setMotDePasse(motDePasse);
+		this.setCredit(credit);
+		this.setAdministrateur(administrateur);
 	}
-	//Constructeur Surchargï¿½ de Utilisateur
-	public Utilisateur(int noUtilisateur, String nom, String prenom, String email, String telephone, String rue,
+
+	// Constructeur Surchargï¿½ de Utilisateur
+	public Utilisateur(int noUtilisateur,String Pseudo, String nom, String prenom, String email, String telephone, String rue,
 			String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 		super();
-		this.noUtilisateur = noUtilisateur;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.motDePasse = motDePasse;
-		this.credit = credit;
-		this.administrateur = administrateur;
+		this.setNom(nom);
+		this.setPseudo(Pseudo);
+		this.setNoUtilisateur(noUtilisateur);
+		this.setPrenom(prenom);
+		this.setEmail(email);
+		this.setTelephone(telephone);
+		this.setRue(rue);
+		this.setCodePostal(codePostal);
+		this.setVille(ville);
+		this.setMotDePasse(motDePasse);
+		this.setCredit(credit);
+		this.setAdministrateur(administrateur);
 	}
 
 	// Accesseurs et Mutateurs
-	
+
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
+
+	
+	public String getPseudo() {
+		return pseudo;
+	}
+
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+
 
 	public void setNoUtilisateur(int noUtilisateur) {
 		this.noUtilisateur = noUtilisateur;
@@ -117,10 +139,8 @@ public class Utilisateur {
 	public String getMotDePasse() {
 		return motDePasse;
 	}
-	public String getUsername() {
-		return username;
-	}
 
+	
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
@@ -140,29 +160,34 @@ public class Utilisateur {
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
 	}
-	
+
 	public List<Enchere> getEncheres() {
 		return encheres;
 	}
+
 	public void setEncheres(List<Enchere> encheres) {
 		this.encheres = encheres;
 	}
+
 	public List<ArticleVendu> getAchete() {
 		return achete;
 	}
+
 	public void setAchete(List<ArticleVendu> achete) {
 		this.achete = achete;
 	}
+
 	public List<ArticleVendu> getVend() {
 		return vend;
 	}
+
 	public void setVend(List<ArticleVendu> vend) {
 		this.vend = vend;
 	}
+
 	public String getPassword() {
 		// TODO Auto-generated method stub
 		return getMotDePasse();
 	}
 
-	
 }
