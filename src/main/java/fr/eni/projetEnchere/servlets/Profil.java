@@ -17,7 +17,7 @@ import fr.eni.projetEnchere.bo.Utilisateur;
 	 * Servlet implementation class MyAccountServlet
 	 */
 	@WebServlet("/mon-compte")
-	public class MyAccountServlet extends HttpServlet {
+	public class Profil extends HttpServlet {
 		private static final long serialVersionUID = 1L;
 
 		/**

@@ -68,11 +68,10 @@
 				<button type="submit" name="valider">Créer</button>
 			</div>
 
-			<div class="button">
-				<button type="submit" name="annuler">Annuler</button>
-			</div>
-
 		</form>
+		<div class="button">
+				<a href="<%=request.getContextPath()%>/Encheres"><button  name="annuler">Annuler</button></a>
+			</div>
 
 	</div>
 
