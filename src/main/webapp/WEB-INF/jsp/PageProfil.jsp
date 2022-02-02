@@ -21,7 +21,7 @@
 	<div class="Formulaire">
 		<form action="<%=request.getContextPath()%>/modifierProfil" method="post">
 			<div>
-				<label for="name">Pseud0:</label> 
+				<label for="name">Pseudo:</label> 
 				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
