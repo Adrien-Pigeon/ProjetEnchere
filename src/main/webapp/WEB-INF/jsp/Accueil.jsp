@@ -8,7 +8,7 @@
 
 <div class="row">
 	<div class="col-lg-12 text-right">
-		<a href="<%=request.getContextPath()%>/LoginServlet">S'inscrire-se Connecter</a>
+		<a href="<%=request.getContextPath()%>/login">S'inscrire-se Connecter</a>
 		
 	</div>
 </div>
