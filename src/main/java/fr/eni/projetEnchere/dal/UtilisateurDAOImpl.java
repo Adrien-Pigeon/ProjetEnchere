@@ -131,7 +131,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				throw new DalException("Probleme de déconnexion", e);
 			}
 		}
+<<<<<<< HEAD
+		return true;
+=======
 		return user;
+>>>>>>> branch 'main' of https://github.com/OnlyDukeTV/ProjetEnchere.git
 	}
 
 }

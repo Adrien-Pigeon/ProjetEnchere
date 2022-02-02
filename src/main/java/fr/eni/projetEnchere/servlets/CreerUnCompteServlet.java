@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projetEnchere.bll.UtilisateurManager;
-import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.helpers.HashPassword;
 
@@ -33,7 +32,8 @@ public class CreerUnCompteServlet extends HttpServlet {
 		String username=request.getParameter("username");
 		String prenom=request.getParameter("prenom");
 		String nom=request.getParameter("nom");
-		String password=HashPassword.hashpassword(request.getParameter("password"));
+		//String password=HashPassword.hashpassword(request.getParameter("password"));
+		String password=  request.getParameter("password");
 		String email = request.getParameter("email");
 		String ville = request.getParameter("ville");
 		String rue = request.getParameter("rue");
@@ -48,12 +48,7 @@ public class CreerUnCompteServlet extends HttpServlet {
 		
 		
 		UtilisateurManager um = UtilisateurManager.getInstance();
-		try {
-			um.addUser(utilisateur);
-		} catch (BllException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		um.addUser(utilisateur);
 		response.sendRedirect(request.getContextPath()+"/login");
 	}
 

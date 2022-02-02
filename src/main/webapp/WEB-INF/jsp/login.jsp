@@ -46,18 +46,27 @@ h1{
 			
 		
 		<div class="row">
-		<input name = "connexion" type="submit" value="Connexion">
+		<form method="get" action="<%=request.getContextPath()%>/AccueilConnecter">	
+		<div>
+		<input type="submit" value="Connexion">
+		</div>
+	</form>
+		
 			<div class="row">
 			<a href="<%=request.getContextPath() %>/MotDePasse">Mot de passe oublié</a>
 			<input type="checkbox" id="scales" name="scales">
 	  		<label for="scales">Se souvenir de moi</label>	
 	  		
-	  		</div>
+	  	</div>	
 		</div>
 	</form>	
 	<form method="get" action="<%=request.getContextPath()%>/CreerCompte">	
 		<div>
+<<<<<<< HEAD
+		<input type="submit" value="Creer un compte">
+=======
 		<input type="submit" value="Créer un compte">
+>>>>>>> branch 'main' of https://github.com/OnlyDukeTV/ProjetEnchere.git
 		</div>
 	</form>
     <script>

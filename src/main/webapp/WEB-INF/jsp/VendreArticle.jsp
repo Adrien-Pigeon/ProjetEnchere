@@ -9,18 +9,21 @@
 <body>
 	<h1>NOUVELLE VENTE</h1>
 	
-	<img alt="" src="">
+	<img alt="logo" src="webapp/img/logo.jpg">
 	
 	<div class="Formulaire">
 		<form action="<%=request.getContextPath()%>/VendArticle" method="post">
+		
 			<div>
 				<label for="name">Article:</label> 
 				<input type="text" id="name"name="user_name" required>
 			</div>
+			
 			<div>
 				<label for="name">Description:</label> 
 				<input type="text" id="name"name="user_name" required>
 			</div>
+			
 			<div>
 				<label for="name">Categorie:</label> 
 				<input type="text" id="mail"name="user_mail" required>
@@ -32,6 +35,7 @@
 				<label for="mail">Photo de l'article</label> 
 				<input type="email" id="name"name="user_name" required>
 			</div>
+			
 			<div>
 				<label for="msg">Mise à prix:</label>
 				<input type="text" id="msg" name="user_message"  >
@@ -41,16 +45,37 @@
 				<label for="name">Début de l'enchère:</label> 
 				<input type="text" id="name"name="user_name" required>
 			</div>
+			
 			<div>
 				<label for="name">Fin de l'enchère:</label> 
 				<input type="text" id="name"name="user_name" required>
 			</div>
 			
+			<div>
+				<label for="name">Rue:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			
+			<div>
+				<label for="name">Code postal:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			
+			<div>
+				<label for="name">Ville:</label> 
+				<input type="text" id="name"name="user_name" required>
+			</div>
+			
+		</form>
+		
+		
+		
+		
 			<div class="button">
 				<button type="submit" name="enregistrer">Enregistrer</button>
 			</div>
 
-		</form>
+		
 		<div class="button">
 				<a href="<%=request.getContextPath()%>/AccueilConnecter"><button  name="annuler">Annuler</button></a>
 			</div>

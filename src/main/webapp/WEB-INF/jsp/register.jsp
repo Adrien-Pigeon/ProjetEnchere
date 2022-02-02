@@ -20,7 +20,7 @@
 	<div class="Formulaire">
 		<form action="<%=request.getContextPath()%>/CreerCompte" method="post">
 			<div>
-				<label for="name">Pseud0:</label> 
+				<label for="name">Pseudo:</label> 
 				<input type="text" id="name"name="user_name" required>
 			</div>
 			<div>
@@ -66,7 +66,7 @@
 				<input type="text" id="name"name="user_name"required>
 			</div>
 			<div class="button">
-				<button action= "<%=request.getContextPath()%>/AccueilConnecter" type="submit" name="valider">Créer</button>
+				<input type="submit" name="valider">Créer>
 			</div>
 
 		</form>
