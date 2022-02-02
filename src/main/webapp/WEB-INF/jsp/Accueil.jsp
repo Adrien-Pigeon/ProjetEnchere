@@ -8,8 +8,8 @@
 
 <div class="row">
 	<div class="col-lg-12 text-right">
-		<a href="<%=request.getContextPath()%>/CreerUnCompte">S'inscrire
-			- </a> <a href="<%=request.getContextPath()%>/LoginServlet">Se connecter</a>
+		<a href="<%=request.getContextPath()%>/LoginServlet">S'inscrire-se Connecter</a>
+		
 	</div>
 </div>
 <div class="row">
