@@ -22,7 +22,8 @@ public class UtilisateurManager {
 			instance = new UtilisateurManager();
 		}
 		return instance;
-	}		
+	}
+	
 	
 	public void addUser(Utilisateur user) throws BllException {
 		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
