@@ -50,7 +50,7 @@ public class PageProfilServlet extends HttpServlet {
 		boolean btnOn = false;
 		// recupération du pseudo envoyé par la jsp
 		String pseudo = request.getParameter("pseudo");
-		// chargement du profil demandé dans la requete
+		// chargement du profil demandé dans la requete 
 		try {
 			Utilisateur utilisateur = UtilisateurDAO.selectByPseudo(pseudo);
 			request.setAttribute("utilisateur", utilisateur);
