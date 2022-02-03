@@ -53,7 +53,7 @@ h1 {
                             <select id="inputState" class="form-control">
                                 <option selected>Toutes</option>
                                 <option>Ameublement</option>
-                                <option>Sport</option>
+                                <option>Sport&loisir</option>
                                 <option>Informatique</option>
                                 <option>Vêtement</option>
                             </select>
