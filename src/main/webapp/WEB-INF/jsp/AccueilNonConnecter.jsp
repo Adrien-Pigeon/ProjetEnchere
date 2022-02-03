@@ -15,7 +15,7 @@
 </div>
 
 
-<form action="<%= request.getContextPath()%>/AccueilConnecter" method="get">
+<form action="<%= request.getContextPath()%>/AccueilNonConnecter" method="get">
 <div >
 	<div >
 	 
