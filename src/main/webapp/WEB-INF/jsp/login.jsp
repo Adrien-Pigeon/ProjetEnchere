@@ -32,13 +32,12 @@ h1 {
 
 
 		<div class="row">
-			<span>username</span> <input type="text" name="pseudo"
-				placeholder="username">
+			<span>username</span> <input type="text" name="login">
 		</div>
 
 		<div class="row">
 			<span>password</span> <input type="password" name="password"
-				class="senha" placeholder="123456">
+				class="senha" >
 		</div>
 
 
