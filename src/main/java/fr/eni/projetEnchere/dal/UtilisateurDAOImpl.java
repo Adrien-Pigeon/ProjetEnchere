@@ -144,4 +144,22 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	}
 
+	@Override
+	public Utilisateur selectByPseudo(String Pseudo) throws DalException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Utilisateur user) throws DalException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Utilisateur user) throws DalException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

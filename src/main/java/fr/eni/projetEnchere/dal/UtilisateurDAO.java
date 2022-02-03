@@ -8,6 +8,9 @@ public interface UtilisateurDAO {
 	public void insert(Utilisateur user) throws DalException;
 	public Utilisateur selectByLogin(Utilisateur user) throws DalException;
 	public Utilisateur selectById(int noArticle) throws DalException;
+	public Utilisateur selectByPseudo(String Pseudo) throws DalException;
+	public void delete(Utilisateur user) throws DalException;
+	public void update(Utilisateur user) throws DalException;
 
 	
 
