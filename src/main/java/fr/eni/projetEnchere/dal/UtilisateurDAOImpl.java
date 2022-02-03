@@ -25,9 +25,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	 */
 	@Override
 	public void insert(Utilisateur user) throws DalException {
+		Connection cnx = null;
+		PreparedStatement stmt=null;
 		try {
-			Connection cnx = ConnectionProvider.getConnection();
-			PreparedStatement stmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
+			cnx = ConnectionProvider.getConnection();
+			stmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, user.getPrenom());
 			stmt.setString(2, user.getNom());
 			stmt.setString(3, user.getPseudo());
