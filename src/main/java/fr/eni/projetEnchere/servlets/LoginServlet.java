@@ -54,9 +54,6 @@ public class LoginServlet extends HttpServlet {
 			} catch (DalException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (BllException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}		
 		
 		if (user!=null) {

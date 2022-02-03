@@ -18,7 +18,7 @@
 </div>
 
 
-<form action="<%= request.getContextPath()%>/AccueilConnecter" method="get">
+<form action="<%= request.getContextPath()%>/AccueilConnecter" method="post">
 <div >
 	<div >
 	 
