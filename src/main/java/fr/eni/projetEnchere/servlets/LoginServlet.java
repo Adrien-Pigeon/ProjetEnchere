@@ -39,33 +39,37 @@ public class LoginServlet extends HttpServlet {
 //		if (request.getParameter("login").equalsIgnoreCase("1")) {
 //			doGet(request, response);
 //		}
-		String username =  request.getParameter("pseudo");
+		
+		//Récuperation des parametres du formulaire
+		String username =  request.getParameter("login");
 		String password =  request.getParameter("password");
 		
+		//j'instancie un objet de type Utilisateur et j'hydrate les attributs
+		//login et pwd
 		Utilisateur user= new Utilisateur();
 		
-		user.setPseudo(username);
-		user.setMotDePasse(HashPassword.hashpassword(password));
 		
+		user.setPseudo(username);
+		user.setMotDePasse(password);
+		
+		//j'instancie un objet de type EleveManager s'il existe
 		UtilisateurManager um = UtilisateurManager.getInstance();
 				
-			try {
-				user = um.login(user);
-			} catch (DalException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (BllException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}		
-		
+		try {
+			
+			user = um.login(user);
+		} catch (DalException e) {
+			// TODO a modifier
+			e.printStackTrace();
+		}		
+		System.out.println(user);
+
 		if (user!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
 			request.getRequestDispatcher("/WEB-INF/jsp/AccueilConnecter.jsp").forward(request, response);
 			
-			System.out.println("Connecter");
 			
 		}else {
 			

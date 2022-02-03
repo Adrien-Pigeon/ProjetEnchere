@@ -1,5 +1,6 @@
 package fr.eni.projetEnchere.bll;
 
+
 import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.DAOFactory;
@@ -90,11 +91,12 @@ public class UtilisateurManager {
 
 
 	
-	public Utilisateur login(Utilisateur user) throws BllException, DalException {
-
+	public Utilisateur login(Utilisateur user) throws DalException {
+		
 		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
+		
 		return ud.selectByLogin(user);
-
 	}
+	
 
 }
