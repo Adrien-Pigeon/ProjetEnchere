@@ -25,8 +25,9 @@ h1 {
 </head>
 <body>
 	<h1>ENI-Enchères</h1>
-	<form method="post" action="<%=request.getContextPath()%>/AccueilConnecter">
+	
 
+	<form action="<%=request.getContextPath()%>/Login" method="post">
 
 
 
