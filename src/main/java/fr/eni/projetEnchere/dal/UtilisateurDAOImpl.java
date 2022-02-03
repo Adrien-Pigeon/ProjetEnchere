@@ -13,7 +13,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	private final static String INSERT_USER = "INSERT INTO dbo.UTILISATEURS (prenom,nom,pseudo,email,mot_de_passe,telephone,"
 			+ "ville,rue,code_postal,credit,administrateur) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?  AND mot_de_passe = ?";
+	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ? OR email = ?  AND mot_de_passe = ?";
 	private final static String SELET_BY_ID = "SELECT * FROM dbo.UTILISATEURS WHERE no_article = ?;";
 	private final static String UPDATE_USER = "UPDATE UTILISATEURS SET prenom =?,nom=?,email=?,mot_de_passe=?,telephone=?,"
 			+ "ville=?,rue=?,code_postal=?,credit=? WHERE pseudo = ? and mot_de_passe= ?;";
@@ -81,7 +81,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(SELECT_LOGIN);
 			stmt.setString(1, user.getPseudo());
-			stmt.setString(2, user.getPassword());
+			stmt.setString(2, user.getEmail());
+			stmt.setString(3, user.getPassword());
 
 			ResultSet result = stmt.executeQuery();
 			if (result.next()) {
@@ -90,6 +91,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				u.setNom(result.getString("nom"));
 				u.setPrenom(result.getString("prenom"));
 				u.setPseudo(result.getString("pseudo"));
+				u.setEmail(result.getString("email"));
 				u.setMotDePasse(null);
 				
 

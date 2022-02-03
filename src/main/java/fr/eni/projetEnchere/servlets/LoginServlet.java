@@ -48,8 +48,11 @@ public class LoginServlet extends HttpServlet {
 		//login et pwd
 		Utilisateur user= new Utilisateur();
 		
-		
+		if(username.contains("@")) {
+			user.setEmail(username);
+		}else {
 		user.setPseudo(username);
+		}
 		user.setMotDePasse(password);
 		
 		//j'instancie un objet de type EleveManager s'il existe
