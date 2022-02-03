@@ -23,6 +23,7 @@ public class UtilisateurManager {
 
 	public void addUser(Utilisateur user) throws BllException {
 		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
+		
 
 		try {
 //verifier l'objet utilisateur
