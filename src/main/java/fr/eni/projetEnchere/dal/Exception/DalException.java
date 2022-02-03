@@ -13,6 +13,9 @@ public class DalException extends Exception {
 	public DalException(String message) {
 		super(message);
 	}
+	public DalException() {
+		
+	}
 	@Override
 	public String getMessage() {
 		return "couche DAL " + super.getMessage() ;
