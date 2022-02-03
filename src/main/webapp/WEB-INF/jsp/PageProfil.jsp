@@ -58,14 +58,15 @@
 					
 					Utilisateur utilisateur = (Utilisateur) request.getAttribute("utilisateur");
 				%> 
-				<p><strong><%=utilisateur.getPseudo()%></strong></p>
-				<p><%=utilisateur.getNom()%></p>
-				<p><%=utilisateur.getPrenom()%></p>
-				<p><%=utilisateur.getEmail()%></p>
-				<p><%=utilisateur.getTelephone()%></p>
-				<p><%=utilisateur.getRue()%></p>
-				<p><%=utilisateur.getCodePostal()%></p>
-				<p><%=utilisateur.getVille()%></p>
+				<p><strong>${utilisateur.pseudo }</strong></p>
+				<p>${utilisateur.nom }</p>
+				<p>${utilisateur.prenom }</p>
+				
+				<p>${utilisateur.email }</p>
+				<p>${utilisateur.telephone }</p>
+				<p>${utilisateur.rue }</p>
+				<p>${utilisateur.codePostal }</p>
+				<p>${utilisateur.ville }</p>
 			</div>
 			
 			<%

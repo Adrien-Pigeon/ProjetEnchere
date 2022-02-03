@@ -92,7 +92,12 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				u.setPrenom(result.getString("prenom"));
 				u.setPseudo(result.getString("pseudo"));
 				u.setEmail(result.getString("email"));
+				u.setVille(result.getString("ville"));
+				u.setTelephone(result.getString("telephone"));
+				u.setCodePostal(result.getString("code_postal"));
+				u.setRue(result.getString("rue"));
 				u.setMotDePasse(null);
+				
 
 			}
 
