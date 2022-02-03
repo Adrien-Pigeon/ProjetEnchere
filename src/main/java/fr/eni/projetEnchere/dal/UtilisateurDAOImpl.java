@@ -96,6 +96,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				u.setTelephone(result.getString("telephone"));
 				u.setCodePostal(result.getString("code_postal"));
 				u.setRue(result.getString("rue"));
+				u.setCredit(result.getInt("credit"));
 				u.setMotDePasse(null);
 				
 
