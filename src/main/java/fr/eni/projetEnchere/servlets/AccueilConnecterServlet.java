@@ -43,7 +43,7 @@ public class AccueilConnecterServlet extends HttpServlet {
 			// Recupere la session
 			HttpSession session = request.getSession(); 
 			session.invalidate();
-			System.out.println("invalide la session");
+			System.out.println("invalided  session");
 			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 		}
 	}
