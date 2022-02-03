@@ -25,7 +25,7 @@ h1 {
 </head>
 <body>
 	<h1>ENI-Enchères</h1>
-	<form action="<%=request.getContextPath()%>/login" method="post">
+	<form align="center"  action="<%=request.getContextPath()%>/login" method="post">
 
 
 
@@ -58,7 +58,7 @@ h1 {
 			</div>
 		</div>
 	</form>
-	<form method="get" action="<%=request.getContextPath()%>/CreerCompte">
+	<form align="center" method="get" action="<%=request.getContextPath()%>/CreerCompte">
 		<div>
 
 			<input type="submit" value="Creer un compte">
@@ -68,7 +68,7 @@ h1 {
 		</div>
 	</form>
 	<script>
-        const senha = document.querySelector('.senha');
+    const senha = document.querySelector('.senha');
 	const btn = document.querySelector('.btn');
 
 	btn.onclick = () =>
