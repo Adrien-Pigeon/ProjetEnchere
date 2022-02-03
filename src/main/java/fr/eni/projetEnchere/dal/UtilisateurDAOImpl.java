@@ -15,8 +15,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			+ "ville,rue,code_postal,credit,administrateur) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?  AND mot_de_passe = ?";
 	private final static String SELET_BY_ID = "SELECT * FROM dbo.UTILISATEURS WHERE no_article = ?;";
-	private final static String UPDATE_USER = "UPDATE UTILISATEURS SET prenom =?,nom=?,pseudo=?,email=?,mot_de_passe=?,telephone=?,"
-			+ "ville=?,rue=?,code_postal=?,credit=?,administrateur=? WHERE pseudo = ? and mot_de_passe= ?;";
+	private final static String UPDATE_USER = "UPDATE UTILISATEURS SET prenom =?,nom=?,email=?,mot_de_passe=?,telephone=?,"
+			+ "ville=?,rue=?,code_postal=?,credit=? WHERE pseudo = ? and mot_de_passe= ?;";
 
 	Connection cnx = null;
 	PreparedStatement stmt = null;
@@ -169,14 +169,29 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		try {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(UPDATE_USER);
-			stmt.setString(1, user.getPseudo());
-			stmt.setString(2, user.getPassword());
+			stmt.setString(1, user.getPrenom());
+			stmt.setString(2, user.getNom());
+			stmt.setString(3, user.getEmail());
+			stmt.setString(4, user.getPassword());
+			stmt.setString(5, user.getTelephone());
+			stmt.setString(6, user.getVille());
+			stmt.setString(7, user.getRue());
+			stmt.setString(8, user.getCodePostal());
+			stmt.setInt(9, user.getCredit());
+			stmt.setString(10, user.getPseudo());
+			stmt.setString(11, user.getPassword());
 			stmt.executeUpdate();
-			ResultSet rs = stmt.executeQuery();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		}catch (SQLException e) {
 			e.printStackTrace();
+			//throw new DalException("Probleme sur la couche Dal", e);
+		} finally {
+			try {
+				stmt.close();
+				cnx.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				//throw new DalException("Probleme de d�connexion", e);
+			}
 		}
 		
 	}
