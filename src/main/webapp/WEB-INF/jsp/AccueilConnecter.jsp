@@ -50,12 +50,15 @@ h1 {
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Catégorie :</label>
                         <div class="col-sm-10">
-                            <select id="inputState" class="form-control">
-                                <option selected>Toutes</option>
-                                <option>Ameublement</option>
-                                <option>Sport&loisir</option>
-                                <option>Informatique</option>
-                                <option>Vêtement</option>
+                        <jsp:useBean id="list" class="fr.eni.projetEnchere.bo.Categorie" scope="page"/>
+                            <select name="categorie">
+                            	<c:foreach var="categorie" items="${categories}">
+                                	<option>Toutes{categorie}</option>
+                               	 	<option value="${categorie.libelle}"><c:out value="${categorie.Ameublement}"/>Ameublement</option>
+                                	<option value="${categorie.libelle}"><c:out value="${categorie.Sport&Loisir}"/></option>
+                                	<option>Informatique</option>
+                                	<option>Vêtement</option>
+                                </c:foreach>
                             </select>
                         </div>
                     </div>

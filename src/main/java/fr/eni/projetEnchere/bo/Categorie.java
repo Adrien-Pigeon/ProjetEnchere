@@ -1,5 +1,6 @@
 package fr.eni.projetEnchere.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Categorie {
@@ -39,6 +40,14 @@ public class Categorie {
 
 	public void ajouterArticle(ArticleVendu articles) {
 		this.articles.add(articles);
+	}
+
+	public List<Categorie> lister() {
+		 List<Categorie> liste_categorie = new ArrayList<Categorie>();
+//		 liste_categorie.add("Toutes");
+//		 liste_categorie.add("Ameublement");
+//		 liste_categorie.add("Sport&Loisir");
+	        return liste_categorie;
 	}
 	
 	
