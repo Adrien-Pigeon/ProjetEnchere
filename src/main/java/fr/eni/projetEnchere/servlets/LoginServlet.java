@@ -48,24 +48,26 @@ public class LoginServlet extends HttpServlet {
 		user.setMotDePasse(HashPassword.hashpassword(password));
 		
 		UtilisateurManager um = UtilisateurManager.getInstance();
-		
-		
+				
 			try {
 				user=um.login(user);
-			} catch (BllException | DalException e) {
+			} catch (DalException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-		
+			}		
 		
 		if (user!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
 			request.getRequestDispatcher("/WEB-INF/jsp/AccueilConnecter.jsp").forward(request, response);
+			
 			System.out.println("Connecter");
+			
 		}else {
+			
 			System.out.println("Pas Connecter");
+			
 			request.setAttribute("error", "azerty");
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 			// request.getRequestDispatcher("/login?get=1").forward(request, response);

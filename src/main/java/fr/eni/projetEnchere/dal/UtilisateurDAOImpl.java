@@ -92,15 +92,17 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				
 
 			}
-
+			
 		} catch (SQLException e) {
-			throw new DalException("Probleme sur la couche Dal", e);
+			e.printStackTrace();
+			//throw new DalException("Probleme sur la couche Dal", e);
 		} finally {
 			try {
 				stmt.close();
 				cnx.close();
 			} catch (SQLException e) {
-				throw new DalException("Probleme de d�connexion", e);
+				e.printStackTrace();
+				//throw new DalException("Probleme de d�connexion", e);
 			}
 		}
 		return u;
