@@ -17,20 +17,20 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private final static String SELET_BY_ID = "SELECT * FROM dbo.UTILISATEURS WHERE no_article = ?;";
 	private final static String UPDATE_USER = "UPDATE UTILISATEURS SET prenom =?,nom=?,email=?,mot_de_passe=?,telephone=?,"
 			+ "ville=?,rue=?,code_postal=?,credit=? WHERE pseudo = ? and mot_de_passe= ?;";
+	private static final String SELECT_BY_PSEUDO = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?;";
 
 	Connection cnx = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	Utilisateur user = null;
-	
-	
+
 	/**
 	 * Methode permettant d'ajouter un utilisateur � la base de donn�e
 	 */
 	@Override
 	public void insert(Utilisateur user) throws DalException {
 		Connection cnx = null;
-		PreparedStatement stmt=null;
+		PreparedStatement stmt = null;
 		try {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(INSERT_USER, Statement.RETURN_GENERATED_KEYS);
@@ -44,9 +44,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			stmt.setString(8, user.getRue());
 			stmt.setString(9, user.getCodePostal());
 			stmt.setInt(10, user.getCredit());
-			if(user.isAdministrateur() == true) {
-			   stmt.setInt(11, 1);
-			}else {
+			if (user.isAdministrateur() == true) {
+				stmt.setInt(11, 1);
+			} else {
 				stmt.setInt(11, 0);
 			}
 			stmt.executeUpdate();
@@ -57,7 +57,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			//throw new DalException("Probleme sur la couche Dal", e);
+			// throw new DalException("Probleme sur la couche Dal", e);
 		} finally {
 			try {
 				stmt.close();
@@ -93,20 +93,19 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				u.setPseudo(result.getString("pseudo"));
 				u.setEmail(result.getString("email"));
 				u.setMotDePasse(null);
-				
 
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-			//throw new DalException("Probleme sur la couche Dal", e);
+			// throw new DalException("Probleme sur la couche Dal", e);
 		} finally {
 			try {
 				stmt.close();
 				cnx.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				//throw new DalException("Probleme de d�connexion", e);
+				// throw new DalException("Probleme de d�connexion", e);
 			}
 		}
 		return u;
@@ -134,7 +133,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				user.setTelephone(result.getString("telephone"));
 				user.setCodePostal(result.getString("codePostal"));
 				user.setCredit(result.getInt("credit"));
-				user.setAdministrateur(result.getBoolean("prenom"));
+				user.setAdministrateur(result.getBoolean("administrateur"));
 			}
 		} catch (SQLException e) {
 			throw new DalException("Probleme sur la couche Dal", e);
@@ -152,22 +151,54 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	@Override
 	public Utilisateur selectByPseudo(String Pseudo) throws DalException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection cnx = null;
+		PreparedStatement stmt = null;
+		Utilisateur user = null;
+
+		try {
+			cnx = ConnectionProvider.getConnection();
+			stmt = cnx.prepareStatement(SELECT_BY_PSEUDO);
+			stmt.setString(1, Pseudo);
+			ResultSet result = stmt.executeQuery();
+			if (result.next()) {
+				user = new Utilisateur();
+				user.setNoUtilisateur(result.getInt("id"));
+				user.setNom(result.getString("nom"));
+				user.setPrenom(result.getString("prenom"));
+				user.setEmail(result.getString("email"));
+				user.setVille(result.getString("ville"));
+				user.setRue(result.getString("rue"));
+				user.setPseudo(result.getString("pseudo"));
+				user.setTelephone(result.getString("telephone"));
+				user.setCodePostal(result.getString("codePostal"));
+				user.setCredit(result.getInt("credit"));
+				user.setAdministrateur(result.getBoolean("administrateur"));
+			}
+
+		} catch (SQLException e) {
+			throw new DalException("Probleme sur la couche Dal", e);
+		} finally {
+			try {
+				stmt.close();
+				cnx.close();
+			} catch (SQLException e) {
+				throw new DalException("Probleme de d�connexion", e);
+			}
+		}
+		return user;
 	}
 
 	@Override
 	public void delete(Utilisateur user) throws DalException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(Utilisateur user) throws DalException {
 		Connection cnx = null;
 		PreparedStatement stmt = null;
-		
-		
+
 		try {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(UPDATE_USER);
@@ -183,19 +214,19 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			stmt.setString(10, user.getPseudo());
 			stmt.setString(11, user.getPassword());
 			stmt.executeUpdate();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-			//throw new DalException("Probleme sur la couche Dal", e);
+			// throw new DalException("Probleme sur la couche Dal", e);
 		} finally {
 			try {
 				stmt.close();
 				cnx.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				//throw new DalException("Probleme de d�connexion", e);
+				// throw new DalException("Probleme de d�connexion", e);
 			}
 		}
-		
+
 	}
 
 }
