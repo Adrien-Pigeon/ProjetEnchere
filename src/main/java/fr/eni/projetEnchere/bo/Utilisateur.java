@@ -190,4 +190,14 @@ public class Utilisateur {
 		return getMotDePasse();
 	}
 
+
+	@Override
+	public String toString() {
+		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", email="
+				+ email + ", telephone=" + telephone + ", rue=" + rue + ", codePostal=" + codePostal + ", ville="
+				+ ville + ", motDePasse=" + motDePasse + ", credit=" + credit + ", administrateur=" + administrateur
+				+ ", encheres=" + encheres + ", achete=" + achete + ", vend=" + vend + ", pseudo=" + pseudo + "]";
+	}
+	
+
 }

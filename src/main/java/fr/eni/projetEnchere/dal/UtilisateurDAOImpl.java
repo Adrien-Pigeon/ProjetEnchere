@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.Exception.DalException;
@@ -29,7 +30,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		PreparedStatement stmt=null;
 		try {
 			cnx = ConnectionProvider.getConnection();
-			stmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
+			stmt = cnx.prepareStatement(INSERT_USER, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, user.getPrenom());
 			stmt.setString(2, user.getNom());
 			stmt.setString(3, user.getPseudo());
@@ -40,7 +41,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			stmt.setString(8, user.getRue());
 			stmt.setString(9, user.getCodePostal());
 			stmt.setInt(10, user.getCredit());
-			stmt.setBoolean(11, user.isAdministrateur());
+			if(user.isAdministrateur() == true) {
+			   stmt.setInt(11, 1);
+			}else {
+				stmt.setInt(11, 0);
+			}
 			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			if (rs.next()) {

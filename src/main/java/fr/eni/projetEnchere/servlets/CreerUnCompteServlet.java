@@ -59,6 +59,7 @@ public class CreerUnCompteServlet extends HttpServlet {
 		utilisateur.setMotDePasse(password);
 		utilisateur.setCredit(150);
 		utilisateur.setAdministrateur(false);
+		System.out.println(utilisateur.toString());
 
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		if (password.equals(passwordConf)) {
@@ -74,7 +75,7 @@ public class CreerUnCompteServlet extends HttpServlet {
 			request.setAttribute("erreur", erreur);
 			request.getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);
 		}
-		response.sendRedirect(request.getContextPath() + "/login");
+		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 	}
 
 }
