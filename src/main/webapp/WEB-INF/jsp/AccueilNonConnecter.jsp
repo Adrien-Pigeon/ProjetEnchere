@@ -7,7 +7,7 @@
 	pageEncoding="UTF-8"%>
 
 <div class="row" align="right" >	
-		<a href="<%=request.getContextPath()%>/login">Inscription - Se Connecter</a>	
+		<a href="<%=request.getContextPath()%>/Login">Inscription - Se Connecter</a>	
 </div>
 
 <div class="row">	
