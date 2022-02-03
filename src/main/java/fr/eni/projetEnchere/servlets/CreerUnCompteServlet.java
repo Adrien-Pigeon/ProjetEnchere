@@ -67,13 +67,13 @@ public class CreerUnCompteServlet extends HttpServlet {
 				um.addUser(utilisateur);				
 				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 			} catch (BllException e) {
-				String erreur = "les mots de passent ne sont pas identiques";
-				request.setAttribute("erreur", erreur);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);;
+				e.getStackTrace();
 			}
 		}else {
 			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+			String erreur = "les mots de passent ne sont pas identiques";
+			request.setAttribute("erreur", erreur);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);
 		}
 		
 		

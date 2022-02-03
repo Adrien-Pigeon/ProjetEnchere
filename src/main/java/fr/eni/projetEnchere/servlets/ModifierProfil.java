@@ -31,7 +31,7 @@ public class ModifierProfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession() == null) {
+		if (request.getSession() != null) {
 			// Recupere la session
 			
 			System.out.println("valided session");
@@ -92,7 +92,9 @@ public class ModifierProfil extends HttpServlet {
 			um.modifierUser(utilisateur);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ModifierProfil.jsp").forward(request, response);
 			}else {
-				
+				String erreur = "les mots de passent ne sont pas identiques";
+				request.setAttribute("erreur", erreur);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);
 			}
 				
 			
