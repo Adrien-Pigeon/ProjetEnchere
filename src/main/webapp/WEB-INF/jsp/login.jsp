@@ -25,7 +25,7 @@ h1 {
 </head>
 <body>
 	<h1>ENI-Enchères</h1>
-	<form align="center"  action="<%=request.getContextPath()%>/Login" method="post">
+	<form method="get" action="<%=request.getContextPath()%>/AccueilConnecter">
 
 
 
@@ -42,9 +42,8 @@ h1 {
 
 
 
-		<div class="row">
-			<form method="get"
-				action="<%=request.getContextPath()%>/AccueilConnecter">
+		
+			
 				<div>
 					<input type="submit" value="Connexion">
 				</div>
@@ -56,8 +55,7 @@ h1 {
 					for="scales">Se souvenir de moi</label>
 
 			</div>
-		</div>
-	</form>
+		
 	<form align="center" method="get" action="<%=request.getContextPath()%>/CreerCompte">
 		<div>
 

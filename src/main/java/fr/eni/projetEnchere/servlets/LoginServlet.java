@@ -50,8 +50,11 @@ public class LoginServlet extends HttpServlet {
 		UtilisateurManager um = UtilisateurManager.getInstance();
 				
 			try {
-				user=um.login(user);
+				user = um.login(user);
 			} catch (DalException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (BllException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}		
