@@ -21,6 +21,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	ResultSet rs = null;
 	Utilisateur user = null;
 	
+	
 	/**
 	 * Methode permettant d'ajouter un utilisateur � la base de donn�e
 	 */

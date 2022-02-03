@@ -63,6 +63,7 @@ public class CreerUnCompteServlet extends HttpServlet {
 
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		if (password.equals(passwordConf)) {
+			
 			try {
 				um.addUser(utilisateur);
 				response.sendRedirect("/WEB-INF/jsp/AccueilNonConnecter.jsp");
