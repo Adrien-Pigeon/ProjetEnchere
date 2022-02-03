@@ -17,7 +17,7 @@ import fr.eni.projetEnchere.helpers.HashPassword;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/login")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

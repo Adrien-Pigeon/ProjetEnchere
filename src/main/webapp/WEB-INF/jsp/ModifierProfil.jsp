@@ -18,7 +18,7 @@
 	</div>
  
 	<div class="Formulaire" align="center">
-		<form action="<%=request.getContextPath()%>/mon-compte" method="post">
+		<form action="<%=request.getContextPath()%>/ModifierProfil" method="post">
 		<div >
 
 			Pseudo :<br> 

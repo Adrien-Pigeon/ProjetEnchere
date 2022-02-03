@@ -34,10 +34,6 @@
 			Ville :<input type="text" name="sville" ><br>			
 		</div>
 			
-			
-		
-		
-
 	</div>
 
 

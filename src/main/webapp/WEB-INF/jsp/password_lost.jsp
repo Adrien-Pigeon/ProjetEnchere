@@ -14,7 +14,7 @@
     <body>
         <div>Mot de passe oublié</div>
         
-        <form method="get" action="<%=request.getContextPath()%>/login">	
+        <form method="get" action="<%=request.getContextPath()%>/Login">	
         
 		<div>
 		 <input type="email" placeholder="Adresse mail" name="mail" value="" >
