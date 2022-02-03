@@ -19,6 +19,7 @@
 	
 
 	<div class="Formulaire" align="center">
+	<form action="<%=request.getContextPath()%>/PageProfil" method="post">
 		
 		<div >
 			Pseudo :<input type="text" name="spseudo" ><br> 
