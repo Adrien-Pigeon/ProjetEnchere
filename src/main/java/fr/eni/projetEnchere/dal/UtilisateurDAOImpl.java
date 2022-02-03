@@ -12,7 +12,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	private final static String INSERT_USER = "INSERT INTO dbo.UTILISATEURS (prenom,nom,pseudo,email,mot_de_passe,telephone,"
-			+ "ville,rue,code_postal,credit,admministrateur) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+			+ "ville,rue,code_postal,credit,administrateur) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?  AND mot_de_passe = ?";
 	private final static String SELET_BY_ID = "SELECT * FROM dbo.UTILISATEURS WHERE no_article = ?;";
 
@@ -53,7 +53,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			}
 
 		} catch (SQLException e) {
-			throw new DalException("Probleme sur la couche Dal", e);
+			e.printStackTrace();
+			//throw new DalException("Probleme sur la couche Dal", e);
 		} finally {
 			try {
 				stmt.close();

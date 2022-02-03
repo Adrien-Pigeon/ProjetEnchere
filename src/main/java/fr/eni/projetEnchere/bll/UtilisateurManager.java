@@ -26,15 +26,20 @@ public class UtilisateurManager {
 
 		try {
 //verifier l'objet utilisateur
-			verifierUser(user);
-//ajouter l'article à la base de donnée
-			ud.insert(user);
-		} catch (DalException e) {
-			throw new BllException("Probleme sur la methode addUser()");
+			if(verifierUser(user)) {
+				//ajouter l'article à la base de donnée
+				ud.insert(user);
+			}else {
+				//throw new BllException("Probleme sur la methode de verification");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			//throw new BllException("Probleme sur la methode addUser()");
 		}
 	}
 
-	public static void verifierUser(Utilisateur u) throws BllException {
+	public static Boolean verifierUser(Utilisateur u) throws BllException {
 		boolean valide = true;
 		StringBuffer sb = new StringBuffer();
 		if (u == null) {
@@ -80,6 +85,7 @@ public class UtilisateurManager {
 			throw new BllException(sb.toString());
 		}
 
+		return true;
 	}
 
 

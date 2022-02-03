@@ -65,7 +65,8 @@ public class CreerUnCompteServlet extends HttpServlet {
 		if (password.equals(passwordConf)) {
 			try {
 				um.addUser(utilisateur);
-				request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
+				response.sendRedirect("/WEB-INF/jsp/AccueilNonConnecter.jsp");
+				//request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 			} catch (BllException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
