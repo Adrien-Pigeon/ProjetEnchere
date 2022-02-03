@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projetEnchere.bo.Utilisateur;
+
 /**
  * Servlet implementation class PageProfilServlet
  */
@@ -19,14 +21,14 @@ public class PageProfilServlet extends HttpServlet {
      */
     public PageProfilServlet() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 		}
 
@@ -34,6 +36,9 @@ public class PageProfilServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Utilisateur utilisateur = (Utilisateur)request.getSession().getAttribute("utilisateurConnecte");
+		
 		
 		doGet(request, response);
 	}

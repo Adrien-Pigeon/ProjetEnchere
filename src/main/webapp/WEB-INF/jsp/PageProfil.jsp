@@ -22,17 +22,17 @@
 	<form action="<%=request.getContextPath()%>/PageProfil" method="post">
 		
 		<div >
-			Pseudo :<input type="text" name="spseudo" ><br> 
-			Prenom :<input type="text" name="sprenom"  ><br>
-			Telephone :<input type="text" name="stelephone"  ><br> 
-			Code postal :<input type="text" name="scodePostal"><br>
+			Pseudo :<input type="text" name="pseudo" ><br> 
+			Prenom :<input type="text" name="prenom"  ><br>
+			Telephone :<input type="text" name="telephone"  ><br> 
+			Code postal :<input type="text" name="codePostal"><br>
 			
 		</div>
 		<div >
-			Nom :<input type="text" name="snom"   ><br>
-			Email :<input type="text" name="semail"  ><br> 
-			Rue :<input type="text" name="srue"  ><br>
-			Ville :<input type="text" name="sville" ><br>			
+			Nom :<input type="text" name="nom"   ><br>
+			Email :<input type="text" name="email"  ><br> 
+			Rue :<input type="text" name="rue"  ><br>
+			Ville :<input type="text" name="ville" ><br>			
 		</div>
 			
 	</div>

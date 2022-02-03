@@ -22,18 +22,18 @@
 		<div >
 
 			Pseudo :<br> 
-			Prenom :<input type="text" name="sprenom"  ><br>
-			Telephone :<input type="text" name="stelephone"  ><br> 
-			Code postal :<input type="text" name="scodePostal"><br>
-			Mot de passe actuel :<input type="password" name="smotDePasseActuel"  placeholder="Mot de passe actuel" ><br> 
-			Nouveau mot de passe :<input type="password" name="snouveauMotDePasse"  placeholder="Nouveau mot de passe" ><br>
+			Prenom :<input type="text" name="prenom"  ><br>
+			Telephone :<input type="text" name="telephone"  ><br> 
+			Code postal :<input type="text" name="codePostal"><br>
+			Mot de passe actuel :<input type="password" name="motDePasseActuel"  placeholder="Mot de passe actuel" ><br> 
+			Nouveau mot de passe :<input type="password" name="nouveauMotDePasse"  placeholder="Nouveau mot de passe" ><br>
 		</div>
 		<div >
-			Nom :<input type="text" name="snom"   ><br>
-			Email :<input type="text" name="semail"  ><br> 
-			Rue :<input type="text" name="srue"  ><br>
-			Ville :<input type="text" name="sville" ><br> 
-			Confirmation :<input type="password" name="sconfirmation" placeholder="Confirmation du nouveau mot de passe" ><br>
+			Nom :<input type="text" name="nom"   ><br>
+			Email :<input type="text" name="email"  ><br> 
+			Rue :<input type="text" name="rue"  ><br>
+			Ville :<input type="text" name="ville" ><br> 
+			Confirmation :<input type="password" name="confirmation" placeholder="Confirmation du nouveau mot de passe" ><br>
 			Credit : <p>  </p><br>
 		</div>			
 		</form>
