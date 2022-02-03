@@ -44,7 +44,7 @@ public class CategorieManager {
 	
 	
 	public Categorie selectParNumero(int noCategorie) throws BllException, DalException{
-		Categorie no_categorie = new Categorie(noCategorie);
+		Categorie no_categorie = new Categorie();
 		
 		CategorieDAO dao = DAOFactory.getCategorieDAO();
 		dao.selectParNumero(noCategorie);
