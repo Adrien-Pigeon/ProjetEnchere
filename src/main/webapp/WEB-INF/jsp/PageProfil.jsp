@@ -54,7 +54,7 @@
 				<p><strong>Ville :</strong></p>
 			</div>
 			<div class="col-lg-6 col-xs-6 text-center">
-				<%
+				<% 
 					
 					Utilisateur utilisateur = (Utilisateur) request.getAttribute("utilisateur");
 				%> 
