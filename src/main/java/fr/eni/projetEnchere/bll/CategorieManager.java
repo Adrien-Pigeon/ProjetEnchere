@@ -18,6 +18,7 @@ public class CategorieManager {
 	private CategorieManager() {
 
 	}
+	// SINGLETON
 
 	public static CategorieManager getInstance() {
 		if (instance == null) {
@@ -26,6 +27,7 @@ public class CategorieManager {
 		return instance;
 	}
 
+	// Appel CategorieDAO qui redirige vers CategorieDAOImpl
 	
 	public List<Categorie> lister() throws DalException {
         List<Categorie> categorie = new ArrayList<>();
@@ -35,24 +37,13 @@ public class CategorieManager {
 	}
 	
 	
-	public void ajouter(String libelle) throws BllException, DalException {
-		Categorie cg = new Categorie(libelle);
-		
-		CategorieDAO dao = DAOFactory.getCategorieDAO();
-		dao.ajouter(libelle);
-	}
-	
-	
-	public Categorie selectParNumero(int noCategorie) throws BllException, DalException{
+	public Categorie selectParId(String libelle) throws BllException, DalException{
 		Categorie no_categorie = new Categorie();
 		
 		CategorieDAO dao = DAOFactory.getCategorieDAO();
-		dao.selectParNumero(noCategorie);
+		dao.selectParId(libelle);
 		return no_categorie;
 	}
 	
-	
-	public Categorie selectParId(int noCategorie) throws BllException{
-		return null;
-	}
 }
+	

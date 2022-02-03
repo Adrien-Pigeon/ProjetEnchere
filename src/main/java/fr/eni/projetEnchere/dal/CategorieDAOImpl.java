@@ -19,9 +19,14 @@ public class CategorieDAOImpl implements CategorieDAO {
 	// private final static String SUPPRIMER = "delete from CATEGORIES where libelle
 	// =?;";
 	// private final static String MODIFIER = "update CATEGORIES set libelle = ?";
-	private final static String SELECTBY = "select no_categorie, libelle from CATEGORIES where libelle = ?;";
+	
 	private final static String SELECTBYID = "select no_categorie, libelle from CATEGORIES where no_categorie = ?;";
 	private static final String DELETE = "delete from categories where no_categorie = ?";
+
+	
+	
+	
+	// Permet de LISTER toutes les catégories
 	
 	public List<Categorie> lister() throws DalException {
 		Connection cnx = null;
@@ -60,125 +65,63 @@ public class CategorieDAOImpl implements CategorieDAO {
 
 	}
 
-	public void ajouter(String libelle) throws DalException {
-		Connection cnx = null;
-		PreparedStatement pstmt = null;
-
-		try {
-			cnx = DBConnectPool.seConnecter();
-			pstmt = cnx.prepareStatement(INSERER);
-			pstmt.setString(1, libelle);
-			pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			throw new DalException("Problème - ajouterCategorie" + e.getMessage());
-		} finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (cnx != null) {
-					cnx.close();
-				}
-			} catch (SQLException e) {
-				throw new DalException("Problème -fermerConnexion" + e.getMessage());
-			}
-		}
-
-	}
-
-	public Categorie selectParNumero(int noCategorie) throws DalException {
-		Connection cnx = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		Categorie categorie = null;
-
-		try {
-			cnx = DBConnectPool.seConnecter();
-			pstmt = cnx.prepareStatement(SELECTBY);
-			pstmt.setInt(1, noCategorie);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				categorie = new Categorie();
-				categorie.setNoCategorie(rs.getInt("no_categorie"));
-				categorie.setLibelle(rs.getString("libelle"));
-			}
-
-		} catch (SQLException e) {
-			throw new DalException("Problème - RechercherUtilisateur" + e.getMessage());
-		} finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (cnx != null) {
-					cnx.close();
-				}
-			} catch (SQLException e) {
-				throw new DalException("Problème - fermerConnexion" + e.getMessage());
-			}
-
-		}
-
-		return categorie;
-	}
-
-	public Categorie selectParId(int noCategorie) throws DalException {
-		Connection cnx = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		Categorie categorie = null;
-
-		try {
-			cnx = DBConnectPool.seConnecter();
-			pstmt = cnx.prepareStatement(SELECTBY);
-			pstmt.setInt(1, noCategorie);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				categorie = new Categorie();
-				categorie.setNoCategorie(rs.getInt("no_categorie"));
-				categorie.setLibelle(rs.getString("libelle"));
-			}
-
-		} catch (SQLException e) {
-			throw new DalException("Problème - RechercherUtilisateur" + e.getMessage());
-		} finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (cnx != null) {
-					cnx.close();
-				}
-			} catch (SQLException e) {
-				throw new DalException("Problème - fermerConnexion" + e.getMessage());
-			}
-
-		}
-
-		return categorie;
-	}
+	//Permet de SELECT une catégorie par le libelle
 	
-	
-	@Override
-	public void delete(int no_categorie) throws DalException {
+	public Categorie selectParId(String libelle) throws DalException {
+
+		Categorie categorie = null;
 		
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pstmt = cnx.prepareStatement(DELETE);
-		    pstmt.setInt(1, no_categorie);
-		    pstmt.executeUpdate();
-		    try {
-		        if (pstmt != null){
-		            pstmt.close();
-		        }
-		        if(cnx!=null){
-		            cnx.close();
-		        }
-		    } catch (SQLException e) {
-		        throw new DalException();
-		    }
+			PreparedStatement pstmt = cnx.prepareStatement(SELECTBYID);
+			pstmt.setString(1, libelle);
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+
+				categorie = new Categorie(rs.getString("libelle"));
+			}
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (cnx != null) {
+					cnx.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		} catch (SQLException e) {
-		    throw new DalException();
-		} 
+			throw new DalException();
+		}
+		return categorie;
 	}
+
+
+
+	
+
+//	@Override
+//	public void delete(int no_categorie) throws DalException {
+//		
+//		try (Connection cnx = ConnectionProvider.getConnection()) {
+//			PreparedStatement pstmt = cnx.prepareStatement(DELETE);
+//		    pstmt.setInt(1, no_categorie);
+//		    pstmt.executeUpdate();
+//		    try {
+//		        if (pstmt != null){
+//		            pstmt.close();
+//		        }
+//		        if(cnx!=null){
+//		            cnx.close();
+//		        }
+//		    } catch (SQLException e) {
+//		        throw new DalException();
+//		    }
+//		} catch (SQLException e) {
+//		    throw new DalException();
+//		} 
+//	}
 }
