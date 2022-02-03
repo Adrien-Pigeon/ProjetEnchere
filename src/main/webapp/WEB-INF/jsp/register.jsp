@@ -65,11 +65,12 @@
 				<label for="name">Confirmation:</label> 
 				<input type="text" id="name"name="password_conf"required>
 			</div>
+			</form>
 			<div class="button">
 				<a href="<%=request.getContextPath()%>/Login"><button type="submit" name="valider">Créer</button></a>
 			</div>
 
-		</form>
+		
 		<div class="button">
 				<a href="<%=request.getContextPath()%>/AccueilNonConnecter"><button  name="annuler">Annuler</button></a>
 			</div>
