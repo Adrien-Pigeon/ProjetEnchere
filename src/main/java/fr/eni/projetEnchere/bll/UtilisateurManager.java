@@ -54,6 +54,17 @@ public class UtilisateurManager {
 		return user;
 	}
 
+	public void modifierUser(Utilisateur user) {
+		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
+		
+		try {
+			userDao.update(user);
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	public static Boolean verifierUser(Utilisateur u) throws BllException {
 		boolean valide = true;
 		StringBuffer sb = new StringBuffer();

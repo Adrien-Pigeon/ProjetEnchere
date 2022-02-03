@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.projetEnchere.bll.UtilisateurManager;
+import fr.eni.projetEnchere.bo.Utilisateur;
+
 /**
  * Servlet implementation class ModifierProfil
  */
@@ -51,8 +54,51 @@ public class ModifierProfil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+		request.setAttribute("utilisateur", utilisateurCo);
+		String password = request.getParameter("password").trim();
+		String pseudo = request.getParameter("pseudo").trim();
+		String prenom = request.getParameter("prenom").trim().toLowerCase();
+		String nom = request.getParameter("nom").trim().toLowerCase();
+		// String password=HashPassword.hashpassword(request.getParameter("password"));
+		String email = request.getParameter("email").trim().toLowerCase();
+		String ville = request.getParameter("ville").trim().toLowerCase();
+		String rue = request.getParameter("rue").trim().toLowerCase();
+		String codePostal = request.getParameter("codePostal").trim();
+		String telephone = request.getParameter("telephone").trim();
+		String passwordConf = request.getParameter("password_conf").trim();
+		String nouveauMotDePasse = request.getParameter("password_conf").trim();
+		
+		if(password.equals(utilisateurCo.getMotDePasse())) {
+			Utilisateur utilisateur = new Utilisateur();
+			
+			utilisateur.setPseudo(pseudo);
+			utilisateur.setNom(nom);
+			utilisateur.setPrenom(prenom);
+			utilisateur.setEmail(email);
+			utilisateur.setTelephone(telephone);
+			utilisateur.setCodePostal(codePostal);
+			utilisateur.setRue(rue);
+			utilisateur.setVille(ville);
+			utilisateur.setMotDePasse(nouveauMotDePasse);
+			utilisateur.setCredit(150);
+			utilisateur.setAdministrateur(false);
+			
+
+			if (nouveauMotDePasse.equals(passwordConf)) {
+			
+			UtilisateurManager um = UtilisateurManager.getInstance();
+			um.modifierUser(utilisateur);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ModifierProfil.jsp").forward(request, response);
+			}else {
+				
+			}
+				
+			
+			
+			
+		}
 	}
 
 }

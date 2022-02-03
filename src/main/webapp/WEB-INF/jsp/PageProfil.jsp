@@ -67,20 +67,25 @@
 				<p>${utilisateur.codePostal }</p>
 				<p>${utilisateur.ville }</p>
 			</div>
+			</div>
+			</div>
 			
+			</form>
+			<div>
 			<%
 				boolean btnOn = (boolean) request.getAttribute("btnOn");
 				if (btnOn == true) {
 			%>
-			<form action="<%=request.getContextPath()%>/GestionModificationProfil" method="get" >
+			<form action="<%=request.getContextPath()%>/ModifierProfil" method="get" >
 			<input type="submit" class="bouton btn btn-default" value="Modifier" name="Modifier"> 
+			
 			</form>
 			<%
 				}
 			%>
 	</div>
-</div>
-</form>
+
+
 
 
 	
