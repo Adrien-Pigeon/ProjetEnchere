@@ -30,31 +30,27 @@ h1 {
 	<form action="<%=request.getContextPath()%>/Login" method="post">
 
 
-
-		<div class="row">
-			<span>username</span> <input type="text" name="login">
-		</div>
-
-		<div class="row">
-			<span>password</span> <input type="password" name="password"
-				class="senha" >
-		</div>
-
-
-
+		<div align="center">
+				<div class="row" >
+					<span>username</span> <input type="text" name="login">
+				</div>
 		
-			
-				<div>
+				<div class="row">
+					<span>password</span> <input type="password" name="password"
+						class="senha" >
+				</div>
+		
+		</div>
+
+		<div align="center">
 					<input type="submit" value="Connexion">
 				</div>
 			</form>
-
-			<div class="row">
+		<div class="row" align="center">
 				<a href="<%=request.getContextPath()%>/MotDePasse">Mot de passe
-					oublié</a> <input type="checkbox" id="scales" name="scales"> <label
-					for="scales">Se souvenir de moi</label>
-
-			</div>
+					oublié</a> <input type="checkbox" id="scales" name="scales"> 
+					<label for="scales">Se souvenir de moi</label>
+		</div>
 		
 	<form align="center" method="get" action="<%=request.getContextPath()%>/CreerCompte">
 		<div>
