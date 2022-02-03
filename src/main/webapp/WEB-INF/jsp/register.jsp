@@ -66,7 +66,7 @@
 				<input type="text" id="name"name="password_conf"required>
 			</div>
 			<div class="button">
-				<button type="submit" name="valider">Créer</button>
+				<a href="<%=request.getContextPath()%>/Login"><button type="submit" name="valider">Créer</button></a>
 			</div>
 
 		</form>
