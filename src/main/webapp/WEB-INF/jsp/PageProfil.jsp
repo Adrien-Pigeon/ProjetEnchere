@@ -61,7 +61,6 @@
 				<p><strong>${utilisateur.pseudo }</strong></p>
 				<p>${utilisateur.nom }</p>
 				<p>${utilisateur.prenom }</p>
-				
 				<p>${utilisateur.email }</p>
 				<p>${utilisateur.telephone }</p>
 				<p>${utilisateur.rue }</p>
