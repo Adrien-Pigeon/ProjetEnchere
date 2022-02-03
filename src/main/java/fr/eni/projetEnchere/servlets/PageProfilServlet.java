@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projetEnchere.bll.UtilisateurManager;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.UtilisateurDAO;
 import fr.eni.projetEnchere.dal.Exception.DalException;
@@ -32,7 +33,7 @@ public class PageProfilServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("utilisateurConnecte");
+		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		request.setAttribute("utilisateur", utilisateurCo);
 		boolean btnOn = true;
 		request.setAttribute("btnOn", btnOn);
@@ -50,18 +51,12 @@ public class PageProfilServlet extends HttpServlet {
 		boolean btnOn = false;
 		// recupération du pseudo envoyé par la jsp
 		String pseudo = request.getParameter("pseudo");
-		// chargement du profil demandé dans la requete 
-		try {
-			Utilisateur utilisateur = UtilisateurDAO.selectByPseudo(pseudo);
-			request.setAttribute("utilisateur", utilisateur);
-		} catch (DalException e) {
-			e.printStackTrace();
-			request.setAttribute("erreur", e);
-			getServletContext().getRequestDispatcher("/WEB-INF/erreur/erreur.jsp").forward(request, response);
-		}
+		UtilisateurManager um = UtilisateurManager.getInstance();
+		Utilisateur utilisateur = um.afficherProfil(pseudo);
+		request.setAttribute("utilisateur", utilisateur);
 		// verification que l'utilisateur en session n'est pas le meme que le profil à
 		// afficher
-		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("utilisateurConnecte");
+		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		if (utilisateurCo != null) {
 			// si ce sont les même alors affichage du bouton modifié
 			if (pseudo.equals(utilisateurCo.getPseudo())) {

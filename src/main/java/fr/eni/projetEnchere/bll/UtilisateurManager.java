@@ -39,6 +39,20 @@ public class UtilisateurManager {
 			//throw new BllException("Probleme sur la methode addUser()");
 		}
 	}
+	
+	public Utilisateur afficherProfil(String pseudo) {
+		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
+		
+		Utilisateur user = null;
+		try {
+			user = userDao.selectByPseudo(pseudo);
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
 
 	public static Boolean verifierUser(Utilisateur u) throws BllException {
 		boolean valide = true;
