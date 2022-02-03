@@ -9,7 +9,7 @@
 <div class="row" align="right" >	
 		<a href="<%=request.getContextPath()%>/VendArticle">Enchères</a>
 		<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
-		<a href="<%=request.getContextPath()%>/pageProfil">Mon Profil</a>
+		<a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a>
 		<a href="<%=request.getContextPath()%>/AccueilNonConnecter">Déconnection</a>	
 </div>
 
