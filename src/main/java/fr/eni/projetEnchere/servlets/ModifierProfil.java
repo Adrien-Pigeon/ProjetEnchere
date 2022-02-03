@@ -33,7 +33,8 @@ public class ModifierProfil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession() != null) {
 			// Recupere la session
-			
+			Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+			request.setAttribute("utilisateur", utilisateurCo);
 			System.out.println("valided session");
 			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
 			request.getRequestDispatcher("/WEB-INF/jsp/ModifierProfil.jsp").forward(request, response);			
