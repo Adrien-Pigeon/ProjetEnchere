@@ -13,65 +13,41 @@
 	<div>
 		<h1>ENI-Enchères</h1>
 	</div>
-	<div class="Titre">
+	<div class="Titre" align="center">
 		<h2>Mon Profil</h2>
 	</div>
  
-	<div class="Formulaire">
+	<div class="Formulaire" align="center">
 		<form action="<%=request.getContextPath()%>/mon-compte" method="post">
-			<div class="col-lg-6">
+		<div >
 
-			Pseudo :<input type="text" name="spseudo" class="form-control input-md"><br> 
-			Prenom :<input type="text" name="sprenom"  class="form-control input-md"><br>
-			Telephone :<input type="text" name="stelephone"  class="form-control input-md"><br> 
-			Code postal :<input type="text" name="scodePostal" class="form-control input-md"><br>
-			Mot de passe actuel :<input type="password" name="smotDePasseActuel"  placeholder="Mot de passe actuel" class="form-control input-md"><br> 
-			Nouveau mot de passe :<input type="password" name="snouveauMotDePasse"  placeholder="Nouveau mot de passe" class="form-control input-md"><br>
+			Pseudo :<br> 
+			Prenom :<input type="text" name="sprenom"  ><br>
+			Telephone :<input type="text" name="stelephone"  ><br> 
+			Code postal :<input type="text" name="scodePostal"><br>
+			Mot de passe actuel :<input type="password" name="smotDePasseActuel"  placeholder="Mot de passe actuel" ><br> 
+			Nouveau mot de passe :<input type="password" name="snouveauMotDePasse"  placeholder="Nouveau mot de passe" ><br>
 		</div>
-			<div class="col-lg-6">
-			Nom :<input type="text" name="snom"   class="form-control input-md"><br>
-			Email :<input type="text" name="semail"  class="form-control input-md"><br> 
-			Rue :<input type="text" name="srue"  class="form-control input-md"><br>
-			Ville :<input type="text" name="sville" class="form-control input-md"><br> 
-			Confirmation :<input type="password" name="sconfirmation" placeholder="Confirmation du nouveau mot de passe" class="form-control input-md"><br>
+		<div >
+			Nom :<input type="text" name="snom"   ><br>
+			Email :<input type="text" name="semail"  ><br> 
+			Rue :<input type="text" name="srue"  ><br>
+			Ville :<input type="text" name="sville" ><br> 
+			Confirmation :<input type="password" name="sconfirmation" placeholder="Confirmation du nouveau mot de passe" ><br>
 			Credit : <p>  </p><br>
-		</div>
-			<div class="button">
-				<button action=<%=request.getContextPath()%>/mon-profil" type="submit" name="valider">Modifier</button>
-			</div>
-
+		</div>			
 		</form>
-		
-
-	</div>
-	
-	
-
-
-	
-
-<div class="row">
-
-	<form action="<%=request.getContextPath()%>/GestionModificationProfil"
-		method="post">
-		
-		
-			
-				
-		<div class = "row">
-		<div class ="col-md-12">
-		
-		</div>
 	</div>	
-		<button type="submit" class=" col-lg-6 btn btn-default">
+<div align="center" >
+
+	<form action="<%=request.getContextPath()%>/EnregistrerProfil"	method="post">		
+		<button type="submit" >
 			<p>Enregistrer</p>
 		</button>
 	</form>
 	
-	
-	
-	<form action="<%=request.getContextPath()%>/SuppressionUtilisateur" method="post">
-		<button type="submit" class=" col-lg-6 btn btn-default">
+	<form action="<%=request.getContextPath()%>/SuppressionProfil" method="post">
+		<button type="submit">
 			<p>Supprimer mon compte</p>
 		</button>
 	</form>
@@ -81,6 +57,3 @@
 </html>
 
 
-
-</body>
-</html>

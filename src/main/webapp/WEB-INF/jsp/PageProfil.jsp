@@ -13,58 +13,29 @@
 	<div>
 		<h1>ENI-Enchères</h1>
 	</div>
-	<div class="Titre">
+	<div class="Titre" align="center">
 		<h2>Mon Profil</h2>
 	</div>
 	
 
-	<div class="Formulaire">
-		<form action="<%=request.getContextPath()%>/modifierProfil" method="post">
-			<div>
-				<label for="name">Pseudo:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			<div>
-				<label for="name">Nom:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			<div>
-				<label for="name">Prenom:</label> 
-				<input type="text" id="mail"name="user_mail" required>
-			</div>
+	<div class="Formulaire" align="center">
+		
+		<div >
+			Pseudo :<input type="text" name="spseudo" ><br> 
+			Prenom :<input type="text" name="sprenom"  ><br>
+			Telephone :<input type="text" name="stelephone"  ><br> 
+			Code postal :<input type="text" name="scodePostal"><br>
+			
+		</div>
+		<div >
+			Nom :<input type="text" name="snom"   ><br>
+			Email :<input type="text" name="semail"  ><br> 
+			Rue :<input type="text" name="srue"  ><br>
+			Ville :<input type="text" name="sville" ><br>			
+		</div>
+			
 			
 		
-			
-			<div>
-				<label for="mail">Email:</label> 
-				<input type="email" id="name"name="user_name" required>
-			</div>
-			<div>
-				<label for="msg">Telephone:</label>
-				<input type="text" id="msg" name="user_message"  >
-			</div>
-			
-			<div>
-				<label for="name">Rue:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			<div>
-				<label for="name">Ville:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			<div>
-			
-				<label for="name">Code postal:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			
-			<div>
-				<label for="name">Mot de passe:</label> 
-				<input type="text" id="name"name="user_name" required>
-			</div>
-			
-			
-		</form>
 		
 
 	</div>
