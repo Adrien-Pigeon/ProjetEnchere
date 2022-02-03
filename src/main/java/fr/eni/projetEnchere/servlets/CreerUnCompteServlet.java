@@ -34,17 +34,17 @@ public class CreerUnCompteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String pseudo = request.getParameter("pseudo");
-		String prenom = request.getParameter("prenom");
-		String nom = request.getParameter("nom");
+		String pseudo = request.getParameter("pseudo").trim();
+		String prenom = request.getParameter("prenom").trim().toLowerCase();
+		String nom = request.getParameter("nom").trim().toLowerCase();
 		// String password=HashPassword.hashpassword(request.getParameter("password"));
-		String password = request.getParameter("password");
-		String email = request.getParameter("email");
-		String ville = request.getParameter("ville");
-		String rue = request.getParameter("rue");
-		String codePostal = request.getParameter("codePostal");
-		String telephone = request.getParameter("telephone");
-		String passwordConf = request.getParameter("password_conf");
+		String password = request.getParameter("password").trim();
+		String email = request.getParameter("email").trim().toLowerCase();
+		String ville = request.getParameter("ville").trim().toLowerCase();
+		String rue = request.getParameter("rue").trim().toLowerCase();
+		String codePostal = request.getParameter("codePostal").trim();
+		String telephone = request.getParameter("telephone").trim();
+		String passwordConf = request.getParameter("password_conf").trim();
 
 		Utilisateur utilisateur = new Utilisateur();
 
@@ -59,25 +59,25 @@ public class CreerUnCompteServlet extends HttpServlet {
 		utilisateur.setMotDePasse(password);
 		utilisateur.setCredit(150);
 		utilisateur.setAdministrateur(false);
-		System.out.println(utilisateur.toString());
 
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		if (password.equals(passwordConf)) {
 			
 			try {
 				um.addUser(utilisateur);
-				response.sendRedirect("/WEB-INF/jsp/AccueilNonConnecter.jsp");
-				//request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
+				
+				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 			} catch (BllException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				String erreur = "les mots de passent ne sont pas identiques";
+				request.setAttribute("erreur", erreur);
+				request.getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);;
 			}
 		}else {
-			String erreur = "les mots de passent ne sont pas identiques";
-			request.setAttribute("erreur", erreur);
-			request.getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+		
+		
 	}
 
 }
