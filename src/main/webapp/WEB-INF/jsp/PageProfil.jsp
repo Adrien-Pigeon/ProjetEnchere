@@ -57,7 +57,7 @@
 				<%
 					
 					Utilisateur utilisateur = (Utilisateur) request.getAttribute("utilisateur");
-				%>
+				%> 
 				<p><strong><%=utilisateur.getPseudo()%></strong></p>
 				<p><%=utilisateur.getNom()%></p>
 				<p><%=utilisateur.getPrenom()%></p>
