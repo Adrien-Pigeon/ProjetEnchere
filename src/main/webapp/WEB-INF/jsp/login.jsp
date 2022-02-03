@@ -1,75 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Page de Connection</title>
 <style>
-
-
-body
-{
+body {
 	width: 100%;
 	height: 100vh;
 	background: silver;
 	justify-content: center;
 	align-items: center;
 }
-h1{
-	text-align: left;	
-	display:  inline;
-	}
 
+h1 {
+	text-align: left;
+	display: inline;
+}
 </style>
 
 
 
 </head>
 <body>
-<h1>ENI-Enchères</h1>
-	<form action="<%=request.getContextPath() %>/login" method="post">
-		
-		
-  		
-	
+	<h1>ENI-Enchères</h1>
+	<form action="<%=request.getContextPath()%>/login" method="post">
+
+
+
+
 		<div class="row">
-			<span>username</span>
-			<input type="text" name="pseudo" placeholder="username">			
+			<span>username</span> <input type="text" name="pseudo"
+				placeholder="username">
 		</div>
-			
+
 		<div class="row">
-		<span>password</span>
-		<input type="password" name="password" class="senha" placeholder="123456">		
-		</div>		
-			
-			
-	
-		<div class="row">
-		<form method="get" action="<%=request.getContextPath()%>/AccueilConnecter">	
-		<div>
-		<input type="submit" value="Connexion">
+			<span>password</span> <input type="password" name="password"
+				class="senha" placeholder="123456">
 		</div>
-	</form>
-		
+
+
+
+		<div class="row">
+			<form method="get"
+				action="<%=request.getContextPath()%>/AccueilConnecter">
+				<div>
+					<input type="submit" value="Connexion">
+				</div>
+			</form>
+
 			<div class="row">
-			<a href="<%=request.getContextPath() %>/MotDePasse">Mot de passe oublié</a>
-			<input type="checkbox" id="scales" name="scales">
-	  		<label for="scales">Se souvenir de moi</label>	
-	  		
-	  	</div>	
-		</div>
-	</form>	
-	<form method="get" action="<%=request.getContextPath()%>/CreerCompte">	
-		<div>
-<<<<<<< HEAD
-		<input type="submit" value="Creer un compte">
-=======
-		<input type="submit" value="Créer un compte">
->>>>>>> branch 'main' of https://github.com/OnlyDukeTV/ProjetEnchere.git
+				<a href="<%=request.getContextPath()%>/MotDePasse">Mot de passe
+					oublié</a> <input type="checkbox" id="scales" name="scales"> <label
+					for="scales">Se souvenir de moi</label>
+
+			</div>
 		</div>
 	</form>
-    <script>
+	<form method="get" action="<%=request.getContextPath()%>/CreerCompte">
+		<div>
+
+			<input type="submit" value="Creer un compte">
+
+
+
+		</div>
+	</form>
+	<script>
         const senha = document.querySelector('.senha');
 	const btn = document.querySelector('.btn');
 
