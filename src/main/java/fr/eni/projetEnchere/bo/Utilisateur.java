@@ -2,9 +2,11 @@ package fr.eni.projetEnchere.bo;
 
 import java.util.List;
 
+import fr.eni.projetEnchere.bll.UtilisateurManager;
+
 public class Utilisateur {
 
-	// Attributs privé
+	// Attributs privï¿½
 
 	private int noUtilisateur;
 	private String nom, prenom, email, telephone, rue, codePostal, ville, motDePasse;
@@ -198,6 +200,9 @@ public class Utilisateur {
 				+ ville + ", motDePasse=" + motDePasse + ", credit=" + credit + ", administrateur=" + administrateur
 				+ ", encheres=" + encheres + ", achete=" + achete + ", vend=" + vend + ", pseudo=" + pseudo + "]";
 	}
+
+
+	
 	
 
 }

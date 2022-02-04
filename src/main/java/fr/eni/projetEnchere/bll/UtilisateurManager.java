@@ -118,7 +118,7 @@ public class UtilisateurManager {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
 		
 		try {
-			userDao.update(user);
+			userDao.delete(user);
 		} catch (DalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -46,7 +46,7 @@
 		</button>
 	</form>
 	
-	<form action="<%=request.getContextPath()%>/SuppressionProfil" method="post">
+	<form action="<%=request.getContextPath()%>/SupprimerProfil" method="post">
 		<button type="submit">
 			<p>Supprimer mon compte</p>
 		</button>
