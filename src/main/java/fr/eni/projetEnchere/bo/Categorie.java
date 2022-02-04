@@ -14,6 +14,18 @@ public class Categorie {
 		
 	}
 	
+	
+	
+	
+	public Categorie(int noCategorie, String libelle) {
+		super();
+		this.noCategorie = noCategorie;
+		this.libelle = libelle;
+	}
+
+
+
+
 	public Categorie(String libelle) {				
 		this.setLibelle(libelle);
 	}
