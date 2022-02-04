@@ -114,6 +114,16 @@ public class UtilisateurManager {
 		return true;
 	}
 
+	public void delete(Utilisateur user) throws DalException {
+		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
+		
+		try {
+			userDao.update(user);
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	
 	public Utilisateur login(Utilisateur user) throws DalException {

@@ -18,6 +18,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private final static String UPDATE_USER = "UPDATE UTILISATEURS SET prenom =?,nom=?,email=?,mot_de_passe=?,telephone=?,"
 			+ "ville=?,rue=?,code_postal=?,credit=? WHERE pseudo = ? and mot_de_passe= ?;";
 	private static final String SELECT_BY_PSEUDO = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?;";
+	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?;";
 
 	Connection cnx = null;
 	PreparedStatement stmt = null;
@@ -98,7 +99,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				u.setRue(result.getString("rue"));
 				u.setCredit(result.getInt("credit"));
 				u.setMotDePasse(null);
-				
 
 			}
 
@@ -196,8 +196,28 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	@Override
 	public void delete(Utilisateur user) throws DalException {
-		// TODO Auto-generated method stub
+		Connection cnx = null;
+		PreparedStatement stmt = null;
 
+		try {
+			cnx = ConnectionProvider.getConnection();
+			stmt = cnx.prepareStatement(DELETE);
+			stmt.setInt(1, user.getNoUtilisateur());
+			stmt.executeUpdate();
+
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (cnx != null) {
+					cnx.close();
+				}
+			} catch (SQLException e) {
+				throw new DalException();
+			}
+		} catch (SQLException e) {
+			throw new DalException();
+		}
 	}
 
 	@Override
