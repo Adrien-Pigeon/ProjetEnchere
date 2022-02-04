@@ -60,11 +60,13 @@ public class ModifierProfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+		int id = utilisateurCo.getNoUtilisateur();
 		request.setAttribute("utilisateur", utilisateurCo);
-		String password = request.getParameter("password").trim();
-		String pseudo = request.getParameter("pseudo").trim();
-		String prenom = request.getParameter("prenom").trim().toLowerCase();
 		String nom = request.getParameter("nom").trim().toLowerCase();
+		String password = request.getParameter("password").trim();
+		//String pseudo = request.getParameter("pseudo").trim();
+		String prenom = request.getParameter("prenom").trim().toLowerCase();
+		
 		// String password=HashPassword.hashpassword(request.getParameter("password"));
 		String email = request.getParameter("email").trim().toLowerCase();
 		String ville = request.getParameter("ville").trim().toLowerCase();
@@ -77,7 +79,7 @@ public class ModifierProfil extends HttpServlet {
 		if(password.equals(utilisateurCo.getMotDePasse())) {
 			Utilisateur utilisateur = new Utilisateur();
 			
-			utilisateur.setPseudo(pseudo);
+			//utilisateur.setPseudo(pseudo);
 			utilisateur.setNom(nom);
 			utilisateur.setPrenom(prenom);
 			utilisateur.setEmail(email);
@@ -93,7 +95,7 @@ public class ModifierProfil extends HttpServlet {
 			if (nouveauMotDePasse.equals(passwordConf)) {
 			
 			UtilisateurManager um = UtilisateurManager.getInstance();
-			um.modifierUser(utilisateur);
+			um.modifierUser(id);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ModifierProfil.jsp").forward(request, response);
 			}else {
 				String erreur = "les mots de passent ne sont pas identiques";

@@ -34,17 +34,18 @@
 			Rue :<input type="text" name="rue"  ><br>
 			Ville :<input type="text" name="ville" ><br> 
 			Confirmation :<input type="password" name="confirmation" placeholder="Confirmation du nouveau mot de passe" ><br>
-			Credit : <p>  </p><br>
+			Credit : <p>${utilisateurCo.credit }  </p><br>
 		</div>			
-		</form>
-	</div>	
-<div align="center" >
+		<div align="center" >
 
-	<form action="<%=request.getContextPath()%>/EnregistrerProfil"	method="post">		
+			
 		<button type="submit" >
 			<p>Enregistrer</p>
 		</button>
+		</div>	
+		
 	</form>
+	
 	
 	<form action="<%=request.getContextPath()%>/SupprimerProfil" method="post">
 		<button type="submit">

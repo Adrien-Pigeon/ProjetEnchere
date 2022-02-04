@@ -54,11 +54,11 @@ public class UtilisateurManager {
 		return user;
 	}
 
-	public void modifierUser(Utilisateur user) {
+	public void modifierUser(int noUtilisateur) {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
 		
 		try {
-			userDao.update(user);
+			userDao.update(noUtilisateur);
 		} catch (DalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
