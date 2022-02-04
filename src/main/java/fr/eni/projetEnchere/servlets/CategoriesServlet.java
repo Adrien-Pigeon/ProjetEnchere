@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projetEnchere.bll.CategorieManager;
 import fr.eni.projetEnchere.bo.Categorie;
+import fr.eni.projetEnchere.dal.Exception.DalException;
 
 /**
  * Servlet implementation class CategoriesServlet
@@ -30,9 +32,21 @@ public class CategoriesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Categorie> categories = liste_categorie.lister();
-		request.setAttribute("categories",categories);
-		request.getRequestDispatcher("/WEB-INF/AccueilConnecter.jsp").forward(request, response);
+		CategorieManager cm = CategorieManager.getInstance();
+		try {
+			List<Categorie> categories = cm.lister();
+			request.setAttribute("categories",categories);
+			request.getRequestDispatcher("/WEB-INF/AccueilNonConnecter.jsp").forward(request, response);
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
