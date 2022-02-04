@@ -8,40 +8,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.eni.projetEnchere.bo.Utilisateur;
-
 /**
- * Servlet implementation class Encheres
+ * Servlet implementation class EnchereServlet
  */
-@WebServlet("/AccueilNonConnecter")
-public class AccueilNonConnecterServlet extends HttpServlet {
+@WebServlet("/Enchere")
+public class EnchereServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-  
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EnchereServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(); 
-		if (request.getSession() != null) {
+		if (request.getSession() == null) {
 			// Recupere la session
 			
-			 
+			System.out.println("valided  session");
+
 			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
-			request.getRequestDispatcher("/WEB-INF/jsp/AccueilConnecter.jsp").forward(request, response);
-			System.out.println("toujours connecté1111");
+			request.getRequestDispatcher("/WEB-INF/jsp/Enchere.jsp").forward(request, response);			System.out.println("valided session");
 			
 		}else {
 			
 			// Recupere la session
-			
+			HttpSession session = request.getSession(); 
 			session.invalidate();
-			System.out.println("déconnecté");
+			System.out.println("invalided  session");
 			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
-		}
-		
-		// request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
+		}		
 	}
 
 	/**
@@ -49,7 +50,6 @@ public class AccueilNonConnecterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		doGet(request, response);
 	}
 

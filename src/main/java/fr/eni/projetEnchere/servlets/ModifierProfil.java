@@ -32,7 +32,7 @@ public class ModifierProfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession() != null) {
-			// Recupere la session
+			// Recuperer la session
 			Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 			request.setAttribute("utilisateur", utilisateurCo);
 			System.out.println("valided session");
@@ -42,10 +42,13 @@ public class ModifierProfil extends HttpServlet {
 			
 		}else {
 			
-			// Recupere la session
-			HttpSession session = request.getSession(); 
-			session.invalidate();
-			System.out.println("invalided  session");
+//			// Recuperer la session
+//			HttpSession session = request.getSession(); 
+			Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+			request.setAttribute("utilisateur", utilisateurCo);
+			// Fermer la session
+			request.getSession().invalidate();
+			System.out.println("déconnecté");
 			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 		}
 		
