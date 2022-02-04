@@ -15,6 +15,8 @@ public class EnchereDAOImpl implements EnchereDAO {
 			+ " montant_enchere) VALUES(?,?,?,?);";
 	private static final String UPDATE_ENCHERE = "UPDATE ENCHERE SET date_enchere = ? AND montant_enchere = ? "
 			+ "WHERE no_utilisateur = ? AND no_article = ?; ";
+	private static final String DELETE_ENCHERE = "UPDATE ENCHERE SET date_enchere = ? AND montant_enchere = ? "
+			+ "WHERE no_utilisateur = ? AND no_article = ?; ";
 
 	@Override
 	public void insertEnchere(Enchere enchere) throws DalException {
@@ -59,6 +61,27 @@ public class EnchereDAOImpl implements EnchereDAO {
 		
 	}
 
+	@Override
+	public void deleteEnchere(Enchere enchere)throws DalException {
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		
+		
+			try {
+				cnx = ConnectionProvider.getConnection();
+				pstmt = cnx.prepareStatement(DELETE_ENCHERE);
+				pstmt.setObject(1,LocalDate.now());
+				pstmt.setInt(2, enchere.getMontantEnchere());
+				pstmt.setInt(3, enchere.getUtilisateur().getNoUtilisateur());
+				pstmt.setInt(4, enchere.getArticle().getNoArticle());
+				pstmt.executeUpdate();
+				pstmt.close();
+				cnx.close();
+			} catch (SQLException e) {
+				throw new DalException("Probleme sur la methode deleteEnchere()",e);
+			}
+		
+	}
 	
 
 }

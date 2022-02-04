@@ -88,8 +88,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 			ResultSet result = stmt.executeQuery();
 			if (result.next()) {
-
+  
 				u = new Utilisateur();
+				u.setNoUtilisateur(result.getInt("no_utilisateur"));
 				u.setNom(result.getString("nom"));
 				u.setPrenom(result.getString("prenom"));
 				u.setPseudo(result.getString("pseudo"));
@@ -169,7 +170,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			ResultSet result = stmt.executeQuery();
 			if (result.next()) {
 				user = new Utilisateur();
-				user.setNoUtilisateur(result.getInt("id"));
+				user.setNoUtilisateur(result.getInt("no_utilisateur"));
 				user.setNom(result.getString("nom"));
 				user.setPrenom(result.getString("prenom"));
 				user.setEmail(result.getString("email"));
@@ -199,7 +200,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	public void delete(Utilisateur user) throws DalException {
 		Connection cnx = null;
 		PreparedStatement stmt = null;
-
+		
 		try {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(DELETE);
@@ -229,6 +230,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		try {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(UPDATE_USER);
+			
 			stmt.setString(1, user.getPrenom());
 			stmt.setString(2, user.getNom());
 			stmt.setString(3, user.getEmail());

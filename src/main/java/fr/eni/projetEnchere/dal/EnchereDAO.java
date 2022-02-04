@@ -7,6 +7,7 @@ public interface EnchereDAO {
 
 	public void insertEnchere(Enchere enchere) throws DalException;
 	public void updateEnchere(Enchere enchere) throws DalException;
+	public void deleteEnchere(Enchere enchere) throws DalException;
 	
 	
 	

@@ -27,7 +27,7 @@ public class EnchereServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession() == null) {
+		if (request.getSession() != null) {
 			// Recupere la session
 			
 			System.out.println("valided  session");
