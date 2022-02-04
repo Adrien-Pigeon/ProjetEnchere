@@ -35,6 +35,9 @@ public class CategoriesServlet extends HttpServlet {
 		CategorieManager cm = CategorieManager.getInstance();
 		try {
 			List<Categorie> categories = cm.lister();
+			for(Categorie c : categories) {
+				System.out.println(c);
+			}
 			request.setAttribute("categories",categories);
 			request.getRequestDispatcher("/WEB-INF/AccueilNonConnecter.jsp").forward(request, response);
 		} catch (DalException e) {
