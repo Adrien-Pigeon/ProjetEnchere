@@ -2,7 +2,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html>
@@ -30,10 +30,10 @@ h1 {
 <body>
 	<h1>ENI-Enchères</h1>
 <div class="row" align="right" >	
-		<a href="<%=request.getContextPath()%>/VendArticle">Enchères</a>
+		<a href="<%=request.getContextPath()%>/Enchere">Enchères</a>
 		<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
 		<a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a>
-		<a href="<%=request.getContextPath()%>/AccueilNonConnecter">Déconnection</a>	
+		<a href="<%=request.getContextPath()%>/AccueilNonConnecter" >Déconnection</a>	
 </div>
 
 				<div class="text-center rounded my-5 haute " align="center">
@@ -49,9 +49,9 @@ h1 {
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Catégorie :</label>
-                       <!--   <div class="col-sm-10">
-                       <jsp:useBean id="list" class="fr.eni.projetEnchere.bo.Categorie" scope="page"/>
-                            <select name="categorie">
+                        <div class="col-sm-10">
+                        <jsp:useBean id="list" class="fr.eni.projetEnchere.bo.Categorie" scope="page"/>
+                           <%--  <select name="categorie">
                             	<c:foreach var="categorie" items="${categories}">
                                 	<option>Toutes{categorie}</option>
                                	 	<option value="${categorie.libelle}"><c:out value="${categorie.Ameublement}"/>Ameublement</option>
@@ -59,9 +59,9 @@ h1 {
                                 	<option>Informatique</option>
                                 	<option>Vêtement</option>
                                 </c:foreach>
-                            </select>
+                            </select> --%>
                         </div>
-                    </div>-->
+                    </div>
 
                     <div class="d-flex justify-content-end pt-5">
                         <button class="btn btn-action" type="submit">Rerchercher</button>
