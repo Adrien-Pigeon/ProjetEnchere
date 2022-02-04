@@ -12,7 +12,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 public interface CategorieDAO {
 
 	public List<Categorie> lister() throws DalException;
-	public Categorie selectParId(String libelle) throws DalException;
+	public Categorie selectParId(int noCategorie) throws DalException;
 	
 	
 	

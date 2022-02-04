@@ -35,7 +35,7 @@ public class CategorieDAOImpl implements CategorieDAO {
 
 		List<Categorie> listeCategorie = new ArrayList<>();
 		try {
-			cnx = DBConnectPool.seConnecter();
+			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.createStatement();
 			rs = stmt.executeQuery(LISTER);
 			Categorie categorie;
@@ -67,13 +67,13 @@ public class CategorieDAOImpl implements CategorieDAO {
 
 	//Permet de SELECT une catégorie par le libelle
 	
-	public Categorie selectParId(String libelle) throws DalException {
+	public Categorie selectParId(int noCategorie) throws DalException {
 
 		Categorie categorie = null;
 		
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pstmt = cnx.prepareStatement(SELECTBYID);
-			pstmt.setString(1, libelle);
+			pstmt.setInt(1, noCategorie);
 			ResultSet rs = pstmt.executeQuery();
 
 			if (rs.next()) {

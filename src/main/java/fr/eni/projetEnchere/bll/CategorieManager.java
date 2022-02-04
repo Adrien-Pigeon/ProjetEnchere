@@ -30,19 +30,19 @@ public class CategorieManager {
 	// Appel CategorieDAO qui redirige vers CategorieDAOImpl
 	
 	public List<Categorie> lister() throws DalException {
-        List<Categorie> categorie = new ArrayList<>();
+        List<Categorie> categories = new ArrayList<>();
         CategorieDAO cg = DAOFactory.getCategorieDAO();
-        categorie = cg.lister();
-        return categorie;
+        categories = cg.lister();
+        return categories;
 	}
 	
 	
-	public Categorie selectParId(String libelle) throws BllException, DalException{
-		Categorie no_categorie = new Categorie();
+	public Categorie selectParId(int noCategorie) throws BllException, DalException{
+		Categorie categorie = new Categorie();
 		
 		CategorieDAO dao = DAOFactory.getCategorieDAO();
-		dao.selectParId(libelle);
-		return no_categorie;
+		dao.selectParId(noCategorie);
+		return categorie;
 	}
 	
 }
