@@ -1,60 +1,78 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="Style.css">
-<title>A WEB PAGE</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Profil</title>
 </head>
 <body>
-	<div>
-		<h1>ENI-Enchères</h1>
-	</div>
-	<div class="Titre" align="center">
-		<h2>Mon Profil</h2>
-	</div>
- 
-	<div class="Formulaire" align="center">
-		<form action="<%=request.getContextPath()%>/ModifierProfil" method="post">
-		<div >
+    <form action="<%=request.getContextPath()%>/ModifierProfil" method="post">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Modification Profil</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Pseudo</label><input type="text" class="form-control" name="pseudo" ></div>
+                        <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" name="nom"></div>
+                        <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" name="prenom"></div>
+                        <div class="col-md-12"><label class="labels">Email/Login</label><input type="text" class="form-control"name="login"></div>
+                        <div class="col-md-12"><label class="labels" >Mot de passe actuel</label><input type="text" class="form-control" name="motDePasseActuel"></div>
+                        <div class="col-md-12"><label class="labels">nouveau mot de passe</label><input type="text" class="form-control" name="nouveauMotDePasse"></div>
 
-			Pseudo :<br> 
-			Prenom :<input type="text" name="prenom"  ><br>
-			Telephone :<input type="text" name="telephone"  ><br> 
-			Code postal :<input type="text" name="codePostal"><br>
-			Mot de passe actuel :<input type="password" name="motDePasseActuel"  placeholder="Mot de passe actuel" ><br> 
-			Nouveau mot de passe :<input type="password" name="nouveauMotDePasse"  placeholder="Nouveau mot de passe" ><br>
-		</div>
-		<div >
-			Nom :<input type="text" name="nom"   ><br>
-			Email :<input type="text" name="email"  ><br> 
-			Rue :<input type="text" name="rue"  ><br>
-			Ville :<input type="text" name="ville" ><br> 
-			Confirmation :<input type="password" name="confirmation" placeholder="Confirmation du nouveau mot de passe" ><br>
-			Credit : <p>${utilisateurCo.credit }  </p><br>
-		</div>			
-		<div align="center" >
+                    
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Numéro Mobile</label><input type="text" class="form-control" name="numero"></div>
+                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" name="adresse" ></div>
+                        <div class="col-md-12"><label class="labels">Code Postale</label><input type="text" class="form-control" name="codePostal"></div>
+                        <div class="col-md-12"><label class="labels">Ville</label><input type="text" class="form-control" name="ville"></div>
+                    </div>
+                   
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                    <form action="<%=request.getContextPath()%>/SupprimerProfil" method="post">
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Delete Profile</button></div>
+                    </form>
+                    <script>
+                        const senha = document.querySelector('.senha');
+                        const btn = document.querySelector('.btn');
+                    
+                        btn.onclick = () =>
+                        {
+                            if (senha.type === 'password') 
+                            {
+                                senha.type = 'text'
+                                btn.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8SA14-A-zoRaiJ2GdUiESsisaFiHNYrUZtjtjZqnth0D_KdfkwzQWIdCjbzhAoYKPTvs&usqp=CAU'
+                            }
+                            else
+                            {
+                                senha.type = 'password'
+                                btn.src = 'https://icon-library.com/images/icon-eyes/icon-eyes-12.jpg'
+                            }
+                        }
+                        </script>
+               
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</form>
+    </div>
+    </div>
 
-			
-		<button type="submit" >
-			<p>Enregistrer</p>
-		</button>
-		</div>	
-		
-	</form>
-	
-	
-	<form action="<%=request.getContextPath()%>/SupprimerProfil" method="post">
-		<button type="submit">
-			<p>Supprimer mon compte</p>
-		</button>
-	</form>
-	
-</div>
+    
+<link rel="stylesheet" href="Style.css">
+<link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js">
+
 </body>
 </html>
-
-

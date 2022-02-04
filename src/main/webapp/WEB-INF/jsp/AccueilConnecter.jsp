@@ -5,36 +5,24 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+
 <html>
+<link rel="stylesheet" href="Style.css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ListEnchères Logged</title>
-<style>
-body {
-	width: 100%;
-	height: 100vh;
-	background: silver;
-	justify-content: center;
-	align-items: center;
-}
-
-h1 {
-	text-align: left;
-	display: inline;
-}
-</style>
-
-
-
+	<h1>ENI-Enchères</h1>
+		<nav class="navigationMenu" >			
+				<a href="<%=request.getContextPath()%>/Enchere">Enchères</a>
+				<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
+				<a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a>
+				<a href="<%=request.getContextPath()%>/Deconnexion" >Déconnection</a>	
+			
+		</nav>
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
-<div class="row" align="right" >	
-		<a href="<%=request.getContextPath()%>/Enchere">Enchères</a>
-		<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
-		<a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a>
-		<a href="<%=request.getContextPath()%>/Deconnexion" >Déconnection</a>	
-</div>
+
 
 				<div class="text-center rounded my-5 haute " align="center">
                     <h1 class="p-3 bordure">Liste des enchères</h1>
@@ -67,7 +55,7 @@ h1 {
                         <button class="btn btn-action" type="submit">Rerchercher</button>
                     </div>
  </form>
-<div >
+<div class="categorrieAchat">
 			<p>Achats</p>
 		<div>
 		  <input type="checkbox" id="scales" name="scales" checked>
@@ -83,7 +71,7 @@ h1 {
 		  <label for="horns">mes encheres en cours</label>
 		</div>
 </div>		
-<div  >
+<div class="categorieVentes" >
 			<p>Ventes</p>
 		<div>
 		  <input type="checkbox" id="scales" name="scales" >
@@ -98,7 +86,7 @@ h1 {
 			<label for="horns">ventes terminées</label>
 		</div>
 </div>
-<div class="card" style="width: 18rem;">
+<div class="carteArticle" style="width: 18rem;">
   			<img class="card-img-top" src="img/Aspirateur.jpg" alt="Image titre">
   				<div class="card-body">
     				<h5 class="card-title">Aspirateur</h5>
