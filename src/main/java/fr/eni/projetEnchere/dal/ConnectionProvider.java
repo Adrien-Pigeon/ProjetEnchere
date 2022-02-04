@@ -9,6 +9,10 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 
+import fr.eni.projetEnchere.dal.Exception.DalException;
+
+
+
 public class ConnectionProvider {
 	
 	private static DataSource dataSource;
@@ -32,5 +36,7 @@ public class ConnectionProvider {
 		return dataSource.getConnection();
 	} 
 	
+	
+	}
+	
 
-}

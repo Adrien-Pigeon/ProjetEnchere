@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.projetEnchere.bll.UtilisateurManager;
 import fr.eni.projetEnchere.bo.Utilisateur;
@@ -38,7 +39,25 @@ public class PageProfilServlet extends HttpServlet {
 		boolean btnOn = true;
 		request.setAttribute("btnOn", btnOn);
 
-		request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
+		if (request.getSession() != null) {
+			// Recupere la session
+			
+			
+			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
+			
+		}else {
+			
+			// Recupere la session
+			HttpSession session = request.getSession(); 
+			session.invalidate();
+			System.out.println("invalided  session");
+			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
+		}
+		
+	//	request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
+	
+	
 	}
 
 	/**
@@ -49,7 +68,7 @@ public class PageProfilServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		boolean btnOn = false;
-		// recupération du pseudo envoyé par la jsp
+		// recupération du parametre pseudo envoyé par la jsp
 		String pseudo = request.getParameter("pseudo");
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		Utilisateur utilisateur = um.afficherProfil(pseudo);

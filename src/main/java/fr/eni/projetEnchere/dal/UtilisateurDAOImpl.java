@@ -223,7 +223,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public void update(int noUtilisateur) throws DalException {
+	public void update(Utilisateur user,int noUtilisateur) throws DalException {
 		Connection cnx = null;
 		PreparedStatement stmt = null;
 
@@ -239,8 +239,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			stmt.setString(6, user.getVille());
 			stmt.setString(7, user.getRue());
 			stmt.setString(8, user.getCodePostal());
-			stmt.setInt(9, user.getCredit());
-			stmt.setInt(10, user.getNoUtilisateur());
+			stmt.setInt(10, 8);
 			
 			stmt.executeUpdate();
 		} catch (SQLException e) {

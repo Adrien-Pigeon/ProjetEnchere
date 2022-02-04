@@ -23,7 +23,7 @@
 </head>
 <body>
 
-
+ 
 				<div class="text-center rounded my-5 haute " align="center">
                     <h1 class="p-3 bordure">Liste des enchères</h1>
                 </div>

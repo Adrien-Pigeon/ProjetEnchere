@@ -51,20 +51,23 @@ public class LoginServlet extends HttpServlet {
 		if(username.contains("@")) {
 			user.setEmail(username);
 		}else {
-		user.setPseudo(username);
+			user.setPseudo(username);
 		}
 		user.setMotDePasse(password);
 		
-		//j'instancie un objet de type EleveManager s'il existe
+		//j'instancie un objet de type UtilisateurManager s'il existe
 		UtilisateurManager um = UtilisateurManager.getInstance();
 				
-		try {
+		
 			
-			user = um.login(user);
-		} catch (DalException e) {
-			// TODO a modifier
-			e.printStackTrace();
-		}		
+			try {
+				user = um.login(user);
+			} catch (DalException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+				
 		System.out.println(user);
 
 		if (user!=null) {
