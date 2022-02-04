@@ -49,8 +49,8 @@ h1 {
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Catégorie :</label>
-                        <div class="col-sm-10">
-                        <jsp:useBean id="list" class="fr.eni.projetEnchere.bo.Categorie" scope="page"/>
+                       <!--   <div class="col-sm-10">
+                       <jsp:useBean id="list" class="fr.eni.projetEnchere.bo.Categorie" scope="page"/>
                             <select name="categorie">
                             	<c:foreach var="categorie" items="${categories}">
                                 	<option>Toutes{categorie}</option>
@@ -61,7 +61,7 @@ h1 {
                                 </c:foreach>
                             </select>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="d-flex justify-content-end pt-5">
                         <button class="btn btn-action" type="submit">Rerchercher</button>

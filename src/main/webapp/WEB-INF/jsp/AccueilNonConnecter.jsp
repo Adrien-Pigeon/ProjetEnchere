@@ -56,10 +56,10 @@ h1 {
 
 			<div>
 				<select id="scategorie" name="scategorie">
-					<option>Toutes </option>
-					<c:forEach var="item" items="categories">
+					
+					<c:forEach var="item" items="${categories }">
 						
-						<option>${categorie.libelle }</option>
+						<option>${item}</option>
 					</c:forEach>
 					
 
