@@ -28,20 +28,7 @@ public class AccueilNonConnecterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategorieManager cm = CategorieManager.getInstance();
-		try {
-			String [] categories = {"menu","sport","yuioyuy"};
-			//List<Categorie> categories = cm.lister();
-			//System.out.println("bonjour");
-			request.setAttribute("categories",categories);
-			request.getRequestDispatcher("/WEB-INF/AccueilNonConnecter.jsp").forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 			System.out.println("déconnecté");
 			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 		}

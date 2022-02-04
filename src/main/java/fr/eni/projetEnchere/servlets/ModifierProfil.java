@@ -60,11 +60,12 @@ public class ModifierProfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+		String password = utilisateurCo.getMotDePasse();
 		int id = utilisateurCo.getNoUtilisateur();
-		request.setAttribute("utilisateur", utilisateurCo);
+		
 		String nom = request.getParameter("nom").trim().toLowerCase();
-		String password = request.getParameter("password").trim();
-		//String pseudo = request.getParameter("pseudo").trim();
+		String motDePasse = request.getParameter("password").trim();
+		String pseudo = request.getParameter("pseudo").trim();
 		String prenom = request.getParameter("prenom").trim().toLowerCase();
 		
 		// String password=HashPassword.hashpassword(request.getParameter("password"));
@@ -74,12 +75,14 @@ public class ModifierProfil extends HttpServlet {
 		String codePostal = request.getParameter("codePostal").trim();
 		String telephone = request.getParameter("telephone").trim();
 		String passwordConf = request.getParameter("password_conf").trim();
-		String nouveauMotDePasse = request.getParameter("password_conf").trim();
+		String nouveauMotDePasse = request.getParameter("nouveauMotDePasse").trim();
 		
-		if(password.equals(utilisateurCo.getMotDePasse())) {
-			Utilisateur utilisateur = new Utilisateur();
+		Utilisateur utilisateur = new Utilisateur();
+		
+		if(motDePasse.equals(password)) {
 			
-			//utilisateur.setPseudo(pseudo);
+			
+			utilisateur.setPseudo(pseudo);
 			utilisateur.setNom(nom);
 			utilisateur.setPrenom(prenom);
 			utilisateur.setEmail(email);
@@ -90,12 +93,17 @@ public class ModifierProfil extends HttpServlet {
 			utilisateur.setMotDePasse(nouveauMotDePasse);
 			utilisateur.setCredit(150);
 			utilisateur.setAdministrateur(false);
+		}else {
+			String erreur = "les mots de passent ne sont pas identiques";
+			request.setAttribute("erreur", erreur);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);
+		}
 			
 
 			if (nouveauMotDePasse.equals(passwordConf)) {
 			
 			UtilisateurManager um = UtilisateurManager.getInstance();
-			um.modifierUser(id);
+			um.modifierUser(utilisateur,8);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ModifierProfil.jsp").forward(request, response);
 			}else {
 				String erreur = "les mots de passent ne sont pas identiques";
@@ -107,6 +115,6 @@ public class ModifierProfil extends HttpServlet {
 			
 			
 		}
-	}
+	
 
 }

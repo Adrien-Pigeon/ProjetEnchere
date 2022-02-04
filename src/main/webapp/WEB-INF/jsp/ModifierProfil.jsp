@@ -21,11 +21,11 @@
 		<form action="<%=request.getContextPath()%>/ModifierProfil" method="post">
 		<div >
 
-			Pseudo :<br> 
+			Pseudo :<input type="text" name="pseudo"  ><br> 
 			Prenom :<input type="text" name="prenom"  ><br>
 			Telephone :<input type="text" name="telephone"  ><br> 
 			Code postal :<input type="text" name="codePostal"><br>
-			Mot de passe actuel :<input type="password" name="motDePasseActuel"  placeholder="Mot de passe actuel" ><br> 
+			Mot de passe actuel :<input type="password" name="password"  placeholder="Mot de passe actuel" ><br> 
 			Nouveau mot de passe :<input type="password" name="nouveauMotDePasse"  placeholder="Nouveau mot de passe" ><br>
 		</div>
 		<div >
@@ -33,8 +33,8 @@
 			Email :<input type="text" name="email"  ><br> 
 			Rue :<input type="text" name="rue"  ><br>
 			Ville :<input type="text" name="ville" ><br> 
-			Confirmation :<input type="password" name="confirmation" placeholder="Confirmation du nouveau mot de passe" ><br>
-			Credit : <p>${utilisateurCo.credit }  </p><br>
+			Confirmation :<input type="password" name="password_conf" placeholder="Confirmation du nouveau mot de passe" ><br>
+			<p>Credit :${user.credit }  </p><br>
 		</div>			
 		<div align="center" >
 
