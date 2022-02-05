@@ -54,6 +54,7 @@ public class UtilisateurManager {
 		return user;
 	}
 
+	
 	public void modifierUser(Utilisateur user,String pseudo) {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
 		

@@ -20,10 +20,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private static final String SELECT_BY_PSEUDO = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?;";
 	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?;";
 
-	Connection cnx = null;
-	PreparedStatement stmt = null;
-	ResultSet rs = null;
-	Utilisateur user = null;
+	
 
 	/**
 	 * Methode permettant d'ajouter un utilisateur � la base de donn�e
@@ -124,12 +121,13 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		Connection cnx = null;
 		PreparedStatement stmt = null;
 		Utilisateur user = null;
+		
 		try {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(SELET_BY_ID);
 			stmt.setInt(1, noArticle);
 			ResultSet result = stmt.executeQuery();
-			if (rs.next()) {
+			if (result.next()) {
 				user = new Utilisateur();
 				user.setNoUtilisateur(result.getInt("id"));
 				user.setNom(result.getString("nom"));

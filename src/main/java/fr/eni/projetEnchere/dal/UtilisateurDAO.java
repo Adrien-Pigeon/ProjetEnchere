@@ -12,7 +12,6 @@ public interface UtilisateurDAO {
 	public Utilisateur selectById(int noUtilisateur) throws DalException;
 	public Utilisateur selectByPseudo(String Pseudo) throws DalException;
 
-	
 
 }
  
