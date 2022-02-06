@@ -32,24 +32,7 @@ public class CategoriesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategorieManager cm = CategorieManager.getInstance();
-		try {
-			List<Categorie> categories = cm.lister();
-			for(Categorie c : categories) {
-				System.out.println(c);
-			}
-			request.setAttribute("categories",categories);
-			request.getRequestDispatcher("/WEB-INF/AccueilNonConnecter.jsp").forward(request, response);
-		} catch (DalException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 	/**

@@ -14,7 +14,7 @@ import fr.eni.projetEnchere.helpers.DBConnectPool;
 
 public class CategorieDAOImpl implements CategorieDAO {
 
-	private final static String LISTER = "SELECT *FROM CATEGORIES;";
+	private final static String LISTER = "SELECT * FROM CATEGORIES;";
 	private final static String INSERER = "INSERT INTO CATEGORIES (libelle) values (?);";
 	// private final static String SUPPRIMER = "delete from CATEGORIES where libelle
 	// =?;";
