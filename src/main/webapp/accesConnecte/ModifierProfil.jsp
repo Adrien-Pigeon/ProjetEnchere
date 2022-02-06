@@ -22,17 +22,19 @@
                         <div class="col-md-6"><label class="labels">Pseudo</label><input type="text" class="form-control" name="pseudo" ></div>
                         <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" name="nom"></div>
                         <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" name="prenom"></div>
-                        <div class="col-md-12"><label class="labels">Email/Login</label><input type="text" class="form-control"name="login"></div>
-                        <div class="col-md-12"><label class="labels" >Mot de passe actuel</label><input type="text" class="form-control" name="motDePasseActuel"></div>
-                        <div class="col-md-12"><label class="labels">nouveau mot de passe</label><input type="text" class="form-control" name="nouveauMotDePasse"></div>
+                        <div class="col-md-12"><label class="labels">Email/Login</label><input type="text" class="form-control"name="email"></div>
+                        <div class="col-md-12"><label class="labels" >Mot de passe actuel</label><input type="text" class="form-control" name="password"></div>
+                        
 
                     
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Numéro Mobile</label><input type="text" class="form-control" name="numero"></div>
+                        <div class="col-md-12"><label class="labels">Numéro Mobile</label><input type="text" class="form-control" name="telephone"></div>
                         <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" name="adresse" ></div>
                         <div class="col-md-12"><label class="labels">Code Postale</label><input type="text" class="form-control" name="codePostal"></div>
                         <div class="col-md-12"><label class="labels">Ville</label><input type="text" class="form-control" name="ville"></div>
+                        <div class="col-md-12"><label class="labels">nouveau mot de passe</label><input type="text" class="form-control" name="nouveauMotDePasse"></div>
+                        <div class="col-md-12"><label class="labels">Confirmation mot de passe</label><input type="text" class="form-control" name="password_conf"></div>
                     </div>
                    
                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>

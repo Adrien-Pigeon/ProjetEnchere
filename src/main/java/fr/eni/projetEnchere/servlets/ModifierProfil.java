@@ -36,7 +36,7 @@ public class ModifierProfil extends HttpServlet {
 			request.setAttribute("utilisateur", utilisateurCo);
 			System.out.println("valided session");
 			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
-			request.getRequestDispatcher("/WEB-INF/jsp/ModifierProfil.jsp").forward(request, response);			
+			request.getRequestDispatcher("/accesConnecte/ModifierProfil.jsp").forward(request, response);			
 			
 			
 		}else {
@@ -74,7 +74,7 @@ public class ModifierProfil extends HttpServlet {
 		String codePostal = request.getParameter("codePostal").trim();
 		String telephone = request.getParameter("telephone").trim();
 		String passwordConf = request.getParameter("password_conf").trim();
-		String nouveauMotDePasse = request.getParameter("password_conf").trim();
+		String nouveauMotDePasse = request.getParameter("nouveauMotDePasse").trim();
 		
 		if(password.equals(utilisateurCo.getMotDePasse())) {
 			Utilisateur utilisateur = new Utilisateur();
@@ -96,7 +96,7 @@ public class ModifierProfil extends HttpServlet {
 			
 			UtilisateurManager um = UtilisateurManager.getInstance();
 			um.modifierUser(utilisateur,oldPseudo);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ModifierProfil.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 			}else {
 				String erreur = "les mots de passent ne sont pas identiques";
 				request.setAttribute("erreur", erreur);

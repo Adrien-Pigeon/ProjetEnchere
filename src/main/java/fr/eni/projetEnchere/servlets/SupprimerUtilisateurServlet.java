@@ -28,11 +28,11 @@ public class SupprimerUtilisateurServlet extends HttpServlet {
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		HttpSession session = request.getSession();
 		
-			Utilisateur no_utilisateur = (Utilisateur) session.getAttribute("no_utilisateur");
+			Utilisateur utilisateur = (Utilisateur) session.getAttribute("user");
 		
 		// SUPPRESSION DU COMPTE
 		try {
-			um.delete(no_utilisateur);
+			um.delete(utilisateur);
 		} catch (DalException e) {
 			e.printStackTrace();
 		}

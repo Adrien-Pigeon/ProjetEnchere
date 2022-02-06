@@ -37,7 +37,7 @@ public class AccueilConnecterServlet extends HttpServlet {
 			
 			request.getSession(); 
 			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
-			request.getRequestDispatcher("/WEB-INF/jsp/AccueilConnecter.jsp").forward(request, response);
+			request.getRequestDispatcher("/accesConnecte/AccueilConnecter.jsp").forward(request, response);
 			System.out.println("toujours connectéééééé");
 			
 		}else {

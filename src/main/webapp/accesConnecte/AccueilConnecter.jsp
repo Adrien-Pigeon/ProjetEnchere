@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="Style.css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jsProjet.js"></script>
 <title>ListEnchères Logged</title>
 	<h1>ENI-Enchères</h1>
 		<nav class="navigationMenu" >			
@@ -55,37 +57,39 @@
                         <button class="btn btn-action" type="submit">Rerchercher</button>
                     </div>
  </form>
-<div class="categorrieAchat">
-			<p>Achats</p>
-		<div>
-		  <input type="checkbox" id="scales" name="scales" checked>
-		  <label for="scales">encheres ouvertes</label>
-		</div>
-		
-		<div>
-		  <input type="checkbox" id="horns" name="horns">
-		  <label for="horns">mes encheres en cours</label>
-		</div>
-		<div>
-		  <input type="checkbox" id="horns" name="horns">
-		  <label for="horns">mes encheres en cours</label>
-		</div>
-</div>		
-<div class="categorieVentes" >
-			<p>Ventes</p>
-		<div>
-		  <input type="checkbox" id="scales" name="scales" >
-		  <label for="scales">mes ventes en cours</label>
-		</div>
-		<div>
-			<input type="checkbox" id="horns" name="horns">
-			<label for="horns">ventes non debutées</label>
-		</div>
-		<div>
-			<input type="checkbox" id="horns" name="horns">
-			<label for="horns">ventes terminées</label>
-		</div>
-</div>
+<div>
+      <input class="buy" onclick="myFunction()" type="radio" id="achat" name="drone" value="achat"
+             checked>
+      <label for="achat">achat</label>
+      
+      <div>
+        <input type="checkbox" id="achats" name="check"
+               checked>
+        <label for="scales">Enchères ouvertes</label><br>
+     
+        <input type="checkbox" id="encours" name="check">
+        <label for="horns">Mes enchères en cours</label><br>
+      
+        <input type="checkbox" id="remporter" name="check">
+        <label for="horns">Mes enchères remporter</label>
+      </div>
+    
+    </div>
+    
+    <div>
+      <input class="sell" onclick="myFunction()" type="radio" id="vente" name="drone" value="vente">
+      <label for="vente">vente</label>
+      <div>
+        <input type="checkbox" id="ventes" name="check">
+        <label for="scales">Mes ventes en cours</label><br>
+      
+        <input type="checkbox" id="debute" name="check">
+        <label for="horns">Ventes non débutées</label><br>
+      
+        <input type="checkbox" id="termine" name="check">
+        <label for="horns">Ventes terminées</label>
+      </div>
+    </div>
 <div class="carteArticle" style="width: 18rem;">
   			<img class="card-img-top" src="img/Aspirateur.jpg" alt="Image titre">
   				<div class="card-body">
@@ -96,6 +100,27 @@
 </div>
 
 
-
+ <script>
+       function myFunction() {
+        if(document.getElementById("vente").checked){
+      document.getElementById("achats").disabled = true;
+      document.getElementById("remporter").disabled = true;
+      document.getElementById("encours").disabled = true;
+      document.getElementById("ventes").disabled = false;
+      document.getElementById("debute").disabled = false;
+      document.getElementById("termine").disabled = false;
+        }
+        else if(document.getElementById("achat").checked){
+    document.getElementById("ventes").disabled = true;
+      document.getElementById("debute").disabled = true;
+      document.getElementById("termine").disabled = true;
+      document.getElementById("achats").disabled = false;
+      document.getElementById("encours").disabled = false;
+      document.getElementById("remporter").disabled = false;
+        }
+        }
+       </script>
+   
+ 
 </body>
 </html>
