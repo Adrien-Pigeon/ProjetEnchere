@@ -121,6 +121,7 @@
         }
        </script>
    
- 
+ 		<script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/monScriptProjet.js"></script>
 </body>
 </html>
