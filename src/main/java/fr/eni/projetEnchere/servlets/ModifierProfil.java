@@ -72,14 +72,14 @@ public class ModifierProfil extends HttpServlet {
 		
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		int id = utilisateurCo.getNoUtilisateur();
-		
+		String password = utilisateurCo.getPassword();
 		
 		
 		
 		// String oldPseudo = utilisateurCo.getPseudo();
 		request.setAttribute("utilisateur", utilisateurCo);
 		String nom = request.getParameter("nom").trim().toLowerCase();
-		String password = request.getParameter("password").trim();
+		
 		String pseudo = request.getParameter("pseudo").trim();
 		String prenom = request.getParameter("prenom").trim().toLowerCase();
 
