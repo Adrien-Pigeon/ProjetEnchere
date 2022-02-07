@@ -34,7 +34,8 @@ public class CreerEnchereServlet extends HttpServlet {
 			System.out.println("valided  session");
 
 			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
-			request.getRequestDispatcher("/WEB-INF/jsp/Enchere.jsp").forward(request, response);			System.out.println("valided session");
+			request.getRequestDispatcher("/WEB-INF/jsp/NewEnchere.jsp").forward(request, response);			
+			System.out.println("valided session");
 			
 		}else {
 			
@@ -50,7 +51,8 @@ public class CreerEnchereServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		
 		doGet(request, response);
 	}
 
