@@ -3,10 +3,18 @@
   <display-name>ProjetEnchere</display-name>
   <servlet>
     <servlet-name>AccueilNonConnecter</servlet-name>
-    <jsp-file>/WEB-INF/jsp/AccueilNonConnecter.jsp</jsp-file>
+    <servlet-class>fr.eni.projetEnchere.servlets.AccueilNonConnecterServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AccueilNonConnecter</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <filter>
+  	<filter-name>EnchereFilter</filter-name>
+  	<filter-class>fr.eni.projetEnchere.filters.EnchereFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>EnchereFilter</filter-name>
+  	<url-pattern>/accesConnecte/*</url-pattern>
+  </filter-mapping>
 </web-app> 

@@ -65,6 +65,7 @@ public class LoginServlet extends HttpServlet {
 			} catch (DalException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				
 			}
 			
 				
@@ -74,7 +75,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
-			request.getRequestDispatcher("/WEB-INF/jsp/AccueilConnecter.jsp").forward(request, response);
+			request.getRequestDispatcher("/accesConnecte/AccueilConnecter.jsp").forward(request, response);
 			
 			
 		}else {

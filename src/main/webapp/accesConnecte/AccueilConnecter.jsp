@@ -12,7 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="/js/jsProjet.js"></script>
+<script type="text/javascript" src="js/jsProjet.js"></script>
 <title>ListEnchères Logged</title>
 	<h1>ENI-Enchères</h1>
 		<nav class="navigationMenu" >			
@@ -121,7 +121,7 @@
         }
        </script>
    
- 		<script type="text/javascript" src="/js/jquery.js"></script>
-        <script type="text/javascript" src="/js/monScriptProjet.js"></script>
+ 		<script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/monScriptProjet.js"></script>
 </body>
 </html>
