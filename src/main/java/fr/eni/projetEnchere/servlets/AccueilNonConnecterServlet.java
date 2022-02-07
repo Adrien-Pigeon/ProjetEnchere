@@ -29,6 +29,7 @@ public class AccueilNonConnecterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		String logged = null;
 		session.setAttribute("logged", logged);

@@ -10,7 +10,7 @@ import java.util.List;
 import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.dal.Exception.DalException;
 
-public class ArticleDAOImpl implements ArticleVenduDAO{
+public class ArticleVenduDAOImpl implements ArticleVenduDAO{
 	
 	private static final String SELECT_ALL = "SELECT nom_article,description,prix_vente,,date_debut_encheres,date_fin_encheres"
 			+ "no_categorie,pseudo"

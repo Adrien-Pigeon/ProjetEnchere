@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -16,54 +17,62 @@
 		
 			<div>
 				<label for="name">Article:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="nom" required>
 			</div>
 			
 			<div>
 				<label for="name">Description:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="description" required>
 			</div>
 			
 			<div>
-				<label for="name">Categorie:</label> 
-				<input type="text" id="mail"name="user_mail" required>
+			<label for="name">Categorie:</label> 
+				<select id="scategorie" name="scategorie">
+					<option></option>
+					<c:forEach var="item" items="${categories }">
+						
+						<option value="${categorie.libelle}">${item.libelle }</option>
+					</c:forEach>
+					
+
+				</select>
 			</div>
 			
 		
 			
 			<div>
 				<label for="mail">Photo de l'article</label> 
-				<input type="email" id="name"name="user_name" required>
+				<input type="email" id="name"name="photo" required>
 			</div>
 			
 			<div>
 				<label for="msg">Mise à prix:</label>
-				<input type="text" id="msg" name="user_message"  >
+				<input type="text" id="msg" name="prixInitial"  >
 			</div>
 			
 			<div>
 				<label for="name">Début de l'enchère:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="date" id="dateDebut"name="dateDebut" required>
 			</div>
 			
 			<div>
 				<label for="name">Fin de l'enchère:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="date" id="dateFin"name="dateFin" required>
 			</div>
 			
 			<div>
 				<label for="name">Rue:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="rue" required>
 			</div>
 			
 			<div>
 				<label for="name">Code postal:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="codePostal" required>
 			</div>
 			
 			<div>
 				<label for="name">Ville:</label> 
-				<input type="text" id="name"name="user_name" required>
+				<input type="text" id="name"name="ville" required>
 			</div>
 			
 		</form>
