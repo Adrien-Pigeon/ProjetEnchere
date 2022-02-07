@@ -14,7 +14,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private final static String INSERT_USER = "INSERT INTO dbo.UTILISATEURS (prenom,nom,pseudo,email,mot_de_passe,telephone,"
 			+ "ville,rue,code_postal,credit,administrateur) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ? OR email = ?  AND mot_de_passe = ?";
-	private final static String SELET_BY_ID = "SELECT * FROM dbo.UTILISATEURS WHERE no_article = ?;";
+	private final static String SELET_BY_ID = "SELECT * FROM dbo.UTILISATEURS WHERE no_utilisateur = ?;";
 	private final static String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?,prenom =?,nom=?,email=?,mot_de_passe=?,telephone=?,"
 			+ "ville=?,rue=?,code_postal=?,credit=? WHERE no_utilisateur = ?;";
 	private static final String SELECT_BY_PSEUDO = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?;";
@@ -127,7 +127,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			ResultSet result = stmt.executeQuery();
 			if (result.next()) {
 				user = new Utilisateur();
-				user.setNoUtilisateur(result.getInt("id"));
+				user.setNoUtilisateur(result.getInt("no_utilisateur"));
 				user.setNom(result.getString("nom"));
 				user.setPrenom(result.getString("prenom"));
 				user.setEmail(result.getString("email"));
@@ -135,7 +135,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				user.setRue(result.getString("rue"));
 				user.setPseudo(result.getString("pseudo"));
 				user.setTelephone(result.getString("telephone"));
-				user.setCodePostal(result.getString("codePostal"));
+				user.setCodePostal(result.getString("code_postal"));
 				user.setCredit(result.getInt("credit"));
 				user.setAdministrateur(result.getBoolean("administrateur"));
 			}

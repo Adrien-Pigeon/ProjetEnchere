@@ -47,7 +47,7 @@
 							</div>
 							<div class="col-md-12">
 								<label class="labels">Mot de passe actuel</label><input
-									type="text" class="form-control" name="password">
+									type="text" class="form-control" name="password" required>
 							</div>
 
 

@@ -36,6 +36,14 @@ public class ModifierProfil extends HttpServlet {
 		if (request.getSession() != null) {
 			// Recuperer la session
 			Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+			int id = utilisateurCo.getNoUtilisateur();
+			UtilisateurManager um = UtilisateurManager.getInstance();
+			try {
+				utilisateurCo = um.SelectUser(id);
+			} catch (DalException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			request.setAttribute("utilisateur", utilisateurCo);
 			request.getRequestDispatcher("/accesConnecte/ModifierProfil.jsp").forward(request, response);
 
@@ -60,8 +68,14 @@ public class ModifierProfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		int id = utilisateurCo.getNoUtilisateur();
+		
+		
+		
+		
+		
 		// String oldPseudo = utilisateurCo.getPseudo();
 		request.setAttribute("utilisateur", utilisateurCo);
 		String nom = request.getParameter("nom").trim().toLowerCase();
@@ -89,11 +103,11 @@ public class ModifierProfil extends HttpServlet {
 		utilisateur.setCodePostal(codePostal);
 		utilisateur.setRue(rue);
 		utilisateur.setVille(ville);
-		if (nouveauMotDePasse == null || nouveauMotDePasse.isBlank()) {
+		if (nouveauMotDePasse.isBlank()) {
 			utilisateur.setMotDePasse(password);
 
 		} else {
-			if (nouveauMotDePasse.equals(passwordConf)) {
+			if (nouveauMotDePasse != null && nouveauMotDePasse.equals(passwordConf)) {
 				utilisateur.setMotDePasse(nouveauMotDePasse);
 			} else {
 				String erreur = "les mots de passent ne sont pas identiques";
