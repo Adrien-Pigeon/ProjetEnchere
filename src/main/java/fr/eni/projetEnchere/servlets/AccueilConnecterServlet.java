@@ -43,6 +43,7 @@ public class AccueilConnecterServlet extends HttpServlet {
 
 			request.setAttribute("categories", categories);
 
+			
 		} catch (DalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

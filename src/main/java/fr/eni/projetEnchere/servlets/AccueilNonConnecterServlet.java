@@ -22,6 +22,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 public class AccueilNonConnecterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)

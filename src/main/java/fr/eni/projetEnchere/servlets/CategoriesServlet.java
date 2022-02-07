@@ -20,6 +20,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 public class CategoriesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
