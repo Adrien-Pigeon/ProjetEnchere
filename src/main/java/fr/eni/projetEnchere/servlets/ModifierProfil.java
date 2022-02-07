@@ -35,8 +35,6 @@ public class ModifierProfil extends HttpServlet {
 			// Recuperer la session
 			Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 			request.setAttribute("utilisateur", utilisateurCo);
-			System.out.println("valided session");
-			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
 			request.getRequestDispatcher("/accesConnecte/ModifierProfil.jsp").forward(request, response);			
 			
 			
@@ -77,9 +75,10 @@ public class ModifierProfil extends HttpServlet {
 		String passwordConf = request.getParameter("password_conf").trim();
 		String nouveauMotDePasse = request.getParameter("nouveauMotDePasse").trim();
 		
-		if(password.equals(utilisateurCo.getMotDePasse())) {
+		
 			Utilisateur utilisateur = new Utilisateur();
 			
+			utilisateur.setNoUtilisateur(id);
 			utilisateur.setPseudo(pseudo);
 			utilisateur.setNom(nom);
 			utilisateur.setPrenom(prenom);
@@ -88,36 +87,42 @@ public class ModifierProfil extends HttpServlet {
 			utilisateur.setCodePostal(codePostal);
 			utilisateur.setRue(rue);
 			utilisateur.setVille(ville);
-			if(nouveauMotDePasse != null) {
-				utilisateur.setMotDePasse(nouveauMotDePasse);
-			}else {
+			if(nouveauMotDePasse == null || nouveauMotDePasse.isBlank() ) {
 				utilisateur.setMotDePasse(password);
+				
+			}else {
+				if (nouveauMotDePasse.equals(passwordConf)) {
+					utilisateur.setMotDePasse(nouveauMotDePasse);
+					}else {
+						String erreur = "les mots de passent ne sont pas identiques";
+						request.setAttribute("erreur", erreur);
+						this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);
+					}
 			}
 			
 			utilisateur.setCredit(150);
 			utilisateur.setAdministrateur(false);
 			
 
-			if (nouveauMotDePasse.equals(passwordConf)) {
+			
 			
 			UtilisateurManager um = UtilisateurManager.getInstance();
 			try {
-				um.modifierUser(utilisateur,id);
+				um.modifierUser(utilisateur);
+				request.setAttribute("btnOn", true);
+				request.setAttribute("utilisateur", utilisateur);
+				
 			} catch (DalException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
-			}else {
-				String erreur = "les mots de passent ne sont pas identiques";
-				request.setAttribute("erreur", erreur);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);
-			}
+			
 				
 			
 			
 			
-		}
+		//}
 	}
-
+	
 }

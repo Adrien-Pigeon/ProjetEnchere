@@ -23,7 +23,7 @@
                         <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" name="nom" value="${utilisateur.nom}"></div>
                         <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" name="prenom" value="${utilisateur.prenom}"></div>
                         <div class="col-md-12"><label class="labels">Email/Login</label><input type="text" class="form-control"name="email" value="${utilisateur.email}"></div>
-                        <div class="col-md-12"><label class="labels" >Mot de passe actuel</label><input type="text" class="form-control" name="password" value="${utilisateur.password}"></div>
+                        <div class="col-md-12"><label class="labels" >Mot de passe actuel</label><input type="text" class="form-control" name="password"  ></div>
                         
 
                     

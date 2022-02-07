@@ -55,11 +55,11 @@ public class UtilisateurManager {
 	}
 
 	
-	public void modifierUser(Utilisateur user,int id) throws DalException {
+	public void modifierUser(Utilisateur user) throws DalException {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
 		
 		
-			userDao.update(user, id);
+			userDao.update(user);
 		
 		
 	}

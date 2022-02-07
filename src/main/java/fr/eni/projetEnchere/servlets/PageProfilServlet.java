@@ -43,7 +43,7 @@ public class PageProfilServlet extends HttpServlet {
 			// Recupere la session
 			
 			
-			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
+			
 				request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 			
 		}else {
@@ -55,7 +55,7 @@ public class PageProfilServlet extends HttpServlet {
 			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 		}
 		
-	//	request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
+	
 	
 	
 	}
@@ -81,16 +81,16 @@ public class PageProfilServlet extends HttpServlet {
 			if (pseudo.equals(utilisateurCo.getPseudo())) {
 				btnOn = true;
 				request.setAttribute("btnOn", btnOn);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profilUtilisateur.jsp").forward(request,
+				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/pageProfil.jsp").forward(request,
 						response);
 			} else { // sinon pas de bouton modifier
 				request.setAttribute("btnOn", btnOn);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profilUtilisateur.jsp").forward(request,
+				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/pageProfil.jsp").forward(request,
 						response);
 			}
 		} else { // Si pas d'utilisateur en session alors affichage du profil
 			request.setAttribute("btnOn", btnOn);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profilUtilisateur.jsp").forward(request,
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/pageProfil.jsp").forward(request,
 					response);
 		}
 	}
