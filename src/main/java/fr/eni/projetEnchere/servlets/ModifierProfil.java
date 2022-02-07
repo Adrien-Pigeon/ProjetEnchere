@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.projetEnchere.bll.UtilisateurManager;
 import fr.eni.projetEnchere.bo.Utilisateur;
+import fr.eni.projetEnchere.dal.Exception.DalException;
 
 /**
  * Servlet implementation class ModifierProfil
@@ -95,7 +96,12 @@ public class ModifierProfil extends HttpServlet {
 			if (nouveauMotDePasse.equals(passwordConf)) {
 			
 			UtilisateurManager um = UtilisateurManager.getInstance();
-			um.modifierUser(utilisateur,oldPseudo);
+			try {
+				um.modifierUser(utilisateur,id);
+			} catch (DalException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 			}else {
 				String erreur = "les mots de passent ne sont pas identiques";

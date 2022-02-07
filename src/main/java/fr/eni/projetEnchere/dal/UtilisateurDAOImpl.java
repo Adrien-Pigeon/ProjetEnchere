@@ -221,7 +221,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public void update(Utilisateur user,String pseudo) throws DalException {
+	public void update(Utilisateur user,int id) throws DalException {
 		Connection cnx = null;
 		PreparedStatement stmt = null;
 
