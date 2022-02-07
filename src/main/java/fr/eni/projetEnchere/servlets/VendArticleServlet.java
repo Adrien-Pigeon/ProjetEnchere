@@ -46,7 +46,7 @@ public class VendArticleServlet extends HttpServlet {
 			HttpSession session = request.getSession(); 
 			session.invalidate();
 //			System.out.println("invalided  session");
-			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
+			 request.getRequestDispatcher("/").forward(request, response);
 	}
 		
 		

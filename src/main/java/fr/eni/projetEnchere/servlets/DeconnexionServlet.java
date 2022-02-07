@@ -32,7 +32,7 @@ public class DeconnexionServlet extends HttpServlet {
 		String logged = null;
 		session.setAttribute("logged", logged);
 		System.out.println("Déconnection");
-		this.getServletContext().getRequestDispatcher("/AccueilNonConnecter").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/").forward(request, response);
 	}
 
 

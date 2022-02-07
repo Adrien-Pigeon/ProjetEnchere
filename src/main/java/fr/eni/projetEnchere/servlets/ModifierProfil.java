@@ -56,7 +56,7 @@ public class ModifierProfil extends HttpServlet {
 			// Fermer la session
 			request.getSession().invalidate();
 			System.out.println("déconnecté");
-			request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
+			request.getRequestDispatcher("/").forward(request, response);
 		}
 
 	}

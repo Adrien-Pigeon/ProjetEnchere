@@ -61,7 +61,7 @@ public class AccueilConnecterServlet extends HttpServlet {
 			HttpSession session = request.getSession(); 
 			session.invalidate();
 			System.out.println("déconnecté");
-			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
+			 request.getRequestDispatcher("/").forward(request, response);
 		}
 	}
 

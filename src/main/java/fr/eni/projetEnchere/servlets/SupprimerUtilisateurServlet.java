@@ -48,7 +48,7 @@ public class SupprimerUtilisateurServlet extends HttpServlet {
 		// DECONNEXION 
 		String logged = null;
 		session.setAttribute("logged", logged);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request,response);
+		this.getServletContext().getRequestDispatcher("/").forward(request,response);
 	}
 
 }
