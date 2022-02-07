@@ -16,7 +16,7 @@
 <title>ListEnchères Logged</title>
 	<h1>ENI-Enchères</h1>
 		<nav class="navigationMenu" >			
-				<a href="<%=request.getContextPath()%>/Enchere">Enchères</a>
+				<a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a>
 				<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
 				<a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a>
 				<a href="<%=request.getContextPath()%>/Deconnexion" >Déconnection</a>	
