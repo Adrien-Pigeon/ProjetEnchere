@@ -59,7 +59,7 @@ h1 {
 					
 					<c:forEach var="item" items="${categories }">
 						
-						<option>${item}</option>
+						<option value="${categorie.libelle}">${item.libelle }</option>
 					</c:forEach>
 					
 

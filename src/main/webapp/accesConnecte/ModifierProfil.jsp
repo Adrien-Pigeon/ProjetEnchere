@@ -19,21 +19,21 @@
                         <h4 class="text-right">Modification Profil</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Pseudo</label><input type="text" class="form-control" name="pseudo" ></div>
-                        <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" name="nom"></div>
-                        <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" name="prenom"></div>
-                        <div class="col-md-12"><label class="labels">Email/Login</label><input type="text" class="form-control"name="email"></div>
-                        <div class="col-md-12"><label class="labels" >Mot de passe actuel</label><input type="text" class="form-control" name="password"></div>
+                        <div class="col-md-6"><label class="labels">Pseudo</label><input type="text" class="form-control" name="pseudo" value="${utilisateur.pseudo}"></div>
+                        <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" name="nom" value="${utilisateur.nom}"></div>
+                        <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" name="prenom" value="${utilisateur.prenom}"></div>
+                        <div class="col-md-12"><label class="labels">Email/Login</label><input type="text" class="form-control"name="email" value="${utilisateur.email}"></div>
+                        <div class="col-md-12"><label class="labels" >Mot de passe actuel</label><input type="text" class="form-control" name="password" value="${utilisateur.password}"></div>
                         
 
                     
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Numéro Mobile</label><input type="text" class="form-control" name="telephone"></div>
-                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" name="rue" ></div>
-                        <div class="col-md-12"><label class="labels">Code Postale</label><input type="text" class="form-control" name="codePostal"></div>
-                        <div class="col-md-12"><label class="labels">Ville</label><input type="text" class="form-control" name="ville"></div>
-                        <div class="col-md-12"><label class="labels">nouveau mot de passe</label><input type="text" class="form-control" name="nouveauMotDePasse"></div>
+                        <div class="col-md-12"><label class="labels">Numéro Mobile</label><input type="text" class="form-control" name="telephone" value="${utilisateur.telephone}"></div>
+                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" name="rue" value="${utilisateur.rue}"></div>
+                        <div class="col-md-12"><label class="labels">Code Postale</label><input type="text" class="form-control" name="codePostal"value="${utilisateur.codePostal}"></div>
+                        <div class="col-md-12"><label class="labels">Ville</label><input type="text" class="form-control" name="ville"value=" ${utilisateur.ville}"></div>
+                        <div class="col-md-12"><label class="labels">nouveau mot de passe</label><input type="text" class="form-control" name="nouveauMotDePasse" ></div>
                         <div class="col-md-12"><label class="labels">Confirmation mot de passe</label><input type="text" class="form-control" name="password_conf"></div>
                     </div>
                    
