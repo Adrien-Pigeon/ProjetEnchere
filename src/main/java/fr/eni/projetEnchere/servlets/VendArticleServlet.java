@@ -28,23 +28,26 @@ public class VendArticleServlet extends HttpServlet {
 	 */
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 		if (request.getSession() != null) {
-			// Recupere la session
-			
-			System.out.println("valided  session");
-
-			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
-			request.getRequestDispatcher("/webapp/accesConnecte/VendArticle.jsp").forward(request, response);			
-			System.out.println("valided session");
-			
+//			// Recupere la session
+//			
+//			System.out.println("valided  session");
+//
+//			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
+			request.getRequestDispatcher("/accesConnecte/VendreArticle.jsp").forward(request, response);			
+//			System.out.println("valided session");
+//			
 		}else {
-			
-			// Recupere la session
+//			
+//			// Recupere la session
 			HttpSession session = request.getSession(); 
 			session.invalidate();
-			System.out.println("invalided  session");
+//			System.out.println("invalided  session");
 			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
-		}
+	}
 		
 		
 	}
@@ -53,9 +56,13 @@ public class VendArticleServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String message;
 		
-		
-		doGet(request, response);
+		if (request.getParameter( "sarticle" ).trim().isEmpty() ) {
+			message = "Erreur - Veuillez renseigner un article.";
+			request.setAttribute("erreur", message);
+			this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/nouvelleEnchere.jsp" ).forward( request, response );
+		}
 	}
 
 }
