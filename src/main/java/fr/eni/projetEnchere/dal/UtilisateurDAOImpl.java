@@ -20,8 +20,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private static final String SELECT_BY_PSEUDO = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?;";
 	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?;";
 
-	
-
 	/**
 	 * Methode permettant d'ajouter un utilisateur � la base de donn�e
 	 */
@@ -85,7 +83,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 			ResultSet result = stmt.executeQuery();
 			if (result.next()) {
-  
+
 				u = new Utilisateur();
 				u.setNoUtilisateur(result.getInt("no_utilisateur"));
 				u.setNom(result.getString("nom"));
@@ -121,7 +119,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		Connection cnx = null;
 		PreparedStatement stmt = null;
 		Utilisateur user = null;
-		
+
 		try {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(SELET_BY_ID);
@@ -198,7 +196,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	public void delete(Utilisateur user) throws DalException {
 		Connection cnx = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(DELETE);
@@ -228,7 +226,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		try {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(UPDATE_USER);
-			
+
 			stmt.setString(1, user.getPseudo());
 			stmt.setString(2, user.getPrenom());
 			stmt.setString(3, user.getNom());
@@ -238,9 +236,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			stmt.setString(7, user.getVille());
 			stmt.setString(8, user.getRue());
 			stmt.setString(9, user.getCodePostal());
-			stmt.setInt(10,user.getCredit());
+			stmt.setInt(10, user.getCredit());
 			stmt.setInt(11, user.getNoUtilisateur());
-			
+
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

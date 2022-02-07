@@ -1,6 +1,5 @@
 package fr.eni.projetEnchere.bll;
 
-
 import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.DAOFactory;
@@ -24,25 +23,25 @@ public class UtilisateurManager {
 
 	public void addUser(Utilisateur user) throws BllException {
 		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
-		
+
 		try {
 //verifier l'objet utilisateur
-			if(verifierUser(user)) {
-				//ajouter l'article à la base de donnée
+			if (verifierUser(user)) {
+				// ajouter l'article à la base de donnée
 				ud.insert(user);
-			}else {
-				//throw new BllException("Probleme sur la methode de verification");
+			} else {
+				// throw new BllException("Probleme sur la methode de verification");
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			//throw new BllException("Probleme sur la methode addUser()");
+			// throw new BllException("Probleme sur la methode addUser()");
 		}
 	}
-	
+
 	public Utilisateur afficherProfil(String pseudo) {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
-		
+
 		Utilisateur user = null;
 		try {
 			user = userDao.selectByPseudo(pseudo);
@@ -50,19 +49,17 @@ public class UtilisateurManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return user;
 	}
 
-	
 	public void modifierUser(Utilisateur user) throws DalException {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
-		
-		
-			userDao.update(user);
-		
-		
+
+		userDao.update(user);
+
 	}
+
 	public static Boolean verifierUser(Utilisateur u) throws BllException {
 		boolean valide = true;
 		StringBuffer sb = new StringBuffer();
@@ -91,7 +88,7 @@ public class UtilisateurManager {
 			sb.append("Le code postal est obligatoire.\n");
 			valide = false;
 		}
- 
+
 		if (u.getPrenom() == null || u.getPrenom().trim().length() == 0) {
 			sb.append("Le prenom est obligatoire.\n");
 			valide = false;
@@ -114,7 +111,7 @@ public class UtilisateurManager {
 
 	public void delete(Utilisateur user) throws DalException {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
-		
+
 		try {
 			userDao.delete(user);
 		} catch (DalException e) {
@@ -123,13 +120,11 @@ public class UtilisateurManager {
 		}
 	}
 
-	
 	public Utilisateur login(Utilisateur user) throws DalException {
-		
+
 		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
-		
+
 		return ud.selectByLogin(user);
 	}
-	
 
 }

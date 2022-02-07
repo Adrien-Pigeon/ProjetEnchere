@@ -15,12 +15,11 @@
 <title>A WEB PAGE</title>
 </head>
 <body>
-	
+
 	<form action="<%=request.getContextPath()%>/PageProfil" method="post">
 		<div class="row">
 			<h3 class="formulaire text-center">Profil Utilisateur</h3>
-			<br>
-			<br>
+			<br> <br>
 			<div class="col-lg-offset-3 col-lg-6 col-xs-12 blocProfil">
 				<div class="col-lg-6 col-xs-6 text-center">
 
@@ -48,7 +47,7 @@
 					<p>
 						<strong>Ville :</strong>
 					</p>
-				
+
 					<%
 					Utilisateur utilisateur = (Utilisateur) request.getAttribute("utilisateur");
 					%>

@@ -43,8 +43,7 @@ public class PageProfilServlet extends HttpServlet {
 			// Recupere la session
 			
 			
-			
-				request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 			
 		}else {
 			
