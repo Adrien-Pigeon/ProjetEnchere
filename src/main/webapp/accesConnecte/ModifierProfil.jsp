@@ -30,17 +30,15 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Numéro Mobile</label><input type="text" class="form-control" name="telephone"></div>
-                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" name="adresse" ></div>
+                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" name="rue" ></div>
                         <div class="col-md-12"><label class="labels">Code Postale</label><input type="text" class="form-control" name="codePostal"></div>
                         <div class="col-md-12"><label class="labels">Ville</label><input type="text" class="form-control" name="ville"></div>
                         <div class="col-md-12"><label class="labels">nouveau mot de passe</label><input type="text" class="form-control" name="nouveauMotDePasse"></div>
                         <div class="col-md-12"><label class="labels">Confirmation mot de passe</label><input type="text" class="form-control" name="password_conf"></div>
                     </div>
                    
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-                    <form action="<%=request.getContextPath()%>/SupprimerProfil" method="post">
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Delete Profile</button></div>
-                    </form>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                   
                     <script>
                         const senha = document.querySelector('.senha');
                         const btn = document.querySelector('.btn');
@@ -66,6 +64,9 @@
         </div>
     </div>
 </form>
+ <form action="<%=request.getContextPath()%>/SupprimerProfil" method="post">
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Delete Profile</button></div>
+         </form>
     </div>
     </div>
 

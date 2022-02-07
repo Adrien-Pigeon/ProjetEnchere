@@ -25,6 +25,14 @@ public class SupprimerUtilisateurServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		HttpSession session = request.getSession();
 		
@@ -41,14 +49,6 @@ public class SupprimerUtilisateurServlet extends HttpServlet {
 		String logged = null;
 		session.setAttribute("logged", logged);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request,response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
 	}
 
 }
