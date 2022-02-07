@@ -11,14 +11,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class EnchereServlet
  */
-@WebServlet("/CreeEnchere")
-public class CreerEnchereServlet extends HttpServlet {
+@WebServlet("/VendArticle")
+public class VendArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreerEnchereServlet() {
+    public VendArticleServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +34,7 @@ public class CreerEnchereServlet extends HttpServlet {
 			System.out.println("valided  session");
 
 			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
-			request.getRequestDispatcher("/WEB-INF/jsp/NewEnchere.jsp").forward(request, response);			
+			request.getRequestDispatcher("/webapp/accesConnecte/VendArticle.jsp").forward(request, response);			
 			System.out.println("valided session");
 			
 		}else {

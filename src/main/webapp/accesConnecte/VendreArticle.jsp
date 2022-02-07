@@ -12,7 +12,7 @@
 	<img alt="logo" src="webapp/img/logo.jpg">
 	
 	<div class="Formulaire">
-		<form action="<%=request.getContextPath()%>/CreeEnchere" method="post">
+		<form action="<%=request.getContextPath()%>/VendArticle" method="post">
 		
 			<div>
 				<label for="name">Article:</label> 
