@@ -11,14 +11,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class EnchereServlet
  */
-@WebServlet("/Enchere")
-public class EnchereServlet extends HttpServlet {
+@WebServlet("/CreeEnchere")
+public class CreerEnchere extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EnchereServlet() {
+    public CreerEnchere() {
         super();
         // TODO Auto-generated constructor stub
     }
