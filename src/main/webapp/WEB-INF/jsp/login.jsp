@@ -34,15 +34,22 @@
                                     <label for="scales">Se souvenir de moi</label>
                             </div>
                         </div>
-                        <div class="success-data" v-else>
-                            <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">You have been logged in <br> Successfully</span> </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
         </div>
 
 	</form>
+	 <form action="<%=request.getContextPath()%>/CreerCompte" method="get"> 
+                        <div class="success-data" v-else>
+           
+                            <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">
+                            	 <div class="mb-3"> <button v-on:click.stop.prevent="submit" class="btn btn-dark w-100">Register</button> </div>
+                             </div>
+                        </div>
+                       </form>
+	
 	<script>
     const senha = document.querySelector('.senha');
 	const btn = document.querySelector('.btn');
