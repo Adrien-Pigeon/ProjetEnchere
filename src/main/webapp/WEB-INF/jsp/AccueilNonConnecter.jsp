@@ -56,7 +56,7 @@ h1 {
 
 			<div>
 				<select id="scategorie" name="scategorie">
-					
+					<option>toutes</option>
 					<c:forEach var="item" items="${categories }">
 						
 						<option value="${categorie.libelle}">${item.libelle }</option>
