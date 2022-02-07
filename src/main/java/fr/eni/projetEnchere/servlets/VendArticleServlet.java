@@ -3,6 +3,8 @@ package fr.eni.projetEnchere.servlets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +18,9 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.projetEnchere.bll.CategorieManager;
 import fr.eni.projetEnchere.bll.UtilisateurManager;
+import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
+import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.CategorieDAO;
 import fr.eni.projetEnchere.dal.Exception.DalException;
 
@@ -76,7 +80,9 @@ public class VendArticleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+		int id = utilisateurCo.getNoUtilisateur();
+		
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -90,13 +96,26 @@ public class VendArticleServlet extends HttpServlet {
 		String debutVente = request.getParameter("dateDebut");
 		String finVente = request.getParameter("dateFin");
 		
+		int prixVente = Integer.parseInt(prix);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+		
+	
+		
 		try {
-			Date dateDebut = dateFormat.parse(debutVente);
-			Date dateFin = dateFormat.parse(finVente);
+			LocalDate dateDebut = LocalDate.parse(debutVente, formatter);
+			LocalDate dateFin = LocalDate.parse(finVente, formatter);
 		} catch (ParseException e) {
-			
+		
 			e.printStackTrace();
 		}
+		
+		ArticleVendu article = new ArticleVendu();
+		article.setNomArticle(nomArticle);
+		article.setDescription(description);
+		article.setCategorie(categorie);
+		article.setPrixVente(prixVente);
+		article.setDateDebutEncheres(debutVente);
+		article.setDateFinEncheres(finVente);
 		
 		//Attributs retrait
 		String rue = request.getParameter("rue");
