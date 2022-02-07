@@ -84,7 +84,7 @@
 			</div>
 		</form>
 		    <div class="button">
-				<a href="<%=request.getContextPath()%>/AccueilNonConnecter"><button  name="annuler">Annuler</button></a>
+				<a href="<%=request.getContextPath()%>/"><button  name="annuler">Annuler</button></a>
 			</div>
         </div>
 	
