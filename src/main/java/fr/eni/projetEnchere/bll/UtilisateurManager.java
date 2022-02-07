@@ -127,6 +127,7 @@ public class UtilisateurManager {
 		return ud.selectByLogin(user);
 	}
 	
+	
 	public Utilisateur SelectUser(int id) throws DalException {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
 		

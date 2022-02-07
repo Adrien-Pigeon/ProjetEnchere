@@ -50,7 +50,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			if (rs.next()) {
 				user.setNoUtilisateur(rs.getInt(1));
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 			// throw new DalException("Probleme sur la couche Dal", e);

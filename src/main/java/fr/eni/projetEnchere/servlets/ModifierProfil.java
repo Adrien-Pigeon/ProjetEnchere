@@ -75,7 +75,6 @@ public class ModifierProfil extends HttpServlet {
 		
 		
 		
-		
 		// String oldPseudo = utilisateurCo.getPseudo();
 		request.setAttribute("utilisateur", utilisateurCo);
 		String nom = request.getParameter("nom").trim().toLowerCase();
