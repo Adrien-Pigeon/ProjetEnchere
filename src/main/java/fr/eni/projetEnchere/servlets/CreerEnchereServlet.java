@@ -44,7 +44,9 @@ public class CreerEnchereServlet extends HttpServlet {
 			session.invalidate();
 			System.out.println("invalided  session");
 			 request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
-		}		
+		}
+		
+		
 	}
 
 	/**
