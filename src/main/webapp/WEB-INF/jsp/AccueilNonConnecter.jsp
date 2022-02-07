@@ -7,22 +7,9 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
+<link rel="stylesheet" href="Style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ListEnchères Not Logged</title>
-<style>
-body {
-	width: 100%;
-	height: 100vh;
-	background: silver;
-	justify-content: center;
-	align-items: center;
-}
-
-h1 {
-	text-align: left;
-	display: inline;
-}
-</style>
 
 
 
@@ -71,6 +58,15 @@ h1 {
 			<button type="submit" class="btn btn-default" name="search">Rechercher</button>
 		</div>
 	</form>
+	
+	<div class="carteArticle" style="width: 20rem;">
+  			<img class="card-img-top" src="img/Aspirateur.jpg" alt="Image titre">
+  				<div class="card-body">
+    				<h5 class="card-title">Aspirateur</h5>
+    				<p class="card-text">Prix: 200 points <br> Fin de l'enchère : 07/01/2022 <br>Vendeur : Jacques</p>
+    				<a href="#" class="btn btn-primary">Voir l'article</a>
+  				</div>
+</div>
 
 </body>
 </html>

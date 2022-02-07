@@ -8,21 +8,22 @@
 	
 
 <html>
-<link rel="stylesheet" href="AccueilNonConnecter.css">
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/jsProjet.js"></script>
-<title>ListEnchères Logged</title>
-	<h1>ENI-Enchères</h1>
+<title>Liste Enchères Log</title>
+	
+</head>
+<h1>ENI-Enchères</h1>
 		<nav class="navigationMenu" >			
-				<a href="<%=request.getContextPath()%>/Enchere">Enchères</a>
+				<a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a>
 				<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
 				<a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a>
 				<a href="<%=request.getContextPath()%>/Deconnexion" >Déconnection</a>	
 			
 		</nav>
-</head>
 <body>
 
  
@@ -57,7 +58,7 @@
 	<div>
       <input class="buy" onclick="myFunction()" type="radio" id="achat" name="drone" value="achat"
              checked>
-      <label for="achat">achat</label>
+      <label for="achat">Achat</label>
       
       <div>
         <input type="checkbox" id="achats" name="check"
@@ -77,53 +78,24 @@
     
     <div>
       <input class="sell" onclick="myFunction()" type="radio" id="vente" name="drone" value="vente" disabled="disabled">
-      <label for="vente">vente</label>
-      <div>
-        <input type="checkbox" id="ventes" name="check">
-        <label for="scales">Mes ventes en cours</label><br>
-      
-        <input type="checkbox" id="debute" name="check">
-        <label for="horns">Ventes non débutées</label><br>
-      
-        <input type="checkbox" id="termine" name="check">
-        <label for="horns">Ventes terminées</label>
-      </div>
-      
+      <label for="vente">Vente</label>
+	      <div>
+	        <input type="checkbox" id="ventes" name="check">
+	        <label for="scales">Mes ventes en cours</label><br>
+	      
+	        <input type="checkbox" id="debute" name="check">
+	        <label for="horns">Ventes non débutées</label><br>
+	      
+	        <input type="checkbox" id="termine" name="check">
+	        <label for="horns">Ventes terminées</label>
+	      </div>     
       
     </div>
       
   </div>    
-      <header>
-  <span class="siteTitle">achterbahnreporter<span>
-</header>
 
-<main>
-  <a href="https://google.com" class="card">
-      <div class="inner">
-        <h2 class="title">Mit 117 Sachen durch Klugheimschen Basaltgebirge</h2>
-        <time class="subtitle">03. März 2021<time>
-      </div>
-  </a>
-        
-  <a href="https://google.com" class="card card2">
-      <div class="inner">
-        <h2 class="title">Mit 117 Sachen durch Klugheimschen Basaltgebirge</h2>
-        <time class="subtitle">03. März 2021<time>
-      </div>
-  </a>
 
-  <a href="https://google.com" class="card card3">
-      <div class="inner">
-        <h2 class="title">Mit 117 Sachen durch Klugheimschen Basaltgebirge</h2>
-        <time class="subtitle">03. März 2021<time>
-      </div>
-  </a>
-</main>
-  
-<footer>
-  <a class="footerLink" href="/impressum">Datenschutz</a>
-  <a class="footerLink" href="/impressum">Impressum</a>
-</footer>
+
     
 <div class="carteArticle" style="width: 18rem;">
   			<img class="card-img-top" src="img/Aspirateur.jpg" alt="Image titre">
@@ -161,4 +133,6 @@
  		<script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/monScriptProjet.js"></script>
 </body>
+
+<link rel="stylesheet" href="Ventes.css">
 </html>

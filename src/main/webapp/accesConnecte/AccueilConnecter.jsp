@@ -47,7 +47,6 @@
 					</c:forEach>
 				</select>
 			</div>
-			
                     </div>
 
                     <div class="d-flex justify-content-end pt-5">
@@ -71,7 +70,7 @@
         <label for="horns">Mes enchères remporter</label>
       </div>
     
-    </div>
+ </div>
     
     <div>
       <input class="sell" onclick="myFunction()" type="radio" id="vente" name="drone" value="vente">
@@ -87,6 +86,7 @@
         <label for="horns">Ventes terminées</label>
       </div>
     </div>
+    
 <div class="carteArticle" style="width: 18rem;">
   			<img class="card-img-top" src="img/Aspirateur.jpg" alt="Image titre">
   				<div class="card-body">
