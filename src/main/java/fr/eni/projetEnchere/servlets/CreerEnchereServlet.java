@@ -12,13 +12,13 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class EnchereServlet
  */
 @WebServlet("/CreeEnchere")
-public class CreerEnchere extends HttpServlet {
+public class CreerEnchereServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreerEnchere() {
+    public CreerEnchereServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,6 +26,7 @@ public class CreerEnchere extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession() != null) {
 			// Recupere la session
