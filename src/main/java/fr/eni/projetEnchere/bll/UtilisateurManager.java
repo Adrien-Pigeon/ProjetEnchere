@@ -55,15 +55,12 @@ public class UtilisateurManager {
 	}
 
 	
-	public void modifierUser(Utilisateur user,String pseudo) {
+	public void modifierUser(Utilisateur user,int id) throws DalException {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
 		
-		try {
-			userDao.update(user, pseudo);
-		} catch (DalException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+			userDao.update(user, id);
+		
 		
 	}
 	public static Boolean verifierUser(Utilisateur u) throws BllException {
