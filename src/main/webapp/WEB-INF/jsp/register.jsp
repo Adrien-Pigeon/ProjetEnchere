@@ -76,13 +76,12 @@
 			</div>
 		
         </div>
-			</form>
-	</div>
-
-        <div align="center" >
+			
+	
             <div class="button" >
 				<a href="<%=request.getContextPath()%>/Login"><button type="submit" name="valider">Créer</button></a>
 			</div>
+			</form>
 		    <div class="button">
 				<a href="<%=request.getContextPath()%>/AccueilNonConnecter"><button  name="annuler">Annuler</button></a>
 			</div>
