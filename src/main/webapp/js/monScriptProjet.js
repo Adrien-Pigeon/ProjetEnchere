@@ -1,7 +1,5 @@
 jQuery(document).ready(function($) {
-    $('input[type="checkbox"]').on('change', function() {
-        $(this).siblings('input[type="checkbox"]').prop('checked', false);
-     });
+   
      $(".buy").click(function(){
         $("#ventes").prop("checked", false);
         $("#debute").prop("checked", false);
