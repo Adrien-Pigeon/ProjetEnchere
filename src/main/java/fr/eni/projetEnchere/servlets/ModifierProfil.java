@@ -24,7 +24,7 @@ public class ModifierProfil extends HttpServlet {
      */
     public ModifierProfil() {
         super();
-      
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -61,7 +61,7 @@ public class ModifierProfil extends HttpServlet {
 		
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		int id = utilisateurCo.getNoUtilisateur();
-		String oldPseudo = utilisateurCo.getPseudo();
+		//String oldPseudo = utilisateurCo.getPseudo();
 		request.setAttribute("utilisateur", utilisateurCo);
 		String nom = request.getParameter("nom").trim().toLowerCase();
 		String password = request.getParameter("password").trim();
@@ -88,7 +88,12 @@ public class ModifierProfil extends HttpServlet {
 			utilisateur.setCodePostal(codePostal);
 			utilisateur.setRue(rue);
 			utilisateur.setVille(ville);
-			utilisateur.setMotDePasse(nouveauMotDePasse);
+			if(nouveauMotDePasse != null) {
+				utilisateur.setMotDePasse(nouveauMotDePasse);
+			}else {
+				utilisateur.setMotDePasse(password);
+			}
+			
 			utilisateur.setCredit(150);
 			utilisateur.setAdministrateur(false);
 			
