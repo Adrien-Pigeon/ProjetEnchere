@@ -49,7 +49,7 @@
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%=request.getContextPath()%>/CreerCompte"><span class="glyphicon glyphicon-user"></span> S'enregistrer</a></li>
+        
         <li><a href="<%=request.getContextPath()%>/Deconnexion"><span class="glyphicon glyphicon-log-in"></span> Déconnection</a></li>
       </ul>
     </div>

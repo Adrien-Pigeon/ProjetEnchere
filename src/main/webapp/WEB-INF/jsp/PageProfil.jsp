@@ -100,7 +100,7 @@
 						}
 						%>
 					</div>
-					  <a href="<%=request.getContextPath()%>/" >
+					  <a href="<%=request.getContextPath()%>/AccueilConnecter" >
                  <button class="btn btn-primary profile-button" type="button">Annuler</button>
                  </a>
 				</div>

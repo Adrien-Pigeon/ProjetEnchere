@@ -3,6 +3,7 @@ package fr.eni.projetEnchere.servlets;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,62 +32,77 @@ public class LoginServlet extends HttpServlet {
 
 	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		if (request.getParameter("login").equalsIgnoreCase("1")) {
-//			doGet(request, response);
-//		}
-		
-		//Récuperation des parametres du formulaire
-		String username =  request.getParameter("login");
-		String password =  request.getParameter("password");
-		
-		//j'instancie un objet de type Utilisateur et j'hydrate les attributs
-		//login et pwd
-		Utilisateur user= new Utilisateur();
-		
-		if(username.contains("@")) {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// Récuperation des parametres du formulaire
+		String username = request.getParameter("login");
+		String password = request.getParameter("password");
+
+		// j'instancie un objet de type Utilisateur et j'hydrate les attributs
+		// login et pwd
+		Utilisateur user = new Utilisateur();
+
+		if (username.contains("@")) {
 			user.setEmail(username);
-		}else {
+		} else {
 			user.setPseudo(username);
 		}
 		user.setMotDePasse(password);
-		
-		//j'instancie un objet de type UtilisateurManager s'il existe
+
+		// j'instancie un objet de type UtilisateurManager s'il existe
 		UtilisateurManager um = UtilisateurManager.getInstance();
-				
-		
-			
-			try {
-				user = um.login(user);
-			} catch (DalException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				
-			}
-			
-				
+
+		try {
+			user = um.login(user);
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+
 		System.out.println(user);
 
-		if (user!=null) {
+		if (user != null) {
+			// Recupere la session
 			HttpSession session = request.getSession();
+			// Recupere l'utilisateur
 			session.setAttribute("user", user);
-			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request, response);
+			
+	
+			Cookie[] cookies = request.getCookies();
+
+			// Creation du cookie
+			Cookie C = new Cookie("login", username);
+
+			// definition de la limite de validité
+			C.setMaxAge(180);
+
+			// envoi du cookie dans la reponse HTTP
+			response.addCookie(C);
+
 			request.getRequestDispatcher("/AccueilConnecter").forward(request, response);
 			
 			
-		}else {
-			
+		} else {
+
 			System.out.println("Pas Connecter");
-			
+
 			request.setAttribute("error", "azerty");
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-			// request.getRequestDispatcher("/login?get=1").forward(request, response);
-					}
+
+		}
+
+		
+		
+		
+
+		
 
 	}
+
 }

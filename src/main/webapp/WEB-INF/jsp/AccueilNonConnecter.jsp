@@ -17,6 +17,31 @@
 </head>
 <body>
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="<%=request.getContextPath()%>/AccueilConnecter">ENI-Enchères</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        
+			<li class="active"><a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a></li>
+      	 	<li><a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a></li>
+        	<li><a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="<%=request.getContextPath()%>/CreerCompte"><span class="glyphicon glyphicon-user"></span> S'enregistrer</a></li>
+        <li><a href="<%=request.getContextPath()%>/Deconnexion"><span class="glyphicon glyphicon-log-in"></span> Déconnection</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 	<a href="<%=request.getContextPath()%>/"> <img
 		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
 		height="120" title="Logo" alt="Logo">
