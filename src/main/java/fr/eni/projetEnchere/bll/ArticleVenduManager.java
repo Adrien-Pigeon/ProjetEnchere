@@ -1,5 +1,7 @@
 package fr.eni.projetEnchere.bll;
 
+import java.util.List;
+
 import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Utilisateur;
@@ -29,19 +31,19 @@ public class ArticleVenduManager {
 		dao.insertArticle(article);
 	}
 	
-	public void RechercherParNom(String motRech, ArticleVendu article) throws DalException, BllException {
+	public List<ArticleVendu> RechercherParCategorie(int noCategorie) throws DalException, BllException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
-		verifierArticle(article);
-		dao.selectByRecherche(motRech);
+		
+		return dao.selectByCategorie(noCategorie);
 		
 	}
 	
 	
-	public void RechercherParDescription(String motRech, ArticleVendu article) throws DalException, BllException {
+	public List<ArticleVendu> RechercherParDescription(String motRech) throws DalException, BllException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
-		verifierArticle(article);
-		dao.selectByDescription(motRech);
-		System.out.println(motRech);
+		
+		return dao.selectByDescription(motRech);
+		
 		
 	}
 	

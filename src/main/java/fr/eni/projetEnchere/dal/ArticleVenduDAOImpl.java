@@ -88,7 +88,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setPrixVente(rs.getInt("prix_vente"));
 				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
-				article.getUtilisateur().setPseudo("pseudo");
+				//article.getUtilisateur().setPseudo("pseudo");
 				articles.add(article);
 			}
 			}catch (SQLException e) {

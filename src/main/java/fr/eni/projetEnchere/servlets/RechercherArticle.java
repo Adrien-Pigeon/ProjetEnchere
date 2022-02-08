@@ -1,11 +1,18 @@
 package fr.eni.projetEnchere.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.eni.projetEnchere.bll.ArticleVenduManager;
+import fr.eni.projetEnchere.bll.Exception.BllException;
+import fr.eni.projetEnchere.bo.ArticleVendu;
+import fr.eni.projetEnchere.dal.Exception.DalException;
 
 /**
  * Servlet implementation class RechercherArticle
@@ -31,6 +38,15 @@ public class RechercherArticle extends HttpServlet {
 		
 		String recherche = request.getParameter("srecherche");
 		int noCategorie = Integer.parseInt(request.getParameter("scategorie"));
+		List<ArticleVendu> listeArticles = null;
+		ArticleVenduManager avm = ArticleVenduManager.getInstance();
+		try {
+			listeArticles = avm.RechercherParCategorie(noCategorie);
+		} catch (DalException | BllException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("listeArticles", listeArticles);
 		
 		request.getRequestDispatcher("/").forward(request, response);
 	}

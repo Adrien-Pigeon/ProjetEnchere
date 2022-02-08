@@ -92,6 +92,13 @@
 		</div>
 	</form>
 
+	<c:forEach var="item" items="${listeArticles }">
+		<div></div>
+		<div>${item.description }</div>
+		<div>Prix : ${item.prixVente }</div>
+		<div>Fin de l'enchère : ${item.dateFinEncheres }</div>
+		<div>Vendeur : jojo</div>
+	</c:forEach>
 
 
 </body>
