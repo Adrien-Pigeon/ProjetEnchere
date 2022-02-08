@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="fr">
-<title>Enregistrement</title>
-   
+<html>
+  <head>
+    <title>Enregistrement</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
       html, body {
       min-height: 100%;
@@ -120,17 +120,13 @@
       }
     </style>
   </head>
-<body>
-	<div>
-		<h1 style="color: black;">ENI-Enchères</h1>
-	</div>
-	<div  align="center" style="color: black;">
-		<h2>Création Profil</h2>
-	</div>
-
-	 <div class="main-block">
-   
-      <form action="<%=request.getContextPath()%>/CreerCompte" method="post">
+  <body>
+    <div class="main-block">
+      <div class="left-part">
+        <i class="fas fa-graduation-cap"></i>
+        <h1>Register</h1>      
+      </div>
+        <form action="<%=request.getContextPath()%>/CreerCompte" method="post">
         <div class="title">
           <i class="fas fa-pencil-alt"></i> 
           <h2>Register here</h2>
@@ -157,10 +153,7 @@
                     <label class="labels">Email/Login</label><input type="text"
                         class="form-control" name="email" value="${utilisateur.email}">
                 </div>
-                <div class="col-md-12">
-                    <label class="labels">Mot de passe actuel</label><input
-                        type="text" class="form-control" name="password" required>
-                </div>
+             
 
 
 
@@ -193,16 +186,10 @@
                         type="text" class="form-control" name="password_conf">
                 </div>
             </div>
-  </div>
 
-             <div class="btn btn-primary profile-button" >				
-				<button action="<%=request.getContextPath()%>/Login" type="submit" name="valider">Créer</button></a>
-			</div>
-			<div class="btn btn-primary profile-button">
-				
-				<button action="<%=request.getContextPath()%>/" name="annuler">Annuler</button></a>
-			</div>
-			</form>
+            <div class="mt-5 text-center">
+                <button class="btn btn-primary profile-button" type="submit">enregistrer</button>
+            </div>
 
             <script>
             const senha = document.querySelector('.senha');
@@ -225,18 +212,9 @@
 
         </div>
         
-		
-        
+          
+        </div>
+
        
-        
-			
-	
-           
-        
-		
-		    
-	
-
-</body>
-
+  </body>
 </html>
