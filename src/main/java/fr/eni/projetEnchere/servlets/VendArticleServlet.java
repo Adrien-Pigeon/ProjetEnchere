@@ -51,6 +51,7 @@ public class VendArticleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		//recupere les informations de l'utilisateur
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		request.setAttribute("utilisateur", utilisateurCo);
 		CategorieManager cm = CategorieManager.getInstance();

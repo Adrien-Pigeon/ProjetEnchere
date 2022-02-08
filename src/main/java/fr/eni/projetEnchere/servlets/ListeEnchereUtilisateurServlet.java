@@ -1,40 +1,90 @@
 package fr.eni.projetEnchere.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import fr.eni.projetEnchere.bll.CategorieManager;
+import fr.eni.projetEnchere.bll.UtilisateurManager;
+import fr.eni.projetEnchere.bo.Categorie;
+import fr.eni.projetEnchere.bo.Utilisateur;
+import fr.eni.projetEnchere.dal.Exception.DalException;
 
 /**
  * Servlet implementation class ListeEnchereUtilisateurServlet
  */
-@WebServlet("/ListeEnchereUtilisateurServlet")
+@WebServlet("/ListeEnchereUtilisateur")
 public class ListeEnchereUtilisateurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ListeEnchereUtilisateurServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/accesConnecte/ListeEnchereUtilisateur.jsp").forward(request, response);
+	public ListeEnchereUtilisateurServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		request.getRequestDispatcher("/accesConnecte/ListeEnchereUtilisateur.jsp").forward(request, response);
+
+		// recupere les informations de l'utilisateur
+		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+		request.setAttribute("utilisateur", utilisateurCo);
+		CategorieManager cm = CategorieManager.getInstance();
+		try {
+			List<Categorie> categories = cm.lister();
+
+			request.setAttribute("categories", categories);
+
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (request.getSession() != null) {
+
+			// Recupere la session
+
+		} else {
+
+			// Recupere la session
+			HttpSession session = request.getSession();
+			session.invalidate();
+			request.getRequestDispatcher("/").forward(request, response);
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+		int id = utilisateurCo.getNoUtilisateur();
+		UtilisateurManager um = UtilisateurManager.getInstance();
+		try {
+			utilisateurCo = um.SelectUser(id);
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		doGet(request, response);
 	}
 

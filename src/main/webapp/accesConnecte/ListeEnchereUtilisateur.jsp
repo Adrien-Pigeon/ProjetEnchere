@@ -16,126 +16,102 @@
 <title>Liste Enchères Log</title>
 	
 </head>
-<a href="<%=request.getContextPath()%>/AccueilConnecter"> <img
+
+<body>
+	<a href="<%=request.getContextPath()%>/AccueilConnecter"> <img
 		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
 		height="120" title="Logo" alt="Logo">
 
 	</a>
-		 <div class="row" align="right">
-		<a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a>
-				<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
-				<a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a>
-				<a href="<%=request.getContextPath()%>/Deconnexion" >Déconnection</a>	
-			
-	</div>
-<body>
+	<h1>LISTE DE MES ENCHERES</h1>
 
- 
-				<div class="text-center rounded my-5 haute " align="center">
-                    <h1 class="p-3 bordure">Liste des enchères</h1>
-                </div>
+	
 
+	<div class="Formulaire">
+		<form action="<%=request.getContextPath()%>/ListeEnchereUtilisateur" method="post">
 
- <form action="<%= request.getContextPath()%>/ListeEnchereUtilisateurServlet" method="post" class=" p-5 rounded bordure " style="background: #fff;">
-                    <h2>Filtres :</h2>
+			<div>
+				<label for="name">Article:</label> <input type="text" id="name"
+					name="nom" placeholder="${nomArticle }">
+			</div>
 
-                    <div class="md-form  active-pink-2 mb-3 mt-0">
-                        <input class="form-control" type="text" placeholder="Rechercher..." aria-label="Search">
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Catégorie :</label>
-                        <div>
-				<select id="scategorie" name="scategorie">
-					<option>toutes</option>
+			<div>
+				<label for="name">Description:</label> <input type="text" id="name"
+					name="description" required>
+			</div>
+
+			<div>
+				<label for="name">Categorie:</label> <select id="scategorie"
+					name="scategorie">
+
 					<c:forEach var="item" items="${categories }">
-						<option value="${categorie.libelle }">${item.libelle }</option>
+
+						<option value="${item.noCategorie}">${item.libelle }</option>
 					</c:forEach>
+
+
+
 				</select>
 			</div>
-                    </div>
 
-                    <div class="d-flex justify-content-end pt-5">
-                        <button class="btn btn-action" type="submit">Rerchercher</button>
-                    </div>
- </form>
- <div>
-	<div>
-      <input class="buy" onclick="myFunction()" type="radio" id="achat" name="drone" value="achat"
-             checked>
-      <label for="achat">Achat</label>
-      
-      <div>
-        <input type="checkbox" id="achats" name="check"
-               checked>
-        <label for="scales">Enchères ouvertes</label><br>
-     
-        <input type="checkbox" id="encours" name="check">
-        <label for="horns">Mes enchères en cours</label><br>
-      
-        <input type="checkbox" id="remporter" name="check">
-        <label for="horns">Mes enchères remporter</label>
-      </div>
-      
 
-    
+			
+				<div>
+					<label for="file">Photo de l'article</label> <input
+						type="file" id="file" name="file" multiple>
+				</div>
+				
+
+				<div>
+					<label for="msg">Mise à prix:</label> <input type="text" id="msg"
+						name="prixInitial">
+				</div>
+
+				<div>
+					<label for="name">Début de l'enchère:</label> <input type="date"
+						id="dateDebut" name="dateDebut" required>
+				</div>
+
+				<div>
+					<label for="name">Fin de l'enchère:</label> <input type="date"
+						id="dateFin" name="dateFin" required>
+				</div>
+				<div>
+					<fieldset>
+						<legend>Retrait</legend>
+						<div>
+							<label for="name">Rue:</label> <input type="text" id="name"
+								name="rue" placeholder="${utilisateur.rue }" required>
+						</div>
+
+						<div>
+							<label for="name">Code postal:</label> <input type="text"
+								id="name" name="codePostal"
+								placeholder="${utilisateur.codePostal }" required>
+						</div>
+
+						<div>
+							<label for="name">Ville:</label> <input type="text" id="name"
+								name="ville" placeholder="${utilisateur.ville }" required>
+						</div>
+					</fieldset>
+				</div>
+
+
+
+
+
+				<div class="button">
+					<button type="submit" name="Supprimer">Supprimer</button>
+				</div>
+			</form>
 	</div>
-    
-    <div>
-      <input class="sell" onclick="myFunction()" type="radio" id="vente" name="drone" value="vente" disabled="disabled">
-      <label for="vente">Vente</label>
-	      <div>
-	        <input type="checkbox" id="ventes" name="check">
-	        <label for="scales">Mes ventes en cours</label><br>
-	      
-	        <input type="checkbox" id="debute" name="check">
-	        <label for="horns">Ventes non débutées</label><br>
-	      
-	        <input type="checkbox" id="termine" name="check">
-	        <label for="horns">Ventes terminées</label>
-	      </div>     
-      
-    </div>
-      
-  </div>    
-
-
-
-    
-<div class="carteArticle" style="width: 18rem;">
-  			<img class="card-img-top" src="img/Aspirateur.jpg" alt="Image titre">
-  				<div class="card-body">
-    				<h5 class="card-title">Aspirateur</h5>
-    				<p class="card-text">Prix: 200 points Fin de l'enchère : 07/01/2022 Vendeur : Jacques</p>
-    				<a href="#" class="btn btn-primary">Voir l'article</a>
-  				</div>
-</div>
-
-
-
-
- <script>
-       function myFunction() {
-        if(document.getElementById("vente").checked){
-      document.getElementById("achats").disabled = true;
-      document.getElementById("remporter").disabled = true;
-      document.getElementById("encours").disabled = true;
-      document.getElementById("ventes").disabled = false;
-      document.getElementById("debute").disabled = false;
-      document.getElementById("termine").disabled = false;
-        }
-        else if(document.getElementById("achat").checked){
-    document.getElementById("ventes").disabled = true;
-      document.getElementById("debute").disabled = true;
-      document.getElementById("termine").disabled = true;
-      document.getElementById("achats").disabled = false;
-      document.getElementById("encours").disabled = false;
-      document.getElementById("remporter").disabled = false;
-        }
-        }
-</script>
-   
- 		<script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/monScriptProjet.js"></script>
+	<div class="button">
+		<a href="<%=request.getContextPath()%>/AccueilConnecter">
+			<button name="annuler">Annuler</button>
+		</a>
+	</div>
+ 
 </body>
 
 <link rel="stylesheet" href="Style.css">
