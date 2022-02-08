@@ -27,6 +27,18 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			+ "prix_initial,date_debut_encheres,pseudo,date_fin_encheres from ENCHERES as e\r\n"
 			+ "INNER JOIN UTILISATEURS as u on (e.no_utilisateur= u.no_utilisateur)\r\n"
 			+ "INNER JOIN ARTICLES_VENDUS as av on (e.no_article = av.no_article);";
+	private final static String SELECT_BY_DESCRIPTION ="select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo "
+			+ "from ARTICLES_VENDUS "
+			+ "INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where ARTICLES_VENDUS.no_categorie = ?;";
+	
+	private final static String SELECT_BY_RECHERCHE ="select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo "
+			+ "from ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where nom_article LIKE ?;";
+	
+	private final static String SELECT_BY_FILTRE ="select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo "
+			+ "from ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur "
+			+ "where nom_article "
+			+ "LIKE ? AND no_categorie = ?;";
+	
 	
 	@Override
 	public void selectAll() throws DalException {
@@ -136,10 +148,117 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 
 	}
 
+	
+	
+	
 	@Override
-	public List<ArticleVendu> selectByDescription(String motRech) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<ArticleVendu> selectByDescription(String motRech)  throws DalException  {
+
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
+		
+		try {
+			cnx = ConnectionProvider.getConnection();
+			pstmt = cnx.prepareStatement(SELECT_BY_DESCRIPTION);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ArticleVendu article = new ArticleVendu();
+						
+				article.setDescription(rs.getString("description"));				
+				
+				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setPrixVente(rs.getInt("prix_vente"));
+				article.getUtilisateur().setPseudo("pseudo");
+				articles.add(article);
+			}
+			}catch (SQLException e) {
+				throw new DalException("Probleme sur la couche dal", e);
+			}finally {
+				try {
+					pstmt.close();
+					cnx.close();
+				} catch (SQLException e) {
+					throw new DalException("Probleme de d�connexion", e);
+				}
+			}
+		return articles;
+		}
+	
+	@Override
+	public List<ArticleVendu> selectByFiltre(String motRech)  throws DalException  {
+
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
+		
+		try {
+			cnx = ConnectionProvider.getConnection();
+			pstmt = cnx.prepareStatement(SELECT_BY_FILTRE);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ArticleVendu article = new ArticleVendu();
+				article.setNoArticle(rs.getInt("no_article"));
+				article.setNomArticle(rs.getString("nom_article"));			
+				article.setDescription(rs.getString("description"));			
+				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setPrixInitial(rs.getInt("prix_initial"));
+				article.setPrixVente(rs.getInt("prix_vente"));
+				article.getUtilisateur().setPseudo("pseudo");
+				articles.add(article);
+			}
+			}catch (SQLException e) {
+				throw new DalException("Probleme sur la couche dal", e);
+			}finally {
+				try {
+					pstmt.close();
+					cnx.close();
+				} catch (SQLException e) {
+					throw new DalException("Probleme de d�connexion", e);
+				}
+			}
+		return articles;
+		}
+	
+	@Override
+	public List<ArticleVendu> selectByRecherche(String motRech)  throws DalException  {
+
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
+		
+		try {
+			cnx = ConnectionProvider.getConnection();
+			pstmt = cnx.prepareStatement(SELECT_BY_RECHERCHE);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ArticleVendu article = new ArticleVendu();				
+				article.setNoArticle(rs.getInt("no_article"));
+				article.setNomArticle(rs.getString("nom_article"));			
+				article.setDescription(rs.getString("description"));			
+				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setPrixInitial(rs.getInt("prix_initial"));
+				article.setPrixVente(rs.getInt("prix_vente"));
+				article.getUtilisateur().setPseudo("pseudo");
+				articles.add(article);
+			}
+			}catch (SQLException e) {
+				throw new DalException("Probleme sur la couche dal", e);
+			}finally {
+				try {
+					pstmt.close();
+					cnx.close();
+				} catch (SQLException e) {
+					throw new DalException("Probleme de d�connexion", e);
+				}
+			}
+		return articles;
+		}
+	
+	
+
 
 }
