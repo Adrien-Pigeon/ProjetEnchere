@@ -168,7 +168,7 @@ public class VendArticleServlet extends HttpServlet {
 		}
 		
 
-		this.getServletContext().getRequestDispatcher("/accesConnecte/AccueilConnecter.jsp").forward(request,
+		this.getServletContext().getRequestDispatcher("/AccueilConnecter").forward(request,
 				response);
 	}
 
