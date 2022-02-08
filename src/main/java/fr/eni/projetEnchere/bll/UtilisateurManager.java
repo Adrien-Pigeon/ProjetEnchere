@@ -122,7 +122,7 @@ public class UtilisateurManager {
 		        	sb.append("Le numero de telephone ne doit comporter que des chiffres");
 		        	valide  = false;
 		            
-		        }    	
+		       }    	
 		}
 		
 		}
