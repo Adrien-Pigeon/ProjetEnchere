@@ -41,6 +41,7 @@ public class VendArticleServlet extends HttpServlet {
 		super();
 
 	}
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse

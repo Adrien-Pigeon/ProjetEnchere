@@ -63,7 +63,6 @@
 			<div>
 				<fieldset>
 				<legend>Retrait</legend>
-			
 			<div>
 				<label for="name">Rue:</label> 
 				<input type="text" id="name"name="rue" placeholder="${utilisateur.rue }" required >
