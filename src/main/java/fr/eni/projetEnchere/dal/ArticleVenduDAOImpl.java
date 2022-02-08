@@ -26,7 +26,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	private static final String SELECT_BY_CATEGORIE = "select description,prix_vente,av.no_article,nom_article,"
 			+ "prix_initial,date_debut_encheres,pseudo,date_fin_encheres from ENCHERES as e\r\n"
 			+ "INNER JOIN UTILISATEURS as u on (e.no_utilisateur= u.no_utilisateur)\r\n"
-			+ "INNER JOIN ARTICLES_VENDUS as av on (e.no_article = av.no_article);";
+			+ "INNER JOIN ARTICLES_VENDUS as av on (e.no_article = av.no_article) WHERE no_categorie = ? ;";
 	private final static String SELECT_BY_DESCRIPTION ="select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo "
 			+ "from ARTICLES_VENDUS "
 			+ "INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where ARTICLES_VENDUS.no_categorie = ?;";
@@ -74,13 +74,15 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
+		ArticleVendu article = null;
 		
 		try {
 			cnx = ConnectionProvider.getConnection();
 			pstmt = cnx.prepareStatement(SELECT_BY_CATEGORIE);
+			pstmt.setInt(1, no_categorie);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				ArticleVendu article = new ArticleVendu();
+				article = new ArticleVendu();
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setPrixInitial(rs.getInt("prix_initial"));
@@ -88,11 +90,12 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setPrixVente(rs.getInt("prix_vente"));
 				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
-				//article.getUtilisateur().setPseudo("pseudo");
+				//article.getUtilisateur().setPseudo(rs.getString("pseudo"));
 				articles.add(article);
 			}
+			
 			}catch (SQLException e) {
-				throw new DalException("Probleme sur la couche dal", e);
+				e.printStackTrace();
 			}finally {
 				try {
 					pstmt.close();
