@@ -34,6 +34,9 @@ public class LoginServlet extends HttpServlet {
 				if(cookie.getName().equals("login")) {
 					request.setAttribute("login", cookie.getValue());
 				}
+				if(cookie.getName().equals("password")) {
+					request.setAttribute("password", cookie.getValue());
+				}
 			}
 		}
 		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
