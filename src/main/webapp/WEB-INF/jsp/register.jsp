@@ -153,7 +153,7 @@
                     <label class="labels">Email/Login</label><input type="text"
                         class="form-control" name="email" value="${utilisateur.email}">
                 </div>
-             
+               
 
 
 
@@ -179,7 +179,7 @@
                 </div>
                 <div class="col-md-12">
                     <label class="labels">nouveau mot de passe</label><input
-                        type="text" class="form-control" name="nouveauMotDePasse">
+                        type="text" class="form-control" name="password" required>
                 </div>
                 <div class="col-md-12">
                     <label class="labels">Confirmation mot de passe</label><input
