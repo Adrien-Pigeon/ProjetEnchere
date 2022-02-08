@@ -88,6 +88,12 @@ public class UtilisateurManager {
 			sb.append("Le code postal est obligatoire.\n");
 			valide = false;
 		}
+		try {
+            Float f = Float.parseFloat(u.getCodePostal());
+        } catch (NumberFormatException e) {
+            valide  = false;
+            sb.append("Le code Postal ne doit comporter que des chiffres");
+        }
 
 		if (u.getPrenom() == null || u.getPrenom().trim().length() == 0) {
 			sb.append("Le prenom est obligatoire.\n");
@@ -100,6 +106,19 @@ public class UtilisateurManager {
 		if (u.getMotDePasse() == null || u.getMotDePasse().trim().length() == 0) {
 			sb.append("Le mot de passe est obligatoire.\n");
 			valide = false;
+		}
+		if(u.getTelephone() != null && u.getTelephone().trim().length() != 10) {
+			sb.append("Le numero de telephone doit comporter 10 chiffres");
+        	valide  = false;
+		}
+		if(u.getTelephone() != null) {
+			try {
+	            Float f = Float.parseFloat(u.getTelephone());
+	        } catch (NumberFormatException e) {
+	        	sb.append("Le numero de telephone ne doit comporter que des chiffres");
+	        	valide  = false;
+	            
+	        }
 		}
 
 		if (!valide) {

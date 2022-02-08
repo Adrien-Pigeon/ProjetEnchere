@@ -68,7 +68,7 @@ public class CreerUnCompteServlet extends HttpServlet {
 				um.addUser(utilisateur);				
 				this.getServletContext().getRequestDispatcher("/").forward(request, response);
 			} catch (BllException e) {
-				e.getStackTrace();
+				System.err.println(e.getMessage());
 			}
 		}else {
 			

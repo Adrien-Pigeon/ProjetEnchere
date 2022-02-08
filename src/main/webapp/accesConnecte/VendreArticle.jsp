@@ -31,7 +31,7 @@
 					<option></option>
 					<c:forEach var="item" items="${categories }">
 						
-						<option value="${categorie.libelle}">${item.libelle }</option>
+						<option value="${categorie.noCategorie}">${item.libelle }</option>
 					</c:forEach>
 					
 

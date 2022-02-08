@@ -10,7 +10,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 
 public class RetraitDAOImpl implements RetraitDAO {
 
-	private static final String INSERT_RETRAIT = "INSERT INTO RETRAIT(ville,rue,code_postal) VALUES (?,?,?)";
+	private static final String INSERT_RETRAIT = "INSERT INTO RETRAIT(ville,rue,code_postal,no_article) VALUES (?,?,?,?)";
 	private static final String SELECT_RETRAIT = "SELECT ville,rue,code_postal FROM RETRAIT WHERE no_article = ?";
 
 	public void insertRetrait(Retrait retrait) throws DalException {
@@ -24,6 +24,7 @@ public class RetraitDAOImpl implements RetraitDAO {
 			pstmt.setString(1, retrait.getVille());
 			pstmt.setString(2, retrait.getRue());
 			pstmt.setString(3, retrait.getCodePostal());
+			pstmt.setInt(4, retrait.getArticle().getNoArticle());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DalException("Probleme sur la methode insertRetrait", e);
@@ -32,7 +33,7 @@ public class RetraitDAOImpl implements RetraitDAO {
 				pstmt.close();
 				cnx.close();
 			} catch (SQLException e) {
-				throw new DalException("Probleme de déconnexion", e);
+				throw new DalException("Probleme de dï¿½connexion", e);
 			}
 		}
 
@@ -61,7 +62,7 @@ public class RetraitDAOImpl implements RetraitDAO {
 				pstmt.close();
 				cnx.close();
 			} catch (SQLException e) {
-				throw new DalException("Probleme de déconnexion", e);
+				throw new DalException("Probleme de dï¿½connexion", e);
 			}
 		}
 		return retrait;	

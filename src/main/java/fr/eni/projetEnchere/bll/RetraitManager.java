@@ -21,7 +21,7 @@ public class RetraitManager {
 		return instance;
 	}
 
-	public static void ajouterRetrait(Retrait retrait) throws BllException {
+	public void ajouterRetrait(Retrait retrait) throws BllException {
 		// instancier un objet retraitDao
 		RetraitDAO retraitDao = DAOFactory.getRetraitDAO();
 
@@ -31,17 +31,17 @@ public class RetraitManager {
 		try {
 			// valider l'objet retrait
 			validerRetrait(retrait);
-			// inserer le retrait dans ma base de donnée
+			// inserer le retrait dans ma base de donnï¿½e
 			retraitDao.insertRetrait(retrait);
 		} catch (DalException e) {
 			throw new BllException("Echec ajouterRetrait");
 		}
 	}
 	
-	public static Retrait choixRetrait(int noArticle) throws BllException{
+	public Retrait choixRetrait(int noArticle) throws BllException{
 		RetraitDAO retraitDao = DAOFactory.getRetraitDAO();
 		Retrait  retrait = null;
-			//selectionner un retraitvdans la base de donnée
+			//selectionner un retraitvdans la base de donnï¿½e
 			try {
 				retrait = retraitDao.SelectByNoArticle(noArticle);
 			} catch (DalException e) {
@@ -70,6 +70,14 @@ public class RetraitManager {
 			sb.append("Le code postal est obligatoire.\n");
 			valide = false;
 		}
+		try {
+            Float f = Float.parseFloat(r.getCodePostal());
+        } catch (NumberFormatException e) {
+        	sb.append("Le code Postal ne doit comporter que des chiffres");
+        	valide  = false;
+            
+        }
+
 
 		if (!valide) {
 			throw new BllException(sb.toString());

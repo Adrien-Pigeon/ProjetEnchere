@@ -78,8 +78,8 @@ public class CategorieDAOImpl implements CategorieDAO {
 
 			if (rs.next()) {
 
-				categorie = new Categorie(rs.getInt("no_categorie"), "libelle");
-				rs.getString("libelle");
+				categorie = new Categorie(rs.getInt("no_categorie"),rs.getString("libelle"));
+				
 				
 			}
 			try {
