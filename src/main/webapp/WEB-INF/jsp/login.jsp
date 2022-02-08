@@ -45,8 +45,9 @@
 							</div>
 							<div class="row" align="center">
 								<a href="<%=request.getContextPath()%>/MotDePasse">Mot de
-									passe oublié</a> <input type="checkbox" id="scales" name="scales">
-								<label for="scales">Se souvenir de moi</label>
+									passe oublié</a> 
+								<label for="scales">Se souvenir de moi	<input type="checkbox" id="scales" name="scales"></label>
+							
 							</div>
 							<div class="success-data" v-else>
 
@@ -55,7 +56,12 @@
 						<div class="mb-3">
 							<a href="<%=request.getContextPath()%>/CreerCompte"><button type="button"
 								class="btn btn-dark w-100">S'enregistrer</button></a>
+								
 						</div>
+						<div>
+						<a href="<%=request.getContextPath()%>/"><button type="button"
+								class="btn btn-dark w-100">Annuler</button></a>
+								</div>
 				</div>
 			</div>
 						</div>
