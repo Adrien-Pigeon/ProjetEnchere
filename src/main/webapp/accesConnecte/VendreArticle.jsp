@@ -60,22 +60,26 @@
 				<label for="name">Fin de l'enchère:</label> 
 				<input type="date" id="dateFin"name="dateFin" required>
 			</div>
+			<div>
+				<fieldset>
+				<legend>Retrait</legend>
 			
 			<div>
 				<label for="name">Rue:</label> 
-				<input type="text" id="name"name="rue" required>
+				<input type="text" id="name"name="rue" placeholder="${utilisateur.rue }" required >
 			</div>
 			
 			<div>
 				<label for="name">Code postal:</label> 
-				<input type="text" id="name"name="codePostal" required>
+				<input type="text" id="name"name="codePostal" placeholder="${utilisateur.codePostal }" required>
 			</div>
 			
 			<div>
 				<label for="name">Ville:</label> 
-				<input type="text" id="name"name="ville" required>
+				<input type="text" id="name"name="ville" placeholder="${utilisateur.ville }" required>
 			</div>
-			
+			</fieldset>
+			</div>
 		
 		
 		

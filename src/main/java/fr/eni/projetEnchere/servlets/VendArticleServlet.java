@@ -50,6 +50,8 @@ public class VendArticleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+		request.setAttribute("utilisateur", utilisateurCo);
 		CategorieManager cm = CategorieManager.getInstance();
 		try {
 			List<Categorie> categories = cm.lister();
