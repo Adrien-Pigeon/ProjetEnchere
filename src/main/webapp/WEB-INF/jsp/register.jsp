@@ -165,7 +165,7 @@
                         value="${utilisateur.telephone}">
                 </div>
                 <div class="col-md-12">
-                    <label class="labels">Address Line 1</label><input type="text"
+                    <label class="labels">Address </label><input type="text"
                         class="form-control" name="rue" value="${utilisateur.rue}">
                 </div>
                 <div class="col-md-12">
@@ -178,7 +178,7 @@
                         class="form-control" name="ville" value=" ${utilisateur.ville}">
                 </div>
                 <div class="col-md-12">
-                    <label class="labels">nouveau mot de passe</label><input
+                    <label class="labels">Mot de passe</label><input
                         type="text" class="form-control" name="password" required>
                 </div>
                 <div class="col-md-12">
@@ -188,7 +188,7 @@
             </div>
 
             <div class="mt-5 text-center">
-                <button class="btn btn-primary profile-button" type="submit">enregistrer</button>
+                <button class="btn btn-primary profile-button" type="submit">S'enregistrer</button>
             </div>
 
             <script>

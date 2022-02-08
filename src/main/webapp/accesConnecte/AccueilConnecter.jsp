@@ -14,18 +14,19 @@
        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/jsProjet.js"></script>
 <title>ListEnchères Logged</title>
-	<h1>ENI-Enchères</h1>
-		<nav class="navigationMenu" >			
-				<a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a>
+	
+	
+		
+</head>
+<body>
+<h1>ENI-Enchères</h1>
+	 <div class="row" align="right">
+		<a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a>
 				<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
 				<a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a>
 				<a href="<%=request.getContextPath()%>/Deconnexion" >Déconnection</a>	
 			
-		</nav>
-</head>
-<body>
-
- 
+	</div>
 				<div class="text-center rounded my-5 haute " align="center">
                     <h1 class="p-3 bordure">Liste des enchères</h1>
                 </div>

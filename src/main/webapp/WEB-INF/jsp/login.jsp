@@ -48,10 +48,10 @@
 							<div class="success-data" v-else>
 
 				<div class="text-center d-flex flex-column">
-					<i class='bx bxs-badge-check'></i> <span class="text-center fs-1"></span>
+					 <span class="text-center fs-1"></span>
 						<div class="mb-3">
 							<a href="<%=request.getContextPath()%>/CreerCompte"><button type="button"
-								class="btn btn-dark w-100">Register</button></a>
+								class="btn btn-dark w-100">S'enregistrer</button></a>
 						</div>
 				</div>
 			</div>

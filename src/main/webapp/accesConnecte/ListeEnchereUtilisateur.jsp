@@ -17,13 +17,13 @@
 	
 </head>
 <h1>ENI-Enchères</h1>
-		<nav class="navigationMenu" >			
-				<a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a>
+		 <div class="row" align="right">
+		<a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a>
 				<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
 				<a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a>
 				<a href="<%=request.getContextPath()%>/Deconnexion" >Déconnection</a>	
 			
-		</nav>
+	</div>
 <body>
 
  
@@ -134,5 +134,5 @@
         <script type="text/javascript" src="js/monScriptProjet.js"></script>
 </body>
 
-<link rel="stylesheet" href="Ventes.css">
+<link rel="stylesheet" href="Style.css">
 </html>
