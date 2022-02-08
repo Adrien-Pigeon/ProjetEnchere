@@ -38,6 +38,7 @@ public class SupprimerUtilisateurServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
 		// DECONNEXION 
 		String logged = null;
 		session.setAttribute("logged", logged);
