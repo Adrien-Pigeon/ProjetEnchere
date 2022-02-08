@@ -176,6 +176,8 @@ public class VendArticleServlet extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/nouvelleEnchere.jsp").forward(request,
 					response);
 		}
+		this.getServletContext().getRequestDispatcher("/accesConnecte/AccueilConnecter.jsp").forward(request,
+				response);
 	}
 
 }

@@ -26,14 +26,6 @@ public class SupprimerUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	}
-	
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		HttpSession session = request.getSession();
 		
@@ -51,5 +43,14 @@ public class SupprimerUtilisateurServlet extends HttpServlet {
 		session.setAttribute("logged", logged);
 		this.getServletContext().getRequestDispatcher("/").forward(request,response);
 	}
+	
+	
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+	}
 }

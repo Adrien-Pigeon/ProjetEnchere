@@ -100,9 +100,8 @@
 						</div>
 				
 						<div class="mt-5 text-center">
-							<button action="<%=request.getContextPath()%>/SupprimerProfil"
-						method="post" class="btn btn-primary profile-button" type="submit">Delete
-								Profile</button>
+							<a href="<%=request.getContextPath()%>/SupprimerProfil" ><button class="btn btn-primary profile-button" type="button">Delete
+								Profile</button></a>
 						</div>
 					
 						<script>
@@ -129,7 +128,7 @@
 
 			</div>
 		</div>
-	
+	</form>
 
 
 

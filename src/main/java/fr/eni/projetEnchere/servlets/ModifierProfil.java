@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.projetEnchere.bll.UtilisateurManager;
+import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.Exception.DalException;
 
@@ -72,14 +73,14 @@ public class ModifierProfil extends HttpServlet {
 		
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		int id = utilisateurCo.getNoUtilisateur();
-		String password = utilisateurCo.getPassword();
+		;
 		
 		
 		
 		// String oldPseudo = utilisateurCo.getPseudo();
 		request.setAttribute("utilisateur", utilisateurCo);
 		String nom = request.getParameter("nom").trim().toLowerCase();
-		
+		String password = request.getParameter("password").trim();
 		String pseudo = request.getParameter("pseudo").trim();
 		String prenom = request.getParameter("prenom").trim().toLowerCase();
 
@@ -128,6 +129,8 @@ public class ModifierProfil extends HttpServlet {
 		} catch (DalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (BllException e) {
+			System.err.println(e.getMessage());
 		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 
