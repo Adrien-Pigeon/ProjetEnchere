@@ -97,15 +97,22 @@
 
 
 
-						<div class="mt-5 text-center">
-							<button class="btn btn-primary profile-button" type="submit">enregistrer</button>
-						</div>
-				
-						<div class="mt-5 text-center">
-							<a href="<%=request.getContextPath()%>/SupprimerProfil" ><button class="btn btn-primary profile-button" type="button">Delete
-								Profile</button></a>
-						</div>
+						
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center  " type="submit">enregistrer</button>
+						
+						
+							<a href="<%=request.getContextPath()%>/SupprimerProfil" >
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Delete
+								Profile</button>
+							</a>
 					
+						
+							<a href="<%=request.getContextPath()%>/AccueilConnecter" >
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Retour</button>
+							</a>
+						
+						
+						
 						<script>
                         const senha = document.querySelector('.senha');
                         const btn = document.querySelector('.btn');
