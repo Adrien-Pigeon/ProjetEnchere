@@ -72,6 +72,7 @@
 	const btn = document.querySelector('.btn');
 
 	btn.onclick = () =>
+	
 	{
 		if (senha.type === 'password') 
 		{

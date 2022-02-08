@@ -27,9 +27,11 @@
 				<a href="<%=request.getContextPath()%>/Deconnexion" >Déconnection</a>	
 			
 	</div>
+	
 				<div class="text-center rounded my-5 haute " align="center">
                     <h1 class="p-3 bordure">Liste des enchères</h1>
                 </div>
+                
 
 
  <form action="<%= request.getContextPath()%>/AccueilConnecter" method="post" class=" p-5 rounded bordure " style="background: #fff;">
