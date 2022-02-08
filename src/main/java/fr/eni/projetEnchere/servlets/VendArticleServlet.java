@@ -101,7 +101,6 @@ public class VendArticleServlet extends HttpServlet {
 		String nomArticle = request.getParameter("nom").trim().toLowerCase();
 		String description = request.getParameter("description").trim().toLowerCase();
 		int noCategorie = Integer.parseInt(request.getParameter("scategorie"));
-		System.out.println(noCategorie);
 		int prix = Integer.parseInt(request.getParameter("prixInitial"));
 		String debutVente = request.getParameter("dateDebut");
 		String finVente = request.getParameter("dateFin");
@@ -111,7 +110,7 @@ public class VendArticleServlet extends HttpServlet {
 		Categorie categorie=null;
 		try {
 			categorie = cm.selectParId(noCategorie);
-			System.out.println(categorie.getNoCategorie());
+			
 		} catch (BllException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -163,6 +162,9 @@ public class VendArticleServlet extends HttpServlet {
 			rm.ajouterRetrait(lieuRetrait);
 		} catch (BllException e) {
 			System.err.println(e.getMessage());
+		} catch (DalException e) {
+			
+			e.printStackTrace();
 		}
 		
 

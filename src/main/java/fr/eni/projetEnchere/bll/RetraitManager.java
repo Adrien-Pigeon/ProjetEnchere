@@ -21,22 +21,18 @@ public class RetraitManager {
 		return instance;
 	}
 
-	public void ajouterRetrait(Retrait retrait) throws BllException {
+	public void ajouterRetrait(Retrait retrait) throws BllException, DalException {
 		// instancier un objet retraitDao
 		RetraitDAO retraitDao = DAOFactory.getRetraitDAO();
 
 
-		try {
+		
 			// valider l'objet retrait
-			//validerRetrait(retrait);
+			validerRetrait(retrait);
 			// inserer le retrait dans ma base de donn�e
 			retraitDao.insertRetrait(retrait);
-		} catch (DalException e) {
-			
-			throw new BllException("Echec ajouterRetrait");
-		}
+		
 	}
-	
 	public Retrait choixRetrait(int noArticle) throws BllException{
 		RetraitDAO retraitDao = DAOFactory.getRetraitDAO();
 		Retrait  retrait = null;
