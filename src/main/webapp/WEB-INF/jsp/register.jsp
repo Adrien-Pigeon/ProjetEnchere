@@ -189,7 +189,11 @@
 
             <div class="mt-5 text-center">
                 <button class="btn btn-primary profile-button" type="submit">S'enregistrer</button>
+                  <a href="<%=request.getContextPath()%>/AccueilNonConnecter" >
+                 <button class="btn btn-primary profile-button" type="button">Annuler</button>
+                 </a>
             </div>
+            
 
             <script>
             const senha = document.querySelector('.senha');
