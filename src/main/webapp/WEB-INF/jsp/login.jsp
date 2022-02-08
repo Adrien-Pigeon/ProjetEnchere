@@ -11,11 +11,7 @@
 </head>
 <body>
 	
-	<a href="<%=request.getContextPath()%>/"> <img
-		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
-		height="120" title="Logo" alt="Logo">
-
-	</a>
+	
 
 	
 

@@ -22,7 +22,11 @@
 		
 </head>
 <body>
-<h1>ENI-Enchères</h1>
+<a href="<%=request.getContextPath()%>/AccueilConnecter"> <img
+		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
+		height="120" title="Logo" alt="Logo">
+
+	</a>
 
 
 
