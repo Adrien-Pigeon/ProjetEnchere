@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.projetEnchere.bll.ArticleVenduManager;
 import fr.eni.projetEnchere.bll.Exception.BllException;
@@ -36,19 +37,51 @@ public class RechercherArticle extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String recherche = request.getParameter("srecherche");
+		String motRecherche = request.getParameter("srecherche");
 		int noCategorie = Integer.parseInt(request.getParameter("scategorie"));
+		
+		//Recherche par categorie
+		if(noCategorie != 0 && motRecherche.isBlank()) {
 		List<ArticleVendu> listeArticles = null;
 		ArticleVenduManager avm = ArticleVenduManager.getInstance();
 		try {
 			listeArticles = avm.RechercherParCategorie(noCategorie);
 		} catch (DalException | BllException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		request.setAttribute("listeArticles", listeArticles);
-		
+		}
+		//Recherche par filtre nom
+		else if(motRecherche != null && noCategorie == 0) {
+			List<ArticleVendu> listeArticles = null;
+			ArticleVenduManager avm = ArticleVenduManager.getInstance();
+			try {
+				listeArticles = avm.RechercherParNom(motRecherche);
+			} catch (DalException | BllException e) {
+				
+				e.printStackTrace();
+			}
+			request.setAttribute("listeArticles", listeArticles);
+		}
+		//recherche par deux filtres
+		else if(motRecherche != null && noCategorie != 0){
+			List<ArticleVendu> listeArticles = null;
+			ArticleVenduManager avm = ArticleVenduManager.getInstance();
+			try {
+				listeArticles = avm.rechercheDouble(motRecherche,noCategorie);
+			} catch (DalException | BllException e) {
+				
+				e.printStackTrace();
+			}
+			request.setAttribute("listeArticles", listeArticles);
+		}
+		HttpSession session = request.getSession();
+		if(session== null) {
 		request.getRequestDispatcher("/").forward(request, response);
+		}else {
+			request.getRequestDispatcher("/AccueilConnecter").forward(request, response);
+		}
 	}
 
 }

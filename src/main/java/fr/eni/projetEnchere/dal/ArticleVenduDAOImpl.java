@@ -23,20 +23,16 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS(nom_article,description,"
 			+ " date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) "
 			+ "values (?, ?, ?, ?, ?, ?, ?,?);";
-	private static final String SELECT_BY_CATEGORIE = "select description,prix_vente,av.no_article,nom_article,"
-			+ "prix_initial,date_debut_encheres,pseudo,date_fin_encheres from ENCHERES as e\r\n"
-			+ "INNER JOIN UTILISATEURS as u on (e.no_utilisateur= u.no_utilisateur)\r\n"
-			+ "INNER JOIN ARTICLES_VENDUS as av on (e.no_article = av.no_article) WHERE no_categorie = ? ;";
-	private final static String SELECT_BY_DESCRIPTION = "select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo "
+	private static final String SELECT_BY_CATEGORIE = "select description,prix_vente,av.no_article,nom_article,\n"
+			+ "					prix_initial,date_debut_encheres,pseudo,date_fin_encheres from UTILISATEURS as u\n"
+			+ "					\n"
+			+ "					RIGHT JOIN ARTICLES_VENDUS as av on (u.no_utilisateur = av.no_utilisateur) WHERE no_categorie = ? ;";
+	private final static String SELECT_BY_NAME = "select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo,date_debut_encheres "
 			+ "from ARTICLES_VENDUS "
-			+ "INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where ARTICLES_VENDUS.no_categorie = ?;";
-
-	private final static String SELECT_BY_RECHERCHE = "select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo "
-			+ "from ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where nom_article LIKE ?;";
-
-	private final static String SELECT_BY_FILTRE = "select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo "
-			+ "from ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur "
-			+ "where nom_article " + "LIKE ? AND no_categorie = ?;";
+			+ "LEFT JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where nom_article LIKE ?;";
+	private final static String SELECT_BY_FILTRE = "select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo,"
+			+ "date_debut_encheres from ARTICLES_VENDUS LEFT JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur "
+			+ "where nom_article LIKE ? AND no_categorie = ?;";
 	
 	private final static String SELECT_BY_ID = "select * from ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where no_article = ?;";
 
@@ -84,6 +80,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				article = new ArticleVendu();
+				
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setPrixInitial(rs.getInt("prix_initial"));
@@ -91,7 +88,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setPrixVente(rs.getInt("prix_vente"));
 				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
-				// article.getUtilisateur().setPseudo(rs.getString("pseudo"));
+				article.setUtilisateurPseudo(rs.getString("pseudo"));
 				articles.add(article);
 			}
 
@@ -152,7 +149,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	}
 
 	@Override
-	public List<ArticleVendu> selectByDescription(String motRech) throws DalException {
+	public List<ArticleVendu> selectByName(String motRech) throws DalException {
 
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
@@ -161,16 +158,20 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 
 		try {
 			cnx = ConnectionProvider.getConnection();
-			pstmt = cnx.prepareStatement(SELECT_BY_DESCRIPTION);
+			pstmt = cnx.prepareStatement(SELECT_BY_NAME);
+			pstmt.setString(1, "%" + motRech + "%");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ArticleVendu article = new ArticleVendu();
-
+				
+				article.setNoArticle(rs.getInt("no_article"));
+				article.setNomArticle(rs.getString("nom_article"));
+				article.setPrixInitial(rs.getInt("prix_initial"));
 				article.setDescription(rs.getString("description"));
-
-				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
 				article.setPrixVente(rs.getInt("prix_vente"));
-				article.getUtilisateur().setPseudo("pseudo");
+				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setUtilisateurPseudo(rs.getString("pseudo"));
 				articles.add(article);
 			}
 		} catch (SQLException e) {
@@ -187,7 +188,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	}
 
 	@Override
-	public List<ArticleVendu> selectByFiltre(String motRech) throws DalException {
+	public List<ArticleVendu> selectByFiltres(String motRech,int noCategorie) throws DalException {
 
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
@@ -197,6 +198,8 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 		try {
 			cnx = ConnectionProvider.getConnection();
 			pstmt = cnx.prepareStatement(SELECT_BY_FILTRE);
+			pstmt.setString(1, "%" + motRech + "%");
+			pstmt.setInt(2,noCategorie);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ArticleVendu article = new ArticleVendu();
@@ -204,9 +207,10 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setDescription(rs.getString("description"));
 				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setPrixInitial(rs.getInt("prix_initial"));
 				article.setPrixVente(rs.getInt("prix_vente"));
-				article.getUtilisateur().setPseudo("pseudo");
+				article.setUtilisateurPseudo(rs.getString("pseudo"));
 				articles.add(article);
 			}
 		} catch (SQLException e) {
@@ -222,41 +226,6 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 		return articles;
 	}
 
-	@Override
-	public List<ArticleVendu> selectByRecherche(String motRech) throws DalException {
-
-		Connection cnx = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
-
-		try {
-			cnx = ConnectionProvider.getConnection();
-			pstmt = cnx.prepareStatement(SELECT_BY_RECHERCHE);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				ArticleVendu article = new ArticleVendu();
-				article.setNoArticle(rs.getInt("no_article"));
-				article.setNomArticle(rs.getString("nom_article"));
-				article.setDescription(rs.getString("description"));
-				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
-				article.setPrixInitial(rs.getInt("prix_initial"));
-				article.setPrixVente(rs.getInt("prix_vente"));
-				article.getUtilisateur().setPseudo("pseudo");
-				articles.add(article);
-			}
-		} catch (SQLException e) {
-			throw new DalException("Probleme sur la couche dal", e);
-		} finally {
-			try {
-				pstmt.close();
-				cnx.close();
-			} catch (SQLException e) {
-				throw new DalException("Probleme de d�connexion", e);
-			}
-		}
-		return articles;
-	}
 
 	@Override
 	public ArticleVendu selectById(int id) throws DalException {

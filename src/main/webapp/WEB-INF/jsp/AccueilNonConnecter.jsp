@@ -76,7 +76,7 @@
 
 			<div>
 				<select id="scategorie" name="scategorie">
-					<option>toutes</option>
+					<option value="0">toutes</option>
 					<c:forEach var="item" items="${categories }">
 
 						<option value="${item.noCategorie}">${item.libelle }</option>
@@ -97,7 +97,7 @@
 		<div>${item.description }</div>
 		<div>Prix : ${item.prixVente }</div>
 		<div>Fin de l'enchère : ${item.dateFinEncheres }</div>
-		<div>Vendeur : jojo</div>
+		<div>Vendeur : ${item.utilisateurPseudo }</div>
 	</c:forEach>
 
 

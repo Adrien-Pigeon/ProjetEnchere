@@ -16,7 +16,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private final static String SELECT_LOGIN = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ? OR email = ?  AND mot_de_passe = ?";
 	private final static String SELET_BY_ID = "SELECT * FROM dbo.UTILISATEURS WHERE no_utilisateur = ?;";
 	private final static String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?,prenom =?,nom=?,email=?,mot_de_passe=?,telephone=?,"
-			+ "ville=?,rue=?,code_postal=?,credit=? WHERE no_utilisateur = ?;";
+			+ "ville=?,rue=?,code_postal=?,credit=? WHERE no_utilisateur = ? AND pseudo=?;";
 	private static final String SELECT_BY_PSEUDO = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?;";
 	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?;";
 
@@ -218,7 +218,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public void update(Utilisateur user) throws DalException {
+	public void update(Utilisateur user, String pseudo) throws DalException {
 		Connection cnx = null;
 		PreparedStatement stmt = null;
 
@@ -237,6 +237,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			stmt.setString(9, user.getCodePostal());
 			stmt.setInt(10, user.getCredit());
 			stmt.setInt(11, user.getNoUtilisateur());
+			stmt.setString(12,pseudo);
 
 			stmt.executeUpdate();
 		} catch (SQLException e) {

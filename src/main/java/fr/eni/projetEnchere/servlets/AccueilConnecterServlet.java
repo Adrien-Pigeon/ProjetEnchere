@@ -22,13 +22,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 public class AccueilConnecterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public AccueilConnecterServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse

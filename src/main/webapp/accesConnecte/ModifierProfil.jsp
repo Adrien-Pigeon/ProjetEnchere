@@ -47,24 +47,24 @@
 							<div class="col-md-6">
 								<label class="labels">Pseudo</label><input type="text"
 									class="form-control" name="pseudo"
-									value="${utilisateur.pseudo}">
+									value="${utilisateur.pseudo}" required>
 							</div>
 							<div class="col-md-6">
 								<label class="labels">Nom</label><input type="text"
-									class="form-control" name="nom" value="${utilisateur.nom}">
+									class="form-control" name="nom" value="${utilisateur.nom}" required>
 							</div>
 							<div class="col-md-6">
 								<label class="labels">Prénom</label><input type="text"
 									class="form-control" name="prenom"
-									value="${utilisateur.prenom}">
+									value="${utilisateur.prenom}" required>
 							</div>
 							<div class="col-md-12">
-								<label class="labels">Email/Login</label><input type="text"
-									class="form-control" name="email" value="${utilisateur.email}">
+								<label class="labels">Email/Login</label><input type="email"
+									class="form-control" name="email" value="${utilisateur.email}" required>
 							</div>
 							<div class="col-md-12">
 								<label class="labels">Mot de passe actuel</label><input
-									type="text" class="form-control" name="password" required>
+									type="password" class="form-control" name="password" required>
 							</div>
 
 
@@ -78,24 +78,24 @@
 							</div>
 							<div class="col-md-12">
 								<label class="labels">Address Line 1</label><input type="text"
-									class="form-control" name="rue" value="${utilisateur.rue}">
+									class="form-control" name="rue" value="${utilisateur.rue}" required>
 							</div>
 							<div class="col-md-12">
 								<label class="labels">Code Postale</label><input type="text"
 									class="form-control" name="codePostal"
-									value="${utilisateur.codePostal}">
+									value="${utilisateur.codePostal}" required>
 							</div>
 							<div class="col-md-12">
 								<label class="labels">Ville</label><input type="text"
-									class="form-control" name="ville" value=" ${utilisateur.ville}">
+									class="form-control" name="ville" value=" ${utilisateur.ville}" required>
 							</div>
 							<div class="col-md-12">
 								<label class="labels">nouveau mot de passe</label><input
-									type="text" class="form-control" name="nouveauMotDePasse">
+									type="password" class="form-control" name="nouveauMotDePasse">
 							</div>
 							<div class="col-md-12">
 								<label class="labels">Confirmation mot de passe</label><input
-									type="text" class="form-control" name="password_conf">
+									type="password" class="form-control" name="password_conf">
 							</div>
 						</div>
 
@@ -104,13 +104,13 @@
 
 
 						
-							<button class="bouton btn btn-link col-lg-12 col-xs-12 text-center  " type="submit">Enregistrer</button>
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center  " type="submit" name="enregistrer">Enregistrer</button>
 						
 						
-							<a href="<%=request.getContextPath()%>/SupprimerProfil" >
-							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Delete
+							
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="submit" name="delete">Supprimer
 								Profile</button>
-							</a>
+							
 					
 						
 							<a href="<%=request.getContextPath()%>/AccueilConnecter" >

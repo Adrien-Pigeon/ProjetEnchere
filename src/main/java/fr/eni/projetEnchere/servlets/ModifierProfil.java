@@ -20,14 +20,6 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 public class ModifierProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public ModifierProfil() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -74,14 +66,17 @@ public class ModifierProfil extends HttpServlet {
 		
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		int id = utilisateurCo.getNoUtilisateur();
-		;
+		String oldPseudo = utilisateurCo.getPseudo();
+		String password = request.getParameter("password").trim();
 		
 		
 		
-		// String oldPseudo = utilisateurCo.getPseudo();
+		
+		if(request.getParameter("enregistrer") != null ) {
+		
 		request.setAttribute("utilisateur", utilisateurCo);
 		String nom = request.getParameter("nom").trim().toLowerCase();
-		String password = request.getParameter("password").trim();
+		
 		String pseudo = request.getParameter("pseudo").trim();
 		String prenom = request.getParameter("prenom").trim().toLowerCase();
 
@@ -120,13 +115,13 @@ public class ModifierProfil extends HttpServlet {
 
 		utilisateur.setCredit(150);
 		utilisateur.setAdministrateur(false);
-
+		
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		try {
-			um.modifierUser(utilisateur);
+			um.modifierUser(utilisateur,oldPseudo);
 			request.setAttribute("btnOn", true);
 			request.setAttribute("utilisateur", utilisateur);
-
+		
 		} catch (DalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -134,7 +129,40 @@ public class ModifierProfil extends HttpServlet {
 			System.err.println(e.getMessage());
 		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
-
+		
+		}else if(request.getParameter("delete") != null) {
+			Utilisateur utilisateur = new Utilisateur();
+			utilisateur.setNoUtilisateur(id);
+			utilisateur.setPseudo("inconnu");
+			utilisateur.setNom("inconnu");
+			utilisateur.setPrenom("inconnu");
+			utilisateur.setEmail("inconnu");
+			utilisateur.setTelephone("");
+			utilisateur.setCodePostal("inconnu");
+			utilisateur.setRue("inconnu");
+			utilisateur.setVille("inconnu");
+			utilisateur.setMotDePasse("7858798654mplo4789");
+			utilisateur.setCredit(0);
+			utilisateur.setAdministrateur(false);
+			UtilisateurManager um = UtilisateurManager.getInstance();
+			try {
+				um.modifierUser(utilisateur,oldPseudo);
+				request.setAttribute("btnOn", false);
+				request.setAttribute("utilisateur", utilisateur);
+			
+			} catch (DalException e) {
+				
+				e.printStackTrace();
+			} catch (BllException e) {
+				System.err.println(e.getMessage());
+			}
+			HttpSession session = request.getSession();
+			
+			// DECONNEXION 
+			String logged = null;
+			session.setAttribute("logged", logged);
+			this.getServletContext().getRequestDispatcher("/").forward(request,response);
+		}
 		
 	}
 

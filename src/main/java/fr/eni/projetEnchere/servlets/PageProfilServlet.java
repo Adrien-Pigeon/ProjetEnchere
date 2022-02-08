@@ -36,6 +36,14 @@ public class PageProfilServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+		int id = utilisateurCo.getNoUtilisateur();
+		UtilisateurManager um = UtilisateurManager.getInstance();
+		try {
+			utilisateurCo = um.SelectUser(id);
+		} catch (DalException e) {
+			
+			System.err.println(e.getMessage());
+		}
 		request.setAttribute("utilisateur", utilisateurCo);
 		boolean btnOn = true;
 		request.setAttribute("btnOn", btnOn);

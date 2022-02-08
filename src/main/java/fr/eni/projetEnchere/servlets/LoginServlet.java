@@ -54,12 +54,14 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("login");
 		String password = request.getParameter("password");
 		
+		if(request.getParameter("scales") != null) {
 		Cookie cookie = new Cookie("login", username);
 		Cookie cookie2 = new Cookie ("password", password);
 		cookie.setMaxAge(1500000);
 		cookie2.setMaxAge(1500000);
 		response.addCookie(cookie);
 		response.addCookie(cookie2);
+		}
 
 		// j'instancie un objet de type Utilisateur et j'hydrate les attributs
 		// login et pwd

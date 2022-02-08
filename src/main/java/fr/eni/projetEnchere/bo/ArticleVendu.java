@@ -10,7 +10,7 @@ public class ArticleVendu {
 	private String nomArticle,description;
 	private LocalDate dateDebutEncheres,dateFinEncheres;
 	private int prixInitial,prixVente;
-	
+	private String utilisateurPseudo;
 	private Categorie categorie;
 	private Utilisateur utilisateur;
 	
@@ -114,6 +114,20 @@ public class ArticleVendu {
 
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
+	}
+
+
+
+
+	public String getUtilisateurPseudo() {
+		return utilisateurPseudo;
+	}
+
+
+
+
+	public void setUtilisateurPseudo(String utilisateurPseudo) {
+		this.utilisateurPseudo = utilisateurPseudo;
 	}
 
 	

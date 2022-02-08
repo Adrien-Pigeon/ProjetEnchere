@@ -39,10 +39,10 @@ public class ArticleVenduManager {
 	}
 	
 	
-	public List<ArticleVendu> RechercherParDescription(String motRech) throws DalException, BllException {
+	public List<ArticleVendu> RechercherParNom(String motRech) throws DalException, BllException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
 		
-		return dao.selectByDescription(motRech);
+		return dao.selectByName(motRech);
 		
 		
 	}
@@ -55,7 +55,11 @@ public class ArticleVenduManager {
 		
 	}
 	
-	
+	public List<ArticleVendu> rechercheDouble(String motRech,int noCategorie) throws DalException, BllException {
+		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
+		
+		return dao.selectByFiltres(motRech,noCategorie);
+	}
 	
 	public static Boolean verifierArticle(ArticleVendu a) throws BllException {
 		boolean valide = true;

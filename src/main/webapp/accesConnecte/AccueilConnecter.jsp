@@ -67,7 +67,7 @@
                     <h2>Filtres :</h2>
 
                     <div class="md-form  active-pink-2 mb-3 mt-0">
-                        <input class="form-control" type="text" placeholder="Rechercher..." aria-label="Search">
+                        <input class="form-control" type="text" name="srecherche" placeholder="Rechercher..." aria-label="Search">
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Catégorie :</label>
@@ -118,7 +118,13 @@
         <label for="horns">Ventes terminées</label>
       </div>
     </div>
-    
+    <c:forEach var="item" items="${listeArticles }">
+		<div></div>
+		<div>${item.description }</div>
+		<div>Prix : ${item.prixVente }</div>
+		<div>Fin de l'enchère : ${item.dateFinEncheres }</div>
+		<div>Vendeur : ${item.utilisateurPseudo }</div>
+	</c:forEach>
 
 
 

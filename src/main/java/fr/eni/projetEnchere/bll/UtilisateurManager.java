@@ -53,11 +53,11 @@ public class UtilisateurManager {
 		return user;
 	}
 
-	public void modifierUser(Utilisateur user) throws DalException, BllException {
+	public void modifierUser(Utilisateur user,String pseudo) throws DalException, BllException {
 		UtilisateurDAO userDao = DAOFactory.getUtilisateurDAO();
 
 		verifierUser(user);
-		userDao.update(user);
+		userDao.update(user,pseudo);
 
 	}
 

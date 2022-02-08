@@ -32,6 +32,7 @@ public class DeconnexionServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String logged = null;
 		session.setAttribute("logged", logged);
+		session.invalidate();
 		System.out.println("Déconnection");
 		this.getServletContext().getRequestDispatcher("/").forward(request, response);
 	}
