@@ -3,7 +3,8 @@ package fr.eni.projetEnchere.servlets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -94,15 +95,9 @@ public class VendArticleServlet extends HttpServlet {
 		String description = request.getParameter("description").trim().toLowerCase();
 		int noCategorie = Integer.parseInt(request.getParameter("scategorie"));
 		int prix = Integer.parseInt(request.getParameter("prixInitial"));
-		Date debutVente = null;
-		Date finVente = null;
-		try {
-			debutVente = dateFormat.parse(request.getParameter("dateDebut"));
-			finVente = dateFormat.parse(request.getParameter("dateFin"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		String debutVente = request.getParameter("dateDebut");
+		String finVente = request.getParameter("dateFin");
+		
 		
 		CategorieManager cm = CategorieManager.getInstance();
 		Categorie categorie= null;
@@ -116,17 +111,12 @@ public class VendArticleServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		/*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 		
-		
-		
-		try {
-			LocalDate dateDebut = LocalDate.parse(debutVente, formatter);
-			LocalDate dateFin = LocalDate.parse(finVente, formatter);
-		} catch (ParseException e) {
-		
-			e.printStackTrace();
-		}*/
+		LocalDate dateDebut =null;
+		LocalDate dateFin = null;
+		dateDebut = LocalDate.parse(debutVente, formatter);
+		dateFin = LocalDate.parse(finVente, formatter);
 		
 		ArticleVendu article = new ArticleVendu();
 		article.setNomArticle(nomArticle);
@@ -134,8 +124,8 @@ public class VendArticleServlet extends HttpServlet {
 		article.setCategorie(categorie);
 		article.setPrixInitial(prix);
 		article.setPrixVente(prix);
-		article.setDateDebutEncheres(debutVente);
-		article.setDateFinEncheres(finVente);
+		article.setDateDebutEncheres(dateDebut);
+		article.setDateFinEncheres(dateFin);
 		
 		ArticleVenduManager am = ArticleVenduManager.getInstance();
 		try {
