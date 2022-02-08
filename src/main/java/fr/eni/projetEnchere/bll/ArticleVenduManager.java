@@ -44,7 +44,7 @@ public class ArticleVenduManager {
 			valide = false;
 		}
 
-		if (a.getDateDebutEncheres().after(a.getDateFinEncheres())) {
+		if (a.getDateDebutEncheres().isAfter(a.getDateFinEncheres())) {
 			sb.append("La date de fin d'enchere ne peut etre anterieur a la date de debut d'enchere.\n");
 			valide = false;
 		}

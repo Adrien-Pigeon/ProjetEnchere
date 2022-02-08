@@ -1,5 +1,6 @@
 package fr.eni.projetEnchere.bo;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class ArticleVendu {
 
 	private int noArticle;
 	private String nomArticle,description;
-	private Date dateDebutEncheres,dateFinEncheres;
+	private LocalDate dateDebutEncheres,dateFinEncheres;
 	private int prixInitial,prixVente;
 	
 	private Categorie categorie;
@@ -21,8 +22,8 @@ public class ArticleVendu {
 
 	
 
-	public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, Categorie categorie, Utilisateur utilisateur) {
+	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, Categorie categorie, Utilisateur utilisateur) {
 		super();
 	
 		this.setNomArticle(nomArticle);
@@ -59,19 +60,19 @@ public class ArticleVendu {
 		this.description = description;
 	}
 
-	public Date getDateDebutEncheres() {
+	public LocalDate getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
 
-	public void setDateDebutEncheres(Date dateDebutEncheres) {
+	public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
 		this.dateDebutEncheres = dateDebutEncheres;
 	}
 
-	public Date getDateFinEncheres() {
+	public LocalDate getDateFinEncheres() {
 		return dateFinEncheres;
 	}
 
-	public void setDateFinEncheres(Date dateFinEncheres) {
+	public void setDateFinEncheres(LocalDate dateFinEncheres) {
 		this.dateFinEncheres = dateFinEncheres;
 	}
 
