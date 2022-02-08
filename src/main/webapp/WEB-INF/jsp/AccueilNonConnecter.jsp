@@ -16,7 +16,9 @@
 
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
+	<form action="<%=request.getContextPath()%>/AccueilNonConnecter" method="get">
+    <button type="submit"><h1>Eni-Encheres</h1></button>
+	</form>
 	<div class="row" align="right">
 		<a href="<%=request.getContextPath()%>/Login">Inscription - Se
 			Connecter</a>

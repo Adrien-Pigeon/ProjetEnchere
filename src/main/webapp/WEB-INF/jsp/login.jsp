@@ -10,7 +10,9 @@
 
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
+	<form action="<%=request.getContextPath()%>/AccueilNonConnecter" method="get">
+    <button type="submit"><h1>Eni-Encheres</h1></button>
+	</form>
 
 
 	<form action="<%=request.getContextPath()%>/Login" method="post">
