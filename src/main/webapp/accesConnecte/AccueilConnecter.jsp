@@ -99,7 +99,6 @@
   				</div>
 </div>
 
-
  <script>
        function myFunction() {
         if(document.getElementById("vente").checked){
