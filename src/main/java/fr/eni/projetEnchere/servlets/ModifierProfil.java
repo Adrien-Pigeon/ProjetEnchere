@@ -135,7 +135,7 @@ public class ModifierProfil extends HttpServlet {
 		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 
-		// }
+		
 	}
 
 }

@@ -25,7 +25,9 @@ public class Utilisateur {
 
 	}
 
-
+	public Utilisateur(String pseudo) {
+		this.setPseudo(pseudo);
+	}
 	// Constructeur Surcharg� de Utilisateur
 	public Utilisateur(String Pseudo,String nom, String prenom, String email, String telephone, String rue, String codePostal,
 			String ville, String motDePasse, int credit, boolean administrateur) {

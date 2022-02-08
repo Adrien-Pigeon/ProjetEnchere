@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projetEnchere.bo.ArticleVendu;
+import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.Exception.DalException;
 
 public class ArticleVenduDAOImpl implements ArticleVenduDAO {
@@ -22,7 +23,11 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS(nom_article,description,"
 			+ " date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) "
 			+ "values (?, ?, ?, ?, ?, ?, ?,?);";
-
+	private static final String SELECT_BY_CATEGORIE = "select description,prix_vente,av.no_article,nom_article,"
+			+ "prix_initial,date_debut_encheres,pseudo,date_fin_encheres from ENCHERES as e\r\n"
+			+ "INNER JOIN UTILISATEURS as u on (e.no_utilisateur= u.no_utilisateur)\r\n"
+			+ "INNER JOIN ARTICLES_VENDUS as av on (e.no_article = av.no_article);";
+	
 	@Override
 	public void selectAll() throws DalException {
 		Connection cnx = null;
@@ -53,8 +58,39 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	@Override
 	public List<ArticleVendu> selectByCategorie(int no_categorie) throws DalException {
 
-		return null;
-	}
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
+		
+		try {
+			cnx = ConnectionProvider.getConnection();
+			pstmt = cnx.prepareStatement(SELECT_BY_CATEGORIE);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ArticleVendu article = new ArticleVendu();
+				article.setNoArticle(rs.getInt("no_article"));
+				article.setNomArticle(rs.getString("nom_article"));
+				article.setPrixInitial(rs.getInt("prix_initial"));
+				article.setDescription(rs.getString("description"));
+				article.setPrixVente(rs.getInt("prix_vente"));
+				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.getUtilisateur().setPseudo("pseudo");
+				articles.add(article);
+			}
+			}catch (SQLException e) {
+				throw new DalException("Probleme sur la couche dal", e);
+			}finally {
+				try {
+					pstmt.close();
+					cnx.close();
+				} catch (SQLException e) {
+					throw new DalException("Probleme de d�connexion", e);
+				}
+			}
+		return articles;
+		}
 
 	@Override
 	public List<ArticleVendu> selectByUtilisateurs(int no_utilisateur) throws DalException {
@@ -98,6 +134,12 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			}
 		}
 
+	}
+
+	@Override
+	public List<ArticleVendu> selectByDescription(String motRech) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

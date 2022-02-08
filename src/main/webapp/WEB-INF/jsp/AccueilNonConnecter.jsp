@@ -33,8 +33,8 @@
 	</div>
 
 
-	<form action="<%=request.getContextPath()%>/AccueilNonConnecter"
-		method="get">
+	<form action="<%=request.getContextPath()%>/Rechercher"
+		method="post">
 
 		<div>
 
@@ -54,7 +54,7 @@
 					<option>toutes</option>
 					<c:forEach var="item" items="${categories }">
 
-						<option value="${categorie.libelle}">${item.libelle }</option>
+						<option value="${item.noCategorie}">${item.libelle }</option>
 					</c:forEach>
 
 
