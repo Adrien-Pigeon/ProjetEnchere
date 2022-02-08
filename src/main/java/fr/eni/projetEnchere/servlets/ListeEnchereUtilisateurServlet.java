@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.projetEnchere.bll.ArticleVenduManager;
 import fr.eni.projetEnchere.bll.CategorieManager;
 import fr.eni.projetEnchere.bll.UtilisateurManager;
+import fr.eni.projetEnchere.bll.Exception.BllException;
+import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.Exception.DalException;
@@ -38,34 +41,21 @@ public class ListeEnchereUtilisateurServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.getRequestDispatcher("/accesConnecte/ListeEnchereUtilisateur.jsp").forward(request, response);
-
-		// recupere les informations de l'utilisateur
-		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
-		request.setAttribute("utilisateur", utilisateurCo);
-		CategorieManager cm = CategorieManager.getInstance();
+		// Récupération des paramètres
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		// Manager pour aller chercher l'article 
 		try {
-			List<Categorie> categories = cm.lister();
-
-			request.setAttribute("categories", categories);
-
-		} catch (DalException e) {
-			// TODO Auto-generated catch block
+			ArticleVendu article = ArticleVenduManager.getInstance().rechercherParId(id);
+			
+			request.setAttribute("article", article);
+			request.getRequestDispatcher("/accesConnecte/ListeEnchereUtilisateur.jsp").forward(request, response);
+			return;
+			
+		} catch (DalException | BllException e) {
 			e.printStackTrace();
+			response.sendRedirect("/ProjetEnchere/");
 		}
-
-		if (request.getSession() != null) {
-
-			// Recupere la session
-
-		} else {
-
-			// Recupere la session
-			HttpSession session = request.getSession();
-			session.invalidate();
-			request.getRequestDispatcher("/").forward(request, response);
-		}
-
 	}
 
 	/**

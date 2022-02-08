@@ -43,7 +43,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         
-			<li class="active"><a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a></li>
+			<li class="active"><a href="<%=request.getContextPath()%>/ListeEnchereUtilisateur">Enchères</a></li>
       	 	<li><a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a></li>
         	<li><a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a></li>
         

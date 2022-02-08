@@ -32,12 +32,12 @@
 
 			<div>
 				<label for="name">Article:</label> <input type="text" id="name"
-					name="nom" placeholder="${nomArticle }">
+					name="nom" value="${article.nomArticle }">
 			</div>
 
 			<div>
 				<label for="name">Description:</label> <input type="text" id="name"
-					name="description" required>
+					name="description" value="${article. }">
 			</div>
 
 			<div>

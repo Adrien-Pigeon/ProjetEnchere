@@ -47,6 +47,15 @@ public class ArticleVenduManager {
 		
 	}
 	
+	public ArticleVendu rechercherParId(int id) throws DalException, BllException {
+		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
+		
+		return dao.selectById(id);
+		
+		
+	}
+	
+	
 	
 	public static Boolean verifierArticle(ArticleVendu a) throws BllException {
 		boolean valide = true;
