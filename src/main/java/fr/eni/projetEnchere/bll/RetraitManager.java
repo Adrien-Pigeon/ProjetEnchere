@@ -25,15 +25,14 @@ public class RetraitManager {
 		// instancier un objet retraitDao
 		RetraitDAO retraitDao = DAOFactory.getRetraitDAO();
 
-		if (retrait != null) {
-			throw new BllException("Retrait deja existant.");
-		}
+
 		try {
 			// valider l'objet retrait
-			validerRetrait(retrait);
+			//validerRetrait(retrait);
 			// inserer le retrait dans ma base de donn�e
 			retraitDao.insertRetrait(retrait);
 		} catch (DalException e) {
+			
 			throw new BllException("Echec ajouterRetrait");
 		}
 	}

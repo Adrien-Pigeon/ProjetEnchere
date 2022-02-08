@@ -67,6 +67,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
+		
 
 		try {
 			cnx = ConnectionProvider.getConnection();
@@ -79,6 +80,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			pstmt.setInt(6,article.getPrixVente());
 			pstmt.setInt(7, article.getUtilisateur().getNoUtilisateur());
 			pstmt.setInt(8, article.getCategorie().getNoCategorie());
+			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
 				article.setNoArticle(rs.getInt(1));

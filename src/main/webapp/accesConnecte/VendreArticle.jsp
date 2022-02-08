@@ -28,12 +28,13 @@
 			<div>
 			<label for="name">Categorie:</label> 
 				<select id="scategorie" name="scategorie">
-					<option></option>
+					
 					<c:forEach var="item" items="${categories }">
 						
-						<option value="${categorie.noCategorie}">${item.libelle }</option>
+						<option value="${item.noCategorie}">${item.libelle }</option>
 					</c:forEach>
 					
+				
 
 				</select>
 			</div>
@@ -42,7 +43,7 @@
 			
 			<div>
 				<label for="mail">Photo de l'article</label> 
-				<input type="email" id="name"name="photo" required>
+				<input type="email" id="name"name="photo" >
 			</div>
 			
 			<div>
@@ -75,7 +76,7 @@
 				<input type="text" id="name"name="ville" required>
 			</div>
 			
-		</form>
+		
 		
 		
 		
@@ -83,8 +84,8 @@
 			<div class="button">
 				<button type="submit" name="enregistrer">Enregistrer</button>
 			</div>
-
-		
+</form>
+	</div>	
 		<div class="button">
 				<a href="<%=request.getContextPath()%>/AccueilConnecter">
 				<button  name="annuler">Annuler</button></a>

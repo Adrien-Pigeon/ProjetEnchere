@@ -69,35 +69,41 @@ public class CategorieDAOImpl implements CategorieDAO {
 	
 	public Categorie selectParId(int noCategorie) throws DalException {
 
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
 		Categorie categorie = null;
 		
-		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pstmt = cnx.prepareStatement(SELECTBYID);
+		try {
+			cnx = ConnectionProvider.getConnection(); 
+			pstmt = cnx.prepareStatement(SELECTBYID);
 			pstmt.setInt(1, noCategorie);
-			ResultSet rs = pstmt.executeQuery();
+			System.out.println(noCategorie);
+			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 
-				categorie = new Categorie(rs.getInt("no_categorie"),rs.getString("libelle"));
+				categorie = new Categorie();
+				categorie.setNoCategorie(rs.getInt("no_categorie"));
+				categorie.setLibelle(rs.getString("libelle"));
 				
-				
-			}
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (cnx != null) {
-					cnx.close();
-				}
+			}	
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new DalException("Problème - listeCategorie-" + e.getMessage());
+			} finally {
+				try {
+					if (pstmt != null) {
+						pstmt.close();
+					}
+					if (cnx != null) {
+						cnx.close();
+					}
+
+				} catch (SQLException e) {
+					throw new DalException("Probleme - FermerConnexion" + e.getMessage());
+				}
 			}
-		} catch (SQLException e) {
-			throw new DalException();
-		}
 		return categorie;
 	}
 

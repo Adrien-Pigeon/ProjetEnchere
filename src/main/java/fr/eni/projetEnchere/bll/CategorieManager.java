@@ -38,11 +38,8 @@ public class CategorieManager {
 	
 	
 	public Categorie selectParId(int noCategorie) throws BllException, DalException{
-		Categorie categorie = new Categorie();
-		
 		CategorieDAO dao = DAOFactory.getCategorieDAO();
-		dao.selectParId(noCategorie);
-		return categorie;
+		return dao.selectParId(noCategorie);
 	}
 	
 }

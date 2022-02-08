@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.projetEnchere.bll.ArticleVenduManager;
 import fr.eni.projetEnchere.bll.CategorieManager;
 import fr.eni.projetEnchere.bll.RetraitManager;
-
+import fr.eni.projetEnchere.bll.UtilisateurManager;
 import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
@@ -85,24 +85,33 @@ public class VendArticleServlet extends HttpServlet {
 
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		int id = utilisateurCo.getNoUtilisateur();
+		UtilisateurManager um = UtilisateurManager.getInstance();
+		try {
+			utilisateurCo = um.SelectUser(id);
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 		
 		//Attributs articles
 		String nomArticle = request.getParameter("nom").trim().toLowerCase();
 		String description = request.getParameter("description").trim().toLowerCase();
 		int noCategorie = Integer.parseInt(request.getParameter("scategorie"));
+		System.out.println(noCategorie);
 		int prix = Integer.parseInt(request.getParameter("prixInitial"));
 		String debutVente = request.getParameter("dateDebut");
 		String finVente = request.getParameter("dateFin");
 		
 		
 		CategorieManager cm = CategorieManager.getInstance();
-		Categorie categorie= null;
+		Categorie categorie=null;
 		try {
 			categorie = cm.selectParId(noCategorie);
+			System.out.println(categorie.getNoCategorie());
 		} catch (BllException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,7 +120,7 @@ public class VendArticleServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 		LocalDate dateDebut =null;
 		LocalDate dateFin = null;
@@ -126,7 +135,7 @@ public class VendArticleServlet extends HttpServlet {
 		article.setPrixVente(prix);
 		article.setDateDebutEncheres(dateDebut);
 		article.setDateFinEncheres(dateFin);
-		
+		article.setUtilisateur(utilisateurCo);
 		ArticleVenduManager am = ArticleVenduManager.getInstance();
 		try {
 			am.ajouterArticle(article);
@@ -156,13 +165,7 @@ public class VendArticleServlet extends HttpServlet {
 			System.err.println(e.getMessage());
 		}
 		
-		String message;
-		if (request.getParameter("sarticle").trim().isEmpty()) {
-			message = "Erreur - Veuillez renseigner un article.";
-			request.setAttribute("erreur", message);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/nouvelleEnchere.jsp").forward(request,
-					response);
-		}
+
 		this.getServletContext().getRequestDispatcher("/accesConnecte/AccueilConnecter.jsp").forward(request,
 				response);
 	}
