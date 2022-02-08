@@ -2,98 +2,241 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="stylesheet" href="">
-
-
-<title>Création Compte</title>
-</head>
+<title>Enregistrement</title>
+   
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #eee;
+      }
+      body {
+      background: url("/uploads/media/default/0001/01/b5edc1bad4dc8c20291c8394527cb2c5b43ee13c.jpeg") no-repeat center;
+      background-size: cover;
+      }
+      h1, h2 {
+      text-transform: uppercase;
+      font-weight: 400;
+      }
+      h2 {
+      margin: 0 0 0 8px;
+      }
+      .main-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.5); 
+      }
+      .left-part, form {
+      padding: 25px;
+      }
+      .left-part {
+      text-align: center;
+      }
+      .fa-graduation-cap {
+      font-size: 72px;
+      }
+      form {
+      background: rgba(0, 0, 0, 0.7); 
+      }
+      .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      }
+      .info {
+      display: flex;
+      flex-direction: column;
+      }
+      input, select {
+      padding: 5px;
+      margin-bottom: 30px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #eee;
+      }
+      input::placeholder {
+      color: #eee;
+      }
+      option:focus {
+      border: none;
+      }
+      option {
+      background: black; 
+      border: none;
+      }
+      .checkbox input {
+      margin: 0 10px 0 0;
+      vertical-align: middle;
+      }
+      .checkbox a {
+      color: #26a9e0;
+      }
+      .checkbox a:hover {
+      color: #85d6de;
+      }
+      .btn-item, button {
+      padding: 10px 5px;
+      margin-top: 20px;
+      border-radius: 5px; 
+      border: none;
+      background: #26a9e0; 
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 400;
+      color: #fff;
+      }
+      .btn-item {
+      display: inline-block;
+      margin: 20px 5px 0;
+      }
+      button {
+      width: 100%;
+      }
+      button:hover, .btn-item:hover {
+      background: #85d6de;
+      }
+      @media (min-width: 568px) {
+      html, body {
+      height: 100%;
+      }
+      .main-block {
+      flex-direction: row;
+      height: calc(100% - 50px);
+      }
+      .left-part, form {
+      flex: 1;
+      height: auto;
+      }
+      }
+    </style>
+  </head>
 <body>
 	<div>
-		<h1>ENI-Enchères</h1>
+		<h1 style="color: black;">ENI-Enchères</h1>
 	</div>
-	<div class="Titre" align="center">
+	<div  align="center" style="color: black;">
 		<h2>Création Profil</h2>
 	</div>
 
-	<div  align="center" >
-		<form class="forms-inputs" action="<%=request.getContextPath()%>/CreerCompte" method="post">
-			<div>
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                    <span class="font-weight-bold">Edogaru</span>
-                    <span class="text-black-50">edogaru@mail.com.my</span>
-                   
-                </div>
-            <div>
-				<label for="name" >Pseudo:</label> 
-				<input type="text" id="name" name="pseudo" required>
-			</div>
-			<div>
-				<label for="name">Nom:</label> 
-				<input type="text" id="name" name="nom" required>
-			</div>
-			<div>
-				<label for="name">Prenom:</label> 
-				<input type="text" id="mail"name="prenom" required>
-			</div>
-			
-			<div>
-				<label for="mail">Email:</label> 
-				<input type="email" id="name"name="email" required>
-			</div>
-			<div>
-				<label for="msg">Telephone:</label>
-				<input type="text" id="msg" name="telephone"  >
-			</div>
-			
-			<div>
-				<label for="name">Rue:</label> 
-				<input type="text" id="name"name="rue" required>
-			</div>
-			<div>
-				<label for="name">Ville:</label> 
-				<input type="text" id="name"name="ville" required>
-			</div>
-			<div>
-			
-				<label for="name">Code postal:</label> 
-				<input type="text" id="name"name="codePostal" required>
-			</div>
-			
-			<div>
-				<label for="name">Mot de passe:</label> 
-				<input type="text" id="name"name="password" required>
-			</div>
-			<div>
-				<label for="name">Confirmation:</label> 
-				<input type="text" id="name"name="password_conf"required>
-			</div>
-		
+	 <div class="main-block">
+   
+      <form action="<%=request.getContextPath()%>/CreerCompte" method="post">
+        <div class="title">
+          <i class="fas fa-pencil-alt"></i> 
+          <h2>Register here</h2>
         </div>
+        <div class="info">
+         
+        
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <label class="labels">Pseudo</label><input type="text"
+                        class="form-control" name="pseudo"
+                        value="${utilisateur.pseudo}">
+                </div>
+                <div class="col-md-6">
+                    <label class="labels">Nom</label><input type="text"
+                        class="form-control" name="nom" value="${utilisateur.nom}">
+                </div>
+                <div class="col-md-6">
+                    <label class="labels">Prénom</label><input type="text"
+                        class="form-control" name="prenom"
+                        value="${utilisateur.prenom}">
+                </div>
+                <div class="col-md-12">
+                    <label class="labels">Email/Login</label><input type="text"
+                        class="form-control" name="email" value="${utilisateur.email}">
+                </div>
+                <div class="col-md-12">
+                    <label class="labels">Mot de passe actuel</label><input
+                        type="text" class="form-control" name="password" required>
+                </div>
+
+
+
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <label class="labels">Numéro Mobile</label><input type="text"
+                        class="form-control" name="telephone"
+                        value="${utilisateur.telephone}">
+                </div>
+                <div class="col-md-12">
+                    <label class="labels">Address Line 1</label><input type="text"
+                        class="form-control" name="rue" value="${utilisateur.rue}">
+                </div>
+                <div class="col-md-12">
+                    <label class="labels">Code Postale</label><input type="text"
+                        class="form-control" name="codePostal"
+                        value="${utilisateur.codePostal}">
+                </div>
+                <div class="col-md-12">
+                    <label class="labels">Ville</label><input type="text"
+                        class="form-control" name="ville" value=" ${utilisateur.ville}">
+                </div>
+                <div class="col-md-12">
+                    <label class="labels">nouveau mot de passe</label><input
+                        type="text" class="form-control" name="nouveauMotDePasse">
+                </div>
+                <div class="col-md-12">
+                    <label class="labels">Confirmation mot de passe</label><input
+                        type="text" class="form-control" name="password_conf">
+                </div>
+            </div>
+  </div>
+
+             <div class="btn btn-primary profile-button" >				
+				<button action="<%=request.getContextPath()%>/Login" type="submit" name="valider">Créer</button></a>
+			</div>
+			<div class="btn btn-primary profile-button">
+				
+				<button action="<%=request.getContextPath()%>/" name="annuler">Annuler</button></a>
+			</div>
+			</form>
+
+            <script>
+            const senha = document.querySelector('.senha');
+            const btn = document.querySelector('.btn');
+        
+            btn.onclick = () =>
+            {
+                if (senha.type === 'password') 
+                {
+                    senha.type = 'text'
+                    btn.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8SA14-A-zoRaiJ2GdUiESsisaFiHNYrUZtjtjZqnth0D_KdfkwzQWIdCjbzhAoYKPTvs&usqp=CAU'
+                }
+                else
+                {
+                    senha.type = 'password'
+                    btn.src = 'https://icon-library.com/images/icon-eyes/icon-eyes-12.jpg'
+                }
+            }
+            </script>
+
+        </div>
+        
+		
+        
+       
         
 			
 	
-            <div class="button" >
-				<a href="<%=request.getContextPath()%>/Login"><button type="submit" name="valider">Créer</button></a>
-			</div>
-		</form>
-		    <div class="button">
-				<a href="<%=request.getContextPath()%>/"><button  name="annuler">Annuler</button></a>
-			</div>
-        </div>
+           
+        
+		
+		    
 	
 
 </body>
-<link rel="stylesheet" href="register.css">
-<link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js">
 
 </html>

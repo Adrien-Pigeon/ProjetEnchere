@@ -14,3 +14,8 @@ p {
   margin-bottom: 0.8em;
 }
 
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+}
