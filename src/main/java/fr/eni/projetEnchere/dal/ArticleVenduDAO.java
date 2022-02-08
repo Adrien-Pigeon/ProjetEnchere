@@ -12,6 +12,6 @@ public interface ArticleVenduDAO {
 	public List<ArticleVendu> selectByDescription(String motRech) throws DalException;
 	public List<ArticleVendu> selectByUtilisateurs(int no_utilisateur) throws DalException;
 	public void insertArticle(ArticleVendu article) throws DalException;
-	List<ArticleVendu> selectByRecherche(String motRech) throws DalException;
-	List<ArticleVendu> selectByFiltre(String motRech) throws DalException;
+	public List<ArticleVendu> selectByRecherche(String motRech) throws DalException;
+	public List<ArticleVendu> selectByFiltre(String motRech) throws DalException;
 }

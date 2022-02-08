@@ -29,6 +29,23 @@ public class ArticleVenduManager {
 		dao.insertArticle(article);
 	}
 	
+	public void RechercherParNom(String motRech, ArticleVendu article) throws DalException, BllException {
+		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
+		verifierArticle(article);
+		dao.selectByRecherche(motRech);
+		
+	}
+	
+	
+	public void RechercherParDescription(String motRech, ArticleVendu article) throws DalException, BllException {
+		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
+		verifierArticle(article);
+		dao.selectByDescription(motRech);
+		System.out.println(motRech);
+		
+	}
+	
+	
 	public static Boolean verifierArticle(ArticleVendu a) throws BllException {
 		boolean valide = true;
 		StringBuffer sb = new StringBuffer();
