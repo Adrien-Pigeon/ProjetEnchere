@@ -29,9 +29,15 @@ public class Cookies extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Cookie[] cookies =request.getCookies();
-		Cookie c = new Cookie("session", 30);
 		
-		response.addCookie(c);
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("session")) {
+					request.setAttribute("session", cookie.getValue());
+				}
+			}
+		}
+		
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}

@@ -8,6 +8,11 @@
 <title>EnchereArticle</title>
 </head>
 <body>
+<a href="<%=request.getContextPath()%>/AccueilConnecter"> <img
+		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
+		height="120" title="Logo" alt="Logo">
+
+	</a>
 	<h1>NOUVELLE VENTE</h1>
 	
 	<img alt="logo" src="webapp/img/logo.jpg">

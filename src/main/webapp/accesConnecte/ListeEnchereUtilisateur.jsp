@@ -16,7 +16,11 @@
 <title>Liste Enchères Log</title>
 	
 </head>
-<h1>ENI-Enchères</h1>
+<a href="<%=request.getContextPath()%>/AccueilConnecter"> <img
+		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
+		height="120" title="Logo" alt="Logo">
+
+	</a>
 		 <div class="row" align="right">
 		<a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a>
 				<a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a>
