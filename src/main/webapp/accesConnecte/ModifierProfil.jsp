@@ -14,6 +14,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Modifier Profil</title>
+
+
 </head>
 <body>
 
@@ -98,7 +100,7 @@
 
 
 						
-							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center  " type="submit">enregistrer</button>
+							<button class="bouton btn btn-link col-lg-12 col-xs-12 text-center  " type="submit">Enregistrer</button>
 						
 						
 							<a href="<%=request.getContextPath()%>/SupprimerProfil" >

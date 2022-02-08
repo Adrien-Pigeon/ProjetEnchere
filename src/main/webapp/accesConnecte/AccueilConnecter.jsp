@@ -8,7 +8,6 @@
 	
 
 <html>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -19,7 +18,6 @@
        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/jsProjet.js"></script>
 <title>ListEnchères Logged</title>
-	
 	
 		
 </head>
@@ -41,16 +39,10 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         
-       
-         
 			<li class="active"><a href="<%=request.getContextPath()%>/ListeEnchereUtilisateurServlet">Enchères</a></li>
       	 	<li><a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a></li>
         	<li><a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a></li>
         
-         
-         
-        
-       
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<%=request.getContextPath()%>/CreerCompte"><span class="glyphicon glyphicon-user"></span> S'enregistrer</a></li>
