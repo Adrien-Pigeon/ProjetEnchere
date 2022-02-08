@@ -38,7 +38,7 @@ public class CreerUnCompteServlet extends HttpServlet {
 		String pseudo = request.getParameter("pseudo").trim();
 		String prenom = request.getParameter("prenom").trim().toLowerCase();
 		String nom = request.getParameter("nom").trim().toLowerCase();
-		// String password=HashPassword.hashpassword(request.getParameter("password"));
+		//String password=HashPassword.hashpassword(request.getParameter("password").trim());
 		String password = request.getParameter("password").trim();
 		String email = request.getParameter("email").trim().toLowerCase();
 		String ville = request.getParameter("ville").trim().toLowerCase();

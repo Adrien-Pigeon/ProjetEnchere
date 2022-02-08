@@ -108,18 +108,23 @@ public class UtilisateurManager {
 			sb.append("Le mot de passe est obligatoire.\n");
 			valide = false;
 		}
-		if(u.getTelephone() != null && u.getTelephone().trim().length() != 10) {
+		if(u.getTelephone().isBlank()) {
+			valide = true;
+		}
+		else if(u.getTelephone() != null) { 
+			if(u.getTelephone().trim().length() != 10) {
 			sb.append("Le numero de telephone doit comporter 10 chiffres");
         	valide  = false;
+			}  if(u.getTelephone() != null) {
+				try {
+		            Float f = Float.parseFloat(u.getTelephone());
+		        } catch (NumberFormatException e) {
+		        	sb.append("Le numero de telephone ne doit comporter que des chiffres");
+		        	valide  = false;
+		            
+		        }    	
 		}
-		if(u.getTelephone() != null) {
-			try {
-	            Float f = Float.parseFloat(u.getTelephone());
-	        } catch (NumberFormatException e) {
-	        	sb.append("Le numero de telephone ne doit comporter que des chiffres");
-	        	valide  = false;
-	            
-	        }
+		
 		}
 
 		if (!valide) {
