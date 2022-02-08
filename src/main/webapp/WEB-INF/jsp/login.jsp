@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
 
@@ -25,17 +26,20 @@
 					<div class="card px-5 py-5" id="form1">
 						<div class="form-data" v-if="!submitted">
 							<div class="forms-inputs mb-4">
-								<span>Email or username</span> <input autocomplete="off"
+							
+								<span>Email or username</span>
+								
+								 <input autocomplete="off"
 									type="text" name="login" v-model="email"
 									v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
-									v-on:blur="emailBlured = true">
+									v-on:blur="emailBlured = true" value="${login }">
 								<div class="invalid-feedback">A valid email is required!</div>
 							</div>
 							<div class="forms-inputs mb-4">
 								<span>Password</span> <input autocomplete="off" type="password"
 									name="password" v-model="password"
 									v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
-									v-on:blur="passwordBlured = true">
+									v-on:blur="passwordBlured = true" value="${password }">
 								<div class="invalid-feedback">Password must be 8
 									character!</div>
 							</div>

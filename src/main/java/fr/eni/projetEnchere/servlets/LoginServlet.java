@@ -28,6 +28,14 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Cookie[] cookies = request.getCookies();
+		if(cookies!= null) {
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals("login")) {
+					request.setAttribute("login", cookie.getValue());
+				}
+			}
+		}
 		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 
 	}
@@ -42,6 +50,13 @@ public class LoginServlet extends HttpServlet {
 		// Récuperation des parametres du formulaire
 		String username = request.getParameter("login");
 		String password = request.getParameter("password");
+		
+		Cookie cookie = new Cookie("login", username);
+		Cookie cookie2 = new Cookie ("password", password);
+		cookie.setMaxAge(1500000);
+		cookie2.setMaxAge(1500000);
+		response.addCookie(cookie);
+		response.addCookie(cookie2);
 
 		// j'instancie un objet de type Utilisateur et j'hydrate les attributs
 		// login et pwd
@@ -73,17 +88,6 @@ public class LoginServlet extends HttpServlet {
 			// Recupere l'utilisateur
 			session.setAttribute("user", user);
 			
-	
-			Cookie[] cookies = request.getCookies();
-
-			// Creation du cookie
-			Cookie C = new Cookie("login", username);
-
-			// definition de la limite de validité
-			C.setMaxAge(180);
-
-			// envoi du cookie dans la reponse HTTP
-			response.addCookie(C);
 
 			request.getRequestDispatcher("/AccueilConnecter").forward(request, response);
 			
