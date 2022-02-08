@@ -3,9 +3,7 @@ package fr.eni.projetEnchere.servlets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -19,14 +17,13 @@ import javax.servlet.http.HttpSession;
 import fr.eni.projetEnchere.bll.ArticleVenduManager;
 import fr.eni.projetEnchere.bll.CategorieManager;
 import fr.eni.projetEnchere.bll.RetraitManager;
-import fr.eni.projetEnchere.bll.UtilisateurManager;
+
 import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.bo.Retrait;
 import fr.eni.projetEnchere.bo.Utilisateur;
-import fr.eni.projetEnchere.dal.ArticleVenduDAO;
-import fr.eni.projetEnchere.dal.CategorieDAO;
+
 import fr.eni.projetEnchere.dal.Exception.DalException;
 
 /**
