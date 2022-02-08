@@ -180,7 +180,14 @@
                     <label class="labels">Ville</label><input type="text"
                         class="form-control" name="ville" value=" ${utilisateur.ville}">
                 </div>
-                
+                <div class="col-md-12">
+                    <label class="labels">nouveau mot de passe</label><input
+                        type="text" class="form-control" name="nouveauMotDePasse">
+                </div>
+                <div class="col-md-12">
+                    <label class="labels">Confirmation mot de passe</label><input
+                        type="text" class="form-control" name="password_conf">
+                </div>
             </div>
 
             <div class="mt-5 text-center">
