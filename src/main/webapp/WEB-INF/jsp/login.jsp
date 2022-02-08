@@ -10,9 +10,14 @@
 
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/AccueilNonConnecter" method="get">
-    <button type="submit"><h1>Eni-Encheres</h1></button>
-	</form>
+	
+	<a href="<%=request.getContextPath()%>/"> <img
+		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
+		height="120" title="Logo" alt="Logo">
+
+	</a>
+
+	
 
 
 	<form action="<%=request.getContextPath()%>/Login" method="post">

@@ -16,9 +16,13 @@
 
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/AccueilNonConnecter" method="get">
-    <button type="submit"><h1>Eni-Encheres</h1></button>
-	</form>
+
+	<a href="<%=request.getContextPath()%>/"> <img
+		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
+		height="120" title="Logo" alt="Logo">
+
+	</a>
+
 	<div class="row" align="right">
 		<a href="<%=request.getContextPath()%>/Login">Inscription - Se
 			Connecter</a>
@@ -49,10 +53,10 @@
 				<select id="scategorie" name="scategorie">
 					<option>toutes</option>
 					<c:forEach var="item" items="${categories }">
-						
+
 						<option value="${categorie.libelle}">${item.libelle }</option>
 					</c:forEach>
-					
+
 
 				</select>
 			</div>
@@ -62,8 +66,8 @@
 			<button type="submit" class="btn btn-default" name="search">Rechercher</button>
 		</div>
 	</form>
-	
-	
+
+
 
 </body>
 </html>
