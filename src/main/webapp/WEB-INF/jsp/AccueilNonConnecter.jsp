@@ -61,14 +61,7 @@
 		</div>
 	</form>
 	
-	<div class="carteArticle" style="width: 20rem;">
-  			<img class="card-img-top" src="img/Aspirateur.jpg" alt="Image titre">
-  				<div class="card-body">
-    				<h5 class="card-title">Aspirateur</h5>
-    				<p class="card-text">Prix: 200 points <br> Fin de l'enchère : 07/01/2022 <br>Vendeur : Jacques</p>
-    				<a href="#" class="btn btn-primary">Voir l'article</a>
-  				</div>
-</div>
+	
 
 </body>
 </html>

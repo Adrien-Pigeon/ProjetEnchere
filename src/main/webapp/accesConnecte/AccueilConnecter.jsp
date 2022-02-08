@@ -90,14 +90,35 @@
       </div>
     </div>
     
-<div class="carteArticle" style="width: 18rem;">
-  			<img class="card-img-top" src="img/Aspirateur.jpg" alt="Image titre">
-  				<div class="card-body">
-    				<h5 class="card-title">Aspirateur</h5>
-    				<p class="card-text">Prix: 200 points Fin de l'enchère : 07/01/2022 Vendeur : Jacques</p>
-    				<a href="#" class="btn btn-primary">Voir l'article</a>
-  				</div>
-</div>
+
+
+
+  
+  	<article class="forecast">
+	    <h1>Weather forecast for Seattle</h1>
+	    
+	    <article class="day-forecast">
+	        <h2>Article 1</h2>
+	        <img src="img_avatar.png" alt="Avatar" >
+	        <p>Rain.</p>
+	    </article>
+	    
+	    <article class="day-forecast">
+	        <h2>Article 2</h2>
+	         <img src="img_avatar.png" alt="Avatar" >
+	        <p>Periods of rain.</p>
+	    </article>
+	    
+	    <article class="day-forecast">
+	        <h2>Article 3</h2>
+	         <img src="img_avatar.png" alt="Avatar" >
+	        <p>Heavy rain.</p>
+	    </article>
+    
+	</article>
+  
+  
+  
 
  <script>
        function myFunction() {
