@@ -188,9 +188,7 @@
                         <button name="annuler">Annuler</button>
                     </a>
                 </div>
-					
-              
-                   
+		
 							
 						
 						<script>
