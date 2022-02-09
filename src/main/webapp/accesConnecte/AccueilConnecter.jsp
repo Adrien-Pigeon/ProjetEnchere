@@ -1,3 +1,4 @@
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.DateFormat"%>
@@ -74,7 +75,7 @@
                         <label for="inputPassword" class="col-sm-2 col-form-label">Catégorie :</label>
                         <div>
 				<select id="scategorie" name="scategorie">
-					<option value="150">toutes</option>
+					<option value="0">toutes</option>
 					<c:forEach var="item" items="${categories }">
 						<option value="${item.noCategorie }">${item.libelle }</option>
 					</c:forEach>

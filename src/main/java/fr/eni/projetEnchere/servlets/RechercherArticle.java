@@ -78,10 +78,10 @@ public class RechercherArticle extends HttpServlet {
 		}
 		HttpSession session = request.getSession(false);
 			
-		if(session == null) {
+	
 		
 		request.getRequestDispatcher("/").forward(request, response);
-		}
+		
 	}
 
 }

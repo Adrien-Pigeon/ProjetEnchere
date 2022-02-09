@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -110,7 +112,6 @@
 							<div class="col-md-6">
 								<label for="file">Photo de l'article</label> <input type="file"
 									id="file" name="file" multiple>
-								
 								<c:forEach items="${imagenames }" var="imagename">
 									<img alt=""
 										src="${pageContext.request.contextPath }/Images/${imagename}">
@@ -164,7 +165,7 @@
 
 							</div>
 						</div>
- 
+
 						<div class="row mt-2">
 							<div class="col-md-6">
 								<label for="name">Ville:</label>
@@ -231,3 +232,10 @@
 	</form>
 </body>
 </html>
+
+
+
+
+
+
+
