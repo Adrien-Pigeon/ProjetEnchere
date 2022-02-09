@@ -52,13 +52,13 @@ public class ListeEnchereUtilisateurServlet extends HttpServlet {
 			
 			
 			ArticleVendu article = ArticleVenduManager.getInstance().rechercherParId(id);
-			
+			request.setAttribute("utilisateur", utilisateurCo);
 			request.setAttribute("article", article);
 			request.getRequestDispatcher("/accesConnecte/ListeEnchereUtilisateur.jsp").forward(request, response);
 			return;
 			
 		} catch (DalException | BllException | NumberFormatException e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 			response.sendRedirect("/ProjetEnchere/AccueilConnecter");
 		}
 	}

@@ -34,7 +34,8 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			+ "date_debut_encheres from ARTICLES_VENDUS LEFT JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur "
 			+ "where nom_article LIKE ? AND no_categorie = ?;";
 	
-	private final static String SELECT_BY_ID = "select * from ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where no_article = ?;";
+	private final static String SELECT_BY_ID = "select * from ARTICLES_VENDUS as av INNER JOIN UTILISATEURS as u "
+			+ "ON av.no_utilisateur = u.no_utilisateur where av.no_utilisateur = ?;";
 
 
 	@Override
@@ -245,6 +246,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setDescription(rs.getString("description"));
 				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setPrixInitial(rs.getInt("prix_initial"));
 				article.setPrixVente(rs.getInt("prix_vente"));
 				// article.getUtilisateur().setPseudo("pseudo");
