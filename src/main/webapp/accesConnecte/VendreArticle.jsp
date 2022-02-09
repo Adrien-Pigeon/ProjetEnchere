@@ -16,7 +16,6 @@
 	<h1>NOUVELLE VENTE</h1>
 
 	
-
 	<div class="Formulaire">
 		<form action="<%=request.getContextPath()%>/VendArticle" method="post">
 

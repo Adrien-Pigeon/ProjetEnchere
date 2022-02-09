@@ -20,7 +20,6 @@
 <body>
 
 
-	</a>
 	<form action="<%=request.getContextPath()%>/ModifierProfil"
 		method="post">
 		<div class="container rounded bg-white mt-5 mb-5">
