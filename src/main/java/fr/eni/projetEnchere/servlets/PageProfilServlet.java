@@ -35,49 +35,7 @@ public class PageProfilServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String pro = request.getParameter("profil");
-		System.out.println(pro);
-		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
-		int id = utilisateurCo.getNoUtilisateur();
-		UtilisateurManager um = UtilisateurManager.getInstance();
-		try {
-			utilisateurCo = um.SelectUser(id);
-		} catch (DalException e) {
-			
-			System.err.println(e.getMessage());
-		}
-		request.setAttribute("utilisateur", utilisateurCo);
-		request.setAttribute("utilisateurCo", utilisateurCo);
-		boolean btnOn = true;
-		request.setAttribute("btnOn", btnOn);
-
-		if (request.getSession() != null) {
-			// Recupere la session
-			
-			
-			request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
-			
-		}else {
-			
-			// Recupere la session
-			HttpSession session = request.getSession(); 
-			session.invalidate();
-			System.out.println("invalided  session");
-			 request.getRequestDispatcher("/ProjetEnchere").forward(request, response);
-		}
-		
 	
-	
-	
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
 		boolean btnOn = false;
 		// recupération du parametre pseudo envoyé par la jsp
 		String pseudo = request.getParameter("pseudo");
@@ -105,4 +63,16 @@ public class PageProfilServlet extends HttpServlet {
 					response);
 		}
 	}
+	
+	
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+	
 }

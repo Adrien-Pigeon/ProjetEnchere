@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.projetEnchere.bll.ArticleVenduManager;
 import fr.eni.projetEnchere.bll.CategorieManager;
+import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.dal.Exception.DalException;
 
@@ -31,6 +33,16 @@ public class AccueilConnecterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 //		request.getRequestDispatcher("/WEB-INF/jsp/AccueilConnecter.jsp").forward(request, response);
+		
+		List<ArticleVendu> listeArticles = null;
+		ArticleVenduManager avm = ArticleVenduManager.getInstance();
+		try {
+			listeArticles = avm.allArticle();
+		} catch (DalException e) {
+			
+			e.printStackTrace();
+		}
+		request.setAttribute("listeArticles", listeArticles);
 		CategorieManager cm = CategorieManager.getInstance();
 		try {
 			List<Categorie> categories = cm.lister();

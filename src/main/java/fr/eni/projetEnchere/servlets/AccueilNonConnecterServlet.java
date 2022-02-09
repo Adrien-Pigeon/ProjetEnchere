@@ -38,7 +38,15 @@ public class AccueilNonConnecterServlet extends HttpServlet {
 			System.out.println("Déconnection");
 		}
 
-		
+		List<ArticleVendu> listeArticles = null;
+		ArticleVenduManager avm = ArticleVenduManager.getInstance();
+		try {
+			listeArticles = avm.allArticle();
+		} catch (DalException e) {
+			
+			e.printStackTrace();
+		}
+		request.setAttribute("listeArticles", listeArticles);
 		
 		CategorieManager cm = CategorieManager.getInstance();
 		try {

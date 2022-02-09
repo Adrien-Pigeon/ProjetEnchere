@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.projetEnchere.bll.ArticleVenduManager;
+import fr.eni.projetEnchere.bll.CategorieManager;
 import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.ArticleVendu;
+import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.dal.Exception.DalException;
 
 /**
@@ -78,7 +80,18 @@ public class RechercherArticle extends HttpServlet {
 			}
 			request.setAttribute("listeArticles", listeArticles);
 		}
-		request.getRequestDispatcher("/").forward(request, response);
+		CategorieManager cm = CategorieManager.getInstance();
+		try {
+			List<Categorie> categories = cm.lister();
+
+			request.setAttribute("categories", categories);
+
+			
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 	}
 
 	/**
@@ -138,11 +151,21 @@ public class RechercherArticle extends HttpServlet {
 			}
 			request.setAttribute("listeArticles", listeArticles);
 		}
-	
+		CategorieManager cm = CategorieManager.getInstance();
+		try {
+			List<Categorie> categories = cm.lister();
+
+			request.setAttribute("categories", categories);
+
+			
+		} catch (DalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			
 	
 		
-		request.getRequestDispatcher("/AccueilConnecter").forward(request, response);
+		request.getRequestDispatcher("/accesConnecte/AccueilConnecter.jsp").forward(request, response);
 		
 	}
 

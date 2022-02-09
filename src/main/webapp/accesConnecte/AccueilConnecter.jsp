@@ -12,17 +12,21 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/jsProjet.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
 <title>ListEnchères Logged</title>
 
 
@@ -30,81 +34,84 @@
 <body>
 
 
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="text-color:white;">
+  	
+  <a class="navbar-brand" href="<%=request.getContextPath()%>/AccueilConnecter">
+    <img  src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="85" height="70"  alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:white;" href="<%=request.getContextPath()%>/ListeEnchereUtilisateur">Enchères <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:white;" href="<%=request.getContextPath()%>/VendArticle">Vendre
+							un Article</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:white;" href="<%=request.getContextPath()%>/MonProfil">Mon
+							Profil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " style="color:white;"  href="<%=request.getContextPath()%>/Deconnexion">Déconnection</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+	
 
 
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand"
-					href="<%=request.getContextPath()%>/AccueilConnecter"> <img
-					src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="40"
-					height="25" title="Logo" alt="Logo">
-				</a> <a class="navbar-brand"
-					href="<%=request.getContextPath()%>/AccueilConnecter">ENI-Enchères</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li></li>
-					<li class="active"><a
-						href="<%=request.getContextPath()%>/ListeEnchereUtilisateur">Enchères</a></li>
-					<li><a href="<%=request.getContextPath()%>/VendArticle">Vendre
-							un Article</a></li>
-					<li><a href="<%=request.getContextPath()%>/PageProfil">Mon
-							Profil</a></li>
-
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-
-					<li><a href="<%=request.getContextPath()%>/Deconnexion"><span
-							class="glyphicon glyphicon-log-in"></span> Déconnection</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-
-	<div class="text-center rounded my-5 haute " align="center">
-		<h1 class="p-3 bordure">Liste des enchères</h1>
+	<div class="row">
+		<h1 align="center" style="margin-top:4%;margin-bottom:3%;">Liste des enchères</h1>
 	</div>
 
+<div style="margin-left:10%;">
+	<form action="<%=request.getContextPath()%>/Rechercher" method="post">
 
 
-	<form action="<%=request.getContextPath()%>/Rechercher" method="post"
-		class=" p-5 rounded bordure " style="background: #fff;">
-		<h2>Filtres :</h2>
 
-		<div class="md-form  active-pink-2 mb-3 mt-0">
-			<input class="form-control" type="text" name="srecherche"
-				placeholder="Rechercher..." aria-label="Search">
-		</div>
-		<div class="form-group row">
-			<label for="inputPassword" class="col-sm-2 col-form-label">Catégorie
-				:</label>
-			<div>
-				<select id="scategorie" name="scategorie">
-					<option value="0"></option>
-					<option value="150">toutes</option>
-					<c:forEach var="item" items="${categories }">
-						<option value="${item.noCategorie }">${item.libelle }</option>
-					</c:forEach>
-				</select>
-			</div>
-		</div>
 
-		<div class="d-flex justify-content-end pt-5">
-			<button class="btn btn-action" type="submit">Rechercher</button>
+
+		<label for="sfiltres">Filtres:</label>
+		<nav class="navbar navbar-light bg-light" style="width: 40%">
+
+
+			<input class="form-control mr-sm-2" style ="margin:0;" type="search"
+				placeholder="Rechercher un article..." aria-label="Search"
+				name="srecherche">
+
+
+		</nav>
+
+		<label for="scategorie" name="scategorie">Catégories:</label>
+
+
+		<div>
+			<select id="scategorie" name="scategorie" style="width:20%;height:6%;">
+				<option value="0">Choisissez une catégorie</option>
+				<option value="150">toutes</option>
+				<c:forEach var="item" items="${categories }">
+
+					<option value="${item.noCategorie}">${item.libelle }</option>
+				</c:forEach>
+
+
+			</select>
+
+			<button type="submit" class="btn btn-secondary" name="search">Rechercher</button>
+
 		</div>
 	</form>
-	<div class="">
+	<div >
+	<div class="" style = "display:inline-block;margin-right:15%;" >
 		<input class="buy" onclick="myFunction()" type="radio" id="achat"
 			name="drone" value="achat" checked> <label for="achat">achat</label>
 
-		<div>
+		<div style ="margin-left:%;" >
 			<input type="checkbox" id="achats" name="check" checked> <label
 				for="scales">Enchères ouvertes</label><br> <input
 				type="checkbox" id="encours" name="check"> <label
@@ -115,7 +122,7 @@
 
 	</div>
 
-	<div class="">
+	<div class="" style = "display:inline-block;">
 		<input class="sell" onclick="myFunction()" type="radio" id="vente"
 			name="drone" value="vente"> <label for="vente">vente</label>
 		<div>
@@ -126,29 +133,37 @@
 				name="check"> <label for="horns">Ventes terminées</label>
 		</div>
 	</div>
+	</div>
+	<div style="text-align:center;">
 	<c:forEach var="item" items="${listeArticles }">
 
-		<div>
-			<label>Article : </label> <a
-				href="<%=request.getContextPath()%>/DetailVente?noArticle=${item.noArticle }">
-				<button
-					class="bouton btn btn-default col-lg-12 col-xs-12 text-center"
-					type="button" value="${item.noArticle }" name="noArticle">${item.nomArticle }</button>
-			</a>
+	
+		<div class="card" style="width: 20rem;margin:4%;display:inline-block;height:20rem;">
+			<img class="card-img-top" src=""
+				alt="" height="150rem">
+			<div class="card-body">
+				<p class="card-text">
+					<label>Article : </label> <a
+						href="<%=request.getContextPath()%>/DetailVente?noArticle=${item.noArticle }">${item.nomArticle }</a>
 
-		</div>
-
-		<div>${item.description }</div>
-		<div>Prix : ${item.prixVente }</div>
+				<div>${item.description }</div>
+				<div>Prix : ${item.prixVente }</div>
 		<div>Fin de l'enchère : ${item.dateFinEncheres }</div>
 		<form action="<%=request.getContextPath()%>/PageProfil" method="post">
 			<div>
 				<label>Vendeur : </label>
-				<button name="pseudo" value="${item.utilisateurPseudo }">${item.utilisateurPseudo }
-				</button>
+				<a href="<%=request.getContextPath()%>/PageProfil?pseudo=${item.utilisateurPseudo }">${item.utilisateurPseudo }</a>
+					
 			</div>
 		</form>
+				
+  </div>
+</div>
+		
+
 	</c:forEach>
+</div>
+	
 
 
 

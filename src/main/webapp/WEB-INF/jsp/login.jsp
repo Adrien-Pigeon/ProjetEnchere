@@ -27,16 +27,16 @@
 						<div class="form-data" v-if="!submitted">
 							<div class="forms-inputs mb-4">
 							
-								<span>Email or username</span>
+								<span style="margin-right:20;">Email or username</span>
 								
-								 <input autocomplete="off"
+								 <input  autocomplete="off"
 									type="text" name="login" v-model="email"
 									v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
 									v-on:blur="emailBlured = true" value="${login }">
 								<div class="invalid-feedback">A valid email is required!</div>
 							</div>
 							<div class="forms-inputs mb-4">
-								<span>Password</span> <input autocomplete="off" type="password"
+								<span style="margin-right:85;">Password</span> <input autocomplete="off" type="password"
 									name="password" v-model="password"
 									v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
 									v-on:blur="passwordBlured = true" value="${password }">
