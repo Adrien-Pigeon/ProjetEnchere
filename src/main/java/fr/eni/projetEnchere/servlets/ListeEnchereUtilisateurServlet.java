@@ -46,8 +46,9 @@ public class ListeEnchereUtilisateurServlet extends HttpServlet {
 		try {
 			
 			// Récupération des paramètres
-			UtilisateurManager.getInstance();
-			int id = Integer.parseInt(request.getParameter("id"));
+			Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+			int id = utilisateurCo.getNoUtilisateur();
+		
 			
 			
 			ArticleVendu article = ArticleVenduManager.getInstance().rechercherParId(id);
