@@ -18,9 +18,7 @@
 
 </head>
 <body>
-<a href="<%=request.getContextPath()%>/AccueilConnecter"> <img
-		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
-		height="120" title="Logo" alt="Logo">
+
 
 	</a>
 	<form action="<%=request.getContextPath()%>/ModifierProfil"

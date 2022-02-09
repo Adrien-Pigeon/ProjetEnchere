@@ -37,7 +37,7 @@
 
 			<div>
 				<label for="name">Description:</label> <input type="text" id="name"
-					name="description" value="${article. }">
+					name="description" value="${article.description }">
 			</div>
 
 			<div>
@@ -46,7 +46,7 @@
 
 					<c:forEach var="item" items="${categories }">
 
-						<option value="${item.noCategorie}">${item.libelle }</option>
+						<option value="${artcile.categorie}">${item.libelle }</option>
 					</c:forEach>
 
 
@@ -64,35 +64,35 @@
 
 				<div>
 					<label for="msg">Mise à prix:</label> <input type="text" id="msg"
-						name="prixInitial">
+						name="prixInitial" value="${article.prixInitial }">
 				</div>
 
 				<div>
 					<label for="name">Début de l'enchère:</label> <input type="date"
-						id="dateDebut" name="dateDebut" required>
+						id="dateDebut" name="dateDebut" value="${article.dateDebutEncheres }">
 				</div>
 
 				<div>
 					<label for="name">Fin de l'enchère:</label> <input type="date"
-						id="dateFin" name="dateFin" required>
+						id="dateFin" name="dateFin" value ="${article.dateFinEncheres }">
 				</div>
 				<div>
 					<fieldset>
 						<legend>Retrait</legend>
 						<div>
 							<label for="name">Rue:</label> <input type="text" id="name"
-								name="rue" placeholder="${utilisateur.rue }" required>
+								name="rue" placeholder="${utilisateur.rue }" >
 						</div>
 
 						<div>
 							<label for="name">Code postal:</label> <input type="text"
 								id="name" name="codePostal"
-								placeholder="${utilisateur.codePostal }" required>
+								placeholder="${utilisateur.codePostal }" >
 						</div>
 
 						<div>
 							<label for="name">Ville:</label> <input type="text" id="name"
-								name="ville" placeholder="${utilisateur.ville }" required>
+								name="ville" placeholder="${utilisateur.ville }" >
 						</div>
 					</fieldset>
 				</div>
