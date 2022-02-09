@@ -41,13 +41,14 @@ public class ListeEnchereUtilisateurServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
-		
+
 		// Manager pour aller chercher l'article 
 		try {
 			
 			// Récupération des paramètres
+			UtilisateurManager.getInstance();
 			int id = Integer.parseInt(request.getParameter("id"));
+			
 			
 			ArticleVendu article = ArticleVenduManager.getInstance().rechercherParId(id);
 			
@@ -56,8 +57,8 @@ public class ListeEnchereUtilisateurServlet extends HttpServlet {
 			return;
 			
 		} catch (DalException | BllException | NumberFormatException e) {
-			e.printStackTrace();
-			response.sendRedirect("/accesConnecte/AccueilConnecter.jsp");
+			//e.printStackTrace();
+			response.sendRedirect("/ProjetEnchere/AccueilConnecter");
 		}
 	}
 
