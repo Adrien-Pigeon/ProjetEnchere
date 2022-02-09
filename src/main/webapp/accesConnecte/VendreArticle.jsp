@@ -110,6 +110,7 @@
 							<div class="col-md-6">
 								<label for="file">Photo de l'article</label> <input type="file"
 									id="file" name="file" multiple>
+								
 								<c:forEach items="${imagenames }" var="imagename">
 									<img alt=""
 										src="${pageContext.request.contextPath }/Images/${imagename}">
