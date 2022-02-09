@@ -17,7 +17,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 /**
  * Servlet implementation class DetailVenteServlet
  */
-@WebServlet("/DetailVenteServlet")
+@WebServlet("/DetailVente")
 public class DetailVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,7 +46,7 @@ public class DetailVenteServlet extends HttpServlet {
 					ArticleVendu article = ArticleVenduManager.getInstance().rechercherParId(id);
 					request.setAttribute("utilisateur", utilisateurCo);
 					request.setAttribute("article", article);
-					request.getRequestDispatcher("/accesConnecte/ListeEnchereUtilisateur.jsp").forward(request, response);
+					request.getRequestDispatcher("/accesConnecte/DetailVenteConnecter.jsp").forward(request, response);
 					return;
 					
 				} catch (DalException | BllException | NumberFormatException e) {
@@ -66,7 +66,7 @@ public class DetailVenteServlet extends HttpServlet {
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		try {
 			utilisateurCo = um.SelectUser(id);
-		} catch (DalException e) {
+		} catch (DalException  | NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
