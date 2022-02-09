@@ -22,7 +22,16 @@ public class EnchereDAOImpl implements EnchereDAO {
 	
 	private static final String ENCHERES_EN_COURS="SELECT FROM ENCHERES;";
 	
-	private static final String ENCHERES_REMPORTES="SELECT FROM ENCHERES;";
+	private static final String ENCHERES_REMPORTES="SELECT nom_article, article_vendu.description, prix_vente, prix_initial, date_fin_encheres, acheteur.pseudo as acheteur, \r\n"
+			+ "																				  vendeur.pseudo as vendeur, retrait.rue, retrait.code_postal, retrait.ville	 \r\n"
+			+ "				FROM ARTICLES_VENDUS article_vendu INNER JOIN UTILISATEURS vendeur\r\n"
+			+ "				ON article_vendu.no_utilisateur = vendeur.no_utilisateur\r\n"
+			+ "\r\n"
+			+ "					INNER JOIN RETRAITS retrait ON article_vendu.no_article = retrait.no_article \r\n"
+			+ "					INNER JOIN ENCHERES enchere ON article_vendu.no_article = enchere.no_article\r\n"
+			+ "					INNER JOIN UTILISATEURS acheteur ON acheteur.no_utilisateur = enchere.no_utilisateur  \r\n"
+			+ "\r\n"
+			+ "				WHERE article_vendu.no_utilisateur = ?;";
 
 	@Override
 	public void insertEnchere(Enchere enchere) throws DalException {
@@ -88,6 +97,73 @@ public class EnchereDAOImpl implements EnchereDAO {
 			}
 		
 	}
+	
+	@Override
+	public void remporterEnchere(Enchere enchere) throws DalException {
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			cnx = ConnectionProvider.getConnection();
+			pstmt = cnx.prepareStatement(ENCHERES_REMPORTES);
+			pstmt.setInt(1, enchere.getUtilisateur().getNoUtilisateur());
+			pstmt.setInt(2, enchere.getArticle().getNoArticle());
+			pstmt.setObject(3, LocalDate.now());
+			pstmt.setInt(4,enchere.getMontantEnchere());
+			pstmt.executeUpdate();
+			pstmt.close();
+			cnx.close();
+		} catch (SQLException e) {
+			throw new DalException("Probleme sur la methode insertEnchere()",e);
+		}
+		
+	}
+	
+
+	@Override
+	public void enchereOuverte(Enchere enchere) throws DalException {
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			cnx = ConnectionProvider.getConnection();
+			pstmt = cnx.prepareStatement(ENCHERES_OUVERTES);
+			pstmt.setInt(1, enchere.getUtilisateur().getNoUtilisateur());
+			pstmt.setInt(2, enchere.getArticle().getNoArticle());
+			pstmt.setObject(3, LocalDate.now());
+			pstmt.setInt(4,enchere.getMontantEnchere());
+			pstmt.executeUpdate();
+			pstmt.close();
+			cnx.close();
+		} catch (SQLException e) {
+			throw new DalException("Probleme sur la methode insertEnchere()",e);
+		}
+		
+	}
+
+	@Override
+	public void enchereEnCours(Enchere enchere) throws DalException {
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			cnx = ConnectionProvider.getConnection();
+			pstmt = cnx.prepareStatement(ENCHERES_EN_COURS);
+			pstmt.setInt(1, enchere.getUtilisateur().getNoUtilisateur());
+			pstmt.setInt(2, enchere.getArticle().getNoArticle());
+			pstmt.setObject(3, LocalDate.now());
+			pstmt.setInt(4,enchere.getMontantEnchere());
+			pstmt.executeUpdate();
+			pstmt.close();
+			cnx.close();
+		} catch (SQLException e) {
+			throw new DalException("Probleme sur la methode insertEnchere()",e);
+		}
+		
+	}
+	
+
+
 	
 
 }
