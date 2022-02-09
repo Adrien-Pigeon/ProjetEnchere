@@ -17,6 +17,12 @@ public class EnchereDAOImpl implements EnchereDAO {
 			+ "WHERE no_utilisateur = ? AND no_article = ?; ";
 	private static final String DELETE_ENCHERE = "UPDATE ENCHERE SET date_enchere = ? AND montant_enchere = ? "
 			+ "WHERE no_utilisateur = ? AND no_article = ?; ";
+	
+	private static final String ENCHERES_OUVERTES ="SELECT FROM ENCHERES;";
+	
+	private static final String ENCHERES_EN_COURS="SELECT FROM ENCHERES;";
+	
+	private static final String ENCHERES_REMPORTES="SELECT FROM ENCHERES;";
 
 	@Override
 	public void insertEnchere(Enchere enchere) throws DalException {
