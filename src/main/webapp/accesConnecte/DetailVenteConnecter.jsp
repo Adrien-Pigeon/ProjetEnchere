@@ -15,6 +15,7 @@
 
 	<h1>Détail Vente</h1>
 	<div>
+	<br> <label for="name">Article :</label>
 		<p>${article.nomArticle }</p>
 		
 	<br> <label for="name">description :</label>
