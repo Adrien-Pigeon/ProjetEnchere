@@ -82,27 +82,20 @@
 
 					</form>
 
+						<div class="row mt-2">
+							<div class="col-md-6">
+								<a href="<%=request.getContextPath()%>/ModifierProfil" >
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Modifier</button>
+							</a>	
+							</div>
 
-
-					<div>
-						<%
-						boolean btnOn = (boolean) request.getAttribute("btnOn");
-						if (btnOn == true) {
-						%>
-						<form action="<%=request.getContextPath()%>/ModifierProfil"
-							method="get">
-							<input type="submit"
-								class="bouton btn btn-default col-lg-12 col-xs-12 text-center"
-								value="Modifier" name="Modifier">
-
-						</form>
-						<%
-						}
-						%>
-					</div>
-					  <a href="<%=request.getContextPath()%>/AccueilConnecter" >
-                 <button class="btn btn-primary profile-button" type="button">Annuler</button>
-                 </a>
+							<div class="col-md-6">
+							<a href="<%=request.getContextPath()%>/AccueilConnecter" >
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Retour</button>
+							</a>		
+							</div>
+						</div>
+					 
 				</div>
 
 
