@@ -3,6 +3,9 @@ package fr.eni.projetEnchere.bo;
 public class Retrait {
 
 	
+	
+
+
 	private String rue,codePostal,ville;
 	
 	private ArticleVendu article ;
@@ -59,6 +62,12 @@ public class Retrait {
 	}
 
 
-
+	@Override
+	public String toString() {
+		return "Retrait [rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + ", article=" + article
+				+ ", getRue()=" + getRue() + ", getCodePostal()=" + getCodePostal() + ", getVille()=" + getVille()
+				+ ", getArticle()=" + getArticle() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
 	
 }

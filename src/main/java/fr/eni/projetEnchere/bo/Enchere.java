@@ -18,7 +18,7 @@ public class Enchere {
 	}
 
 	/**
-	 * Constructeur surchargé permettant d'instancier l'objet enchere
+	 * Constructeur surchargï¿½ permettant d'instancier l'objet enchere
 	 * @param dateEnchere
 	 * @param montantEnchere
 	 * @param utilisateur
@@ -65,4 +65,15 @@ public class Enchere {
 		this.utilisateur = utilisateur;
 	}
 
+	@Override
+	public String toString() {
+		return "Enchere [dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere + ", utilisateur="
+				+ utilisateur + ", article=" + article + ", getArticle()=" + getArticle() + ", getDateEnchere()="
+				+ getDateEnchere() + ", getMontantEnchere()=" + getMontantEnchere() + ", getUtilisateur()="
+				+ getUtilisateur() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
+	
+	
 }

@@ -61,6 +61,17 @@ public class Categorie {
 //		 liste_categorie.add("Sport&Loisir");
 	        return liste_categorie;
 	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Categorie [noCategorie=" + noCategorie + ", libelle=" + libelle + ", articles=" + articles
+				+ ", getNoCategorie()=" + getNoCategorie() + ", getLibelle()=" + getLibelle() + ", getArticles()="
+				+ getArticles() + ", lister()=" + lister() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
 	
 	
 	

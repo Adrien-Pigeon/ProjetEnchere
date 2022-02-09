@@ -38,14 +38,17 @@ public class DetailVenteServlet extends HttpServlet {
 				try {
 					
 					// Récupération des paramètres
-					Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
-					int id = utilisateurCo.getNoUtilisateur();
+					int numero_article = Integer.parseInt(request.getParameter("noArticle"));
+					
 				
 					
 					
-					ArticleVendu article = ArticleVenduManager.getInstance().rechercherParId(id);
-					request.setAttribute("utilisateur", utilisateurCo);
+					ArticleVendu article = ArticleVenduManager.getInstance().rechercherParId(numero_article);
+					
+					System.out.println(article.getDescription());
 					request.setAttribute("article", article);
+					
+					System.out.println(article.getDescription());
 					request.getRequestDispatcher("/accesConnecte/DetailVenteConnecter.jsp").forward(request, response);
 					return;
 					

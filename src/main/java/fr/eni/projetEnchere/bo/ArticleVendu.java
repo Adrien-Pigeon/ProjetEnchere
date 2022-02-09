@@ -130,6 +130,23 @@ public class ArticleVendu {
 		this.utilisateurPseudo = utilisateurPseudo;
 	}
 
+
+
+
+	@Override
+	public String toString() {
+		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
+				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", prixInitial="
+				+ prixInitial + ", prixVente=" + prixVente + ", utilisateurPseudo=" + utilisateurPseudo + ", categorie="
+				+ categorie + ", utilisateur=" + utilisateur + ", getNoArticle()=" + getNoArticle()
+				+ ", getNomArticle()=" + getNomArticle() + ", getDescription()=" + getDescription()
+				+ ", getDateDebutEncheres()=" + getDateDebutEncheres() + ", getDateFinEncheres()="
+				+ getDateFinEncheres() + ", getPrixInitial()=" + getPrixInitial() + ", getPrixVente()=" + getPrixVente()
+				+ ", getCategorie()=" + getCategorie() + ", getUtilisateur()=" + getUtilisateur()
+				+ ", getUtilisateurPseudo()=" + getUtilisateurPseudo() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
 	
 	
 	
