@@ -95,14 +95,47 @@
 		</div>
 	</form>
 
-	<c:forEach var="item" items="${listeArticles }">
-		<div></div>
+	 <c:forEach var="item" items="${listeArticles }">
+		
+		<div>
+		<label>Article : </label>
+		<a href="<%=request.getContextPath()%>/DetailVente" name="nomArticle" value="${item.nomArticle }"> ${item.nomArticle }</a> 
+		</div>
+		
 		<div>${item.description }</div>
 		<div>Prix : ${item.prixVente }</div>
 		<div>Fin de l'enchère : ${item.dateFinEncheres }</div>
-		<div>Vendeur : ${item.utilisateurPseudo }</div>
+		<form action= "<%= request.getContextPath()%>/PageProfil" method = "post">
+		<div>
+		<label>Vendeur : </label>
+		<button name="pseudo" value="${item.utilisateurPseudo }">${item.utilisateurPseudo } </button>
+		</div>
+		</form>
 	</c:forEach>
 
+	<script>
+       function myFunction() {
+        if(document.getElementById("vente").checked){
+      document.getElementById("achats").disabled = true;
+      document.getElementById("remporter").disabled = true;
+      document.getElementById("encours").disabled = true;
+      document.getElementById("ventes").disabled = false;
+      document.getElementById("debute").disabled = false;
+      document.getElementById("termine").disabled = false;
+        }
+        else if(document.getElementById("achat").checked){
+    document.getElementById("ventes").disabled = true;
+      document.getElementById("debute").disabled = true;
+      document.getElementById("termine").disabled = true;
+      document.getElementById("achats").disabled = false;
+      document.getElementById("encours").disabled = false;
+      document.getElementById("remporter").disabled = false;
+        }
+        }
+       </script>
+   
+ 		<script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/monScriptProjet.js"></script>
 
 </body>
 </html>
