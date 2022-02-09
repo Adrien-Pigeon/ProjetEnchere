@@ -30,19 +30,19 @@
 	<br> <label for="name">Mise à prix :</label>
 		<p>${article.prixInitial }</p>
 		
-	<br> <label for="name">Mise à prix :</label>
-		<p>${article.prixInitial }</p>
 	<br> <label for="name">Fin de l'enchère :</label>
 		<p>${article.dateFinEncheres }</p>
+	
 	<br> <label for="name">Retrait :</label>
 		<p>${utilisateur.rue}</p>
-	<br><p>${utilisateur.codePostal}</p>
+		<p>${utilisateur.codePostal}</p>
 
 	<br> <label for="name">Vendeur :</label>
 		<p>${utilisateur.pseudo }</p>
-		
+		 
 	<br> <label for="name">Ma Proposition :</label>
-		<p></p>
+	
+		
 		
 	</div>
 
