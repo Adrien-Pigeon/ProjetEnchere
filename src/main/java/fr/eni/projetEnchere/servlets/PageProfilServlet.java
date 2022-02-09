@@ -47,6 +47,7 @@ public class PageProfilServlet extends HttpServlet {
 			System.err.println(e.getMessage());
 		}
 		request.setAttribute("utilisateur", utilisateurCo);
+		request.setAttribute("utilisateurCo", utilisateurCo);
 		boolean btnOn = true;
 		request.setAttribute("btnOn", btnOn);
 
@@ -87,6 +88,7 @@ public class PageProfilServlet extends HttpServlet {
 		// verification que l'utilisateur en session n'est pas le meme que le profil à
 		// afficher
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
+		request.setAttribute("utilisateurCo", utilisateurCo);
 		if (utilisateurCo != null) {
 			// si ce sont les même alors affichage du bouton modifié
 			if (pseudo.equals(utilisateurCo.getPseudo())) {
