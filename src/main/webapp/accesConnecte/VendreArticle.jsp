@@ -16,6 +16,7 @@
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js">
+	
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,37 +25,36 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand"
-					href="<%=request.getContextPath()%>/AccueilConnecter">ENI-Enchères</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-
-					<li class="active"><a
-						href="<%=request.getContextPath()%>/ListeEnchereUtilisateur">Enchères</a></li>
-					<li><a href="<%=request.getContextPath()%>/VendArticle">Vendre
-							un Article</a></li>
-					<li><a href="<%=request.getContextPath()%>/PageProfil">Mon
-							Profil</a></li>
-
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-
-					<li><a href="<%=request.getContextPath()%>/Deconnexion"><span
-							class="glyphicon glyphicon-log-in"></span> Déconnection</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
+	
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand"  href="<%=request.getContextPath()%>/AccueilConnecter"> <img
+		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="40"
+		height="25" title="Logo" alt="Logo">
+		</a>
+      <a class="navbar-brand" href="<%=request.getContextPath()%>/AccueilConnecter">ENI-Enchères</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li></li>
+			<li class="active"><a href="<%=request.getContextPath()%>/ListeEnchereUtilisateur">Enchères</a></li>
+      	 	<li><a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a></li>
+        	<li><a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li><a href="<%=request.getContextPath()%>/Deconnexion"><span class="glyphicon glyphicon-log-in"></span> Déconnection</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 	<form action="<%=request.getContextPath()%>/VendArticle" method="post">
 

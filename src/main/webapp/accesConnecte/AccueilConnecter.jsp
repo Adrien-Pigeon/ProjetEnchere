@@ -8,6 +8,7 @@
 	
 
 <html>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -22,11 +23,7 @@
 		
 </head>
 <body>
-<a href="<%=request.getContextPath()%>/AccueilConnecter"> <img
-		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="120"
-		height="120" title="Logo" alt="Logo">
 
-	</a>
 
 
 
@@ -38,11 +35,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
+      <a class="navbar-brand"  href="<%=request.getContextPath()%>/AccueilConnecter"> <img
+		src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="40"
+		height="25" title="Logo" alt="Logo">
+		</a>
       <a class="navbar-brand" href="<%=request.getContextPath()%>/AccueilConnecter">ENI-Enchères</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        
+        <li></li>
 			<li class="active"><a href="<%=request.getContextPath()%>/ListeEnchereUtilisateur">Enchères</a></li>
       	 	<li><a href="<%=request.getContextPath()%>/VendArticle">Vendre un Article</a></li>
         	<li><a href="<%=request.getContextPath()%>/PageProfil">Mon Profil</a></li>
