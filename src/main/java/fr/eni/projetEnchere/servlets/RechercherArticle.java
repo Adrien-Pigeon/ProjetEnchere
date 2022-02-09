@@ -76,11 +76,11 @@ public class RechercherArticle extends HttpServlet {
 			}
 			request.setAttribute("listeArticles", listeArticles);
 		}
-		HttpSession session = request.getSession();
-		if(session== null) {
+		HttpSession session = request.getSession(false);
+			
+		if(session == null) {
+		
 		request.getRequestDispatcher("/").forward(request, response);
-		}else {
-			request.getRequestDispatcher("/AccueilConnecter").forward(request, response);
 		}
 	}
 

@@ -63,7 +63,7 @@
                 
 
 
- <form action="<%= request.getContextPath()%>/AccueilConnecter" method="post" class=" p-5 rounded bordure " style="background: #fff;">
+ <form action="<%= request.getContextPath()%>/Rechercher" method="post" class=" p-5 rounded bordure " style="background: #fff;">
                     <h2>Filtres :</h2>
 
                     <div class="md-form  active-pink-2 mb-3 mt-0">
@@ -75,14 +75,14 @@
 				<select id="scategorie" name="scategorie">
 					
 					<c:forEach var="item" items="${categories }">
-						<option value="${categorie.libelle }">${item.libelle }</option>
+						<option value="${item.noCategorie }">${item.libelle }</option>
 					</c:forEach>
 				</select>
 			</div>
                     </div>
 
                     <div class="d-flex justify-content-end pt-5">
-                        <button class="btn btn-action" type="submit">Rerchercher</button>
+                        <button class="btn btn-action" type="submit">Rechercher</button>
                     </div>
  </form>
 <div class="">

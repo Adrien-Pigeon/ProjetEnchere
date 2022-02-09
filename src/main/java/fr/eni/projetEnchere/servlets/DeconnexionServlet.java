@@ -29,12 +29,12 @@ public class DeconnexionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		String logged = null;
-		session.setAttribute("logged", logged);
+		HttpSession session = request.getSession(false);
+		if(session != null) {
 		session.invalidate();
 		System.out.println("Déconnection");
 		this.getServletContext().getRequestDispatcher("/").forward(request, response);
+		}
 	}
 
 

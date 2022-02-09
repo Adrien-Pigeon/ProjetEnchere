@@ -89,13 +89,14 @@ public class LoginServlet extends HttpServlet {
 
 		if (user != null) {
 			// Recupere la session
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(false);
 			// Recupere l'utilisateur
+			if(session != null) {
 			session.setAttribute("user", user);
 			
 
 			request.getRequestDispatcher("/AccueilConnecter").forward(request, response);
-			
+			}
 			
 		} else {
 
