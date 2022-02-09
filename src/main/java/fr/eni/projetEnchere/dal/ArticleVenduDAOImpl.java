@@ -24,13 +24,13 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	private static final String SELECT_BY_CATEGORIE = "select description,prix_vente,av.no_article,nom_article,\n"
 			+ "					prix_initial,date_debut_encheres,pseudo,date_fin_encheres from UTILISATEURS as u\n"
 			+ "					\n"
-			+ "					RIGHT JOIN ARTICLES_VENDUS as av on (u.no_utilisateur = av.no_utilisateur) WHERE no_categorie = ? ";
+			+ "					RIGHT JOIN ARTICLES_VENDUS as av on (u.no_utilisateur = av.no_utilisateur) WHERE no_categorie = ? AND date_fin_encheres >= CAST(FLOOR(CAST(getdate() as float)) as datetime) order by date_fin_encheres;";
 	private final static String SELECT_BY_NAME = "select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo,date_debut_encheres "
 			+ "from ARTICLES_VENDUS "
-			+ "LEFT JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where nom_article LIKE ?;";
+			+ "LEFT JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where nom_article LIKE ? AND date_fin_encheres >= CAST(FLOOR(CAST(getdate() as float)) as datetime) order by date_fin_encheres;";
 	private final static String SELECT_BY_FILTRE = "select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo,"
 			+ "date_debut_encheres from ARTICLES_VENDUS LEFT JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur "
-			+ "where nom_article LIKE ? AND no_categorie = ?;";
+			+ "where nom_article LIKE ? AND no_categorie = ? AND date_fin_encheres >= CAST(FLOOR(CAST(getdate() as float)) as datetime) order by date_fin_encheres;";
 	
 	private final static String SELECT_BY_ID = "select * from ARTICLES_VENDUS as av INNER JOIN UTILISATEURS as u "
 			+ "ON av.no_utilisateur = u.no_utilisateur where av.no_utilisateur = ?;";
