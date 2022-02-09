@@ -101,7 +101,7 @@
 		<label>Article : </label>
 		<a href="<%=request.getContextPath()%>/DetailVente" name="nomArticle" value="${item.nomArticle }"> ${item.nomArticle }</a> 
 		</div>
-		
+		 
 		<div>${item.description }</div>
 		<div>Prix : ${item.prixVente }</div>
 		<div>Fin de l'enchère : ${item.dateFinEncheres }</div>
