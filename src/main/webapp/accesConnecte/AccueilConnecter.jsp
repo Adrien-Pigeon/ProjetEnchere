@@ -130,10 +130,10 @@
 
 		<div>
 			<label>Article : </label> <a
-				href="<%=request.getContextPath()%>/DetailVente">
+				href="<%=request.getContextPath()%>/DetailVente?noArticle=${item.noArticle }">
 				<button
 					class="bouton btn btn-default col-lg-12 col-xs-12 text-center"
-					type="button" value="${item.noArticle }">${item.nomArticle }</button>
+					type="button" value="${item.noArticle }" name="noArticle">${item.nomArticle }</button>
 			</a>
 
 		</div>

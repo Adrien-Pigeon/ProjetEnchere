@@ -39,7 +39,7 @@ public class DetailVenteServlet extends HttpServlet {
 					
 					// Récupération des paramètres
 					int numero_article = Integer.parseInt(request.getParameter("noArticle"));
-					
+					System.out.println(numero_article);
 				
 					
 					

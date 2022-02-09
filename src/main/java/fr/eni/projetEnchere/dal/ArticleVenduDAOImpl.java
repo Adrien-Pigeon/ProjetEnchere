@@ -33,7 +33,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			+ "where nom_article LIKE ? AND no_categorie = ? AND date_fin_encheres >= CAST(FLOOR(CAST(getdate() as float)) as datetime) order by date_fin_encheres;";
 	
 	private final static String SELECT_BY_ID = "select * from ARTICLES_VENDUS as av INNER JOIN UTILISATEURS as u "
-			+ "ON av.no_utilisateur = u.no_utilisateur where av.no_utilisateur = ?;";
+			+ "ON av.no_utilisateur = u.no_utilisateur where av.no_article = ?;";
 
 
 	@Override
