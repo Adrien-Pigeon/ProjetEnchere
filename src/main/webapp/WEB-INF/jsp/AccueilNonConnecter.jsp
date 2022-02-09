@@ -78,6 +78,7 @@
 
 			<div>
 				<select id="scategorie" name="scategorie">
+				<option value="0"></option>
 					<option value="150">toutes</option>
 					<c:forEach var="item" items="${categories }">
 

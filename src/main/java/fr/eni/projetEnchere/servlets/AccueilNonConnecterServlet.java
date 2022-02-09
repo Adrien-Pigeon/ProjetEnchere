@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.projetEnchere.bll.ArticleVenduManager;
 import fr.eni.projetEnchere.bll.CategorieManager;
+import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
 
 import fr.eni.projetEnchere.dal.Exception.DalException;
@@ -31,9 +33,13 @@ public class AccueilNonConnecterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String logged = null;
-		session.setAttribute("logged", logged);
+		if(session != null) {
+			session.invalidate();
+			System.out.println("Déconnection");
+		}
 
+		
+		
 		CategorieManager cm = CategorieManager.getInstance();
 		try {
 			List<Categorie> categories = cm.lister();
@@ -44,6 +50,7 @@ public class AccueilNonConnecterServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 		request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 	}

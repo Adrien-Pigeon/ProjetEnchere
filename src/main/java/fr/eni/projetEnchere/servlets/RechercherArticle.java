@@ -28,20 +28,22 @@ public class RechercherArticle extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String motRecherche = request.getParameter("srecherche");
 		int noCategorie = Integer.parseInt(request.getParameter("scategorie"));
 		
+		if(noCategorie == 150 && motRecherche.isBlank()) {
+			List<ArticleVendu> listeArticles = null;
+			ArticleVenduManager avm = ArticleVenduManager.getInstance();
+			try {
+				listeArticles = avm.allArticle();
+			} catch (DalException e) {
+				
+				e.printStackTrace();
+			}
+			request.setAttribute("listeArticles", listeArticles);
+		}
 		//Recherche par categorie
-		if(noCategorie != 0 && motRecherche.isBlank()) {
+		else if(noCategorie != 0 && motRecherche.isBlank()) {
 		List<ArticleVendu> listeArticles = null;
 		ArticleVenduManager avm = ArticleVenduManager.getInstance();
 		try {
@@ -76,11 +78,71 @@ public class RechercherArticle extends HttpServlet {
 			}
 			request.setAttribute("listeArticles", listeArticles);
 		}
-		HttpSession session = request.getSession(false);
+		request.getRequestDispatcher("/").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String motRecherche = request.getParameter("srecherche");
+		int noCategorie = Integer.parseInt(request.getParameter("scategorie"));
+		
+		//Afficher tous les articles
+		if(noCategorie == 150 && motRecherche.isBlank()) {
+			List<ArticleVendu> listeArticles = null;
+			ArticleVenduManager avm = ArticleVenduManager.getInstance();
+			try {
+				listeArticles = avm.allArticle();
+			} catch (DalException e) {
+				
+				e.printStackTrace();
+			}
+			request.setAttribute("listeArticles", listeArticles);
+		}
+		//Recherche par categorie
+		else if(noCategorie != 0 && motRecherche.isBlank()) {
+			
+		List<ArticleVendu> listeArticles = null;
+		ArticleVenduManager avm = ArticleVenduManager.getInstance();
+		try {
+			listeArticles = avm.RechercherParCategorie(noCategorie);
+		} catch (DalException | BllException e) {
+			
+			e.printStackTrace();
+		}
+		request.setAttribute("listeArticles", listeArticles);
+		}
+		//Recherche par filtre nom
+		else if(motRecherche != null && noCategorie == 0) {
+			List<ArticleVendu> listeArticles = null;
+			ArticleVenduManager avm = ArticleVenduManager.getInstance();
+			try {
+				listeArticles = avm.RechercherParNom(motRecherche);
+			} catch (DalException | BllException e) {
+				
+				e.printStackTrace();
+			}
+			request.setAttribute("listeArticles", listeArticles);
+		}
+		//recherche par deux filtres
+		else if(motRecherche != null && noCategorie != 0){
+			List<ArticleVendu> listeArticles = null;
+			ArticleVenduManager avm = ArticleVenduManager.getInstance();
+			try {
+				listeArticles = avm.rechercheDouble(motRecherche,noCategorie);
+			} catch (DalException | BllException e) {
+				
+				e.printStackTrace();
+			}
+			request.setAttribute("listeArticles", listeArticles);
+		}
+	
 			
 	
 		
-		request.getRequestDispatcher("/").forward(request, response);
+		request.getRequestDispatcher("/AccueilConnecter").forward(request, response);
 		
 	}
 
