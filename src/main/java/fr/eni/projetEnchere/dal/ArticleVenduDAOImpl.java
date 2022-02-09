@@ -16,9 +16,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 
 public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 
-	private static final String SELECT_ALL = "SELECT nom_article,description,prix_vente,,date_debut_encheres,date_fin_encheres"
-			+ "no_categorie,pseudo"
-			+ "FROM ARTICLES_VENDUS as a JOIN UTILISATEURS as u on(a.no_utilisateur = u.no_utilisateur)";
+	private static final String SELECT_ALL = "SELECT * FROM ARTICLES_VENDUS as a JOIN UTILISATEURS as u on(a.no_utilisateur = u.no_utilisateur) WHERE date_fin_encheres >= CAST(FLOOR(CAST(getdate() as float)) as datetime) order by date_fin_encheres;";
 
 	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS(nom_article,description,"
 			+ " date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) "
@@ -26,7 +24,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	private static final String SELECT_BY_CATEGORIE = "select description,prix_vente,av.no_article,nom_article,\n"
 			+ "					prix_initial,date_debut_encheres,pseudo,date_fin_encheres from UTILISATEURS as u\n"
 			+ "					\n"
-			+ "					RIGHT JOIN ARTICLES_VENDUS as av on (u.no_utilisateur = av.no_utilisateur) WHERE no_categorie = ? ;";
+			+ "					RIGHT JOIN ARTICLES_VENDUS as av on (u.no_utilisateur = av.no_utilisateur) WHERE no_categorie = ? ";
 	private final static String SELECT_BY_NAME = "select no_article,nom_article,description,date_fin_encheres,prix_initial, prix_vente, pseudo,date_debut_encheres "
 			+ "from ARTICLES_VENDUS "
 			+ "LEFT JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur where nom_article LIKE ?;";
@@ -39,7 +37,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 
 
 	@Override
-	public void selectAll() throws DalException {
+	public List<ArticleVendu> selectAll() throws DalException {
 		Connection cnx = null;
 		Statement stmt = null;
 		List<ArticleVendu> articles = new ArrayList<>();
@@ -48,9 +46,18 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			cnx = ConnectionProvider.getConnection();
 			stmt = cnx.createStatement();
 			ResultSet rs = stmt.executeQuery(SELECT_ALL);
-			ArticleVendu article;
+			
 			while (rs.next()) {
-				;
+				ArticleVendu article = new ArticleVendu();
+				article.setNoArticle(rs.getInt("no_article"));
+				article.setNomArticle(rs.getString("nom_article"));
+				article.setPrixInitial(rs.getInt("prix_initial"));
+				article.setDescription(rs.getString("description"));
+				article.setPrixVente(rs.getInt("prix_vente"));
+				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setUtilisateurPseudo(rs.getString("pseudo"));
+				articles.add(article);
 			}
 
 		} catch (SQLException e) {
@@ -63,6 +70,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				throw new DalException("Probleme de d�connexion", e);
 			}
 		}
+		return articles;
 	}
 
 	@Override
@@ -234,13 +242,14 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 
 		try {
 			cnx = ConnectionProvider.getConnection();
 			pstmt = cnx.prepareStatement(SELECT_BY_ID);
 			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if(rs.next()) {
 				ArticleVendu article = new ArticleVendu();
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));

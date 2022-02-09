@@ -28,8 +28,9 @@
 	
 
 	<div class="Formulaire">
+	
 		<form action="<%=request.getContextPath()%>/ListeEnchereUtilisateur" method="post">
-
+		
 			<div>
 				<label for="name">Article:</label> <input type="text" id="name"
 					name="nom" value="${article.nomArticle }">
@@ -81,18 +82,18 @@
 						<legend>Retrait</legend>
 						<div>
 							<label for="name">Rue:</label> <input type="text" id="name"
-								name="rue" placeholder="${utilisateur.rue }" >
+								name="rue" value="${utilisateur.rue }" >
 						</div>
 
 						<div>
 							<label for="name">Code postal:</label> <input type="text"
 								id="name" name="codePostal"
-								placeholder="${utilisateur.codePostal }" >
+								value="${utilisateur.codePostal }" >
 						</div>
 
 						<div>
 							<label for="name">Ville:</label> <input type="text" id="name"
-								name="ville" placeholder="${utilisateur.ville }" >
+								name="ville" value="${utilisateur.ville }" >
 						</div>
 					</fieldset>
 				</div>
@@ -104,7 +105,9 @@
 				<div class="button">
 					<button type="submit" name="Supprimer">Supprimer</button>
 				</div>
+				
 			</form>
+			
 	</div>
 	<div class="button">
 		<a href="<%=request.getContextPath()%>/AccueilConnecter">

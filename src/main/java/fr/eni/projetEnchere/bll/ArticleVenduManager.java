@@ -60,7 +60,10 @@ public class ArticleVenduManager {
 		
 		return dao.selectByFiltres(motRech,noCategorie);
 	}
-	
+	public List<ArticleVendu> allArticle() throws DalException{
+		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
+		return dao.selectAll();
+	}
 	public static Boolean verifierArticle(ArticleVendu a) throws BllException {
 		boolean valide = true;
 		StringBuffer sb = new StringBuffer();
