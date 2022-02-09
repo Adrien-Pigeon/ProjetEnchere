@@ -129,7 +129,7 @@
 		<form action= "<%= request.getContextPath()%>/PageProfil" method = "post">
 		<div>
 		<label>Vendeur : </label>
-		<button name="pseudo">${item.utilisateurPseudo }</button>
+		<button name="pseudo" value="${item.utilisateurPseudo }">${item.utilisateurPseudo } </button>
 		</div>
 		</form>
 	</c:forEach>

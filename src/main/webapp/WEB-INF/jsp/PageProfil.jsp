@@ -51,7 +51,7 @@
 								<div class="col-lg-6 col-xs-6 text-center">
 
 									<p>
-										<strong>Pseudo : </strong> ${utilisateur.nom }
+										<strong>Pseudo : </strong> ${utilisateur.pseudo }
 									</p>
 									<p>
 										<strong>Nom : </strong> ${utilisateur.nom }

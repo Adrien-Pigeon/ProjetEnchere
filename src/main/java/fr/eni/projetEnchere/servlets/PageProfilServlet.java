@@ -94,11 +94,12 @@ public class PageProfilServlet extends HttpServlet {
 				request.setAttribute("btnOn", btnOn);
 				request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 			} else { // sinon pas de bouton modifier
-				
+				btnOn = false;
 				request.setAttribute("btnOn", btnOn);
 				request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 			}
 		} else { // Si pas d'utilisateur en session alors affichage du profil
+			btnOn = false;
 			request.setAttribute("btnOn", btnOn);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/pageProfil.jsp").forward(request,
 					response);

@@ -173,7 +173,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				user.setRue(result.getString("rue"));
 				user.setPseudo(result.getString("pseudo"));
 				user.setTelephone(result.getString("telephone"));
-				user.setCodePostal(result.getString("codePostal"));
+				user.setCodePostal(result.getString("code_postal"));
 				user.setCredit(result.getInt("credit"));
 				user.setAdministrateur(result.getBoolean("administrateur"));
 			}
