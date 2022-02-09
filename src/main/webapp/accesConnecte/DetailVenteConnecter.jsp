@@ -15,6 +15,7 @@
 
 	<h1>Détail Vente</h1>
 	<div>
+	<br> <label for="name">Article :</label>
 		<p>${article.nomArticle }</p>
 		
 	<br> <label for="name">description :</label>
@@ -24,7 +25,7 @@
 		<p>${article.categorie }</p>
 		
 	<br> <label for="name">Meilleure Offre :</label>
-		<p>${utilisateur.offre }</p>
+		<p></p>
 		
 	<br> <label for="name">Mise à prix :</label>
 		<p>${article.prixInitial }</p>
@@ -41,7 +42,7 @@
 		<p>${utilisateur.pseudo }</p>
 		
 	<br> <label for="name">Ma Proposition :</label>
-		<p>${utilisateur.proposition }</p>
+		<p></p>
 		
 	</div>
 

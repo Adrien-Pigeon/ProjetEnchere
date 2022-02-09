@@ -122,7 +122,12 @@
       </div>
     </div>
     <c:forEach var="item" items="${listeArticles }">
-		<div></div>
+		<form action= "<%= request.getContextPath()%>/DetailVente" method = "post">
+		<div>
+		<label>Article : </label>
+		<button name="pseudo" value="${item.nomArticle }">${item.nomArticle } </button>
+		</div>
+		</form>
 		<div>${item.description }</div>
 		<div>Prix : ${item.prixVente }</div>
 		<div>Fin de l'enchère : ${item.dateFinEncheres }</div>
