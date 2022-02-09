@@ -61,7 +61,7 @@
 
 
 	<form action="<%=request.getContextPath()%>/Rechercher"
-		method="post">
+		method="get">
 
 		<div>
 
