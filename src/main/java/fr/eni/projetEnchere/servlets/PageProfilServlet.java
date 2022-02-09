@@ -35,6 +35,8 @@ public class PageProfilServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String pro = request.getParameter("profil");
+		System.out.println(pro);
 		Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 		int id = utilisateurCo.getNoUtilisateur();
 		UtilisateurManager um = UtilisateurManager.getInstance();
@@ -60,7 +62,7 @@ public class PageProfilServlet extends HttpServlet {
 			HttpSession session = request.getSession(); 
 			session.invalidate();
 			System.out.println("invalided  session");
-			 request.getRequestDispatcher("/").forward(request, response);
+			 request.getRequestDispatcher("/ProjetEnchere").forward(request, response);
 		}
 		
 	
@@ -78,6 +80,7 @@ public class PageProfilServlet extends HttpServlet {
 		boolean btnOn = false;
 		// recupération du parametre pseudo envoyé par la jsp
 		String pseudo = request.getParameter("pseudo");
+		System.out.println(pseudo);
 		UtilisateurManager um = UtilisateurManager.getInstance();
 		Utilisateur utilisateur = um.afficherProfil(pseudo);
 		request.setAttribute("utilisateur", utilisateur);
@@ -89,12 +92,11 @@ public class PageProfilServlet extends HttpServlet {
 			if (pseudo.equals(utilisateurCo.getPseudo())) {
 				btnOn = true;
 				request.setAttribute("btnOn", btnOn);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/pageProfil.jsp").forward(request,
-						response);
+				request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 			} else { // sinon pas de bouton modifier
+				
 				request.setAttribute("btnOn", btnOn);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/pageProfil.jsp").forward(request,
-						response);
+				request.getRequestDispatcher("/WEB-INF/jsp/PageProfil.jsp").forward(request, response);
 			}
 		} else { // Si pas d'utilisateur en session alors affichage du profil
 			request.setAttribute("btnOn", btnOn);
