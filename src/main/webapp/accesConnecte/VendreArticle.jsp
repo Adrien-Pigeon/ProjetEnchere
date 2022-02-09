@@ -176,6 +176,20 @@
 
 							</div>
 						</div>
+						
+						
+						<div class="row mt-2">
+							<div class="col-md-6">
+								<a href="<%=request.getContextPath()%>/AccueilConnecter" >
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Retour</button>
+							</a>	
+							</div>
+
+							<div class="col-md-6">
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center  " type="submit" name="enregistrer">Enregistrer</button>
+							
+							</div>
+						</div>
 					</div>
 
 				</div>
@@ -184,20 +198,13 @@
 
 		</div>
 
+						
+						
+							
 
-	</form>
-	<div class="button">
-		<button type="submit" name="enregistrer">Enregistrer</button>
-	</div>
-
-
-
-	<div class="button">
-		<a href="<%=request.getContextPath()%>/AccueilConnecter">
-			<button name="annuler">Annuler</button>
-		</a>
-	</div>
-
+							
+						
+	
 
 
 	<script>
@@ -221,11 +228,6 @@
 
 
 
-
-
-
-
-
-
+	</form>
 </body>
 </html>
