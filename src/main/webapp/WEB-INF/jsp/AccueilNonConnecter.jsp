@@ -105,12 +105,8 @@
 		<div>${item.description }</div>
 		<div>Prix : ${item.prixVente }</div>
 		<div>Fin de l'enchère : ${item.dateFinEncheres }</div>
-		<form action= "<%= request.getContextPath()%>/PageProfil" method = "post">
-		<div>
-		<label>Vendeur : </label>
-		<button name="pseudo" value="${item.utilisateurPseudo }">${item.utilisateurPseudo } </button>
-		</div>
-		</form>
+		<div>Vendeur : ${item.utilisateurPseudo } </div>
+		
 	</c:forEach>
 
 	<script>
