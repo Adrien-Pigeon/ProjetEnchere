@@ -78,26 +78,43 @@
 
 								</div>
 							</div>
+							
 						</div>
+						
+</form>
+					
+					<div>
+					<%
 
-					</form>
 
-						<div class="row mt-2">
-							<div class="col-md-6">
-								<a href="<%=request.getContextPath()%>/ModifierProfil" >
-							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Modifier</button>
-							</a>	
-							</div>
+						boolean btnOn = (boolean) request.getAttribute("btnOn");
 
-							<div class="col-md-6">
-							<a href="<%=request.getContextPath()%>/AccueilConnecter" >
-							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Retour</button>
-							</a>		
-							</div>
+
+							if (btnOn == true) {
+
+			
+					%>
+					<div class="row mt-2">
+						<div class="col-md-6">
+							<a href="<%=request.getContextPath()%>/ModifierProfil">
+								<button
+									class="bouton btn btn-default col-lg-12 col-xs-12 text-center"
+									type="button">Modifier</button>
+							</a>
 						</div>
-					 
+					<%} %>
+					</div>
+						<div class="col-md-6">
+							<a href="<%=request.getContextPath()%>/AccueilConnecter">
+								<button
+									class="bouton btn btn-default col-lg-12 col-xs-12 text-center"
+									type="button">Retour</button>
+							</a>
+						</div>
+					</div>
+
 				</div>
-
+				
 
 			</div>
 
