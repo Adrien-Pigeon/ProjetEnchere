@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 public class ImagesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+ 
     // content=blob, name=varchar(255) UNIQUE.
     private static final String SQL_FIND = "SELECT content FROM Image WHERE name = ?;";
 
