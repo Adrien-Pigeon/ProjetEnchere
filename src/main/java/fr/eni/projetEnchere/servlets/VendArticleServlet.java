@@ -96,7 +96,7 @@ public class VendArticleServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		 
 
 //		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 

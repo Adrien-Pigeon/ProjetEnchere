@@ -78,7 +78,7 @@
 
 			<div>
 				<select id="scategorie" name="scategorie">
-					<option value="15000">toutes</option>
+					<option value="150">toutes</option>
 					<c:forEach var="item" items="${categories }">
 
 						<option value="${item.noCategorie}">${item.libelle }</option>
