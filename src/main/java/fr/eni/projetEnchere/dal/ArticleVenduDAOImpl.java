@@ -37,13 +37,15 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	
 	private final static String SELECT_BY_ID = "select * from ARTICLES_VENDUS as av INNER JOIN UTILISATEURS as u "
 			+ "ON av.no_utilisateur = u.no_utilisateur where av.no_article = ?;";
-	private static final String SELECT_VENTE = "SELECT pseudo, e.no_article,description,nom_article,date_enchere,date_fin_encheres,date_debut_encheres,rue,ville,code_postal,prix_initial,libelle,MAX(montant_enchere ) as montant_enchere from ARTICLES_VENDUS as a \n"
-			+ "inner join ENCHERES  as e   on(a.no_article = e.no_article)\n"
-			+"inner join UTILISATEURS as u on(a.no_utilisateur = u.utilisateur)"
-			+ "inner join CATEGORIES as c on (a.no_categorie = c.no_categorie) \n"
-			+ "inner join RETRAITS as r on (e.no_article = r.no_article) \n"
-			+ "where e.no_article = ?\n"
-			+ "group by e.no_article,description,nom_article,rue,pseudo,ville,code_postal,prix_initial,libelle,date_enchere,date_fin_encheres,date_debut_encheres;";
+	private static final String SELECT_VENTE = "SELECT pseudo, e.no_article,description,nom_article,date_enchere,date_enchere,date_fin_encheres,date_debut_encheres\n"
+			+ "			,r.rue,r.ville,r.code_postal,prix_initial,libelle,MAX(montant_enchere ) as montant_enchere from ARTICLES_VENDUS as a \n"
+			+ "			left join ENCHERES  as e   on(a.no_article = e.no_article)\n"
+			+ "			 left join UTILISATEURS as u on(a.no_utilisateur = u.no_utilisateur)\n"
+			+ "			 join CATEGORIES as c on (a.no_categorie = c.no_categorie) \n"
+			+ "			inner join RETRAITS as r on (a.no_article = r.no_article) \n"
+			+ "			where a.no_article = ?\n"
+			+ "			group by e.no_article,description,nom_article,r.rue,pseudo,r.ville,r.code_postal,prix_initial,libelle,date_enchere,\n"
+			+ "			date_fin_encheres,date_debut_encheres;";
 
 
 	@Override
@@ -289,7 +291,11 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		ArticleVendu article =null;
+		Retrait lieuRetrait = null;
+		Enchere enchere = null;
 		
+		Categorie categorie =null;
 
 		try {
 			cnx = ConnectionProvider.getConnection();
@@ -297,11 +303,11 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				ArticleVendu article = new ArticleVendu();
-				Retrait lieuRetrait = new Retrait();
-				Categorie categorie =new Categorie();
-				Enchere enchere = new Enchere();
-				Utilisateur utilisateur = new Utilisateur();
+				article = new ArticleVendu();
+				lieuRetrait = new Retrait();
+				categorie =new Categorie();
+				enchere = new Enchere();
+				
 				
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));
@@ -309,17 +315,30 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
 				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setPrixInitial(rs.getInt("prix_initial"));
+				article.setUtilisateurPseudo(rs.getString("pseudo"));
 				lieuRetrait.setRue(rs.getString("rue"));
 				lieuRetrait.setVille(rs.getString("ville"));
 				lieuRetrait.setCodePostal(rs.getString("code_postal"));
 				article.setLieuRetrait(lieuRetrait);
 				categorie.setLibelle(rs.getString("libelle"));
 				article.setCategorie(categorie);
-				enchere.setDateEnchere(rs.getDate("date_enchere").toLocalDate());
-				enchere.setMontantEnchere(rs.getInt("montant_enchere "));
-				article.setUtilisateurPseudo("pseudo");
+				if(rs.next()) {
+					enchere.setDateEnchere(rs.getDate("date_enchere").toLocalDate());
+					if(rs.wasNull()) {
+						throw new DalException("pas d'enchère sur cet article");
+					}
+				}
+				if(rs.next()) {
+					enchere.setMontantEnchere(rs.getInt("montant_enchere "));
+					if(rs.wasNull()) {
+						throw new DalException("pas d'enchère sur cet article");
+					}
+				}
+					
+				
+				
 				article.setEncheres(enchere);
-				return article;
+				
 			}
 		} catch (SQLException e) {
 			throw new DalException("Probleme sur la couche dal", e);
@@ -331,6 +350,6 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				throw new DalException("Probleme de d�connexion", e);
 			}
 		}
-		return null;
+		return article;
 	}
 }
