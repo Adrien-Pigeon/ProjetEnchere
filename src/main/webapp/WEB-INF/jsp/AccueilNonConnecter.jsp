@@ -99,7 +99,7 @@
 			<div class="card-body">
 				<p class="card-text">
 					<label>Article : </label> <a
-						href="<%=request.getContextPath()%>/DetailVente?noArticle=${item.noArticle }">${item.nomArticle }</a>
+						href="<%=request.getContextPath()%>/DetailVenteNonCo?noArticle=${item.noArticle }">${item.nomArticle }</a>
 
 				<div>${item.description }</div>
 				<div>Prix : ${item.prixVente }</div>

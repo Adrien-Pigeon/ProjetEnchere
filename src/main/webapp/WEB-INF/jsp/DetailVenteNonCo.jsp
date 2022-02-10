@@ -24,7 +24,7 @@
 
 
 	
-	<form action="<%=request.getContextPath()%>/AccueilConnecter" method="post">
+	<form action="<%=request.getContextPath()%>/AccueilNonConnecter" method="post">
 	
 		<div class="container rounded bg-white mt-5 mb-5">
 			<div class="row">
@@ -76,10 +76,7 @@
 							<div class="col-md-12">
 								<label for="name">Vendeur : ${utilisateur.pseudo }</label>
 							</div>
-							<div class="col-md-12">
-								<label for="name">Ma Proposition : <input type="text" id="name"
-                                    name="rue" placeholder="Saisir un prix" required> </label>
-							</div>
+							
 							
 						</div>
 
@@ -88,13 +85,13 @@
 
 
 						
-							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center  " type="submit" name="enregistrer">Enchérir</button>
+							
 						
 							
 					
 						
-							<a href="<%=request.getContextPath()%>/AccueilConnecter" >
-							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Annuler</button>
+							<a href="<%=request.getContextPath()%>/" >
+							<button class="bouton btn btn-default col-lg-12 col-xs-12 text-center" type="button">Retour</button>
 							</a>
 						
 						

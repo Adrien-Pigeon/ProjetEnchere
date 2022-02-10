@@ -21,34 +21,7 @@
 
     
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="text-color:white;">
-          
-      <a class="navbar-brand" href="<%=request.getContextPath()%>/AccueilConnecter">
-        <img  src="<%=request.getContextPath()%>/asset/img/logo.jpg" width="85" height="70"  alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" style="color:white;" href="<%=request.getContextPath()%>/ListeEnchereUtilisateur">Enchères <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color:white;" href="<%=request.getContextPath()%>/VendArticle">Vendre
-                                un Article</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color:white;" href="<%=request.getContextPath()%>/MonProfil">Mon
-                                Profil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " style="color:white;"  href="<%=request.getContextPath()%>/Deconnexion">Déconnection</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+   
 	
 	<form action="<%=request.getContextPath()%>/ListeEnchereUtilisateur"
 		method="post">
@@ -56,14 +29,7 @@
 		<div class="container rounded bg-white mt-5 mb-5">
 			<div class="row">
 				<div class="col-md-3 border-right">
-					<div
-						class="d-flex flex-column align-items-center text-center p-3 py-5">
-						<img class="rounded-circle mt-5" width="150px"
-							src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
-							class="font-weight-bold"> ${utilisateur.nom}</span>
-							<span
-							class="text-black-50">${utilisateur.email }</span>
-					</div>
+			
 				</div>
 				<div class="col-md-6 border-right">
 					<div class="p-5 py-5">

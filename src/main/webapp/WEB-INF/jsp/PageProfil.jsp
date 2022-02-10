@@ -33,8 +33,7 @@
 					class="d-flex flex-column align-items-center text-center p-3 py-5">
 					<img class="rounded-circle mt-5" width="150px"
 						src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-					<span class="font-weight-bold">${utilisateurCo.nom }</span> <span
-						class="text-black-50">${utilisateurCo.email }</span> <span> </span>
+					
 				</div>
 			</div>
 			<div class="col-md-5 border-right">
@@ -47,8 +46,8 @@
 						<div class="row">
 							<h3 class="formulaire text-center">Profil</h3>
 							<br> <br>
-							<div class="col-lg-offset-3 col-lg-6 col-xs-12 blocProfil">
-								<div class="col-lg-6 col-xs-6 text-center">
+							<div class="col-lg-offset-3 col-lg-12 col-xs-12 blocProfil">
+								<div class="col-lg-12 col-xs-12 text-center">
 
 									<p>
 										<strong>Pseudo : </strong> ${utilisateur.pseudo }
