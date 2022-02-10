@@ -139,8 +139,8 @@
 
 	
 		<div class="card" style="width: 20rem;margin:4%;display:inline-block;height:20rem;">
-			<img class="card-img-top" src=""
-				alt="" height="150rem">
+			<img class="card-img-top" src="./asset/img/img.png"
+				alt="" height="230rem">
 			<div class="card-body">
 				<p class="card-text">
 					<label>Article : </label> <a
