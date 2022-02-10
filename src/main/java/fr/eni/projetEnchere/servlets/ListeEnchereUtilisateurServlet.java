@@ -52,14 +52,15 @@ public class ListeEnchereUtilisateurServlet extends HttpServlet {
 			// RetraitManager rm = RetraitManager.getInstanceRetrait();
 			
 			
-			am.selectArticleByUser();
+			try {
+				am.selectArticleByUser();
+			} catch (DalException | BllException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-			
-			
-			Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
-			
-			request.setAttribute("utilisateur", um);
-			request.setAttribute("article", articles);
+			request.setAttribute("article", am);
+			ArticleVendu article = (ArticleVendu) request.getSession().getAttribute("article");
 			
 			request.getRequestDispatcher("/accesConnecte/ListeEnchereUtilisateur.jsp").forward(request, response);
 			return;
