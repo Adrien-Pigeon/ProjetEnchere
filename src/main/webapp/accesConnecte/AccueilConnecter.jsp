@@ -44,8 +44,8 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" style="color:white;" href="<%=request.getContextPath()%>/ListeEnchereUtilisateur">Enchères <span class="sr-only">(current)</span></a>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:white;" href="<%=request.getContextPath()%>/ListeEnchereUtilisateur">Enchères <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" style="color:white;" href="<%=request.getContextPath()%>/VendArticle">Vendre
@@ -138,9 +138,9 @@
 	<c:forEach var="item" items="${listeArticles }">
 
 	
-		<div class="card" style="width: 20rem;margin:4%;display:inline-block;height:20rem;">
+		<div class="card" style="width:20rem; height:20rem; margin:4%; display:inline-block;">
 			<img class="card-img-top" src="./asset/img/img.png"
-				alt="" height="230rem">
+				alt=""  style="width:8rem; height:8rem">
 			<div class="card-body">
 				<p class="card-text">
 					<label>Article : </label> <a
