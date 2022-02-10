@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import fr.eni.projetEnchere.bll.ArticleVenduManager;
+import fr.eni.projetEnchere.bll.CategorieManager;
 import fr.eni.projetEnchere.bll.RetraitManager;
 import fr.eni.projetEnchere.bll.UtilisateurManager;
 import fr.eni.projetEnchere.bll.Exception.BllException;
@@ -43,38 +45,35 @@ public class ListeEnchereUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 
-		// Manager pour aller chercher l'article 
+		// Manager pour aller chercher l'article
 		try {
-			
+
 			// Récupération des paramètres
 			List<ArticleVendu> articles = new ArrayList<>();
+			
+			
 			// UtilisateurManager um = UtilisateurManager.getInstance();
 			ArticleVenduManager am = ArticleVenduManager.getInstance();
 			// RetraitManager rm = RetraitManager.getInstanceRetrait();
 			Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
 			int num = utilisateurCo.getNoUtilisateur();
 			System.out.println(utilisateurCo.getNoUtilisateur());
-			try {
-				
-				articles = am.selectArticleByUser(num);
-								
-				request.setAttribute("articles", articles);
-				
-			} catch (DalException | BllException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			
+
+			articles = am.selectArticleByUser(num);
+			
+			for (ArticleVendu art : articles) {
+				System.out.println(art.getNomArticle());
 			}
-			
-			
-			
+
+			request.setAttribute("article", articles);
+
 			request.getRequestDispatcher("/accesConnecte/ListeEnchereUtilisateur.jsp").forward(request, response);
 			return;
-			
-		} catch (NumberFormatException e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("/ProjetEnchere/AccueilConnecter");
 		}
 	}
 

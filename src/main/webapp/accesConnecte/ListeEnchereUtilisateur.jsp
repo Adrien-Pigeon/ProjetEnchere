@@ -36,59 +36,60 @@
 							class="d-flex justify-content-between align-items-center mb-5">
 							<h3 style="text-align: center;">LISTE DE MES ENCHERES</h3>
 						</div>
-						
 
+						<c:forEach items="${article }" var="art">
 							<div class="row mt-2">
 								<div class="col-md-12">
-									<label for="name">Article: ${article.description}</label> 
+									<label for="name">Article: ${art.description}</label>
 								</div>
 								<div class="col-md-12">
-									<label for="name">Description: ${article.description}</label> 
+									<label for="name">Description: ${art.description}</label>
 
 								</div>
 								<div class="col-md-12">
-									<label for="name">Categorie: ${article.categorie} </label>
+									<label for="name">Categorie: ${art.categorie} </label>
 
 
 								</div>
 								<div class="col-md-12">
-									<label for="file">Photo de l'article</label> 
+									<label for="file">Photo de l'article</label>
 								</div>
 								<div class="col-md-12">
-									<label for="msg">Mise à prix: ${article.prixInitial}</label>
+									<label for="msg">Mise à prix: ${art.prixInitial}</label>
 								</div>
 
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-12">
-									<label for="name">Début de l'enchère:  ${article.date_debut_enchere}</label> 
+									<label for="name">Début de l'enchère:
+										${art.dateDebutEncheres}</label>
 								</div>
 								<div class="col-md-12">
-									<label for="name">Fin de l'enchère: ${article.date_fin_enchere}</label> 
+									<label for="name">Fin de l'enchère:
+										${art.dateFinEncheres}</label>
 								</div>
 								<div class="col-md-12">
-									<div
-							class="d-flex justify-content-between align-items-center ">
-							<h5 style="text-align: center;">Retrait</h5>
-						</div>
+									<div class="d-flex justify-content-between align-items-center ">
+										<h5 style="text-align: center;">Retrait</h5>
+									</div>
 								</div>
 								<div class="col-md-12">
-									<label for="name">Rue:  ${article.rue}</label> 
+									<label for="name">Rue: ${art.lieuRetrait.rue}</label>
 								</div>
 								<div class="col-md-12">
-									<label for="name">Code postal :  ${article.codePostal}</label>
+									<label for="name">Code postal : ${art.lieuRetrait.codePostal}</label>
 								</div>
 								<div class="col-md-12">
-									<label for="name">Ville:  ${article.ville}</label> 
+									<label for="name">Ville: ${art.lieuRetrait.ville}</label>
 								</div>
 								<div class="col-md-12">
-									<label for="name">Ma Proposition :  ${article.prixInitial}</label>
+									<label for="name"></label>
 								</div>
 
 							</div>
-					
 
 
+						</c:forEach>
 
 
 

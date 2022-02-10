@@ -46,7 +46,12 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			+ "			where a.no_article = ?\n"
 			+ "			group by a.no_article,description,nom_article,r.rue,pseudo,r.ville,r.code_postal,prix_initial,libelle,date_enchere,\n"
 			+ "			date_fin_encheres,date_debut_encheres;";
-	private final static String SELECT_BY_ID_USER = " SELECT * FROM ARTICLES_VENDUS INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_utilisateur = RETRAITS.no_article WHERE no_utilisateur = 1;";
+	private final static String SELECT_BY_ID_USER = " SELECT ARTICLES_VENDUS.no_article,ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.prix_initial, ARTICLES_VENDUS.description,prix_vente,date_debut_encheres,date_fin_encheres ,"
+			+ "RETRAITS.rue,RETRAITS.code_postal, RETRAITS.ville FROM ARTICLES_VENDUS\r\n"
+			+ "INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur= UTILISATEURS.no_utilisateur\r\n"
+			+ "INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_article=RETRAITS.no_article\r\n"
+			+ "INNER JOIN CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie\r\n"
+			+ "where UTILISATEURS.no_utilisateur= ?;";
 
 	public List<ArticleVendu> selectArticleByUser(int id) throws DalException {
 		Connection cnx = null;
@@ -63,18 +68,39 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			
 
 			while (rs.next()) {
+				
+				//creation d'un article
 				ArticleVendu article = new ArticleVendu();
+				
+				//set les attribut de l'article récuperé
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setPrixInitial(rs.getInt("prix_initial"));
 				article.setDescription(rs.getString("description"));
+				//article.setCategorie(rs.getString("libelle"));
 				article.setPrixVente(rs.getInt("prix_vente"));
-				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+				article.setDateDebutEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
 				
+				Retrait retrait = new Retrait() ;
+				
+				retrait.setCodePostal(rs.getString("code_postal"));
+				retrait.setRue(rs.getString("rue"));
+				retrait.setVille(rs.getString("ville"));
+				
+				
+				
+				
+				
+				article.setLieuRetrait(retrait);
+			
+			
+				
+				
+				//ajout les attribut a l'objet article créer
 				articles.add(article);
 			}
-			return articles;
+			
 		} catch (SQLException e) {
 			throw new DalException("Probleme sur la couche dal", e);
 		} finally {
@@ -85,7 +111,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				throw new DalException("Probleme de d�connexion", e);
 			}
 		}
-		
+		return articles;
 	}
 
 	
@@ -128,10 +154,13 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 
 	@Override
 	public List<ArticleVendu> selectByCategorie(int no_categorie) throws DalException {
-
+		
+		//initlisation de connection preparestatement et result 
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
+		//creation de la liste article 
 		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
 		ArticleVendu article = null;
 
