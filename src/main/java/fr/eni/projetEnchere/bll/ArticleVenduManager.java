@@ -24,50 +24,56 @@ public class ArticleVenduManager {
 		}
 		return instance;
 	}
-	
+
+	public List<ArticleVendu> selectArticleByUser() throws DalException, BllException {
+
+		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
+		return dao.selectArticleByUser();
+	}
+
 	public void ajouterArticle(ArticleVendu article) throws DalException, BllException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
 		verifierArticle(article);
 		dao.insertArticle(article);
 	}
-	
+
 	public List<ArticleVendu> RechercherParCategorie(int noCategorie) throws DalException, BllException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
-		
+
 		return dao.selectByCategorie(noCategorie);
-		
+
 	}
-	
-	
+
 	public List<ArticleVendu> RechercherParNom(String motRech) throws DalException, BllException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
-		
+
 		return dao.selectByName(motRech);
-		
-		
+
 	}
-	
+
 	public ArticleVendu rechercherParId(int id) throws DalException, BllException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
-		
+
 		return dao.selectById(id);
-		
-		
+
 	}
+
 	public ArticleVendu selectDetailVente(int id) throws DalException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
 		return dao.detailVente(id);
 	}
-	
-	public List<ArticleVendu> rechercheDouble(String motRech,int noCategorie) throws DalException, BllException {
+
+	public List<ArticleVendu> rechercheDouble(String motRech, int noCategorie) throws DalException, BllException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
-		
-		return dao.selectByFiltres(motRech,noCategorie);
+
+		return dao.selectByFiltres(motRech, noCategorie);
 	}
-	public List<ArticleVendu> allArticle() throws DalException{
+
+	public List<ArticleVendu> allArticle() throws DalException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
 		return dao.selectAll();
 	}
+
 	public static Boolean verifierArticle(ArticleVendu a) throws BllException {
 		boolean valide = true;
 		StringBuffer sb = new StringBuffer();
@@ -91,11 +97,11 @@ public class ArticleVenduManager {
 			sb.append("La categorie obligatoire.\n");
 			valide = false;
 		}
-		if(a.getPrixInitial() > a.getPrixVente()) {
+		if (a.getPrixInitial() > a.getPrixVente()) {
 			sb.append("Le prix de vente ne peut pas etre inferieur au prix initial.\n");
 			valide = false;
 		}
-		if(!valide) {
+		if (!valide) {
 			throw new BllException(sb.toString());
 		}
 		return true;

@@ -46,8 +46,44 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			+ "			where a.no_article = ?\n"
 			+ "			group by e.no_article,description,nom_article,r.rue,pseudo,r.ville,r.code_postal,prix_initial,libelle,date_enchere,\n"
 			+ "			date_fin_encheres,date_debut_encheres;";
+	private final static String SELECT_BY_ID_USER = " SELECT * FROM ARTICLES_VENDUS INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_utilisateur = RETRAITS.no_article WHERE no_utilisateur = 1;";
 
+	public List<ArticleVendu> selectArticleByUser() throws DalException {
+		Connection cnx = null;
+		Statement stmt = null;
+		List<ArticleVendu> articles = new ArrayList<>();
 
+		try {
+			cnx = ConnectionProvider.getConnection();
+			stmt = cnx.createStatement();
+			ResultSet rs = stmt.executeQuery(SELECT_BY_ID_USER);
+
+			while (rs.next()) {
+				ArticleVendu article = new ArticleVendu();
+				article.setNoArticle(rs.getInt("no_article"));
+				article.setNomArticle(rs.getString("nom_article"));
+				article.setPrixInitial(rs.getInt("prix_initial"));
+				article.setDescription(rs.getString("description"));
+				article.setPrixVente(rs.getInt("prix_vente"));
+				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setUtilisateurPseudo(rs.getString("pseudo"));
+				articles.add(article);
+			}
+		} catch (SQLException e) {
+			throw new DalException("Probleme sur la couche dal", e);
+		} finally {
+			try {
+				stmt.close();
+				cnx.close();
+			} catch (SQLException e) {
+				throw new DalException("Probleme de d�connexion", e);
+			}
+		}
+		return articles;
+	}
+
+	
 	@Override
 	public List<ArticleVendu> selectAll() throws DalException {
 		Connection cnx = null;

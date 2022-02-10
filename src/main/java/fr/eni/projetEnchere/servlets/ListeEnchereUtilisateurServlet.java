@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import fr.eni.projetEnchere.bll.ArticleVenduManager;
-
+import fr.eni.projetEnchere.bll.RetraitManager;
 import fr.eni.projetEnchere.bll.UtilisateurManager;
 import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.ArticleVendu;
-
+import fr.eni.projetEnchere.bo.Retrait;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.Exception.DalException;
 
@@ -46,18 +46,25 @@ public class ListeEnchereUtilisateurServlet extends HttpServlet {
 		try {
 			
 			// Récupération des paramètres
+			
+			// UtilisateurManager um = UtilisateurManager.getInstance();
+			ArticleVenduManager am = ArticleVenduManager.getInstance();
+			// RetraitManager rm = RetraitManager.getInstanceRetrait();
+			
+			
+			am.selectArticleByUser();
+			
+			
+			
 			Utilisateur utilisateurCo = (Utilisateur) request.getSession().getAttribute("user");
-			int id = utilisateurCo.getNoUtilisateur();
-		
 			
+			request.setAttribute("utilisateur", um);
+			request.setAttribute("article", articles);
 			
-			ArticleVendu article = ArticleVenduManager.getInstance().rechercherParId(id);
-			request.setAttribute("utilisateur", utilisateurCo);
-			request.setAttribute("article", article);
 			request.getRequestDispatcher("/accesConnecte/ListeEnchereUtilisateur.jsp").forward(request, response);
 			return;
 			
-		} catch (DalException | BllException | NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			response.sendRedirect("/ProjetEnchere/AccueilConnecter");
 		}
