@@ -16,8 +16,7 @@ public class CategorieDAOImpl implements CategorieDAO {
 
 	private final static String LISTER = "SELECT * FROM CATEGORIES;";
 	private final static String INSERER = "INSERT INTO CATEGORIES (libelle) values (?);";
-	// private final static String SUPPRIMER = "delete from CATEGORIES where libelle
-	// =?;";
+	
 	// private final static String MODIFIER = "update CATEGORIES set libelle = ?";
 	
 	private final static String SELECTBYID = "select no_categorie, libelle from CATEGORIES where no_categorie = ?;";

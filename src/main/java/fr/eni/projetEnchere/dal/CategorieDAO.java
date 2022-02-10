@@ -11,6 +11,8 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 
 public interface CategorieDAO {
 
+	
+	// Methode CategorieDAOImpl
 	public List<Categorie> lister() throws DalException; 
 	public Categorie selectParId(int noCategorie) throws DalException;
 	
