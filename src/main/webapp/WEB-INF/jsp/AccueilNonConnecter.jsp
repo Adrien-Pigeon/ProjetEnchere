@@ -94,7 +94,7 @@
 
 	
 		<div class="card" style="width: 20rem;margin:4%;display:inline-block;height:20rem;">
-			<img class="card-img-top" src=""
+			<img class="card-img-top" src="./asset/img/images.jpg"
 				alt="" height="150rem">
 			<div class="card-body">
 				<p class="card-text">
