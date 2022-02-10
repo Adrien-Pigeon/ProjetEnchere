@@ -334,10 +334,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 						throw new DalException("pas d'enchère sur cet article");
 					}
 				}
-					
-				
-				
-				article.setEncheres(enchere);
+					article.setEncheres(enchere);
 				
 			}
 		} catch (SQLException e) {
