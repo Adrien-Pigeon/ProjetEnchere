@@ -100,7 +100,7 @@ public class LoginServlet extends HttpServlet {
 			
 		} else {
 
-			System.out.println("Pas Connecter");
+			
 
 			request.setAttribute("error", "azerty");
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);

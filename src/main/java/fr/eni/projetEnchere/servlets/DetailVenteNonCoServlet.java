@@ -21,14 +21,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 public class DetailVenteNonCoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DetailVenteNonCoServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -13,6 +13,6 @@ public class BllException extends Exception{
 	}
 	@Override
 	public String getMessage() {
-		return "couche Bll " + super.getMessage() ;
+		return  super.getMessage() ;
 	}
 }

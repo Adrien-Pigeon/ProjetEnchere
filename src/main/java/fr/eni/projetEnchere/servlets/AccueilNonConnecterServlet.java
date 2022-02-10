@@ -35,7 +35,7 @@ public class AccueilNonConnecterServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session != null) {
 			session.invalidate();
-			System.out.println("Déconnection");
+			
 		}
 
 		List<ArticleVendu> listeArticles = null;
@@ -55,7 +55,7 @@ public class AccueilNonConnecterServlet extends HttpServlet {
 			request.setAttribute("categories", categories);
 
 		} catch (DalException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -63,8 +63,7 @@ public class AccueilNonConnecterServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request, response);
 	}
 
-	// request.getRequestDispatcher("/WEB-INF/jsp/AccueilNonConnecter.jsp").forward(request,
-	// response);
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

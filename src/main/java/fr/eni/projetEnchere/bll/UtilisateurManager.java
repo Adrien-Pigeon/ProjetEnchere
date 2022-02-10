@@ -13,7 +13,7 @@ public class UtilisateurManager {
 	private UtilisateurManager() {
 
 	}
-
+    //Singleton, methode assurant la création d'une seule instance de l'objet
 	public static UtilisateurManager getInstance() {
 		if (instance == null) {
 			instance = new UtilisateurManager();
@@ -25,17 +25,18 @@ public class UtilisateurManager {
 		UtilisateurDAO ud = DAOFactory.getUtilisateurDAO();
 
 		try {
-//verifier l'objet utilisateur
+     //verifier l'objet utilisateur
 			if (verifierUser(user)) {
 				// ajouter l'article à la base de donnée
 				ud.insert(user);
 			} else {
-				// throw new BllException("Probleme sur la methode de verification");
+				 throw new BllException("Probleme sur la methode de verification");
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			// throw new BllException("Probleme sur la methode addUser()");
+			
+			//recuperation du message d'erreur de la methode de verification
+			 throw new BllException(e.getMessage());
 		}
 	}
 
@@ -46,7 +47,7 @@ public class UtilisateurManager {
 		try {
 			user = userDao.selectByPseudo(pseudo);
 		} catch (DalException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -60,7 +61,9 @@ public class UtilisateurManager {
 		userDao.update(user,pseudo);
 
 	}
-
+/*
+ * Methode permettant s'assurer que les parametres rentrés par l'utilisateur sont conformes au cahier des charges
+ */
 	public static Boolean verifierUser(Utilisateur u) throws BllException {
 		boolean valide = true;
 		StringBuffer sb = new StringBuffer();
@@ -68,24 +71,24 @@ public class UtilisateurManager {
 			throw new BllException("Utilisateur null");
 		}
 
-		if (u.getPseudo() == null || u.getPseudo().trim().length() == 0) {
+		if (u.getPseudo() == null || u.getPseudo().isBlank()) {
 			sb.append("Le pseudo est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getNom() == null || u.getNom().trim().length() == 0) {
+		if (u.getNom() == null || u.getNom().isBlank()) {
 			sb.append("Le nom est obligatoire.\n");
 			valide = false;
 		}
 
-		if (u.getVille() == null || u.getVille().trim().length() == 0) {
+		if (u.getVille() == null || u.getVille().isBlank()) {
 			sb.append("La ville est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getRue() == null || u.getRue().trim().length() == 0) {
+		if (u.getRue() == null || u.getRue().trim().isBlank()) {
 			sb.append("La rue est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getCodePostal() == null || u.getCodePostal().trim().length() == 0) {
+		if (u.getCodePostal() == null || u.getCodePostal().isBlank()) {
 			sb.append("Le code postal est obligatoire.\n");
 			valide = false;
 		}
@@ -93,18 +96,18 @@ public class UtilisateurManager {
             Float f = Float.parseFloat(u.getCodePostal());
         } catch (NumberFormatException e) {
             valide  = false;
-            sb.append("Le code Postal ne doit comporter que des chiffres");
+            sb.append("Le code Postal ne doit comporter que des chiffres\n");
         }
 
-		if (u.getPrenom() == null || u.getPrenom().trim().length() == 0) {
+		if (u.getPrenom() == null || u.getPrenom().isBlank()) {
 			sb.append("Le prenom est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getEmail() == null || u.getEmail().trim().length() == 0) {
+		if (u.getEmail() == null || u.getEmail().isBlank()) {
 			sb.append("La rue est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getMotDePasse() == null || u.getMotDePasse().trim().length() == 0) {
+		if (u.getMotDePasse() == null || u.getMotDePasse().isBlank()) {
 			sb.append("Le mot de passe est obligatoire.\n");
 			valide = false;
 		}
@@ -113,13 +116,13 @@ public class UtilisateurManager {
 		}
 		else if(u.getTelephone() != null) { 
 			if(u.getTelephone().trim().length() != 10) {
-			sb.append("Le numero de telephone doit comporter 10 chiffres");
+			sb.append("Le numero de telephone doit comporter 10 chiffres\n");
         	valide  = false;
 			}  if(u.getTelephone() != null) {
 				try {
 		            Float f = Float.parseFloat(u.getTelephone());
 		        } catch (NumberFormatException e) {
-		        	sb.append("Le numero de telephone ne doit comporter que des chiffres");
+		        	sb.append("Le numero de telephone ne doit comporter que des chiffres\n");
 		        	valide  = false;
 		            
 		       }    	

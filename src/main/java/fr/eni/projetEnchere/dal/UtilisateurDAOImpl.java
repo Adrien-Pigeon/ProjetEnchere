@@ -28,7 +28,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		Connection cnx = null;
 		PreparedStatement stmt = null;
 		try {
+			//Connection à la base de donnée
 			cnx = ConnectionProvider.getConnection();
+			//Utilisation de l'interface PreparedStatement pour executer une requête avec des paramètres
 			stmt = cnx.prepareStatement(INSERT_USER, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, user.getPrenom());
 			stmt.setString(2, user.getNom());

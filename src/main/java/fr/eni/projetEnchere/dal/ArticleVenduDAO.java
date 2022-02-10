@@ -16,4 +16,5 @@ public interface ArticleVenduDAO {
 	public ArticleVendu selectById(int id) throws DalException;
 	public ArticleVendu detailVente(int noArticle) throws DalException;
 	public List<ArticleVendu> selectArticleByUser(int id)throws DalException;
+	public List<ArticleVendu> selectByDate() throws DalException;
 }

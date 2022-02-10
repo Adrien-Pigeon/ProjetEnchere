@@ -24,6 +24,11 @@ public class ArticleVenduManager {
 		}
 		return instance;
 	}
+	public List<ArticleVendu> enchereEnCours() throws DalException{
+		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
+		return dao.selectByDate();
+		
+	}
 
 	public List<ArticleVendu> selectArticleByUser(int id) throws DalException, BllException {
 

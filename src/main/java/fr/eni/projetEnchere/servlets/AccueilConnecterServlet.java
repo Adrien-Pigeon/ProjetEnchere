@@ -51,16 +51,15 @@ public class AccueilConnecterServlet extends HttpServlet {
 
 			
 		} catch (DalException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		if (request.getSession() != null) {
 
 			request.getSession();
-			// request.getRequestDispatcher("/AccueilConnecter?get=1").forward(request,
-			// response);
+			
 			request.getRequestDispatcher("/accesConnecte/AccueilConnecter.jsp").forward(request, response);
-			System.out.println("toujours connectéééééé");
+			
 
 		} else {
 

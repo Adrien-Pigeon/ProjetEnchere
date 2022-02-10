@@ -106,6 +106,7 @@
 
 		</div>
 	</form>
+	<form action="<%=request.getContextPath()%>/Choix" method="post">
 	<div >
 	<div class="" style = "display:inline-block;margin-right:15%;" >
 		<input class="buy" onclick="myFunction()" type="radio" id="achat"
@@ -114,7 +115,7 @@
 		<div style ="margin-left:%;" >
 			<input type="checkbox" id="achats" name="check" checked> <label
 				for="scales">Enchères ouvertes</label><br> <input
-				type="checkbox" id="encours" name="check"> <label
+				type="checkbox" id="encours" name="enCours"> <label
 				for="horns">Mes enchères en cours</label><br> <input
 				type="checkbox" id="remporter" name="check"> <label
 				for="horns">Mes enchères remporter</label>
@@ -131,9 +132,11 @@
 				type="checkbox" id="debute" name="check"> <label for="horns">Ventes
 				non débutées</label><br> <input type="checkbox" id="termine"
 				name="check"> <label for="horns">Ventes terminées</label>
-		</div>
+			
+		
 	</div>
 	</div>
+	</form>
 	<div style="text-align:center;">
 	<c:forEach var="item" items="${listeArticles }">
 

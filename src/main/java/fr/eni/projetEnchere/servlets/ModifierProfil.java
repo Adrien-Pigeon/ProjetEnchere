@@ -49,7 +49,7 @@ public class ModifierProfil extends HttpServlet {
 			request.setAttribute("utilisateur", utilisateurCo);
 			// Fermer la session
 			request.getSession().invalidate();
-			System.out.println("déconnecté");
+			
 			request.getRequestDispatcher("/").forward(request, response);
 		}
 

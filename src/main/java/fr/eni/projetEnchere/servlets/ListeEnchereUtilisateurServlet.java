@@ -90,7 +90,7 @@ public class ListeEnchereUtilisateurServlet extends HttpServlet {
 		try {
 			utilisateurCo = um.SelectUser(id);
 		} catch (DalException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 

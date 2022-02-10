@@ -35,6 +35,8 @@ public class CreerUnCompteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//Recuperation des renseignements de l'utilisateur
 		String pseudo = request.getParameter("pseudo").trim();
 		String prenom = request.getParameter("prenom").trim().toLowerCase();
 		String nom = request.getParameter("nom").trim().toLowerCase();
@@ -47,8 +49,10 @@ public class CreerUnCompteServlet extends HttpServlet {
 		String telephone = request.getParameter("telephone").trim();
 		String passwordConf = request.getParameter("password_conf").trim();
 
+		//Creation d'une instance de type Utilisateur
 		Utilisateur utilisateur = new Utilisateur();
-
+		
+        //hydratation des attributs de l'objet par le biais des accesseurs
 		utilisateur.setPseudo(pseudo);
 		utilisateur.setNom(nom);
 		utilisateur.setPrenom(prenom);
@@ -61,20 +65,26 @@ public class CreerUnCompteServlet extends HttpServlet {
 		utilisateur.setCredit(150);
 		utilisateur.setAdministrateur(false);
 
+		//Creation d'une instance du manager pour appeler les méthodes de la couche Bll
 		UtilisateurManager um = UtilisateurManager.getInstance();
+		//appel de la methode si les mots de passe sont identiques
 		if (password.equals(passwordConf)) {
 			
 			try {
-				um.addUser(utilisateur);				
+				um.addUser(utilisateur);
+				//retour vers l'accueil
 				this.getServletContext().getRequestDispatcher("/").forward(request, response);
 			} catch (BllException e) {
-				System.err.println(e.getMessage());
+				String erreur =e.getMessage()+ ", reessayer.";
+				request.setAttribute("erreur", erreur);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
 			}
+			//Dans le cas contraire un message d'erreur est envoyé
 		}else {
 			
-			String erreur = "les mots de passent ne sont pas identiques";
+			String erreur = "Veuillez réessayer,les mots de passent ne sont pas identiques";
 			request.setAttribute("erreur", erreur);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/erreur.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
 		}
 		
 		
