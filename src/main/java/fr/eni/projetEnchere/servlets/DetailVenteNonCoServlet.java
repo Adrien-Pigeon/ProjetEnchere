@@ -43,16 +43,16 @@ public class DetailVenteNonCoServlet extends HttpServlet {
 				
 					
 					
-					ArticleVendu article = ArticleVenduManager.getInstance().rechercherParId(numero_article);
+					ArticleVendu article = ArticleVenduManager.getInstance().selectDetailVente(numero_article);
 					
-					System.out.println(article.getDescription());
+				
 					request.setAttribute("article", article);
 					
-					System.out.println(article.getDescription());
+					
 					request.getRequestDispatcher("/WEB-INF/jsp/DetailVenteNonCo.jsp").forward(request, response);
 					return;
 					
-				} catch (DalException | BllException | NumberFormatException e) {
+				} catch (DalException | NumberFormatException e) {
 					e.printStackTrace();
 					response.sendRedirect("/ProjetEnchere/");
 				}

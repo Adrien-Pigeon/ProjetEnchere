@@ -47,11 +47,11 @@
 		
 							</div>
 							<div class="col-md-12">
-								<label for="name">Categorie : ${article.categorie }</label>
+								<label for="name">Categorie : ${article.categorie.libelle  }</label>
 						     
 							</div>
 							<div class="col-md-12">
-								<label for="name">Meilleure Offre :  </label>
+								<label for="name">Meilleure Offre :${article.encheres.montantEnchere }  </label>
 
 							</div>
 							<div class="col-md-12">
@@ -68,13 +68,13 @@
 							</div>
 							<div class="col-md-12">
 								<fieldset>
-								<label for="name">Retrait : ${utilisateur.rue}, ${utilisateur.ville} , ${utilisateur.codePostal}<br>
+								<label for="name">Retrait : ${article.lieuRetrait.rue}, ${article.lieuRetrait.ville} , ${article.lieuRetrait.codePostal}<br>
 								</label>
 								</fieldset>
 							</div>
 						
 							<div class="col-md-12">
-								<label for="name">Vendeur : ${utilisateur.pseudo }</label>
+								<label for="name">Vendeur :${article.utilisateurPseudo }</label>
 							</div>
 							
 							
