@@ -37,14 +37,14 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	
 	private final static String SELECT_BY_ID = "select * from ARTICLES_VENDUS as av INNER JOIN UTILISATEURS as u "
 			+ "ON av.no_utilisateur = u.no_utilisateur where av.no_article = ?;";
-	private static final String SELECT_VENTE = "SELECT pseudo, e.no_article,description,nom_article,date_enchere,date_enchere,date_fin_encheres,date_debut_encheres\n"
+	private static final String SELECT_VENTE = "	SELECT pseudo, a.no_article,description,date_enchere,nom_article,date_enchere,date_fin_encheres,date_debut_encheres\n"
 			+ "			,r.rue,r.ville,r.code_postal,prix_initial,libelle,MAX(montant_enchere ) as montant_enchere from ARTICLES_VENDUS as a \n"
-			+ "			left join ENCHERES  as e   on(a.no_article = e.no_article)\n"
-			+ "			 left join UTILISATEURS as u on(a.no_utilisateur = u.no_utilisateur)\n"
+			+ "			 left join ENCHERES  as e   on(a.no_article = e.no_article)\n"
+			+ "			  left join UTILISATEURS as u on(a.no_utilisateur = u.no_utilisateur)\n"
 			+ "			 join CATEGORIES as c on (a.no_categorie = c.no_categorie) \n"
-			+ "			inner join RETRAITS as r on (a.no_article = r.no_article) \n"
+			+ "			left join RETRAITS as r on (a.no_article = r.no_article) \n"
 			+ "			where a.no_article = ?\n"
-			+ "			group by e.no_article,description,nom_article,r.rue,pseudo,r.ville,r.code_postal,prix_initial,libelle,date_enchere,\n"
+			+ "			group by a.no_article,description,nom_article,r.rue,pseudo,r.ville,r.code_postal,prix_initial,libelle,date_enchere,\n"
 			+ "			date_fin_encheres,date_debut_encheres;";
 	private final static String SELECT_BY_ID_USER = " SELECT * FROM ARTICLES_VENDUS INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_utilisateur = RETRAITS.no_article WHERE no_utilisateur = 1;";
 
