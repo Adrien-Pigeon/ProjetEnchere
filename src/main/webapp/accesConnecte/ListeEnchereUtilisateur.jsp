@@ -40,61 +40,49 @@
 
 							<div class="row mt-2">
 								<div class="col-md-12">
-									<label for="name">Article:</label> <input type="text" id="name"
-										name="nom" value="${articles.nomArticle }">
+									<label for="name">Article: ${article.description}</label> 
 								</div>
 								<div class="col-md-12">
-									<label for="name">Description:</label> <input type="text"
-										id="name" name="description" value="${articles.description }">
+									<label for="name">Description: ${article.description}</label> 
 
 								</div>
 								<div class="col-md-12">
-									<label for="name">Categorie:<select id="scategorie"
-										name="scategorie" value="${articles.categorie.libelle }">
-
-											
-									</select></label>
+									<label for="name">Categorie: ${article.categorie} </label>
 
 
 								</div>
 								<div class="col-md-12">
-									<label for="file">Photo de l'article</label> <input type="file"
-										id="file" name="file" multiple>
+									<label for="file">Photo de l'article</label> 
 								</div>
 								<div class="col-md-12">
-									<label for="msg">Mise à prix:</label> <input type="text"
-										id="msg" name="prixInitial" value="${articles.prixInitial }">
+									<label for="msg">Mise à prix: ${article.prixInitial}</label>
 								</div>
 
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-12">
-									<label for="name">Début de l'enchère:</label> <input
-										type="date" id="dateDebut" name="dateDebut"
-										value="${articles.dateDebutEncheres }">
+									<label for="name">Début de l'enchère:  ${article.date_debut_enchere}</label> 
 								</div>
 								<div class="col-md-12">
-									<label for="name">Fin de l'enchère:</label> <input type="date"
-										id="dateFin" name="dateFin"
-										value="${articles.dateFinEncheres }">
+									<label for="name">Fin de l'enchère: ${article.date_fin_enchere}</label> 
 								</div>
 								<div class="col-md-12">
-									<legend>Retrait</legend>
+									<div
+							class="d-flex justify-content-between align-items-center ">
+							<h5 style="text-align: center;">Retrait</h5>
+						</div>
 								</div>
 								<div class="col-md-12">
-									<label for="name">Rue:</label> <input type="text" id="name"
-										name="rue" value="${um.rue }">
+									<label for="name">Rue:  ${article.rue}</label> 
 								</div>
 								<div class="col-md-12">
-									<label for="name">Code postal:</label> <input type="text"
-										id="name" name="codePostal" value="${um.codePostal }">
+									<label for="name">Code postal :  ${article.codePostal}</label>
 								</div>
 								<div class="col-md-12">
-									<label for="name">Ville:</label> <input type="text" id="name"
-										name="ville" value="${um.ville }">
+									<label for="name">Ville:  ${article.ville}</label> 
 								</div>
 								<div class="col-md-12">
-									<label for="name">Ma Proposition :</label>
+									<label for="name">Ma Proposition :  ${article.prixInitial}</label>
 								</div>
 
 							</div>

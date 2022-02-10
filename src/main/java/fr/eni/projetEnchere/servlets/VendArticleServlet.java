@@ -104,8 +104,10 @@ public class VendArticleServlet extends HttpServlet {
 		//Attributs articles
 		String nomArticle = request.getParameter("nom").trim().toLowerCase();
 		String description = request.getParameter("description").trim().toLowerCase();
+	
 		int noCategorie = Integer.parseInt(request.getParameter("scategorie"));
 		int prix = Integer.parseInt(request.getParameter("prixInitial"));
+		
 		String debutVente = request.getParameter("dateDebut");
 		String finVente = request.getParameter("dateFin");
 		

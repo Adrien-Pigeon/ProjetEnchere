@@ -25,10 +25,10 @@ public class ArticleVenduManager {
 		return instance;
 	}
 
-	public List<ArticleVendu> selectArticleByUser() throws DalException, BllException {
+	public List<ArticleVendu> selectArticleByUser(int id) throws DalException, BllException {
 
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
-		return dao.selectArticleByUser();
+		return dao.selectArticleByUser(id);
 	}
 
 	public void ajouterArticle(ArticleVendu article) throws DalException, BllException {

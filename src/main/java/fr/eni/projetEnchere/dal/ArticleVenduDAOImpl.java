@@ -48,15 +48,19 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			+ "			date_fin_encheres,date_debut_encheres;";
 	private final static String SELECT_BY_ID_USER = " SELECT * FROM ARTICLES_VENDUS INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_utilisateur = RETRAITS.no_article WHERE no_utilisateur = 1;";
 
-	public List<ArticleVendu> selectArticleByUser() throws DalException {
+	public List<ArticleVendu> selectArticleByUser(int id) throws DalException {
 		Connection cnx = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		List<ArticleVendu> articles = new ArrayList<>();
 
 		try {
 			cnx = ConnectionProvider.getConnection();
-			stmt = cnx.createStatement();
-			ResultSet rs = stmt.executeQuery(SELECT_BY_ID_USER);
+			pstmt = cnx.prepareStatement(SELECT_BY_ID_USER);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+		
+			
 
 			while (rs.next()) {
 				ArticleVendu article = new ArticleVendu();
@@ -67,20 +71,21 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setPrixVente(rs.getInt("prix_vente"));
 				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
-				article.setUtilisateurPseudo(rs.getString("pseudo"));
+				
 				articles.add(article);
 			}
+			return articles;
 		} catch (SQLException e) {
 			throw new DalException("Probleme sur la couche dal", e);
 		} finally {
 			try {
-				stmt.close();
+				pstmt.close();
 				cnx.close();
 			} catch (SQLException e) {
 				throw new DalException("Probleme de d�connexion", e);
 			}
 		}
-		return articles;
+		
 	}
 
 	
