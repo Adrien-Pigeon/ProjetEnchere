@@ -132,7 +132,7 @@
 							</div>
 
 							<div class="col-md-6">
-								<input type="text" id="name" name="rue"
+								<input type="text" id="name" name="codePostal"
 									value="${utilisateur.codePostal }" required>
 
 							</div>
@@ -144,7 +144,7 @@
 							</div>
 
 							<div class="col-md-6">
-								<input type="text" id="name" name="codePostal"
+								<input type="text" id="name" name="ville"
 									value="${utilisateur.ville }" required>
 
 							</div>

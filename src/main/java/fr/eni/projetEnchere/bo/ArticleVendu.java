@@ -13,7 +13,8 @@ public class ArticleVendu {
 	private String utilisateurPseudo;
 	private Categorie categorie;
 	private Utilisateur utilisateur;
-	
+	private Retrait lieuRetrait;
+	private Enchere encheres;
 	
 	public ArticleVendu() {
 		
@@ -33,6 +34,21 @@ public class ArticleVendu {
 		this.setCategorie(categorie);
 		this.setUtilisateur(utilisateur);
 	}
+
+
+	
+
+	public Enchere getEncheres() {
+		return encheres;
+	}
+
+
+
+
+	public void setEncheres(Enchere encheres) {
+		this.encheres = encheres;
+	}
+
 
 
 
@@ -128,6 +144,20 @@ public class ArticleVendu {
 
 	public void setUtilisateurPseudo(String utilisateurPseudo) {
 		this.utilisateurPseudo = utilisateurPseudo;
+	}
+
+	
+
+
+	public Retrait getLieuRetrait() {
+		return lieuRetrait;
+	}
+
+
+
+
+	public void setLieuRetrait(Retrait lieuRetrait) {
+		this.lieuRetrait = lieuRetrait;
 	}
 
 

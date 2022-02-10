@@ -11,7 +11,7 @@ import fr.eni.projetEnchere.dal.Exception.DalException;
 public class RetraitDAOImpl implements RetraitDAO {
 
 	private static final String INSERT_RETRAIT = "INSERT INTO RETRAITS(ville,rue,code_postal,no_article) VALUES (?,?,?,?)";
-	private static final String SELECT_RETRAIT = "SELECT ville,rue,code_postal FROM RETRAIT WHERE no_article = ?";
+	private static final String SELECT_RETRAIT = "SELECT ville,rue,code_postal FROM RETRAITS WHERE no_article = ?";
 
 	public void insertRetrait(Retrait retrait) throws DalException {
 

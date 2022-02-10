@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projetEnchere.bo.ArticleVendu;
+import fr.eni.projetEnchere.bo.Categorie;
+import fr.eni.projetEnchere.bo.Enchere;
+import fr.eni.projetEnchere.bo.Retrait;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.Exception.DalException;
 
@@ -34,6 +37,13 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	
 	private final static String SELECT_BY_ID = "select * from ARTICLES_VENDUS as av INNER JOIN UTILISATEURS as u "
 			+ "ON av.no_utilisateur = u.no_utilisateur where av.no_article = ?;";
+	private static final String SELECT_VENTE = "SELECT pseudo, e.no_article,description,nom_article,date_enchere,date_fin_encheres,date_debut_encheres,rue,ville,code_postal,prix_initial,libelle,MAX(montant_enchere ) as montant_enchere from ARTICLES_VENDUS as a \n"
+			+ "inner join ENCHERES  as e   on(a.no_article = e.no_article)\n"
+			+"inner join UTILISATEURS as u on(a.no_utilisateur = u.utilisateur)"
+			+ "inner join CATEGORIES as c on (a.no_categorie = c.no_categorie) \n"
+			+ "inner join RETRAITS as r on (e.no_article = r.no_article) \n"
+			+ "where e.no_article = ?\n"
+			+ "group by e.no_article,description,nom_article,rue,pseudo,ville,code_postal,prix_initial,libelle,date_enchere,date_fin_encheres,date_debut_encheres;";
 
 
 	@Override
@@ -258,7 +268,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 				article.setPrixInitial(rs.getInt("prix_initial"));
 				article.setPrixVente(rs.getInt("prix_vente"));
-				// article.getUtilisateur().setPseudo("pseudo");
+				article.setUtilisateurPseudo(rs.getString("pseudo"));
 				return article;
 			}
 		} catch (SQLException e) {
@@ -274,4 +284,53 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 		return null;
 	}
 
+	public ArticleVendu detailVente(int id) throws DalException {
+
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+
+		try {
+			cnx = ConnectionProvider.getConnection();
+			pstmt = cnx.prepareStatement(SELECT_VENTE);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				ArticleVendu article = new ArticleVendu();
+				Retrait lieuRetrait = new Retrait();
+				Categorie categorie =new Categorie();
+				Enchere enchere = new Enchere();
+				Utilisateur utilisateur = new Utilisateur();
+				
+				article.setNoArticle(rs.getInt("no_article"));
+				article.setNomArticle(rs.getString("nom_article"));
+				article.setDescription(rs.getString("description"));
+				article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				article.setDateFinEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+				article.setPrixInitial(rs.getInt("prix_initial"));
+				lieuRetrait.setRue(rs.getString("rue"));
+				lieuRetrait.setVille(rs.getString("ville"));
+				lieuRetrait.setCodePostal(rs.getString("code_postal"));
+				article.setLieuRetrait(lieuRetrait);
+				categorie.setLibelle(rs.getString("libelle"));
+				article.setCategorie(categorie);
+				enchere.setDateEnchere(rs.getDate("date_enchere").toLocalDate());
+				enchere.setMontantEnchere(rs.getInt("montant_enchere "));
+				article.setUtilisateurPseudo("pseudo");
+				article.setEncheres(enchere);
+				return article;
+			}
+		} catch (SQLException e) {
+			throw new DalException("Probleme sur la couche dal", e);
+		} finally {
+			try {
+				pstmt.close();
+				cnx.close();
+			} catch (SQLException e) {
+				throw new DalException("Probleme de d�connexion", e);
+			}
+		}
+		return null;
+	}
 }

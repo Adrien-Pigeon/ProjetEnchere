@@ -14,4 +14,5 @@ public interface ArticleVenduDAO {
 	public void insertArticle(ArticleVendu article) throws DalException;
 	public List<ArticleVendu> selectByFiltres(String motRech,int noCategorie) throws DalException;
 	public ArticleVendu selectById(int id) throws DalException;
+	public ArticleVendu detailVente(int noArticle) throws DalException;
 }

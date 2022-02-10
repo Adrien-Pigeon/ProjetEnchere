@@ -54,6 +54,10 @@ public class ArticleVenduManager {
 		
 		
 	}
+	public ArticleVendu selectDetailVente(int id) throws DalException {
+		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();
+		return dao.detailVente(id);
+	}
 	
 	public List<ArticleVendu> rechercheDouble(String motRech,int noCategorie) throws DalException, BllException {
 		ArticleVenduDAO dao = DAOFactory.getArticleVenduDAO();

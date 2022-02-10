@@ -33,9 +33,10 @@ public class RetraitManager {
 			retraitDao.insertRetrait(retrait);
 		
 	}
-	public Retrait choixRetrait(int noArticle) throws BllException{
+	public Retrait choixRetrait(int noArticle) throws BllException, DalException{
 		RetraitDAO retraitDao = DAOFactory.getRetraitDAO();
-		Retrait  retrait = null;
+		
+		Retrait  retrait = retraitDao.SelectByNoArticle(noArticle);
 			//selectionner un retraitvdans la base de donn�e
 			try {
 				retrait = retraitDao.SelectByNoArticle(noArticle);
