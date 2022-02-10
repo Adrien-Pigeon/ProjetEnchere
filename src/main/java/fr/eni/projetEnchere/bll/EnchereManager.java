@@ -34,4 +34,20 @@ public class EnchereManager {
 		EnchereDAO dao = DAOFactory.getEnchereDAO();
 		dao.deleteEnchere(enchere);
 	}
+	public void enchereOuverte(Enchere enchere) throws DalException {
+		EnchereDAO dao = DAOFactory.getEnchereDAO();
+		dao.deleteEnchere(enchere);
+	}
+	public void enchereEnCours(Enchere enchere) throws DalException {
+		EnchereDAO dao = DAOFactory.getEnchereDAO();
+		dao.deleteEnchere(enchere);
+	}
+	public void remporterEnchere(Enchere enchere) throws DalException {
+		EnchereDAO dao = DAOFactory.getEnchereDAO();
+		dao.deleteEnchere(enchere);
+	}
+	
+	
+	
+	
 }
