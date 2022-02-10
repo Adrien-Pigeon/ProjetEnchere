@@ -93,7 +93,7 @@
 
 			
 					%>
-					<div class="row mt-2 text-center">
+					
 						<div class="col-md-6 text-center">
 							<a href="<%=request.getContextPath()%>/ModifierProfil">
 								<button
@@ -102,7 +102,7 @@
 							</a>
 						</div>
 					<%} %>
-					</div>
+					
 						<div class="col-md-6 text-center">
 							<a href="<%=request.getContextPath()%>/AccueilConnecter">
 								<button
