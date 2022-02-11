@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import fr.eni.projetEnchere.bll.UtilisateurManager;
 import fr.eni.projetEnchere.bll.Exception.BllException;
 import fr.eni.projetEnchere.bo.Utilisateur;
+import fr.eni.projetEnchere.dal.Exception.DalException;
 import fr.eni.projetEnchere.helpers.HashPassword;
 
 /**
@@ -19,7 +20,6 @@ import fr.eni.projetEnchere.helpers.HashPassword;
 public class CreerUnCompteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -27,6 +27,7 @@ public class CreerUnCompteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
+		
 	}
 
 	/**
@@ -35,24 +36,23 @@ public class CreerUnCompteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		//Recuperation des renseignements de l'utilisateur
-		String pseudo = request.getParameter("pseudo").trim();
+		// Recuperation des renseignements de l'utilisateur
+		String pseudo = request.getParameter("pseudo");
 		String prenom = request.getParameter("prenom").trim().toLowerCase();
-		String nom = request.getParameter("nom").trim().toLowerCase();
-		//String password=HashPassword.hashpassword(request.getParameter("password").trim());
-		String password = request.getParameter("password").trim();
-		String email = request.getParameter("email").trim().toLowerCase();
-		String ville = request.getParameter("ville").trim().toLowerCase();
-		String rue = request.getParameter("rue").trim().toLowerCase();
-		String codePostal = request.getParameter("codePostal").trim();
-		String telephone = request.getParameter("telephone").trim();
-		String passwordConf = request.getParameter("password_conf").trim();
+		String nom = request.getParameter("nom").toLowerCase();
+		// String password=HashPassword.hashpassword(request.getParameter("password").trim());
+		String password = request.getParameter("password");
+		String email = request.getParameter("email").toLowerCase();
+		String ville = request.getParameter("ville").toLowerCase();
+		String rue = request.getParameter("rue").toLowerCase();
+		String codePostal = request.getParameter("codePostal");
+		String telephone = request.getParameter("telephone");
+		String passwordConf = request.getParameter("password_conf");
 
-		//Creation d'une instance de type Utilisateur
+		// Creation d'une instance de type Utilisateur
 		Utilisateur utilisateur = new Utilisateur();
-		
-        //hydratation des attributs de l'objet par le biais des accesseurs
+
+		// hydratation des attributs de l'objet par le biais des accesseurs
 		utilisateur.setPseudo(pseudo);
 		utilisateur.setNom(nom);
 		utilisateur.setPrenom(prenom);
@@ -65,29 +65,33 @@ public class CreerUnCompteServlet extends HttpServlet {
 		utilisateur.setCredit(150);
 		utilisateur.setAdministrateur(false);
 
-		//Creation d'une instance du manager pour appeler les méthodes de la couche Bll
+		// Creation d'une instance du manager pour appeler les méthodes de la couche Bll
 		UtilisateurManager um = UtilisateurManager.getInstance();
-		//appel de la methode si les mots de passe sont identiques
+		// appel de la methode si les mots de passe sont identiques
 		if (password.equals(passwordConf)) {
-			
+
 			try {
 				um.addUser(utilisateur);
-				//retour vers l'accueil
+				// retour vers l'accueil
 				this.getServletContext().getRequestDispatcher("/").forward(request, response);
 			} catch (BllException e) {
-				String erreur =e.getMessage()+ ", reessayer.";
+				String erreur = e.getMessage() + ", reessayer.";
 				request.setAttribute("erreur", erreur);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
 			}
-			//Dans le cas contraire un message d'erreur est envoyé
-		}else {
-			
+			// Dans le cas contraire un message d'erreur est envoyé
+			catch (DalException e) {
+				String erreur = "Veuillez réessayer,ce pseudo est déjà utilisé";
+				request.setAttribute("erreur", erreur);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
+			}
+		} else {
+
 			String erreur = "Veuillez réessayer,les mots de passent ne sont pas identiques";
 			request.setAttribute("erreur", erreur);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request, response);
 		}
-		
-		
+
 	}
 
 }

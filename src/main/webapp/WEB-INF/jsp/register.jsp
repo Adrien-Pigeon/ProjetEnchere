@@ -29,19 +29,19 @@
 				<div class="row mt-2">
 					<div class="col-md-6">
 						<label class="labels">Pseudo</label><input type="text"
-							class="form-control" name="pseudo" value="${utilisateur.pseudo}">
+							class="form-control" name="pseudo" value="${utilisateur.pseudo}" required>
 					</div>
 					<div class="col-md-6">
 						<label class="labels">Nom</label><input type="text"
-							class="form-control" name="nom" value="${utilisateur.nom}">
+							class="form-control" name="nom" value="${utilisateur.nom}" required>
 					</div>
 					<div class="col-md-6">
 						<label class="labels">Prénom</label><input type="text"
-							class="form-control" name="prenom" value="${utilisateur.prenom}">
+							class="form-control" name="prenom" value="${utilisateur.prenom}" required>
 					</div>
 					<div class="col-md-12">
 						<label class="labels">Email/Login</label><input type="text"
-							class="form-control" name="email" value="${utilisateur.email}">
+							class="form-control" name="email" value="${utilisateur.email}" required>
 					</div>
 
 
@@ -56,16 +56,16 @@
 					</div>
 					<div class="col-md-12">
 						<label class="labels">Address </label><input type="text"
-							class="form-control" name="rue" value="${utilisateur.rue}">
+							class="form-control" name="rue" value="${utilisateur.rue}" required>
 					</div>
 					<div class="col-md-12">
 						<label class="labels">Code Postale</label><input type="text"
 							class="form-control" name="codePostal"
-							value="${utilisateur.codePostal}">
+							value="${utilisateur.codePostal}" required>
 					</div>
 					<div class="col-md-12">
 						<label class="labels">Ville</label><input type="text"
-							class="form-control" name="ville" value=" ${utilisateur.ville}">
+							class="form-control" name="ville" value=" ${utilisateur.ville}" required>
 					</div>
 					<div class="col-md-12">
 						<label class="labels">Mot de passe</label><input type="password"
@@ -73,7 +73,7 @@
 					</div>
 					<div class="col-md-12">
 						<label class="labels">Confirmation mot de passe</label><input
-							type="password" class="form-control" name="password_conf">
+							type="password" class="form-control" name="password_conf" required>
 					</div>
 				</div>
 
