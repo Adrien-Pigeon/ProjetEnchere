@@ -78,7 +78,7 @@ public class UtilisateurManager {
 		if (u == null) {
 			throw new BllException("Utilisateur null");
 		}
-		if(u.getTelephone() == null) {
+		if(u.getTelephone().isBlank()) {
 			valide = true;
 		}
 		else if (u.getTelephone() != null && u.getTelephone().trim().length() != 10 ) {
@@ -86,24 +86,24 @@ public class UtilisateurManager {
 			sb.append("Le numero de telephone doit comporter 10 chiffres\n");
 			valide = false;
 		}
-		if (u.getPseudo() == null || u.getPseudo().isBlank()) {
+		if (u.getPseudo().isBlank()) {
 			sb.append("Le pseudo est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getNom() == null || u.getNom().isBlank()) {
+		if (u.getNom().isBlank()) {
 			sb.append("Le nom est obligatoire.\n");
 			valide = false;
 		}
 
-		if (u.getVille() == null || u.getVille().isBlank()) {
+		if (u.getVille().isBlank()) {
 			sb.append("La ville est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getRue() == null || u.getRue().isBlank()) {
+		if (u.getRue().isBlank()) {
 			sb.append("La rue est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getCodePostal() == null || u.getCodePostal().isBlank()) {
+		if (u.getCodePostal().isBlank()) {
 			sb.append("Le code postal est obligatoire.\n");
 			valide = false;
 		}
@@ -114,15 +114,15 @@ public class UtilisateurManager {
 			sb.append("Le code Postal ne doit comporter que des chiffres\n");
 		}
 
-		if (u.getPrenom() == null || u.getPrenom().isBlank()) {
+		if (u.getPrenom().isBlank()) {
 			sb.append("Le prenom est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getEmail() == null || u.getEmail().isBlank() || !u.getEmail().contains("@")) {
+		if (u.getEmail().isBlank() || !u.getEmail().contains("@")) {
 			sb.append("La rue est obligatoire.\n");
 			valide = false;
 		}
-		if (u.getMotDePasse() == null || u.getMotDePasse().isBlank()) {
+		if (u.getMotDePasse().isBlank()) {
 			sb.append("Le mot de passe est obligatoire.\n");
 			valide = false;
 		}
