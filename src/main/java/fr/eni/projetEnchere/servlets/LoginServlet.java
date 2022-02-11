@@ -80,7 +80,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			user = um.login(user);
 		} catch (DalException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 
 		}
